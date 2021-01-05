@@ -1,3 +1,149 @@
 \chapter{Introducción}
 
-En los últimos años ha habido un aumento considerable de datos de diversa índole y generados por fuentes heterogéneas. Según los autores \citeauthor{gantz_extracting_2011}, el volumen total de datos creados y replicados en el mundo durante el año 2011 supera los 1.8 ZB (zettabytes) y se ha estimado que duplica cada dos años \cite{gantz_extracting_2011}. Los avances en el área de tecnología de la información (IT) han contribuido a una continua producción de datos y expansión del campo digital, tal es el caso para la red social \textit{Facebook}, la cual recibe cada hora un flujo de 10 millones de fotos que publican sus usuarios \cite{mayer-schonberger_big_2013}. A estas grandes colecciones de datos se las conoce como \textit{big data} y acarrean nuevas oportunidades y desafíos al campo de las ciencias de la computación. En cuestiones económicas, un análisis a gran escala en búsqueda de tendencias en el comportamiento de los usuarios o clientes de un sistema puede dar una ventaja competitiva en el mercado y, en adición, proveer de un servicio valioso a la comunidad. Potencialmente, la ‘big data’ puede ser una fuente que proporcione a la comunidad de conocimiento nuevo sobre el mundo en el que habita, o como ha mencionado \citeauthor{fayyad_advances_1996} en su escrito sobre el descubrimiento de conocimiento, “Los datos que percibimos de nuestro ambiente son la evidencia básica que usamos para construir teorías y modelos sobre el universo en el que vivimos”\footnote{“Data we capture about our environment are the basic evidence we use to build theories and models of the universe we live in” \cite[p. 2]{fayyad_advances_1996}. Traducción propia.}.
+\section{Fundamentos}
+
+En los últimos años ha habido un aumento considerable de datos de diversa índole
+y generados por fuentes heterogéneas. Según los autores
+\citeauthor{gantz_extracting_2011}, el volumen total de datos creados y
+replicados en el mundo durante el año 2011 supera los 1.8 ZB (zettabytes) y se
+ha estimado que duplica cada dos años \cite{gantz_extracting_2011}. Los avances
+en el área de tecnología de la información (IT) han contribuido a una continua
+producción de datos y expansión del campo digital, tal es el caso para la red
+social \textit{Facebook}, la cual recibe cada hora un flujo de 10 millones de
+fotos que publican sus usuarios \cite{mayer-schonberger_big_2013}. A estas
+grandes colecciones de datos se las conoce como \textit{big data} y acarrean
+nuevas oportunidades y desafíos al campo de las ciencias de la computación. En
+cuestiones económicas, un análisis a gran escala en búsqueda de tendencias en el
+comportamiento de los usuarios o clientes de un sistema puede dar una ventaja
+competitiva en el mercado y, en adición, proveer de un servicio valioso a la
+comunidad. Potencialmente, la \textit{big data} puede ser una fuente que
+proporcione a la comunidad de conocimiento nuevo sobre el mundo en el que
+habita, o como ha mencionado \citeauthor{fayyad_advances_1996} en su escrito
+sobre el descubrimiento de conocimiento, “Los datos que percibimos de nuestro
+ambiente son la evidencia básica que usamos para construir teorías y modelos
+sobre el universo en el que vivimos”\footnote{“Data we capture about our
+   environment are the basic evidence we use to build theories and models of the
+universe we live in” \cite[p. 2]{fayyad_advances_1996}. Traducción propia.}.
+
+Sin embargo, volúmenes masivos de datos tornan obsoletos los tradicionales
+métodos manuales de análisis de datos y surge la necesidad de desarrollar
+técnicas automatizadas para extraer patrones en los datos y obtener
+conocimiento. Con este fin, se han desarrollado técnicas en las áreas de minería
+de datos y aprendizaje de máquinas que abordan estas colecciones en búsqueda de
+conocimiento válido y útil. Dichas técnicas se han enfocado en el aprendizaje
+por \textit{batch} \cite{gama_knowledge_2010}, lo que significa que el algoritmo
+dispone de la colección completa, almacenada en disco, y con la cual genera un
+modelo a partir de una o múltiples iteraciones sobre todos los datos. No
+obstante, el aprendizaje por \textit{batch} trae aparejada una dificultad en su
+misma definición: requiere de todos los datos de la colección presentes y
+accesibles en todo momento,  lo cual no siempre es posible. Además se suma una
+limitante que es clave en el contexto actual de alta disponibilidad de datos:
+hoy en día una buena parte de los datos generados proviene de flujos continuos o
+‘\textit{streamings}’ de datos \cite{bifet_big_2014}. Estos flujos son
+potencialmente ilimitados, arriban de a una instancia por vez, y son analizados
+con restricciones altas de tiempo de procesamiento y de memoria.  Tal es el caso
+para aplicaciones de sensores, monitoreo de redes y administración de tráfico,
+flujo de clics de un usuario en la web, redes sociales, entre otros.  Los
+algoritmos de aprendizaje que actúen en este entorno dinámico deben contar con
+mecanismos que permitan manejar cambios en la naturaleza o distribución de los
+datos, tanto para incorporar datos nuevos, como para descartar los datos
+antiguos. Por estas razones, se torna necesario que las aplicaciones basadas en
+clasificación en tiempo real adapten sus operaciones de entrenamiento y
+predicción para lograr mejores resultados \cite{sousa_multi-label_2018}.
+
+Dentro del área de minería de datos, una de las principales tareas es la de
+clasificación, la cual consiste en entrenar un modelo que sea capaz de asignar
+una única etiqueta a una instancia desconocida. No obstante, existen problemas
+de clasificación en donde múltiples etiquetas son necesarias para caracterizar
+una instancia. Por ejemplo, una noticia de diario referida al accidente aéreo
+que sufrió el plantel de fútbol del club Chapecoense puede ser clasificado en la
+categoría de “Fútbol” tanto como en la de “Tragedias”. Del mismo modo, un video
+documental sobre la vida de Borges puede anotarse como “Biografía”, “Literatura”
+o incluso “Buenos Aires” si se mostraran imágenes de la ciudad. Este tipo de
+problemas es llamado \acrfull{mll} \footnote{Siglas provenientes de su
+abreviación en inglés, Multi-label learning} y representa un nuevo paradigma de
+aprendizaje automático, con sus propios retos por afrontar y que aún no ha sido
+suficientemente explorado en proyectos de investigación. 
+
+Una clasificación multi-etiqueta permite conocer el grado de correlación entre
+una instancia de la colección y una o más etiquetas. Esta cualidad significa un
+mayor poder de generalización con respecto a la clasificación tradicional de
+única etiqueta, ya que puede abarcar esos mismos problemas y otros de mayor
+número de etiquetas. Además existen algoritmos que aprovechan la correlación
+entre etiquetas para mejorar la eficiencia de la clasificación y la calidad de
+la predicción.
+
+El campo de \acrshort{mll} se ha desarrollado considerablemente en los últimos
+años pero hasta el momento muchos de estos trabajos se han llevado a cabo en
+ambientes estáticos de aprendizaje por \textit{batch}
+\cite{read_classifier_2011}. Por lo que se hace necesario encarar nuevos
+proyectos que aborden clasificaciones \acrshort{mll} en contextos de
+\textit{streaming} de datos. El desafío entonces consiste en crear
+clasificadores que sean capaces de manejar un inmenso número de instancias y
+adaptarse al cambio, a la vez que estar preparados para hacer tareas de
+predicción en cualquier momento, y todo esto en un contexto de altas
+restricciones de tiempo de respuesta y memoria.
+
+\section{Clasificación de flujos de datos multi etiquetados} \todo[inline]{Datos
+multietiquetados.} \todo[inline]{Aprendizaje incremental ?}
+\todo[inline]{Streamings. Caracteristicas esenciales (potencialmente infinita,
+limite de espacio en memoria y de tiempo, etc).} \todo[inline]{Caracteristicas
+de una colección multietiquetada (densidad, cardinalidad,etc).}
+
+
+\section{Motivación} 
+
+Ante la necesidad de hacer frente a un contexto global de generación masiva de
+datos y a un ritmo cada vez mayor, se hace preciso fortalecer las técnicas de
+aprendizaje automático actualmente presentes en el campo. En este escenario ya
+no es posible contar con todos los datos almacenados y la idea de generar un
+modelo completo para luego evaluarlo en una fase posterior debe ser reemplazada
+por una en donde el modelo esté siempre listo para realizar predicciones y al
+mismo tiempo ser capaz de re-entrenarse y recalcular las métricas de evaluación
+ante cada nueva instancia abordada. Todo esto en un contexto cambiante, de alta
+disponibilidad y limitación en el espacio de almacenamiento. Si bien existen
+métodos de clasificación para flujos continuos que han dado resultados
+satisfactorios, aún es un campo poco abordado y se hace necesario reproducir los
+experimentos realizados y fortalecer las técnicas y herramientas actuales para
+llevar adelante estudios precisos y pormenorizados.
+
+Por otro lado, si bien existen en el mundo real infinidad de datos multi
+etiquetados aún no es posible hallar colecciones disponibles al público que
+cuenten con todas las características de un flujo continuo de datos. Uno de los
+enfoques abordados es convertir las colecciones existentes en flujos que arriban
+a lo largo del tiempo y en cantidades predefinidas. De esta manera los
+algoritmos pueden realizar clasificaciones en un ambiente similar al de un
+escenario de \textit{streaming}. Sin embargo, estas colecciones tienen un número
+limitado de instancias y por lo tanto no cumplen con la condición de ser
+teóricamente infinitos. Es entonces aquí donde surgen las técnicas de generación
+sintética de instancias, que buscan reproducir la distribución subyacente de los
+datos para simular colecciones de datos del mundo real. La contracara de este
+enfoque es que, si bien existen técnicas y herramientas para generar datos
+etiquetados, buena parte de ellos son solo aplicables para instancias de una
+única etiqueta y los que logran generar datos multi etiquetados no han sido lo
+suficientemente explorados en el área. Estos son capaces de generar datos
+cercanos a los de colecciones del mundo real \cite{read_generating_nodate} y
+brindan la posibilidad de realizar estudios certeros de algoritmos de
+clasificación \cite{read_scalable_2012}. Pero debe notarse también que si bien
+se han obtenido colecciones sintéticas en sí mismas aún no han logrado generar
+instancias para una colección en concreto, respetando sus cualidades
+particulares y que las distinguen de otras, tales como la co-ocurrencia de
+etiquetas, la densidad y cardinalidad de las etiquetas y la relación entre las
+etiquetas y sus \textit{features}, por mencionar algunas. De lograr esta
+aproximación se podrá realizar estudios sobre el impacto de los algoritmos sobre
+flujos de datos de naturaleza distintiva, o en otras palabras, entender en qué
+medida un algoritmo es más apropiado que otro para un conjunto de datos en un
+determinado contexto. 
+
+\todo[inline]{explicar enfoque de clasificación por ensambles.}
+
+
+
+
+
+\section{Objetivos} Acá van los objetivos.
+
+\section{Aportes} Acá van los aportes.
+
+\section{Organización del Trabajo} Acá va la descripción de las distintas
+secciones del trabajo.

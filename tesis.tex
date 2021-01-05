@@ -8,10 +8,17 @@
 \usepackage{biblatex}
 \usepackage{csquotes}
 
+\usepackage{todonotes}
+
 \usepackage[left=3cm,right=3cm,bottom=3cm,top=3cm]{geometry}
 
+% Bibliography
 \addbibresource{tesis.bib}
-%\bibliography{tesis}
+
+% Glossary
+\usepackage[acronym]{glossaries}
+\input{glossary}
+\makeglossaries
 
 
 \begin{document}
@@ -48,8 +55,13 @@
 %%%% ACA VA EL CONTENIDO DE LA TESIS
 \input{content/introduccion}
 
-%%%% BIBLIOGRAFIA
 \backmatter
 
+%%%% GLOSARIO
+\printglossaries
+\cleardoublepage
+
+%%%% BIBLIOGRAFIA
 \printbibliography
+
 \end{document}
