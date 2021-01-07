@@ -1,112 +1,27 @@
 
-@article{buyukcakir_novel_2018,
-	title = {A Novel Online Stacked Ensemble for Multi-Label Stream Classification},
-	url = {http://arxiv.org/abs/1809.09994},
-	doi = {10.1145/3269206.3271774},
-	abstract = {As data streams become more prevalent, the necessity for online algorithms that mine this transient and dynamic data becomes clearer. Multi-label data stream classification is a supervised learning problem where each instance in the data stream is classified into one or more pre-defined sets of labels. Many methods have been proposed to tackle this problem, including but not limited to ensemble-based methods. Some of these ensemble-based methods are specifically designed to work with certain multi-label base classifiers; some others employ online bagging schemes to build their ensembles. In this study, we introduce a novel online and dynamically-weighted stacked ensemble for multi-label classification, called {GOOWEML}, that utilizes spatial modeling to assign optimal weights to its component classifiers. Our model can be used with any existing incremental multi-label classification algorithm as its base classifier. We conduct experiments with 4 {GOOWE}-{ML}-based multi-label ensembles and 7 baseline models on 7 real-world datasets from diverse areas of interest. Our experiments show that {GOOWE}-{ML} ensembles yield consistently better results in terms of predictive performance in almost all of the datasets, with respect to the other prominent ensemble models.},
-	pages = {1063--1072},
-	journaltitle = {Proceedings of the 27th {ACM} International Conference on Information and Knowledge Management},
-	author = {Büyükçakır, Alican and Bonab, Hamed and Can, Fazli},
-	urldate = {2020-12-26},
-	date = {2018-10-17},
-	langid = {english},
-	eprinttype = {arxiv},
-	eprint = {1809.09994},
-	keywords = {Computer Science - Information Retrieval, Computer Science - Machine Learning, Statistics - Machine Learning, model},
-}
-
-@article{osojnik_multi-label_2017,
-	title = {Multi-label classification via multi-target regression on data streams},
-	volume = {106},
-	issn = {1573-0565},
-	url = {https://doi.org/10.1007/s10994-016-5613-5},
-	doi = {10.1007/s10994-016-5613-5},
-	abstract = {Multi-label classification ({MLC}) tasks are encountered more and more frequently in machine learning applications. While {MLC} methods exist for the classical batch setting, only a few methods are available for streaming setting. In this paper, we propose a new methodology for {MLC} via multi-target regression in a streaming setting. Moreover, we develop a streaming multi-target regressor {iSOUP}-Tree that uses this approach. We experimentally compare two variants of the {iSOUP}-Tree method (building regression and model trees), as well as ensembles of {iSOUP}-Trees with state-of-the-art tree and ensemble methods for {MLC} on data streams. We evaluate these methods on a variety of measures of predictive performance (appropriate for the {MLC} task). The ensembles of {iSOUP}-Trees perform significantly better on some of these measures, especially the ones based on label ranking, and are not significantly worse than the competitors on any of the remaining measures. We identify the thresholding problem for the task of {MLC} on data streams as a key issue that needs to be addressed in order to obtain even better results in terms of predictive performance.},
-	pages = {745--770},
-	number = {6},
-	journaltitle = {Machine Learning},
-	shortjournal = {Mach Learn},
-	author = {Osojnik, Aljaž and Panov, Panče and Džeroski, Sašo},
-	urldate = {2020-06-15},
-	date = {2017-06-01},
-	langid = {english},
-	keywords = {20ng, Multi-label classification, datasets, enron, evaluation, isoup, streaming},
-}
-
-@article{dembczynski_bayes_nodate,
-	title = {Bayes Optimal Multilabel Classification via Probabilistic Classifier Chains},
-	abstract = {In the realm of multilabel classiﬁcation ({MLC}), it has become an opinio communis that optimal predictive performance can only be achieved by learners that explicitly take label dependence into account. The goal of this paper is to elaborate on this postulate in a critical way. To this end, we formalize and analyze {MLC} within a probabilistic setting. Thus, it becomes possible to look at the problem from the point of view of risk minimization and Bayes optimal prediction. Moreover, inspired by our probabilistic setting, we propose a new method for {MLC} that generalizes and outperforms another approach, called classiﬁer chains, that was recently introduced in the literature.},
-	pages = {8},
-	author = {Dembczynski, Krzysztof and Cheng, Weiwei and Hüllermeier, Eyke},
-	langid = {english},
-	keywords = {model, pcc},
-}
-
-@article{harsha_kadam_text_2020,
-	title = {Text analysis for email multi label classification},
-	url = {https://odr.chalmers.se/handle/20.500.12380/301402},
-	abstract = {This master’s thesis studies a multi label text classification task on a small data 
-set of bilingual, English and Swedish, short texts (emails). Specifically, the size of 
-the data set is 5800 emails and those emails are distributed among 107 classes with 
-the special case that the majority of the emails includes the two languages at the 
-same time. For handling this task different models have been employed: Support 
-Vector Machines ({SVM}), Gated Recurrent Units ({GRU}), Convolution Neural Network 
-({CNN}), Quasi Recurrent Neural Network ({QRNN}) and Transformers. The 
-experiments demonstrate that in terms of weighted averaged F1 score, the {SVM} 
-outperforms the other models with a score of 0.96 followed by the {CNN} with 0.89 
-and the {QRNN} with 0.80.},
-	author = {Harsha Kadam, Sanjit and Paniskaki, Kyriaki},
-	urldate = {2020-07-17},
-	date = {2020},
-	note = {Accepted: 2020-07-08T11:24:36Z},
-	keywords = {synthetic-data},
-}
-
-@incollection{angelov_empirical_2017,
+@inproceedings{karponi_empirical_2017,
 	location = {Cham},
 	title = {An Empirical Comparison of Methods for Multi-label Data Stream Classification},
-	volume = {529},
-	isbn = {978-3-319-47897-5 978-3-319-47898-2},
-	url = {http://link.springer.com/10.1007/978-3-319-47898-2_16},
-	abstract = {This paper studies the problem of multi-label classiﬁcation in the context of data streams. We discuss related work in this area and present our implementation of several existing approaches as part of the Mulan software. We present empirical results on a real-world data stream concerning media monitoring and discuss and draw a number of conclusions regarding their performance.},
+	isbn = {978-3-319-47898-2},
+	doi = {10.1007/978-3-319-47898-2_16},
+	series = {Advances in Intelligent Systems and Computing},
+	abstract = {This paper studies the problem of multi-label classification in the context of data streams. We discuss related work in this area and present our implementation of several existing approaches as part of the Mulan software. We present empirical results on a real-world data stream concerning media monitoring and discuss and draw a number of conclusions regarding their performance.},
 	pages = {151--159},
 	booktitle = {Advances in Big Data},
 	publisher = {Springer International Publishing},
 	author = {Karponi, Konstantina and Tsoumakas, Grigorios},
 	editor = {Angelov, Plamen and Manolopoulos, Yannis and Iliadis, Lazaros and Roy, Asim and Vellasco, Marley},
-	urldate = {2020-07-24},
 	date = {2017},
 	langid = {english},
-	doi = {10.1007/978-3-319-47898-2_16},
-	note = {Series Title: Advances in Intelligent Systems and Computing},
+	keywords = {Multi-label learning, Classification, Data streams, Media monitoring}
 }
 
 @article{read_generating_nodate,
 	title = {Generating Synthetic Multi-label Data Streams},
 	abstract = {There are many available methods for generating synthetic data streams. Such methods have been justiﬁed by the need to study the eﬃcacy of algorithms on a theoretically inﬁnite stream, and also a lack of real-world data of suﬃcient size. Although multi-label classiﬁcation has attracted considerable interest in recent years, most of this work has been carried out in the context of a batch learning environment rather than a data stream. This paper makes an in-depth analysis of multi-label data, and presents a general framework for generating synthetic multi-label data streams.},
 	pages = {16},
-	journaltitle = {2009},
 	author = {Read, Jesse and Pfahringer, Bernhard and Holmes, Geoﬀ},
-	langid = {english},
-	keywords = {Data stream, streaming, synthetic-data},
-}
-
-@article{read_scalable_2012,
-	title = {Scalable and efficient multi-label classification for evolving data streams},
-	volume = {88},
-	issn = {1573-0565},
-	url = {https://doi.org/10.1007/s10994-012-5279-6},
-	doi = {10.1007/s10994-012-5279-6},
-	abstract = {Many challenging real world problems involve multi-label data streams. Efficient methods exist for multi-label classification in non-streaming scenarios. However, learning in evolving streaming scenarios is more challenging, as classifiers must be able to deal with huge numbers of examples and to adapt to change using limited time and memory while being ready to predict at any point.},
-	pages = {243--272},
-	number = {1},
-	journaltitle = {Machine Learning},
-	shortjournal = {Mach Learn},
-	author = {Read, Jesse and Bifet, Albert and Holmes, Geoff and Pfahringer, Bernhard},
-	urldate = {2020-06-17},
-	date = {2012-07-01},
-	langid = {english},
-	keywords = {20ng, Concept drift, Multi-label classification, enron, evaluation, mediamill, moa, streaming, synthetic-data},
+	langid = {english}
 }
 
 @article{nguyen_multi-label_2019,
@@ -123,7 +38,59 @@ and the {QRNN} with 0.80.},
 	urldate = {2020-06-25},
 	date = {2019-06-01},
 	langid = {english},
-	keywords = {Concept drift, Data stream, Feature dependence, Label correlation, Multi-label classification, Multi-label learning, Online learning},
+	keywords = {20ng, Concept drift, enron, Multi-label classification, Data stream, Feature dependence, Label correlation, Multi-label learning, Online learning}
+}
+
+@article{trohidis_multi-label_2011,
+	title = {Multi-label classification of music by emotion},
+	volume = {2011},
+	issn = {1687-4722},
+	url = {https://doi.org/10.1186/1687-4722-2011-426793},
+	doi = {10.1186/1687-4722-2011-426793},
+	abstract = {This work studies the task of automatic emotion detection in music. Music may evoke more than one different emotion at the same time. Single-label classification and regression cannot model this multiplicity. Therefore, this work focuses on multi-label classification approaches, where a piece of music may simultaneously belong to more than one class. Seven algorithms are experimentally compared for this task. Furthermore, the predictive power of several audio features is evaluated using a new multi-label feature selection method. Experiments are conducted on a set of 593 songs with six clusters of emotions based on the Tellegen-Watson-Clark model of affect. Results show that multi-label modeling is successful and provide interesting insights into the predictive quality of the algorithms and features.},
+	pages = {4},
+	number = {1},
+	journaltitle = {{EURASIP} Journal on Audio, Speech, and Music Processing},
+	shortjournal = {J {AUDIO} {SPEECH} {MUSIC} {PROC}.},
+	author = {Trohidis, Konstantinos and Tsoumakas, Grigorios and Kalliris, George and Vlahavas, Ioannis},
+	urldate = {2020-06-24},
+	date = {2011-09-18},
+	langid = {english},
+	keywords = {evaluation, datasets, br, lc, music, rakel}
+}
+
+@online{noauthor_notitle_nodate,
+	url = {https://pdfs.semanticscholar.org/0caf/7892917a53011e062c9f9057551a601b6695.pdf},
+	urldate = {2020-06-24}
+}
+
+@article{read_meka_2016,
+	title = {{MEKA}: A multi-label/multi-target extension to {WEKA}},
+	volume = {17},
+	issn = {1533-7928},
+	url = {https://researchcommons.waikato.ac.nz/handle/10289/10136},
+	shorttitle = {{MEKA}},
+	abstract = {Multi-label classification has rapidly attracted interest in the machine learning literature, and there are now a large number and considerable variety of methods for this type of learning. We present {MEKA}: an open-source Java framework based on the well-known {WEKA} library. {MEKA} provides interfaces to facilitate practical application, and a wealth of multi-label classifiers, evaluation metrics, and tools for multi-label experiments and development. It supports multi-label and multi-target data, including in incremental and semi- supervised contexts.},
+	pages = {1--5},
+	number = {21},
+	author = {Read, Jesse and Reutemann, Peter and Pfahringer, Bernhard and Holmes, Geoffrey},
+	urldate = {2020-06-24},
+	date = {2016},
+	langid = {english},
+	note = {Accepted: 2016-04-26T04:04:07Z},
+	keywords = {meka}
+}
+
+@book{bifet_machine_2018,
+	title = {Machine Learning for Data Streams with Practical Examples in {MOA}},
+	isbn = {978-0-262-03779-2},
+	abstract = {Today many information sources—including sensor networks, financial markets, social networks, and healthcare monitoring—are so-called data streams, arriving sequentially and at high speed. Analysis must take place in real time, with partial data and without the capacity to store the entire data set. This book presents algorithms and techniques used in data stream mining and real-time analytics. Taking a hands-on approach, the book demonstrates the techniques using {MOA} (Massive Online Analysis), a popular, freely available open-source software framework, allowing readers to try out the techniques after reading the explanations.
+
+The book first offers a brief introduction to the topic, covering big data mining, basic methodologies for mining data streams, and a simple example of {MOA}. More detailed discussions follow, with chapters on sketching techniques, change, classification, ensemble methods, regression, clustering, and frequent pattern mining. Most of these chapters include exercises, an {MOA}-based lab session, or both. Finally, the book discusses the {MOA} software, covering the {MOA} graphical user interface, the command line, use of its {API}, and the development of new methods within {MOA}. The book will be an essential reference for readers who want to use data stream mining as a tool, researchers in innovation or data stream mining, and programmers who want to create new algorithms for {MOA}.
+
+https://moa.cms.waikato.ac.nz/book/},
+	author = {Bifet, Albert and Gavaldà, Ricard and Pfahringer, Bernhard and Holmes, Geoffrey},
+	date = {2018-03-02}
 }
 
 @article{lang_newsweeder_nodate,
@@ -132,49 +99,7 @@ and the {QRNN} with 0.80.},
 	pages = {9},
 	author = {Lang, Ken},
 	langid = {english},
-	keywords = {20ng},
-}
-
-@online{noauthor_multilabel_nodate,
-	title = {Multilabel Classification - Problem Analysis, Metrics and Techniques {\textbar} Francisco Herrera {\textbar} Springer},
-	url = {https://www.springer.com/gp/book/9783319411101},
-	urldate = {2020-06-15},
-}
-
-@inproceedings{liu_deep_2017,
-	location = {Shinjuku Tokyo Japan},
-	title = {Deep Learning for Extreme Multi-label Text Classification},
-	isbn = {978-1-4503-5022-8},
-	url = {https://dl.acm.org/doi/10.1145/3077136.3080834},
-	doi = {10.1145/3077136.3080834},
-	abstract = {Extreme multi-label text classi cation ({XMTC}) refers to the problem of assigning to each document its most relevant subset of class labels from an extremely large label collection, where the number of labels could reach hundreds of thousands or millions. e huge label space raises research challenges such as data sparsity and scalability. Signi cant progress has been made in recent years by the development of new machine learning methods, such as tree induction with large-margin partitions of the instance spaces and label-vector embedding in the target space. However, deep learning has not been explored for {XMTC}, despite its big successes in other related areas. is paper presents the rst a empt at applying deep learning to {XMTC}, with a family of new Convolutional Neural Network ({CNN}) models which are tailored for multi-label classi cation in particular. With a comparative evaluation of 7 state-of-the-art methods on 6 benchmark datasets where the number of labels is up to 670,000, we show that the proposed {CNN} approach successfully scaled to the largest datasets, and consistently produced the best or the second best results on all the datasets. On the Wikipedia dataset with over 2 million documents and 500,000 labels in particular, it outperformed the second best method by 11.7\% ∼ 15.3\% in precision@K and by 11.5\% ∼ 11.7\% in {NDCG}@K for K = 1,3,5.},
-	eventtitle = {{SIGIR} '17: The 40th International {ACM} {SIGIR} conference on research and development in Information Retrieval},
-	pages = {115--124},
-	booktitle = {Proceedings of the 40th International {ACM} {SIGIR} Conference on Research and Development in Information Retrieval},
-	publisher = {{ACM}},
-	author = {Liu, Jingzhou and Chang, Wei-Cheng and Wu, Yuexin and Yang, Yiming},
-	urldate = {2020-06-15},
-	date = {2017-08-07},
-	langid = {english},
-	keywords = {Multi-label classification, cnn-kim, mediamill},
-}
-
-@inproceedings{snoek_challenge_2006,
-	location = {Santa Barbara, {CA}, {USA}},
-	title = {The challenge problem for automated detection of 101 semantic concepts in multimedia},
-	isbn = {978-1-59593-447-5},
-	url = {http://portal.acm.org/citation.cfm?doid=1180639.1180727},
-	doi = {10.1145/1180639.1180727},
-	abstract = {We introduce the challenge problem for generic video indexing to gain insight in intermediate steps that aﬀect performance of multimedia analysis methods, while at the same time fostering repeatability of experiments. To arrive at a challenge problem, we provide a general scheme for the systematic examination of automated concept detection methods, by decomposing the generic video indexing problem into 2 unimodal analysis experiments, 2 multimodal analysis experiments, and 1 combined analysis experiment. For each experiment, we evaluate generic video indexing performance on 85 hours of international broadcast news data, from the {TRECVID} 2005/2006 benchmark, using a lexicon of 101 semantic concepts. By establishing a minimum performance on each experiment, the challenge problem allows for component-based optimization of the generic indexing issue, while simultaneously oﬀering other researchers a reference for comparison during indexing methodology development. To stimulate further investigations in intermediate analysis steps that inﬂuence video indexing performance, the challenge oﬀers to the research community a manually annotated concept lexicon, pre-computed low-level multimedia features, trained classiﬁer models, and ﬁve experiments together with baseline performance, which are all available at http://www.mediamill.nl/challenge/.},
-	eventtitle = {the 14th annual {ACM} international conference},
-	pages = {421},
-	booktitle = {Proceedings of the 14th annual {ACM} international conference on Multimedia  - {MULTIMEDIA} '06},
-	publisher = {{ACM} Press},
-	author = {Snoek, Cees G. M. and Worring, Marcel and van Gemert, Jan C. and Geusebroek, Jan-Mark and Smeulders, Arnold W. M.},
-	urldate = {2020-06-15},
-	date = {2006},
-	langid = {english},
-	keywords = {datasets, mediamill},
+	keywords = {20ng}
 }
 
 @incollection{hutchison_enron_2004,
@@ -197,7 +122,232 @@ and the {QRNN} with 0.80.},
 	langid = {english},
 	doi = {10.1007/978-3-540-30115-8_22},
 	note = {Series Title: Lecture Notes in Computer Science},
-	keywords = {datasets, enron},
+	keywords = {enron, datasets}
+}
+
+@inproceedings{snoek_challenge_2006,
+	location = {Santa Barbara, {CA}, {USA}},
+	title = {The challenge problem for automated detection of 101 semantic concepts in multimedia},
+	isbn = {978-1-59593-447-5},
+	url = {http://portal.acm.org/citation.cfm?doid=1180639.1180727},
+	doi = {10.1145/1180639.1180727},
+	abstract = {We introduce the challenge problem for generic video indexing to gain insight in intermediate steps that aﬀect performance of multimedia analysis methods, while at the same time fostering repeatability of experiments. To arrive at a challenge problem, we provide a general scheme for the systematic examination of automated concept detection methods, by decomposing the generic video indexing problem into 2 unimodal analysis experiments, 2 multimodal analysis experiments, and 1 combined analysis experiment. For each experiment, we evaluate generic video indexing performance on 85 hours of international broadcast news data, from the {TRECVID} 2005/2006 benchmark, using a lexicon of 101 semantic concepts. By establishing a minimum performance on each experiment, the challenge problem allows for component-based optimization of the generic indexing issue, while simultaneously oﬀering other researchers a reference for comparison during indexing methodology development. To stimulate further investigations in intermediate analysis steps that inﬂuence video indexing performance, the challenge oﬀers to the research community a manually annotated concept lexicon, pre-computed low-level multimedia features, trained classiﬁer models, and ﬁve experiments together with baseline performance, which are all available at http://www.mediamill.nl/challenge/.},
+	eventtitle = {the 14th annual {ACM} international conference},
+	pages = {421},
+	booktitle = {Proceedings of the 14th annual {ACM} international conference on Multimedia  - {MULTIMEDIA} '06},
+	publisher = {{ACM} Press},
+	author = {Snoek, Cees G. M. and Worring, Marcel and van Gemert, Jan C. and Geusebroek, Jan-Mark and Smeulders, Arnold W. M.},
+	urldate = {2020-06-15},
+	date = {2006},
+	langid = {english},
+	keywords = {mediamill, datasets}
+}
+
+@article{montiel_scikit-multiow_nodate,
+	title = {Scikit-Multiﬂow: A Multi-output Streaming Framework},
+	pages = {5},
+	author = {Montiel, Jacob},
+	langid = {english},
+	keywords = {Multi-label classification, streaming, scikit-multiflow}
+}
+
+@article{maruthupandi_multi-label_2017,
+	title = {Multi-label text classification using optimised feature sets},
+	volume = {9},
+	abstract = {Multi-label text classification is the process of assigning multi-labels to an instance. A significant aspect of the text classification problem is the high dimensionality of the data which hinders the performance of the classifier. Hence, feature selection plays a significant role in classification process that removes the irrelevant data. In this paper, wrapper-based hybrid artificial bee colony and bacterial foraging optimisation ({HABBFO}) approach has been proposed to select the most appropriate feature subset for prediction. Initially, pre-processing such as tokenisation, stop word removal and stemming has been performed to extract the features (words). Experiments are conducted on the benchmark dataset and the results show that the proposed approach achieves better performance compared to the other feature selection techniques.},
+	pages = {237--248},
+	journaltitle = {International Journal of Data Mining, Modelling and Management ({IJDMMM})},
+	author = {Maruthupandi, J and Vimala Devi, K},
+	date = {2017-09}
+}
+
+@inproceedings{zhang_multi-label_2010,
+	title = {Multi-label learning by exploiting label dependency},
+	booktitle = {Proceedings of the 16th {ACM} {SIGKDD} international conference on Knowledge discovery and data mining - {KDD} '10},
+	author = {Zhang, Min-Ling and Zhang, Kun},
+	date = {2010}
+}
+
+@article{read_scalable_2012,
+	title = {Scalable and efficient multi-label classification for evolving data streams},
+	volume = {88},
+	issn = {1573-0565},
+	url = {https://doi.org/10.1007/s10994-012-5279-6},
+	doi = {10.1007/s10994-012-5279-6},
+	abstract = {Many challenging real world problems involve multi-label data streams. Efficient methods exist for multi-label classification in non-streaming scenarios. However, learning in evolving streaming scenarios is more challenging, as classifiers must be able to deal with huge numbers of examples and to adapt to change using limited time and memory while being ready to predict at any point.},
+	pages = {243--272},
+	number = {1},
+	journaltitle = {Machine Learning},
+	shortjournal = {Mach Learn},
+	author = {Read, Jesse and Bifet, Albert and Holmes, Geoff and Pfahringer, Bernhard},
+	urldate = {2020-06-17},
+	date = {2012-07-01},
+	langid = {english}
+}
+
+@online{noauthor_multilabel_nodate,
+	title = {Multilabel Classification - Problem Analysis, Metrics and Techniques {\textbar} Francisco Herrera {\textbar} Springer},
+	url = {https://www.springer.com/gp/book/9783319411101},
+	urldate = {2020-06-15}
+}
+
+@article{sousa_multi-label_2018,
+	title = {Multi-label classification from high-speed data streams with adaptive model rules and random rules},
+	journaltitle = {Progress in Artificial Intelligence},
+	author = {Sousa, Ricardo and Gama, João},
+	date = {2018}
+}
+
+@inproceedings{hulten_mining_2001,
+	location = {San Francisco, California},
+	title = {Mining Time-changing Data Streams},
+	series = {{KDD} '01},
+	pages = {97--106},
+	booktitle = {Proceedings of the Seventh {ACM} {SIGKDD} International Conference on Knowledge Discovery and Data Mining},
+	publisher = {{ACM}},
+	author = {Hulten, Geoff and Spencer, Laurie and Domingos, Pedro},
+	date = {2001}
+}
+
+@book{gama_knowledge_2010,
+	title = {Knowledge Discovery from Data Streams},
+	author = {Gama, João},
+	date = {2010}
+}
+
+@inproceedings{read_journal_2011,
+	title = {Journal of Machine Learning Research - Proceedings Track},
+	pages = {19--25},
+	booktitle = {Streaming Multi-label Classification},
+	author = {Read, Jesse and Bifet, Albert and Holmes, Geoffrey and Pfahringer, Bernhard},
+	date = {2011}
+}
+
+@article{osojnik_multi-label_2017,
+	title = {Multi-label classification via multi-target regression on data streams},
+	volume = {106},
+	issn = {1573-0565},
+	url = {https://doi.org/10.1007/s10994-016-5613-5},
+	doi = {10.1007/s10994-016-5613-5},
+	abstract = {Multi-label classification ({MLC}) tasks are encountered more and more frequently in machine learning applications. While {MLC} methods exist for the classical batch setting, only a few methods are available for streaming setting. In this paper, we propose a new methodology for {MLC} via multi-target regression in a streaming setting. Moreover, we develop a streaming multi-target regressor {iSOUP}-Tree that uses this approach. We experimentally compare two variants of the {iSOUP}-Tree method (building regression and model trees), as well as ensembles of {iSOUP}-Trees with state-of-the-art tree and ensemble methods for {MLC} on data streams. We evaluate these methods on a variety of measures of predictive performance (appropriate for the {MLC} task). The ensembles of {iSOUP}-Trees perform significantly better on some of these measures, especially the ones based on label ranking, and are not significantly worse than the competitors on any of the remaining measures. We identify the thresholding problem for the task of {MLC} on data streams as a key issue that needs to be addressed in order to obtain even better results in terms of predictive performance.},
+	pages = {745--770},
+	number = {6},
+	journaltitle = {Machine Learning},
+	shortjournal = {Mach Learn},
+	author = {Osojnik, Aljaž and Panov, Panče and Džeroski, Sašo},
+	urldate = {2020-06-15},
+	date = {2017-06-01},
+	langid = {english},
+	keywords = {20ng, enron, evaluation, Multi-label classification, streaming, datasets}
+}
+
+@inproceedings{read_multi-label_2008,
+	title = {Multi-label Classification Using Ensembles of Pruned Sets},
+	booktitle = {2008 Eighth {IEEE} International Conference on Data Mining},
+	author = {Read, Jesse and Pfahringer, Bernhard and Holmes, Geoff},
+	date = {2008}
+}
+
+@article{tsoumakas_multi-label_2007,
+	title = {Multi-Label Classification},
+	volume = {3},
+	pages = {1--13},
+	number = {3},
+	journaltitle = {Int. J. Data Warehouse. Min.},
+	author = {Tsoumakas, Grigorios and Katakis, Ioannis},
+	date = {2007}
+}
+
+@article{gantz_extracting_2011,
+	title = {Extracting value from chaos},
+	pages = {1--12},
+	journaltitle = {{IDC} {IView}},
+	author = {Gantz, J and Reinsel, D},
+	date = {2011}
+}
+
+@inproceedings{chen_extracting_2009,
+	location = {Paris, France},
+	title = {Extracting discriminative concepts for domain adaptation in text mining},
+	isbn = {978-1-60558-495-9},
+	url = {http://portal.acm.org/citation.cfm?doid=1557019.1557045},
+	doi = {10.1145/1557019.1557045},
+	eventtitle = {the 15th {ACM} {SIGKDD} international conference},
+	pages = {179},
+	booktitle = {Proceedings of the 15th {ACM} {SIGKDD} international conference on Knowledge discovery and data mining - {KDD} '09},
+	publisher = {{ACM} Press},
+	author = {Chen, Bo and Lam, Wai and Tsang, Ivor and Wong, Tak-Lam},
+	urldate = {2020-03-01},
+	date = {2009},
+	langid = {english},
+	keywords = {20ng, datasets}
+}
+
+@inproceedings{liu_deep_2017,
+	location = {Shinjuku Tokyo Japan},
+	title = {Deep Learning for Extreme Multi-label Text Classification},
+	isbn = {978-1-4503-5022-8},
+	url = {https://dl.acm.org/doi/10.1145/3077136.3080834},
+	doi = {10.1145/3077136.3080834},
+	abstract = {Extreme multi-label text classi cation ({XMTC}) refers to the problem of assigning to each document its most relevant subset of class labels from an extremely large label collection, where the number of labels could reach hundreds of thousands or millions. e huge label space raises research challenges such as data sparsity and scalability. Signi cant progress has been made in recent years by the development of new machine learning methods, such as tree induction with large-margin partitions of the instance spaces and label-vector embedding in the target space. However, deep learning has not been explored for {XMTC}, despite its big successes in other related areas. is paper presents the rst a empt at applying deep learning to {XMTC}, with a family of new Convolutional Neural Network ({CNN}) models which are tailored for multi-label classi cation in particular. With a comparative evaluation of 7 state-of-the-art methods on 6 benchmark datasets where the number of labels is up to 670,000, we show that the proposed {CNN} approach successfully scaled to the largest datasets, and consistently produced the best or the second best results on all the datasets. On the Wikipedia dataset with over 2 million documents and 500,000 labels in particular, it outperformed the second best method by 11.7\% ∼ 15.3\% in precision@K and by 11.5\% ∼ 11.7\% in {NDCG}@K for K = 1,3,5.},
+	eventtitle = {{SIGIR} '17: The 40th International {ACM} {SIGIR} conference on research and development in Information Retrieval},
+	pages = {115--124},
+	booktitle = {Proceedings of the 40th International {ACM} {SIGIR} Conference on Research and Development in Information Retrieval},
+	publisher = {{ACM}},
+	author = {Liu, Jingzhou and Chang, Wei-Cheng and Wu, Yuexin and Yang, Yiming},
+	urldate = {2020-06-15},
+	date = {2017-08-07},
+	langid = {english},
+	keywords = {mediamill, Multi-label classification, cnn-kim}
+}
+
+@article{read_classifier_2011,
+	title = {Classifier chains for multi-label classification},
+	volume = {85},
+	pages = {333--359},
+	number = {3},
+	journaltitle = {Mach. Learn.},
+	author = {Read, Jesse and Pfahringer, Bernhard and Holmes, Geoff and Frank, Eibe},
+	date = {2011}
+}
+
+@inproceedings{gargiulo_deep_2018,
+	title = {Deep Convolution Neural Network for Extreme Multi-label Text Classification},
+	booktitle = {Proceedings of the 11th International Joint Conference on Biomedical Engineering Systems and Technologies},
+	author = {Gargiulo, Francesco and Silvestri, Stefano and Ciampi, Mario},
+	date = {2018}
+}
+
+@article{pereira_categorizing_2016,
+	title = {Categorizing feature selection methods for multi-label classification},
+	volume = {49},
+	pages = {57--78},
+	number = {1},
+	journaltitle = {Artificial Intelligence Review},
+	author = {Pereira, Rafael B and Plastino, Alexandre and Zadrozny, Bianca and Merschmann, Luiz H C},
+	date = {2016}
+}
+
+@article{chen_big_2014,
+	title = {Big data: A survey},
+	volume = {19},
+	author = {Chen, Min and Mao, Shiwen and Liu, Yunhao},
+	date = {2014}
+}
+
+@book{mayer-schonberger_big_2013,
+	title = {Big Data: A Revolution that Will Transform how We Live, Work, and Think},
+	series = {An Eamon Dolan book},
+	publisher = {Houghton Mifflin Harcourt},
+	author = {Mayer-Schonberger, V and Cukier, K},
+	date = {2013}
+}
+
+@inproceedings{bifet_big_2014,
+	title = {Big Data Stream Learning with {SAMOA}},
+	booktitle = {2014 {IEEE} International Conference on Data Mining Workshop},
+	author = {Bifet, Albert and De Francisci Morales, Gianmarco},
+	date = {2014}
 }
 
 @article{madjarov_extensive_2012,
@@ -215,138 +365,7 @@ and the {QRNN} with 0.80.},
 	urldate = {2020-06-15},
 	date = {2012-09},
 	langid = {english},
-	keywords = {Multi-label classification, datasets, enron, evaluation, mediamill},
-}
-
-@article{osojnik_multi-label_2017-1,
-	title = {Multi-label classification via multi-target regression on data streams},
-	volume = {106},
-	issn = {0885-6125, 1573-0565},
-	url = {http://link.springer.com/10.1007/s10994-016-5613-5},
-	doi = {10.1007/s10994-016-5613-5},
-	abstract = {Multi-label classiﬁcation ({MLC}) tasks are encountered more and more frequently in machine learning applications. While {MLC} methods exist for the classical batch setting, only a few methods are available for streaming setting. In this paper, we propose a new methodology for {MLC} via multi-target regression in a streaming setting. Moreover, we develop a streaming multi-target regressor {iSOUP}-Tree that uses this approach. We experimentally compare two variants of the {iSOUP}-Tree method (building regression and model trees), as well as ensembles of {iSOUP}-Trees with state-of-the-art tree and ensemble methods for {MLC} on data streams. We evaluate these methods on a variety of measures of predictive performance (appropriate for the {MLC} task). The ensembles of {iSOUP}-Trees perform significantly better on some of these measures, especially the ones based on label ranking, and are not signiﬁcantly worse than the competitors on any of the remaining measures. We identify the thresholding problem for the task of {MLC} on data streams as a key issue that needs to be addressed in order to obtain even better results in terms of predictive performance.},
-	pages = {745--770},
-	number = {6},
-	journaltitle = {Machine Learning},
-	shortjournal = {Mach Learn},
-	author = {Osojnik, Aljaž and Panov, Panče and Džeroski, Sašo},
-	urldate = {2020-06-15},
-	date = {2017-06},
-	langid = {english},
-}
-
-@article{montiel_scikit-multiow_nodate,
-	title = {Scikit-Multiﬂow: A Multi-output Streaming Framework},
-	pages = {5},
-	author = {Montiel, Jacob},
-	langid = {english},
-	keywords = {Multi-label classification, scikit-multiflow, streaming},
-}
-
-@inproceedings{chen_extracting_2009,
-	location = {Paris, France},
-	title = {Extracting discriminative concepts for domain adaptation in text mining},
-	isbn = {978-1-60558-495-9},
-	url = {http://portal.acm.org/citation.cfm?doid=1557019.1557045},
-	doi = {10.1145/1557019.1557045},
-	eventtitle = {the 15th {ACM} {SIGKDD} international conference},
-	pages = {179},
-	booktitle = {Proceedings of the 15th {ACM} {SIGKDD} international conference on Knowledge discovery and data mining - {KDD} '09},
-	publisher = {{ACM} Press},
-	author = {Chen, Bo and Lam, Wai and Tsang, Ivor and Wong, Tak-Lam},
-	urldate = {2020-03-01},
-	date = {2009},
-	langid = {english},
-	keywords = {20ng, datasets},
-}
-
-@article{gibaja_tutorial_2015,
-	title = {A Tutorial on Multi-Label Learning},
-	volume = {47},
-	abstract = {Multi-label learning has become a relevant learning paradigm in the last years due to the increasing number of fields where it can be applied and also to the emerging number of techniques that are being developed. This paper presents an up-to-date tutorial about multi-label learning that introduces the paradigm and describes the main contributions developed. Evaluation measures, fields of application, trending topics and resources are also presented.},
-	journaltitle = {{ACM} Computing Surveys},
-	author = {Gibaja, Eva and Ventura, Sebastian},
-	date = {2015},
-}
-
-@article{chen_big_2014,
-	title = {Big data: A survey},
-	volume = {19},
-	author = {Chen, Min and Mao, Shiwen and Liu, Yunhao},
-	date = {2014},
-}
-
-@inproceedings{read_multi-label_2008,
-	title = {Multi-label Classification Using Ensembles of Pruned Sets},
-	booktitle = {2008 Eighth {IEEE} International Conference on Data Mining},
-	author = {Read, Jesse and Pfahringer, Bernhard and Holmes, Geoff},
-	date = {2008},
-}
-
-@article{read_classifier_2011,
-	title = {Classifier chains for multi-label classification},
-	volume = {85},
-	pages = {333--359},
-	number = {3},
-	journaltitle = {Mach. Learn.},
-	author = {Read, Jesse and Pfahringer, Bernhard and Holmes, Geoff and Frank, Eibe},
-	date = {2011},
-}
-
-@inproceedings{hulten_mining_2001,
-	location = {San Francisco, California},
-	title = {Mining Time-changing Data Streams},
-	series = {{KDD} '01},
-	pages = {97--106},
-	booktitle = {Proceedings of the Seventh {ACM} {SIGKDD} International Conference on Knowledge Discovery and Data Mining},
-	publisher = {{ACM}},
-	author = {Hulten, Geoff and Spencer, Laurie and Domingos, Pedro},
-	date = {2001},
-}
-
-@article{pereira_categorizing_2016,
-	title = {Categorizing feature selection methods for multi-label classification},
-	volume = {49},
-	pages = {57--78},
-	number = {1},
-	journaltitle = {Artificial Intelligence Review},
-	author = {Pereira, Rafael B and Plastino, Alexandre and Zadrozny, Bianca and Merschmann, Luiz H C},
-	date = {2016},
-}
-
-@book{mayer-schonberger_big_2013,
-	title = {Big Data: A Revolution that Will Transform how We Live, Work, and Think},
-	series = {An Eamon Dolan book},
-	publisher = {Houghton Mifflin Harcourt},
-	author = {Mayer-Schonberger, V and Cukier, K},
-	date = {2013},
-}
-
-@article{gantz_extracting_2011,
-	title = {Extracting value from chaos},
-	pages = {1--12},
-	journaltitle = {{IDC} {IView}},
-	author = {Gantz, J and Reinsel, D},
-	date = {2011},
-}
-
-@article{maruthupandi_multi-label_2017,
-	title = {Multi-label text classification using optimised feature sets},
-	volume = {9},
-	abstract = {Multi-label text classification is the process of assigning multi-labels to an instance. A significant aspect of the text classification problem is the high dimensionality of the data which hinders the performance of the classifier. Hence, feature selection plays a significant role in classification process that removes the irrelevant data. In this paper, wrapper-based hybrid artificial bee colony and bacterial foraging optimisation ({HABBFO}) approach has been proposed to select the most appropriate feature subset for prediction. Initially, pre-processing such as tokenisation, stop word removal and stemming has been performed to extract the features (words). Experiments are conducted on the benchmark dataset and the results show that the proposed approach achieves better performance compared to the other feature selection techniques.},
-	pages = {237--248},
-	journaltitle = {International Journal of Data Mining, Modelling and Management ({IJDMMM})},
-	author = {Maruthupandi, J and Vimala Devi, K},
-	date = {2017-09},
-}
-
-@article{zhang_review_2014,
-	title = {A Review On Multi-Label Learning Algorithms},
-	volume = {26},
-	pages = {1819--1837},
-	journaltitle = {{IEEE} Trans. Knowl. Data Eng.},
-	author = {Zhang, Min-Ling and Zhou, Zhi-Hua},
-	date = {2014},
+	keywords = {enron, evaluation, mediamill, Multi-label classification, datasets}
 }
 
 @book{fayyad_advances_1996,
@@ -357,15 +376,16 @@ and the {QRNN} with 0.80.},
 	author = {Fayyad, Usama M and Piatetsky-Shapiro, Gregory and Smyth, Padhraic},
 	editor = {{Fayyad, Usama M. and Piatetsky-Shapiro, Gregory and Smyth, Padhraic and Uthurusamy, Ramasamy}},
 	date = {1996},
-	note = {Section: From data mining to knowledge discovery: an overview},
+	note = {Section: From data mining to knowledge discovery: an overview}
 }
 
-@thesis{lavallen_procesamiento_2018,
-	title = {Procesamiento distribuido de flujos de video sobre plataformas de big data},
-	institution = {Universidad Nacional de Luján},
-	type = {phdthesis},
-	author = {Lavallen, Pablo and Tolosa, Gabriel},
-	date = {2018},
+@article{gibaja_tutorial_2015,
+	title = {A Tutorial on Multi-Label Learning},
+	volume = {47},
+	abstract = {Multi-label learning has become a relevant learning paradigm in the last years due to the increasing number of fields where it can be applied and also to the emerging number of techniques that are being developed. This paper presents an up-to-date tutorial about multi-label learning that introduces the paradigm and describes the main contributions developed. Evaluation measures, fields of application, trending topics and resources are also presented.},
+	journaltitle = {{ACM} Computing Surveys},
+	author = {Gibaja, Eva and Ventura, Sebastian},
+	date = {2015}
 }
 
 @article{tanaka_multi-label_2015,
@@ -377,64 +397,50 @@ and the {QRNN} with 0.80.},
 	author = {Tanaka, Erica Akemi and Nozawa, Sérgio Ricardo and Macedo, Alessandra Alaniz and Baranauskas, José Augusto},
 	date = {2015},
 	langid = {english},
-	keywords = {Decision tree, Functional genomics, Multi-label classification},
-}
-
-@book{gama_knowledge_2010,
-	title = {Knowledge Discovery from Data Streams},
-	author = {Gama, João},
-	date = {2010},
-}
-
-@inproceedings{zhang_multi-label_2010,
-	title = {Multi-label learning by exploiting label dependency},
-	booktitle = {Proceedings of the 16th {ACM} {SIGKDD} international conference on Knowledge discovery and data mining - {KDD} '10},
-	author = {Zhang, Min-Ling and Zhang, Kun},
-	date = {2010},
-}
-
-@article{tsoumakas_multi-label_2007,
-	title = {Multi-Label Classification},
-	volume = {3},
-	pages = {1--13},
-	number = {3},
-	journaltitle = {Int. J. Data Warehouse. Min.},
-	author = {Tsoumakas, Grigorios and Katakis, Ioannis},
-	date = {2007},
-}
-
-@inproceedings{gargiulo_deep_2018,
-	title = {Deep Convolution Neural Network for Extreme Multi-label Text Classification},
-	booktitle = {Proceedings of the 11th International Joint Conference on Biomedical Engineering Systems and Technologies},
-	author = {Gargiulo, Francesco and Silvestri, Stefano and Ciampi, Mario},
-	date = {2018},
+	keywords = {Multi-label classification, Decision tree, Functional genomics}
 }
 
 @inproceedings{goncalves_genetic_2013,
 	title = {A Genetic Algorithm for Optimizing the Label Ordering in Multi-label Classifier Chains},
 	booktitle = {2013 {IEEE} 25th International Conference on Tools with Artificial Intelligence},
 	author = {Goncalves, Eduardo Correa and Plastino, Alexandre and Freitas, Alex A},
-	date = {2013},
+	date = {2013}
 }
 
-@inproceedings{read_journal_2011,
-	title = {Journal of Machine Learning Research - Proceedings Track},
-	pages = {19--25},
-	booktitle = {Streaming Multi-label Classification},
-	author = {Read, Jesse and Bifet, Albert and Holmes, Geoffrey and Pfahringer, Bernhard},
-	date = {2011},
+@article{zhang_review_2014,
+	title = {A Review On Multi-Label Learning Algorithms},
+	volume = {26},
+	pages = {1819--1837},
+	journaltitle = {{IEEE} Trans. Knowl. Data Eng.},
+	author = {Zhang, Min-Ling and Zhou, Zhi-Hua},
+	date = {2014}
 }
 
-@inproceedings{bifet_big_2014,
-	title = {Big Data Stream Learning with {SAMOA}},
-	booktitle = {2014 {IEEE} International Conference on Data Mining Workshop},
-	author = {Bifet, Albert and De Francisci Morales, Gianmarco},
-	date = {2014},
-}
-
-@article{sousa_multi-label_2018,
+@article{sousa_multi-label_2018-1,
 	title = {Multi-label classification from high-speed data streams with adaptive model rules and random rules},
 	journaltitle = {Progress in Artificial Intelligence},
 	author = {Sousa, Ricardo and Gama, João},
-	date = {2018},
+	date = {2018}
+}
+
+@article{dembczynski_bayes_nodate,
+	title = {Bayes Optimal Multilabel Classification via Probabilistic Classifier Chains},
+	abstract = {In the realm of multilabel classiﬁcation ({MLC}), it has become an opinio communis that optimal predictive performance can only be achieved by learners that explicitly take label dependence into account. The goal of this paper is to elaborate on this postulate in a critical way. To this end, we formalize and analyze {MLC} within a probabilistic setting. Thus, it becomes possible to look at the problem from the point of view of risk minimization and Bayes optimal prediction. Moreover, inspired by our probabilistic setting, we propose a new method for {MLC} that generalizes and outperforms another approach, called classiﬁer chains, that was recently introduced in the literature.},
+	pages = {8},
+	author = {Dembczynski, Krzysztof and Cheng, Weiwei and Hüllermeier, Eyke},
+	langid = {english},
+	keywords = {model, pcc}
+}
+
+@article{polikar_polikar_2006,
+	title = {Polikar, R.: Ensemble based systems in decision making. {IEEE} Circuit Syst. Mag. 6, 21-45},
+	volume = {6},
+	doi = {10.1109/MCAS.2006.1688199},
+	shorttitle = {Polikar, R.},
+	abstract = {In matters of great importance that have financial, medical, social, or other implications, we often seek a second opinion before making a decision, sometimes a third, and sometimes many more. In doing so, we weigh the individual opinions, and combine them through some thought process to reach a final decision that is presumably the most informed one. The process of consulting "several experts" before making a final decision is perhaps second nature to us; yet, the extensive benefits of such a process in automated decision making applications have only recently been discovered by computational intelligence community. Also known under various other names, such as multiple classifier systems, committee of classifiers, or mixture of experts, ensemble based systems have shown to produce favorable results compared to those of single-expert systems for a broad range of applications and under a variety of scenarios. Design, implementation and application of such systems are the main topics of this article. Specifically, this paper reviews conditions under which ensemble based systems may be more beneficial than their single classifier counterparts, algorithms for generating individual components of the ensemble systems, and various procedures through which the individual classifiers can be combined. We discuss popular ensemble based algorithms, such as bagging, boosting, {AdaBoost}, stacked generalization, and hierarchical mixture of experts; as well as commonly used combination rules, including algebraic combination of outputs, voting based techniques, behavior knowledge space, and decision templates. Finally, we look at current and future research directions for novel applications of ensemble systems. Such applications include incremental learning, data fusion, feature selection, learning with missing features, confidence estimation, and error correcting output codes; all areas in which ensemble systems have shown great promise},
+	pages = {21--45},
+	journaltitle = {Circuits and Systems Magazine, {IEEE}},
+	shortjournal = {Circuits and Systems Magazine, {IEEE}},
+	author = {Polikar, Robi},
+	date = {2006-10-06}
 }
