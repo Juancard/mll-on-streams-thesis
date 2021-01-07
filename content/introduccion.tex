@@ -94,25 +94,27 @@ de una colección multietiquetada (densidad, cardinalidad,etc).}
 \section{Motivación} 
 
 Ante la necesidad de hacer frente a un contexto global de generación masiva de
-datos y a un ritmo cada vez mayor, se hace preciso fortalecer las técnicas de
+datos y a ritmo acelerado, se hace preciso fortalecer las técnicas de
 aprendizaje automático actualmente presentes en el campo. En este escenario ya
-no es posible contar con todos los datos almacenados y la idea de generar un
-modelo completo para luego evaluarlo en una fase posterior debe ser reemplazada
-por una en donde el modelo esté siempre listo para realizar predicciones y al
-mismo tiempo ser capaz de re-entrenarse y recalcular las métricas de evaluación
-ante cada nueva instancia abordada. Todo esto en un contexto cambiante, de alta
-disponibilidad y limitación en el espacio de almacenamiento. Si bien existen
-métodos de clasificación para flujos continuos que han dado resultados
-satisfactorios, aún es un campo poco abordado y se hace necesario reproducir los
-experimentos realizados y fortalecer las técnicas y herramientas actuales para
-llevar adelante estudios precisos y pormenorizados.
+no es posible contar con todos los datos almacenados físicamente y la idea de
+generar un modelo completo para luego evaluarlo en una fase posterior debe ser
+reemplazada por una en donde el modelo esté siempre listo para realizar
+predicciones y al mismo tiempo ser capaz de re-entrenarse y recalcular las
+métricas de evaluación ante cada nueva instancia abordada. Todo esto en un
+contexto cambiante, de alta disponibilidad y limitación en el espacio de
+almacenamiento. Si bien existen métodos de clasificación para flujos continuos
+que han dado resultados satisfactorios, aún es un campo conveniente de ser
+abordado. Asímismo, reproducir los experimentos realizados y fortalecer las
+técnicas y herramientas actuales puede ser beneficioso para lograr estudios
+precisos y pormenorizados que sean valiosos tanto para la comunidad científica
+en sí misma, como también para la sociedad en general.
 
 Por otro lado, si bien existen en el mundo real infinidad de datos multi
 etiquetados aún no es posible hallar colecciones disponibles al público que
 cuenten con todas las características de un flujo continuo de datos. Uno de los
-enfoques abordados es convertir las colecciones existentes en flujos que arriban
-a lo largo del tiempo y en cantidades predefinidas. De esta manera los
-algoritmos pueden realizar clasificaciones en un ambiente similar al de un
+enfoques abordados es convertir las colecciones existentes en flujos tales que
+arriben en conjuntos predefinidos y a lo largo del tiempo. De esta manera los
+algoritmos pueden ser utilizados para realizar clasificaciones en un ambiente similar al de un
 escenario de \textit{streaming}. Sin embargo, estas colecciones tienen un número
 limitado de instancias y por lo tanto no cumplen con la condición de ser
 teóricamente infinitos. Es entonces aquí donde surgen las técnicas de generación
@@ -121,10 +123,11 @@ datos para simular colecciones de datos del mundo real. La contracara de este
 enfoque es que, si bien existen técnicas y herramientas para generar datos
 etiquetados, buena parte de ellos son solo aplicables para instancias de una
 única etiqueta y los que logran generar datos multi etiquetados no han sido lo
-suficientemente explorados en el área. Estos son capaces de generar datos
+suficientemente explorados en el área. Hasta el momento, los generadores de
+instancias multi etiquetadas son capaces de generar datos
 cercanos a los de colecciones del mundo real \cite{read_generating_nodate} y
 brindan la posibilidad de realizar estudios certeros de algoritmos de
-clasificación \cite{read_scalable_2012}. Pero debe notarse también que si bien
+clasificación \cite{read_scalable_2012}. No obstante, debe notarse también que si bien
 se han obtenido colecciones sintéticas en sí mismas aún no han logrado generar
 instancias para una colección en concreto, respetando sus cualidades
 particulares y que las distinguen de otras, tales como la co-ocurrencia de
@@ -135,15 +138,77 @@ flujos de datos de naturaleza distintiva, o en otras palabras, entender en qué
 medida un algoritmo es más apropiado que otro para un conjunto de datos en un
 determinado contexto. 
 
-\todo[inline]{explicar enfoque de clasificación por ensambles.}
+Esta última idea mencionada, es decir, el ser capaz de hallar las fortalezas y
+debilidades de un algoritmo de \acrshort{mll} en un contexto determinado es
+clave para evaluar la clasificación y entender los resultados obtenidos.
+Estudios como el de \citeauthor{sousa_multi-label_2018}
+\cite{sousa_multi-label_2018} o el de \citeauthor{read_scalable_2012}
+\cite{read_scalable_2012} se han topado con que algoritmos de menor complejidad
+pueden ser competitivos o incluso superar las métricas de otros algoritmos más
+complejos. Esta variabilidad en los resultados no solo contrae la necesidad
+antes mencionada de realizar más estudios al respecto, sino que también abre las
+puertas a incursionar en soluciones de ensambles de algoritmos. Estos ensambles
+han dado probada muestra de potenciarce ante la diversidad de resultados
+obtenidos por sus estimadores base \cite{polikar_polikar_2006}, ya que son
+capaces de disminuir el error total mediante estrategias combinativas. De
+cualquier manera, las estrategias de ensamble existentes para flujos continuos
+no han recibido la misma atención que aquellas aplicadas sobre ambientes de
+\textit{batch} y queda mucho camino por recorrer.
 
 
 
+\section{Objetivos}
+
+objetivos son: 
+- Generar 
+
+\section{Aportes}
+
+El presente  trabajo de investigación aborda el campo de aprendizaje por
+multi-etiquetas a partir de la experimentación y evaluación de técnicas y
+algoritmos de la literatura sobre colecciones de naturaleza cambiante.
+\acrshort{mll} es un paradigma emergente de aprendizaje supervisado cuyas
+características implícitas abren paso a nuevos desafíos que derivan del
+crecimiento exponencial de etiquetas y sus combinaciones, y del costo
+computacional de entrenar y consultar el modelo. También suelen presentarse
+otras propiedades como la alta dimensionalidad, data evolutiva y desbalanceada o
+dependencia entre etiquetas, las cuales implican una re-significación de las
+técnicas y métodos tradicionales del área de minería de datos.
+
+El paradigma de \acrshort{mll} ha dado muestras de su eficiencia en términos de
+tiempos de configuración y ejecución de las tareas, bajo diversos campos de
+aplicación tales como los de categorización de texto, diagnósticos médicos,
+minería de redes sociales o análisis de datos químicos, y se mantiene en
+constante expansión hacia nuevos dominios de aplicación. Asimismo, su continua
+integración a problemas de diversa naturaleza ha contribuido a alimentar esta
+tendencia.
+
+La tarea de clasificación de \textit{streaming} de datos se enfoca en problemas
+donde objetos del mundo real son generados y procesados en tiempo real. Datos de
+este tipo, y que además poseen múltiples etiquetas, son frecuentes en escenarios
+del mundo real tal como sitios de publicación de imágenes, correos electrónicos
+o portales de noticias. Abordar este tipo de problemas implica que los
+algoritmos sean capaces de identificar cambios de concepto en los datos y
+adaptarse al nuevo contexto. De lograr esto, se podrá generar modelos más
+sólidos, ya que se cuenta con un mayor número de objetos, y que se encontrarán
+aptos para predecir en cualquier momento. Surge entonces el reto de crear
+clasificadores que actúen en ambientes de altas restricciones computacionales y
+sean capaces de manejar un inmenso número de instancias, lidiar con evoluciones
+en los datos y estar listos para resolver tareas de predicción en tiempo real.
+
+A diferencia de otros trabajos de investigación recientes, este proyecto lleva a
+cabo estudios experimentales sobre el tema de clasificaciones multi-etiquetas,
+para hallar las fortalezas y debilidades de distintos algoritmos de aprendizaje
+sobre distintos tipos de colecciones, con miras a aportar de un mayor
+conocimiento empírico sobre el tema a la comunidad científica especializada en
+tareas de clasificación de flujos de datos multi-etiquetados. El presente
+trabajo espera contribuir al estudio de métodos y técnicas asentadas del campo,
+pero también examinar algoritmos exitosos del campo de aprendizaje por
+\textit{batch}, particularmente los de ensambles de estimadores, a fin de
+extender su funcionalidad a ambientes de flujos continuos, analizar su desempeño
+y determinar en qué medida son aptos o no para este tipo de ambientes.
 
 
-\section{Objetivos} Acá van los objetivos.
+\section{Organización del Trabajo} 
 
-\section{Aportes} Acá van los aportes.
-
-\section{Organización del Trabajo} Acá va la descripción de las distintas
-secciones del trabajo.
+\todo[inline]{Describir las distintas secciones del trabajo}
