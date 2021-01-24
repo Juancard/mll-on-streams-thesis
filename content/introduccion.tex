@@ -7,7 +7,7 @@ y generados por fuentes heterogéneas. Según los autores
 \citeauthor{gantz_extracting_2011}, el volumen total de datos creados y
 replicados en el mundo durante el año 2011 supera los 1.8 ZB (zettabytes) y se
 ha estimado que duplica cada dos años \cite{gantz_extracting_2011}. Los avances
-en el área de tecnología de la información (IT) han contribuido a una continua
+en el área de \acrfull{ti} han contribuido a una continua
 producción de datos y expansión del campo digital, tal es el caso para la red
 social \textit{Facebook}, la cual recibe cada hora un flujo de 10 millones de
 fotos que publican sus usuarios \cite{mayer-schonberger_big_2013}. A estas
@@ -76,7 +76,7 @@ la predicción.
 El campo de \acrshort{mll} se ha desarrollado considerablemente en los últimos
 años pero hasta el momento muchos de estos trabajos se han llevado a cabo en
 ambientes estáticos de aprendizaje por \textit{batch}
-\cite{read_classifier_2011}. Por lo que se hace necesario encarar nuevos
+\cite{read_classifier_2011}, en consecuencia, se hace necesario encarar nuevos
 proyectos que aborden clasificaciones \acrshort{mll} en contextos de
 \textit{streaming} de datos. El desafío entonces consiste en crear
 clasificadores que sean capaces de manejar un inmenso número de instancias y
@@ -146,7 +146,7 @@ de salida y, en consecuencia, costos computacionales altos. En ese sentido, se
 ha buscado desarrollar algoritmos que aprovechan las correlaciones o
 dependencias entre etiquetas. Por ejemplo, la probabilidad de que una noticia
 que contiene los términos ‘pelota’ y ‘gol’ sea anotada con la etiqueta ‘fútbol’
-sería mayor que si se etiquetara con la etiqueta ‘música’.
+sería mayor que si se etiquetara con la etiqueta ‘tenis’.
 \citeauthor{zhang_multi-label_2010} clasifican estos algoritmos en tres grupos
 según la estrategia de correlación aplicada \cite{zhang_multi-label_2010}:
 
@@ -335,7 +335,7 @@ que poseen características distintivas entre sí, tales como el número de
 etiquetas, el número de \textit{features}, o la cantidad de instancias. A su
 vez, es necesario convertir estos datos a flujos continuos y a este fin se
 generan instancias sintéticas que sean fieles a estas características
-mencionadas, aplicando técnicas existentes pero también extendiendolas para
+mencionadas, aplicando técnicas existentes pero también extendiéndolas para
 detectar co-ocurrencias entre etiquetas. De esta manera, se buscan obtener
 representaciones óptimas de las colecciones. Finalmente, se llevarán a cabo
 clasificaciones con algoritmos clásicos y con soluciones de ensambles, en
@@ -353,13 +353,13 @@ trabajo:
 \begin{itemize}
 
    \item Obtener colecciones de datos que cumplan con las propiedades requeridas
-      para considerarse un flujo continuo. Las caracteristicas deben variar
+      para considerarse un flujo continuo. Las características deben variar
       entre colecciones. Cada colección debe tener las instancias propias del
       juego de datos e instancias sintéticas potencialmente ilimitadas.
 
 
    \item Generar flujos continuos de datos a partir de la colección
-      proporcionada replicando su número de etiquetas, features e instancias, su
+      proporcionada replicando su número de etiquetas, atributos e instancias, su
       cardinalidad y densidad de etiquetas y la co-ocurrencia entre dos
       etiquetas.
 
