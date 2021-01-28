@@ -1,6 +1,8 @@
 %\documentclass[11pt,a4paper,twoside]{tesis}
 % SI NO PENSAS IMPRIMIRLO EN FORMATO LIBRO PODES USAR
 \documentclass[11pt,a4paper]{tesis}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
 
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
@@ -8,6 +10,8 @@
 \usepackage{biblatex}
 \usepackage{csquotes}
 \usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \setlength{\marginparwidth}{2cm}
 \setlength{\headheight}{15pt}
@@ -16,13 +20,14 @@
 
 \usepackage[left=3cm,right=3cm,bottom=3cm,top=3cm]{geometry}
 
+
 % Bibliography
 \addbibresource{tesis.bib}
 
 % Glossary
 \usepackage[acronym]{glossaries}
-\input{glossary}
 \makeglossaries
+\input{glossary}
 
 
 \begin{document}
