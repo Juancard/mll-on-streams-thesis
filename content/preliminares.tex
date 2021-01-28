@@ -59,6 +59,9 @@ de clasificación, el cual será descrito a continuación.
 
 \section{Clasificación}
 
+\subsection{Definición}
+\label{clasificacion}
+
 La clasificación es una tarea de minería de datos muy popular que consiste en
 hallar modelos que describen la o las clases intrínsecas de los datos. La clase
 corresponde a un concepto que representa al dato y es una etiqueta categórica,
@@ -87,7 +90,7 @@ consta de instancias o tuplas seleccionadas aleatoriamente y con una o más
 etiquetas asociadas. Formalmente, el problema de clasificación puede ser
 formulado de la siguiente manera. Se recibe un conjunto etiquetado de
 instancias, tupas o ejemplos de la forma $( X, y )$ donde cada tupla es un
-vector $X=(x_{1},x_{2},...,x_{n})$, siendo cada valor una característica
+vector $X=(x_{1},x_{2},\dots,x_{n})$, siendo cada valor una característica
 distintiva, atributo o feature de la instancia. El vector $y$ por su parte toma
 un valor de entre $n$ clases diferentes.
 
@@ -127,11 +130,17 @@ En definitiva, ambos pasos se aplican consecutivamente con el objetivo de lograr
 hallar un modelo capaz de predecir etiquetas en instancias nuevas y
 desconocidas.
 
-Retomando la primera etapa de la clasificación, se describen a continuación
-algunos algoritmos para generar modelos y que son particularmente relevantes
-para este trabajo de investigación.
+\subsection{Algoritmos}
+\label{clasificacion_algoritmos}
 
-\subsection{\textit{Naive} Bayes}
+Como se mencionó en la sección anterior, una de las etapas de clasificación
+consiste en generar un modelo capaz de clasificar instancias desconocidas. En
+esta etapa se pueden aplicar diversos tipos de algoritmos de acuerdo a la
+naturaleza de la tarea en particular que se desea abordar. A continuación se
+describen algunos algoritmos para generar modelos y que son particularmente
+relevantes para este trabajo de investigación.
+
+\subsubsection{\textit{Naive} Bayes}
 
 \textit{Naive} Bayes es un modelo de clasificación computacionalmente simple
 pero cuyo rendimiento es competitivo contra otros modelos más complejos. Se dice
@@ -169,14 +178,14 @@ Por su parte, la fórmula de \textit{Naive} Bayes es similar:
 
 Aquí el término $P(X)$ es descartado ya que se asume constante para todas las
 clases. La hipótesis $H$ es representada como $C_{i}$ que es un valor de la
-tupla $C=(C_{1},C_{2},...,C_{m})$, donde $m$ es el número de clases. La
+tupla $C=(C_{1},C_{2},\dots,C_{m})$, donde $m$ es el número de clases. La
 presunción “ingenua” es aplicada para el cálculo del término $P(X \mid C_{i})$
 gracias a lo cual se puede definir de la siguiente manera:
 
 \begin{equation} 
    P(X \mid C_{i}) = \prod\limits_{k=1}^n{P(x_{k} \mid C_{i})} =
    P(x_{1} \mid C_{i}) \times 
-   P(x_{2} \mid C_{i}) \times ... \times 
+   P(x_{2} \mid C_{i}) \times \dots, \times 
    P(x_{n} \mid C_{i})   
 \end{equation}
 
@@ -193,7 +202,7 @@ tales como el de hallar errores en programas de computación
 \cite{kalutarage_detecting_2015}.
 
 
-\subsection{Árboles de Decisión}
+\subsubsection{Árboles de Decisión}
 
 Los árboles de decisión son un modelo de clasificación que se destaca por ser de
 fácil interpretación e intuitivo para el ser humano. De hecho, se puede generar
@@ -292,7 +301,7 @@ reemplaza la fórmula $Entropia(D)$ por la siguiente:
 
 A su vez, el nuevo cálculo de la ganancia se formula así:
 
-\begin{equation}
+\begin{equation} \label{eq:gan_c45}
    RazonGanancia(A) = \frac{Ganancia(A)}{EntropiaRG_{A}(D)} 
 \end{equation}
 
@@ -304,7 +313,7 @@ Finalmente, el atributo de mayor razón de ganancia es seleccionado.
 
 \todo[inline]{Subsección para sgd?, svm?, perceptrones?}
 
-\subsection{Ensambles}
+\subsubsection{Ensambles}
 
 Los ensambles son un conjunto de clasificadores que, al ser combinados, pueden
 realizar mejores predicciones que cualquiera de ellos individualmente. En pocas
@@ -403,5 +412,223 @@ ponderada” y pueden llevar a un rendimiento superior.
 
 \section{Clasificación Multi-etiquetas}
 
+A diferencia del aprendizaje automático tradicional, que usa datos de etiqueta
+única para representar objetos del mundo real, cada instancia en el aprendizaje
+multi-etiquetas representa un único objeto pero puede contener más de una
+etiqueta. Por consiguiente, la tarea de clasificación consiste hallar una
+función que logre asignar a cada objeto, nuevo y desconocido, el conjunto de
+etiquetas que lo caracteriza.
+
+En este apartado se da una definición formal, se detallan las características de
+un conjunto de datos multi-etiquetados y se  describen algunos métodos
+tradicionales de clasificación multi-etiquetas junto con sus ventajas,
+desventajas, aplicaciones y motivaciones.
+
+\subsection{Definición Formal y Métricas}
+
+Asumiendo que $X=\mathbb{R}^{d}$ denota el espacio de instancias $d$
+dimensional, y que $Y = \{y_{1}, y_{2}, \dots, y_{q}\}$ denota el espacio de
+etiquetas con $q$ etiquetas posibles, la tarea de clasificación multi-etiquetas
+consiste en entrenar un conjunto $D = \{(x_{i}, Y_{i}) \mid 1 \leq i \leq m\}$
+para hallar una función $h$ tal que $h: X \rightarrow 2^y$. A su vez, $X_{i}$ es
+un vector de atributos $d$ dimensional definido como $(x_{i1}, x_{i2}, \dots,
+x_{id})$. $Y_{i}$, por su parte, es el conjunto de etiquetas sociadas a la
+instancia $X_{i}$. Luego, para cada instancia desconocida $X \rightarrow X$ el
+clasificador $h$ predice $h(x) \subseteq Y$ que representa el conjunto de
+etiquetas hallado para $x$.
+
+A su vez, se definen un conjunto de métricas que describen el grado de
+multi-etiquetado que tiene un conjunto de datos dado, o en otras palabras, hasta
+qué punto cada ejemplo posee más de una etiqueta. Algunas de ellas son: 
+
+\begin{description}
+   \item{Cardinalidad de etiquetas}: Es el promedio de etiquetas por instancia
+      del conjunto de datos. Se define como: 
+      \begin{equation}
+         CardE(D) = \frac{1}{m} \sum_{i=1}^{m} \left\|Y_{i}\right\|
+      \end{equation}
+      Por lo tanto, a mayor el valor de cardinalidad, mayor es el número de
+      etiquetas de una instancia. Por ejemplo, si $CardE = 1$, entonces la
+      mayoría de ejemplos tiene una única etiqueta y, por consiguiente, se puede
+      decir que la colección tiene un grado bajo de multi-etiquetado.  
+   \item{Densidad de etiquetas}: Es la cardinalidad de etiquetas normalizada al
+      número total de etiquetas de $D$ y se define como:
+      \begin{equation}
+         DenE(D) = \frac{CardE(D)}{\left\|Y\right\|}
+      \end{equation}
+      Así pues, un valor alto de densidad significaría que cada instancia puede
+      ser una buena representación de las etiquetas del conjunto. De la misma
+      manera, un valor bajo suele implicar dispersión, esto es, que la mayoría
+      de las instancias tienen un subconjunto acotado de las etiquetas. 
+   \item{Diversidad de etiquetas}: Es el número de conjuntos de etiquetas
+      unívocos que aparecen en instancias de $D$. Se define como:
+      \begin{equation}
+         DivE(D) = \left\|\{Y \mid \exists x: (x, Y) \in D\}\right\|
+      \end{equation}
+      Aquí la interpretación es que, a mayor el valor de diversidad, menor es la
+      constancia con la que las etiquetas aparecen en las instancias. De manera
+      similar a la cardinalidad, el valor de diversidad también puede
+      normalizarse por el número de instancias del conjunto de datos: 
+      \begin{equation}
+         DivEProm(D) = \frac{DivE(D)}{\left\|D\right\|}
+      \end{equation}
+\end{description}
+
+\subsection{Algoritmos}
+
+Como se había anticipado en la sección \ref{intro_mll}, la tarea de aprendizaje
+sobre datos multi-etiquetados puede ser encarada siguiendo dos grandes enfoques,
+llamados “Transformación del Problema” y “Adaptación del Algoritmo”. A
+continuación se describen ambos enfoques y algunos de sus algoritmos más
+representativos.
+
+\subsubsection{Transformación del Problema} 
+
+Esta categoría engloba al conjunto de algoritmos que abordan el problema de
+clasificación multi-etiquetas transformándolo en múltiples problemas de
+clasificación de única etiqueta, lo cual permite aplicar algoritmos de
+clasificación convencionales. Tres de estos métodos son particularmente
+relevantes para este trabajo: “\acrfull{br}”, “\acrfull{cc}” y “\acrfull{lp}”.
+
+\paragraph{\acrfull{br}}
+
+El algoritmo de Relevancia Binaria, conocido como \textit{\acrlong{br}} en la
+literatura, es un enfoque que consiste en descomponer la tarea de clasificación
+\acrshort{mll} en $\left\|q\right\|$ clasificadores binarios, independientes y
+de etiqueta única.  A partir de esta transformación se puede seleccionar
+cualquier algoritmo de clasificación como clasificador base del problema (ver
+los algoritmos presentados en la sección \ref{clasificacion_algoritmos}).  Cada
+clasificador binario $g_{j}$ es entrenado con todas las instancias de la
+colección pero incluyendo solo la etiqueta $j$, la cual se activa o desactiva de
+acuerdo a si es relevante a la instancia. Luego la predicción de una instancia
+desconocida se realiza combinando las salidas de cada clasificador individual,
+esto es: 
+
+\begin{equation}
+   Y = {y_{j} \mid g_{j}(x) > 0, 1 \leq j \leq q}
+\end{equation}
+ 
+Llegado el caso en que ninguno de los clasificadores retornen etiquetas activas,
+el conjunto $Y$ será vacío.
+
+Este enfoque se dice que es de primer orden (ver sección \ref{estrategias_mll})
+y no tiene en cuenta la correlación o interdependencias entre etiquetas. Este es
+uno de los principales inconvenientes de este algoritmo ya que, en este tipo de
+problemas de \acrshort{mll}, es usual hallar que determinadas etiquetas se
+activan en conjunto con mayor probabilidad. Pese a ello, \acrshort{br} es un
+enfoque muy utilizado \cite{zhang_review_2014} ya que es simple de implementar,
+intuitivo y computacionalmente poco costoso en comparación con algoritmos que sí
+tienen en cuenta la relación entre etiquetas.  
+
+\paragraph{\acrfull{cc}}
+
+Las cadenas de clasificadores o \textit{\acrlong{cc}}
+\cite{read_classifier_2011} es una técnica que convierte el problema de
+\acrshort{mll} en una ”cadena” de problemas de clasificación binaria, tal que el
+siguiente clasificador de la cadena posee las predicciones de los anteriores. En
+principio, la división del conjunto de datos es similar a la que se hace en el
+enfoque anterior, designando un clasificador por cada etiqueta. Durante el
+entrenamiento el clasificador inicial, seleccionado aleatoriamente, usa de
+entrada los atributos originales, tal como el clasificador \acrshort{br}. Luego
+la salida de este clasificador es añadida al espacio de atributos como un
+atributo más de cada instancia, para que posteriormente, estos atributos sean la
+entrada del siguiente clasificador, el cual también es seleccionado al azar.
+proceso es repetido hasta completar todos los clasificadores.  Como se ve se
+produce un ”encadenamiento” de clasificadores que no es accidental y tiene como
+fin conservar la dependencia entre etiquetas, ya que cada clasificador logra
+capturar la correlación entre las etiquetas de los anteriores clasificadores. 
+
+Cabe notar que en esta técnica cobra especial importancia el ordenamiento de los
+clasificadores ya que este orden tiene un impacto directo sobre el resultado de
+la predicción. En otras palabras, si el ordenamiento de clasificadores se
+modifica, el modelo final otorgará resultados diferentes. Para salvar esta
+dificultad se han propuesto modelos como el de \acrfull{ecc}. El mismo genera un
+conjunto de modelos de \acrshort{cc} con distintos ordenamientos y entrenados
+con diversos subconjuntos de datos, generados con reemplazo o no. Durante la
+predicción, cada cadena produce un conjunto de etiquetas, que son los votos, y
+la salida final será computada por un algoritmo que combine cada salida
+individual.
+ 
+\paragraph{\acrfull{lp}}
+
+El conjunto de potencias de etiquetas o \textit{\acrlong{lp}}
+\cite{tsoumakas_random_2011} es una técnica que se encarga de transformar el
+problema de \acrshort{mll} en uno de clasificación multi-clase, de tal manera de
+poder abordarlo con algoritmos de este tipo. La clasificación multi-clase es un
+enfoque usado para tratar con ejemplos en donde la etiqueta es única pero cuenta
+con más de dos clases. Un ejemplo de este tipo de problemas es el de análisis de
+sentimiento de texto, en donde las clases pueden ser “positivo”, “negativo” y
+“neutral”. 
+
+En \acrshort{lp} cada etiqueta indica el subconjunto de etiquetas de
+la instancia. Esto es beneficioso en cuanto a que se logra preservar la
+dependencia entre etiquetas. Sin embargo, el modelo tiene algunas dificultades.
+En primer lugar, el espacio de clases posibles es exponencial y su cantidad de
+clases puede llegar a ser de $2^{\left\|L\right\|}$ como máximo. A su vez, pueden
+llegar a arribar ejemplos con una combinación de etiquetas que el modelo no
+recibió durante el entrenamiento, por lo cual no logra generalizar lo suficiente
+y se lo considera un modelo incompleto. A fin de sobrepasar estas complicaciones
+se desarrolló la técnica de Conjuntos Podados o \acrfull{ps}. La misma consiste
+en preservar para la clasificación aquellos subconjuntos de etiquetas que son
+más frecuentes en la colección, y eliminar los demás. Con esto se logra
+disminuir considerablemente el espacio de clases y disminuye la complejidad
+computacional, tanto durante el entrenamiento como durante la predicción.
+
+\subsubsection{Adaptación del Algoritmo}
+
+Además del enfoque de transformación del problema, otros autores abordan la
+clasificación multi-etiquetas a partir de la adaptación de algoritmos clásicos y
+bien conocidos. Esta categoría engloba al conjunto de algoritmos que abordan el
+problema de \acrshort{mll} mediante la modificación de algoritmos de etiqueta
+única para que sean capaces de manejar la nueva naturaleza de los datos en estas
+tareas. Las modificaciones que se introducen pueden variar en complejidad según
+el algoritmo tratado y las características de la colección.  Se han adaptado una
+diversa cantidad de algoritmos incluyendo aquellos basados en redes neuronales,
+árboles, métodos probabilísticos, entre otros \cite{herrera_multilabel_2016}.
+Por mencionar algunos ejemplos, \citeauthor{gargiulo_deep_2018} usan redes
+neuronales profundas para clasificar documentos de texto libre y comparan su
+funcionamiento variando el número de etiquetas y aprovechando su estructura
+jerárquica \cite{gargiulo_deep_2018}. Asimismo,
+\citeauthor{tanaka_multi-label_2015} agregan al algoritmo de \acrshort{br} la
+capacidad de capturar relaciones entre etiquetas a través del uso de árboles de
+decisión y lo aplican en el área de la genómica \cite{tanaka_multi-label_2015}.
+
+En lo que confiere a ambientes de flujos continuos de datos una de las técnicas
+más populares en la literatura es la de Árbol de Hoeffding o
+\textit{\acrfull{ht}} \cite{domingos_mining_2002}. A diferencia de los
+algoritmos convencionales de árboles de decisión, \acrlong{ht} aborda los datos
+de manera incremental. Así pues, en lugar de realizar decisiones de corte de
+acuerdo a los datos previamente almacenados, \acrshort{ht} espera a tener una
+cantidad suficiente de instancias para realizar el corte, con un cierto grado de
+confianza. Esto significa que ya no es necesario guardar todos los datos de la
+colección y que mantener una serie de estadísticas es suficiente para realizar
+la clasificación. Otra de las propiedades a destacar de este método es que en
+teoría se puede entrenar un árbol cuyo rendimiento se aproxime al generado en un
+ambiente de \textit{batch}, con la suficiente cantidad de datos
+\cite{bifet_machine_2018}. 
+
+A partir de esto, y buscando sacar provecho de las ventajas mencionadas,
+\citeauthor{read_scalable_2012} decidieron adaptar este algoritmo a problemas de
+multi-etiquetas y desarrollaron el algoritmo llamado Árbol de Hoeffding
+Multi-etiquetado o \textit{\acrfull{mlht}} \cite{read_scalable_2012}. Esto lo
+consiguen a partir de rediseñar la fórmula de ganancia de información (ver
+fórmula \ref{eq:gan_c45}) de tal manera de reflejar el impacto de todas las
+clases a las cuales el ejemplo no pertenece. Desde que fue introducido en el año
+\citeyear{read_scalable_2012}, \acrshort{mlht} ha sido usado como modelo de
+comparación en reiteradas oportunidades \cite{sousa_multi-label_2018} y es uno
+de los métodos más populares para atacar problemas de \acrshort{mll} en
+ambientes de flujo continuo de datos.
+
+Otro algoritmo muy popular para abordar este tipo de problemas y basado en
+árboles de decisión incrementales es el llamado \acrshort{isoup} (siglas del
+inglés \textit{\acrlong{isoup}}) \cite{osojnik_multi-label_2017}. El mismo fue
+desarrollado inicialmente para hacer regresión de múltiples objetivos y luego
+fue adaptado a tareas de \acrshort{mll}. Una de las novedades que introduce es
+el uso de un perceptrón adaptativo en las hojas del árbol, lo cual le da la
+versatilidad de poder trabajar tanto con problemas de clasificación como de
+regresión.
+
 \section{Clasificación de Flujos Continuos de Datos}
+
+\section{Evaluación y Métricas}
 
