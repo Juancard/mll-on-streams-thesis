@@ -16,14 +16,6 @@
 	keywords = {Multi-label learning, Classification, Data streams, Media monitoring}
 }
 
-@article{read_generating_nodate,
-	title = {Generating Synthetic Multi-label Data Streams},
-	abstract = {There are many available methods for generating synthetic data streams. Such methods have been justiﬁed by the need to study the eﬃcacy of algorithms on a theoretically inﬁnite stream, and also a lack of real-world data of suﬃcient size. Although multi-label classiﬁcation has attracted considerable interest in recent years, most of this work has been carried out in the context of a batch learning environment rather than a data stream. This paper makes an in-depth analysis of multi-label data, and presents a general framework for generating synthetic multi-label data streams.},
-	pages = {16},
-	author = {Read, Jesse and Pfahringer, Bernhard and Holmes, Geoﬀ},
-	langid = {english}
-}
-
 @article{nguyen_multi-label_2019,
 	title = {Multi-label classification via label correlation and first order feature dependance in a data stream},
 	volume = {90},
@@ -93,11 +85,12 @@ https://moa.cms.waikato.ac.nz/book/},
 	date = {2018-03-02}
 }
 
-@article{lang_newsweeder_nodate,
+@article{lang_newsweeder_2008,
 	title = {{NewsWeeder}: Learning to Filter Netnews (To appear in {ML} 95)},
 	abstract = {A significant problem in many information filtering systems is the dependence on the user for the creation and maintenance of a user profile, which describes the user’s interests. {NewsWeeder} is a netnews-filtering system that addresses this problem by letting the user rate his or her interest level for each article being read (1-5), and then learning a user profile based on these ratings. This paper describes how {NewsWeeder} accomplishes this task, and examines the alternative learning methods used. The results show that a learning algorithm based on the Minimum Description Length ({MDL}) principle was able to raise the percentage of interesting articles to be shown to users from 14\% to 52\% on average. Further, this performance significantly outperformed (by 21\%) one of the most successful techniques in Information Retrieval ({IR}), termfrequency/inverse-document-frequency (tf-idf) weighting.},
 	pages = {9},
 	author = {Lang, Ken},
+	date = {2008},
 	langid = {english},
 	keywords = {20ng}
 }
@@ -647,4 +640,70 @@ This book is beneficial for professionals and researchers in a variety of fields
 	shortjournal = {Proceeding of the Sixth {ACM} {SIGKDD} International Conference on Knowledge Discovery and Data Mining},
 	author = {Domingos, Pedro and Hulten, Geoff},
 	date = {2002-11-08}
+}
+
+@online{kirkby_improving_2007,
+	title = {Improving Hoeffding Trees},
+	url = {/paper/Improving-Hoeffding-Trees-Kirkby/56283855992584581eb9c0eb4413b47be496b94e},
+	abstract = {Modern information technology allows information to be collected at a far greater rate than ever before. So fast, in fact, that the main problem is making sense of it all. Machine learning offers promise of a solution, but the field mainly focusses on achieving high accuracy when data supply is limited. While this has created sophisticated classification algorithms, many do not cope with increasing data set sizes. When the data set sizes get to a point where they could be considered to represent a continuous supply, or data stream, then incremental classification algorithms are required. In this setting, the effectiveness of an algorithm cannot simply be assessed by accuracy alone. Consideration needs to be given to the memory available to the algorithm and the speed at which data is processed in terms of both the time taken to predict the class of a new data sample and the time taken to include this sample in an incrementally updated classification model. The Hoeffding tree algorithm is a state-of-the-art method for inducing decision trees from data streams. The aim of this thesis is to improve this algorithm. To measure improvement, a comprehensive framework for evaluating the performance of data stream algorithms is developed. Within the framework memory size is fixed in order to simulate realistic application scenarios. In order to simulate continuous operation, classes of synthetic data are generated providing an evaluation on a large scale. Improvements to many aspects of the Hoeffding tree algorithm are demonstrated. First, a number of methods for handling continuous numeric features are compared. Second, tree prediction strategy is investigated to evaluate the utility of various methods. Finally, the possibility of improving accuracy using ensemble methods is explored. The experimental results provide meaningful comparisons of accuracy and processing speeds between different modifications of the Hoeffding tree algorithm under various memory limits. The study on numeric attributes demonstrates that sacrificing accuracy for space at the local level often results in improved global accuracy. The prediction strategy shown to perform best adaptively chooses between standard majority class and Naive Bayes prediction in the leaves. The ensemble method investigation shows that combining trees can be worthwhile, but only when sufficient memory is available, and improvement is less likely than in traditional machine learning. In particular, issues are encountered when applying the popular boosting method to streams.},
+	titleaddon = {undefined},
+	author = {Kirkby, Richard},
+	urldate = {2021-01-30},
+	date = {2007},
+	langid = {english}
+}
+
+@inproceedings{domingos_mining_2000,
+	location = {New York, {NY}, {USA}},
+	title = {Mining high-speed data streams},
+	isbn = {978-1-58113-233-5},
+	url = {https://doi.org/10.1145/347090.347107},
+	doi = {10.1145/347090.347107},
+	series = {{KDD} '00},
+	pages = {71--80},
+	booktitle = {Proceedings of the sixth {ACM} {SIGKDD} international conference on Knowledge discovery and data mining},
+	publisher = {Association for Computing Machinery},
+	author = {Domingos, Pedro and Hulten, Geoff},
+	urldate = {2021-01-30},
+	date = {2000-08-01},
+	keywords = {decision trees, disk-based algorithms, Hoeffding bounds, incremental learning, subsampling}
+}
+
+@article{boutell_learning_2004,
+	title = {Learning multi-label scene classification},
+	volume = {37},
+	doi = {10.1016/j.patcog.2004.03.009},
+	abstract = {In classic pattern recognition problems, classes are mutually exclusive by definition. Classification errors occur when the classes overlap in the feature space. We examine a different situation, occurring when the classes are, by definition, not mutually exclusive. Such problems arise in semantic scene and document classification and in medical diagnosis. We present a framework to handle such problems and apply it to the problem of semantic scene classification, where a natural scene may contain multiple objects such that the scene can be described by multiple class labels (e.g., a field scene with a mountain in the background). Such a problem poses challenges to the classic pattern recognition paradigm and demands a different treatment. We discuss approaches for training and testing in this scenario and introduce new metrics for evaluating individual examples, class recall and precision, and overall accuracy. Experiments show that our methods are suitable for scene classification; furthermore, our work appears to generalize to other classification problems of the same nature.},
+	pages = {1757--1771},
+	journaltitle = {Pattern Recognition},
+	shortjournal = {Pattern Recognition},
+	author = {Boutell, Matthew and Luo, Jiebo and Shen, Xipeng and Brown, Christopher},
+	date = {2004-09-01}
+}
+
+@inproceedings{diplaris_protein_2005,
+	location = {Berlin, Heidelberg},
+	title = {Protein Classification with Multiple Algorithms},
+	isbn = {978-3-540-32091-3},
+	doi = {10.1007/11573036_42},
+	series = {Lecture Notes in Computer Science},
+	abstract = {Nowadays, the number of protein sequences being stored in central protein databases from labs all over the world is constantly increasing. From these proteins only a fraction has been experimentally analyzed in order to detect their structure and hence their function in the corresponding organism. The reason is that experimental determination of structure is labor-intensive and quite time-consuming. Therefore there is the need for automated tools that can classify new proteins to structural families. This paper presents a comparative evaluation of several algorithms that learn such classification models from data concerning patterns of proteins with known structure. In addition, several approaches that combine multiple learning algorithms to increase the accuracy of predictions are evaluated. The results of the experiments provide insights that can help biologists and computer scientists design high-performance protein classification systems of high quality.},
+	pages = {448--456},
+	booktitle = {Advances in Informatics},
+	publisher = {Springer},
+	author = {Diplaris, Sotiris and Tsoumakas, Grigorios and Mitkas, Pericles A. and Vlahavas, Ioannis},
+	editor = {Bozanis, Panayiotis and Houstis, Elias N.},
+	date = {2005},
+	langid = {english},
+	keywords = {Classification Algorithm, Classifier Selection, Protein Classification, Sequential Minimal Optimization, Weight Vote}
+}
+
+@online{read_generating_2009,
+	title = {Generating Synthetic Multi-label Data Streams},
+	url = {/paper/Generating-Synthetic-Multi-label-Data-Streams-Read-Pfahringer/147e3bc5f3c03884a8ba6d5420dc100834424c5d},
+	abstract = {There are many available methods for generating synthetic data streams. Such methods have been justified by the need to study the efficacy of algorithms on a theoretically infinite stream, and also a lack of real-world data of sufficient size. Although multi-label classification has attracted considerable interest in recent years, most of this work has been carried out in the context of a batch learning environment rather than a data stream. This paper makes an in-depth analysis of multi-label data, and presents a general framework for generating synthetic multi-label data streams.},
+	author = {Read, J. and Pfahringer, B. and Holmes, G.},
+	urldate = {2021-01-31},
+	date = {2009},
+	langid = {english}
 }
