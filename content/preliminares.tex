@@ -29,19 +29,20 @@ involucradas.
 \section{Aprendizaje Automático}
 
 El aprendizaje automático, también conocido por su término en ingles
-“\textit{Machine Learning}”, se enmarca dentro del área de la \acrfull{ia} y
-estudia cómo las computadoras pueden “aprender” o mejorar su rendimiento
-meramente a partir de datos y sin la intervención de un ser humano.  La idea
-detrás de esta disciplina es lograr reconocer patrones subyacentes en los datos
-y tomar decisiones en base a estos. Por ejemplo, un problema de aprendizaje
-automático es el de reconocer dígitos escritos a mano a partir de un conjunto de
-ejemplos (ver figura \ref{fig:reconocimiento_digitos}).  Aquí se tienen un
-conjunto de imágenes, cada una representando un dígito del 0 al 9, y el objetivo
-es construir un modelo que sea capaz de detectar de qué dígito se trata. Otro
-ejemplo es el de hallar documentos de texto que son relevantes a una consulta
-del usuario. En este caso el modelo recibe un conjunto acotado de términos, los
-cuales describen una necesidad de información del usuario, y el modelo debe ser
-capaz de retornar los documentos que satisfacen la consulta.  
+\comillas{\textit{Machine Learning}}, se enmarca dentro del área de la
+\acrfull{ia} y estudia cómo las computadoras pueden \comillas{aprender} o
+mejorar su rendimiento meramente a partir de datos y sin la intervención de un
+ser humano.  La idea detrás de esta disciplina es lograr reconocer patrones
+subyacentes en los datos y tomar decisiones en base a estos. Por ejemplo, un
+problema de aprendizaje automático es el de reconocer dígitos escritos a mano a
+partir de un conjunto de ejemplos (ver figura \ref{fig:reconocimiento_digitos}).
+Aquí se tienen un conjunto de imágenes, cada una representando un dígito del 0
+al 9, y el objetivo es construir un modelo que sea capaz de detectar de qué
+dígito se trata. Otro ejemplo es el de hallar documentos de texto que son
+relevantes a una consulta del usuario. En este caso el modelo recibe un conjunto
+acotado de términos, los cuales describen una necesidad de información del
+usuario, y el modelo debe ser capaz de retornar los documentos que satisfacen la
+consulta.  
 
 Estos problemas se suelen categorizar en aprendizaje supervisado o no
 supervisado, de acuerdo a si se conoce o no de antemano el concepto o etiqueta
@@ -70,16 +71,17 @@ conocidos. Estos modelos, también llamados clasificadores, son capaces de
 predecir la clase a la que corresponden datos previamente desconocidos. Por
 ejemplo, se puede construir un modelo de clasificación para categorizar nuevos
 correos electrónicos  de acuerdo a si se trata de correo basura (también
-conocido como "\textit{spam}") o no. Dicho análisis puede ayudar a obtener un
-mayor entendimiento de los datos a alto nivel. Las tareas de clasificación han
-sido aplicadas en áreas tales como las de aprendizaje automático, reconocimiento
-de patrones o estadística. En un principio, buena parte de los algoritmos se
-ejecutaban en memoria, con la limitación de espacio de almacenamiento que eso
-conlleva. Investigaciones más recientes han desarrollado técnicas para escalar
-los algoritmos de tal manera que puedan manejar datos de mayor tamaño, alojados
-en memoria, en disco o procesados bajo demanda. Las aplicaciones para este tipo
-de tareas son numerosas y entre ellas se encuentran las de detectar fraudes o
-realizar diagnósticos médicos, entre otras.
+conocido como \comillas{\textit{spam}}) o no. Dicho análisis puede ayudar a
+obtener un mayor entendimiento de los datos a alto nivel. Las tareas de
+clasificación han sido aplicadas en áreas tales como las de aprendizaje
+automático, reconocimiento de patrones o estadística. En un principio, buena
+parte de los algoritmos se ejecutaban en memoria, con la limitación de espacio
+de almacenamiento que eso conlleva. Investigaciones más recientes han
+desarrollado técnicas para escalar los algoritmos de tal manera que puedan
+manejar datos de mayor tamaño, alojados en memoria, en disco o procesados bajo
+demanda. Las aplicaciones para este tipo de tareas son numerosas y entre ellas
+se encuentran las de detectar fraudes o realizar diagnósticos médicos, entre
+otras.
 
 La clasificación de datos consta de dos etapas, una de aprendizaje y otra de
 clasificación o predicción. Durante la tarea de aprendizaje se construye el
@@ -91,12 +93,12 @@ etiquetas asociadas. Formalmente, el problema de clasificación puede ser
 formulado de la siguiente manera. Se recibe un conjunto etiquetado de
 instancias, tupas o ejemplos de la forma $( X, y )$ donde cada tupla es un
 vector $X=(x_{1},x_{2},\dots,x_{n})$, siendo cada valor una característica
-distintiva, atributo o feature de la instancia. El vector $y$ por su parte toma
+distintiva, atributo o \textit{feature} de la instancia. El vector $y$ por su parte toma
 un valor de entre $n$ clases diferentes.
 
 Este tipo de tareas se engloban dentro del campo de aprendizaje supervisado ya
 que para cada instancia la etiqueta es conocida de antemano, y es aprovechada
-para guiar o, siguiendo la metáfora, “supervisar” el aprendizaje del
+para guiar o, siguiendo la metáfora, \comillas{supervisar} el aprendizaje del
 clasificador. Esta es la diferencia principal contra algoritmos de aprendizaje
 no supervisado, en los cuales la etiqueta no es conocida y se deben aplicar
 técnicas para salvar esta restricción.
@@ -114,17 +116,17 @@ decisión, \textit{naive} bayes, perceptrón, entre otros.
 En la segunda etapa el modelo es usado para clasificar. En primer lugar, se
 calcula una métrica de evaluación, tal como la exactitud o \textit{accuracy}.
 Durante la etapa de entrenamiento esta estimación puede ser imprecisa, tomando
-un valor que tiende a ser “optimista” o que da un valor de exactitud mayor al
-rendimiento real. Esto sucede porque el clasificador puede llegar a incorporar
-anomalías particulares en el conjunto de datos de entrenamiento. Este fenómeno
-es llamado sobreajuste u “\textit{overfit}” y una técnica para reducirlo es
-separar de entre los datos un subconjunto de prueba o de \textit{testing} que no
-se usa durante el entrenamiento y a partir del cual se realizan predicciones y
-se calculan las métricas de evaluación. En este contexto, la tarea de evaluación
-es fundamental ya que es la vía a partir de la cual se determina qué algoritmos
-o técnicas son más apropiados que otros para un problema en particular. Además
-provee la información necesaria para corregir o ajustar los parámetros de los
-algoritmos y así obtener modelos más robustos.
+un valor que tiende a ser \comillas{optimista} o que da un valor de exactitud
+mayor al rendimiento real. Esto sucede porque el clasificador puede llegar a
+incorporar anomalías particulares en el conjunto de datos de entrenamiento. Este
+fenómeno es llamado sobreajuste u \comillas{\textit{overfit}} y una técnica para
+reducirlo es separar de entre los datos un subconjunto de prueba o de
+\textit{testing} que no se usa durante el entrenamiento y a partir del cual se
+realizan predicciones y se calculan las métricas de evaluación. En este
+contexto, la tarea de evaluación es fundamental ya que es la vía a partir de la
+cual se determina qué algoritmos o técnicas son más apropiados que otros para un
+problema en particular. Además provee la información necesaria para corregir o
+ajustar los parámetros de los algoritmos y así obtener modelos más robustos.
 
 En definitiva, ambos pasos se aplican consecutivamente con el objetivo de lograr
 hallar un modelo capaz de predecir etiquetas en instancias nuevas y
@@ -147,11 +149,12 @@ pero cuyo rendimiento es competitivo contra otros modelos más complejos. Se dic
 que es un clasificador estadístico ya que se basa en el teorema de Bayes. La
 idea es computar una probabilidad para cada una de las clases, basada en los
 atributos de la instancia y seleccionar aquella de mayor probabilidad. El
-término “\textit{naive}” es el inglés para el término “\textit{ingenuo}” y nace
-de la presunción que hace el algoritmo de que los atributos son independientes
-entre sí, o condicionalmente independientes. Esta presunción raramente se cumple
-en los escenarios donde se aplica pero contribuye a su simplicidad computacional
-y a su velocidad durante el entrenamiento.
+término \comillas{\textit{naive}} es el inglés para el término
+\comillas{\textit{ingenuo}} y nace de la presunción que hace el algoritmo de que
+los atributos son independientes entre sí, o condicionalmente independientes.
+Esta presunción raramente se cumple en los escenarios donde se aplica pero
+contribuye a su simplicidad computacional y a su velocidad durante el
+entrenamiento.
 
 El teorema de Bayes se define formalmente de la siguiente manera:
 
@@ -160,15 +163,16 @@ El teorema de Bayes se define formalmente de la siguiente manera:
 \end{equation}
 
 En esta ecuación, el vector $X$ es una tupla definida tal como en la sección
-anterior y en términos bayesianos representa la “evidencia”. $P(X)$, por lo
-tanto, es la probabilidad de que la tupla contenga los atributos que posee. Por
-su parte, $H$ es la hipótesis de que la tupla pertenece a una determinada clase
-y $P(H)$ su probabilidad. Esta es conocida como probabilidad “a priori”. De la
-misma manera, $P(H|X)$ es la probabilidad de que la hipótesis $H$ sea cierta
-bajo la evidencia $X$. A esta se la llama probabilidad “a posteriori” con $H$
-condicionada por $X$ y es el valor que se quiere determinar en una tarea de
-clasificación.  Finalmente, $P(X|H)$ indica la probabilidad de que la tupla tenga
-unos atributos determinados dado que se satisface la hipótesis.
+anterior y en términos bayesianos representa la \comillas{evidencia}. $P(X)$,
+por lo tanto, es la probabilidad de que la tupla contenga los atributos que
+posee. Por su parte, $H$ es la hipótesis de que la tupla pertenece a una
+determinada clase y $P(H)$ su probabilidad. Esta es conocida como probabilidad
+\comillas{a priori}. De la misma manera, $P(H|X)$ es la probabilidad de que la
+hipótesis $H$ sea cierta bajo la evidencia $X$. A esta se la llama probabilidad
+\comillas{a posteriori} con $H$ condicionada por $X$ y es el valor que se quiere
+determinar en una tarea de clasificación.  Finalmente, $P(X|H)$ indica la
+probabilidad de que la tupla tenga unos atributos determinados dado que se
+satisface la hipótesis.
 
 Por su parte, la fórmula de \textit{Naive} Bayes es similar:
 
@@ -179,8 +183,8 @@ Por su parte, la fórmula de \textit{Naive} Bayes es similar:
 Aquí el término $P(X)$ es descartado ya que se asume constante para todas las
 clases. La hipótesis $H$ es representada como $C_{i}$ que es un valor de la
 tupla $C=(C_{1},C_{2},\dots,C_{m})$, donde $m$ es el número de clases. La
-presunción “ingenua” es aplicada para el cálculo del término $P(X \mid C_{i})$
-gracias a lo cual se puede definir de la siguiente manera:
+presunción \comillas{ingenua} es aplicada para el cálculo del término $P(X \mid
+C_{i})$ gracias a lo cual se puede definir de la siguiente manera:
 
 \begin{equation} 
    P(X \mid C_{i}) = \prod\limits_{k=1}^n{P(x_{k} \mid C_{i})} =
@@ -210,22 +214,22 @@ una representación gráfica del árbol generado para asistir a la comprensión 
 del modelo y de cómo se comporta durante una predicción. En cuanto a su
 estructura, un árbol de decisión contiene nodos, cada uno representando un
 atributo de la colección. Estos nodos se conectan con otros nodos a partir de
-enlaces o “ramas” que representan un valor o un rango de valores de ese
-atributo. Los nodos de menor jerarquía son llamados “hojas” y contienen la clase
-de la predicción, y el nodo de mayor jerarquía es llamado “raíz”. Al momento de
-predecir una instancia nueva, la clasificación se realiza de la siguiente
-manera:  se toma la instancia nueva, la cual no tiene una etiqueta asociada, y
-los valores de sus atributos son comparados contra los del árbol, luego se traza
-un camino desde el nodo raíz hasta la hoja que contiene una clase y dicha clase
-es la predicción resultante. 
+enlaces o \comillas{ramas} que representan un valor o un rango de valores de ese
+atributo. Los nodos de menor jerarquía son llamados \comillas{hojas} y contienen
+la clase de la predicción, y el nodo de mayor jerarquía es llamado
+\comillas{raíz}. Al momento de predecir una instancia nueva, la clasificación se
+realiza de la siguiente manera:  se toma la instancia nueva, la cual no tiene
+una etiqueta asociada, y los valores de sus atributos son comparados contra los
+del árbol, luego se traza un camino desde el nodo raíz hasta la hoja que
+contiene una clase y dicha clase es la predicción resultante. 
 
 Los árboles de decisión se generan a partir de un algoritmo de inducción.
 Existen varios de estos algoritmos pero todos son variantes que han sido
 diseñadas bajo un misma principio: construir  el árbol de una manera
-“voraz”\footnote{Se le llama voraz o \textit{greedy} a un algoritmo que busca
-   hallar la opción óptima en cada paso y, de esta manera, alcanzar la solución
-   general óptima para resolver un problema.  Esto lo diferencia de algoritmos
-   como los de \textit{backtracking}, los cuales exploran distintas
+\comillas{voraz} \footnote{Se le llama voraz o \textit{greedy} a un algoritmo
+   que busca hallar la opción óptima en cada paso y, de esta manera, alcanzar la
+solución general óptima para resolver un problema.  Esto lo diferencia de
+algoritmos como los de \textit{backtracking}, los cuales exploran distintas
 posibilidades y pueden volver al inicio en búsqueda de una mejor solución},
 comenzando desde el nodo raíz (conocido como enfoque \textit{top-down}) y
 eligiendo en cada paso el atributo más informativo o que maximice alguna medida
@@ -256,12 +260,12 @@ Algunos de estos algoritmos son:
 
 Una tarea fundamental en la generación de un árbol es definir un criterio de
 división para seleccionar el mejor atributo en cada paso. Existen diversas
-técnicas para abordarla, una de ellas es la de “Ganancia de Información”, usada
-por el algoritmo \acrshort{id3}. La Ganancia de información busca seleccionar el
-atributo que posee mayor variabilidad o representatividad de los datos y se
-sustenta en el cálculo de la entropía o medida de desorden. La idea de fondo es
-hallar el atributo que reduzca la entropía esperada. La entropía en el conjunto
-de datos $D$ se calcula de la siguiente manera:
+técnicas para abordarla, una de ellas es la de \comillas{Ganancia de
+Información}, usada por el algoritmo \acrshort{id3}. La Ganancia de información
+busca seleccionar el atributo que posee mayor variabilidad o representatividad
+de los datos y se sustenta en el cálculo de la entropía o medida de desorden. La
+idea de fondo es hallar el atributo que reduzca la entropía esperada. La
+entropía en el conjunto de datos $D$ se calcula de la siguiente manera:
 
 \begin{equation}
    Entropia(D) = - \sum_{i=1}^{m} p_{i}\log_{2}(p_{i})
@@ -288,11 +292,11 @@ peso de la partición y es aplicado sobre la entropía esperada.
 Una vez obtenidos los valores de ganancia para cada atributo, se selecciona
 aquel que maximiza la ganancia y este será el criterio de separación en el nodo.
 
-El algoritmo C4.5 introdujo una mejora en esta técnica llamada “Razón de
-Ganancia”. La misma busca disminuir uno de los efectos adversos que provoca la
-técnica de ganancia de información, esta es, que tiende a favorecer a atributos
-con un mayor número de valores posibles. La razón de ganancia, en primer lugar,
-reemplaza la fórmula $Entropia(D)$ por la siguiente:
+El algoritmo C4.5 introdujo una mejora en esta técnica llamada \comillas{Razón
+de Ganancia}. La misma busca disminuir uno de los efectos adversos que provoca
+la técnica de ganancia de información, esta es, que tiende a favorecer a
+atributos con un mayor número de valores posibles. La razón de ganancia, en
+primer lugar, reemplaza la fórmula $Entropia(D)$ por la siguiente:
 
 \begin{equation}
    EntropiaRG_{A}(D) = - \sum_{j=1}^{v} \frac{\left\| D_{j} \right\|}{\left\| D \right\|} 
@@ -320,8 +324,8 @@ realizar mejores predicciones que cualquiera de ellos individualmente. En pocas
 palabras, el enfoque de ensambles consiste en generar $k$ clasificadores, de un
 mismo tipo o no, y entrenarlos con subconjuntos de la colección de entrenamiento
 original. Dada una tupla nueva, cada clasificador devuelve su propia predicción,
-llamada “voto” y luego el ensamble devuelve la predicción final basada en esos
-votos.
+llamada \comillas{voto} y luego el ensamble devuelve la predicción final basada
+en esos votos.
 
 La aplicación de ensambles en problemas de clasificación nace de la
 imposibilidad de generar un único modelo capaz de generalizar lo suficiente como
@@ -403,12 +407,17 @@ la mitad de ellos coincidan, o incluso ser más restrictivos y obligar a que la
 coincidencia sea total. El enfoque de \textit{boosting} por su parte, pondera al
 voto de acuerdo a los pesos que calcula, dando predominio a determinadas
 instancias.  También se suele dar un mayor peso a determinados clasificadores
-por sobre otros. Este tipo de métodos se los denomina “mayoría de voto
-ponderada” y pueden llevar a un rendimiento superior.
+por sobre otros. Este tipo de métodos se los denomina \comillas{mayoría de voto
+ponderada} y pueden llevar a un rendimiento superior.
 
 \todo[inline]{Aplicaciones de ensambles en la literatura}
 
 \todo[inline]{Figura de ensamble}
+
+\subsection{Evaluación y Métricas}
+\label{clasificacion_evaluacion}
+
+Lalalalal
 
 \section{Clasificación Multi-etiquetas}
 
@@ -425,6 +434,7 @@ tradicionales de clasificación multi-etiquetas junto con sus ventajas,
 desventajas, aplicaciones y motivaciones.
 
 \subsection{Definición Formal y Métricas}
+\label{mll_def_formal}
 
 Asumiendo que $X=\mathbb{R}^{d}$ denota el espacio de instancias $d$
 dimensional, y que $Y = \{y_{1}, y_{2}, \dots, y_{q}\}$ denota el espacio de
@@ -432,7 +442,7 @@ etiquetas con $q$ etiquetas posibles, la tarea de clasificación multi-etiquetas
 consiste en entrenar un conjunto $D = \{(x_{i}, Y_{i}) \mid 1 \leq i \leq m\}$
 para hallar una función $h$ tal que $h: X \rightarrow 2^y$. A su vez, $X_{i}$ es
 un vector de atributos $d$ dimensional definido como $(x_{i1}, x_{i2}, \dots,
-x_{id})$. $Y_{i}$, por su parte, es el conjunto de etiquetas sociadas a la
+x_{id})$. $Y_{i}$, por su parte, es el conjunto de etiquetas asociadas a la
 instancia $X_{i}$. Luego, para cada instancia desconocida $X \rightarrow X$ el
 clasificador $h$ predice $h(x) \subseteq Y$ que representa el conjunto de
 etiquetas hallado para $x$.
@@ -445,6 +455,7 @@ qué punto cada ejemplo posee más de una etiqueta. Algunas de ellas son:
    \item{Cardinalidad de etiquetas}: Es el promedio de etiquetas por instancia
       del conjunto de datos. Se define como: 
       \begin{equation}
+      \label{eq:mll_card}
          CardE(D) = \frac{1}{m} \sum_{i=1}^{m} \left\|Y_{i}\right\|
       \end{equation}
       Por lo tanto, a mayor el valor de cardinalidad, mayor es el número de
@@ -478,9 +489,9 @@ qué punto cada ejemplo posee más de una etiqueta. Algunas de ellas son:
 
 Como se había anticipado en la sección \ref{intro_mll}, la tarea de aprendizaje
 sobre datos multi-etiquetados puede ser encarada siguiendo dos grandes enfoques,
-llamados “Transformación del Problema” y “Adaptación del Algoritmo”. A
-continuación se describen ambos enfoques y algunos de sus algoritmos más
-representativos.
+llamados \comillas{Transformación del Problema} y \comillas{Adaptación del
+Algoritmo}. A continuación se describen ambos enfoques y algunos de sus
+algoritmos más representativos.
 
 \subsubsection{Transformación del Problema} 
 
@@ -488,7 +499,8 @@ Esta categoría engloba al conjunto de algoritmos que abordan el problema de
 clasificación multi-etiquetas transformándolo en múltiples problemas de
 clasificación de única etiqueta, lo cual permite aplicar algoritmos de
 clasificación convencionales. Tres de estos métodos son particularmente
-relevantes para este trabajo: “\acrfull{br}”, “\acrfull{cc}” y “\acrfull{lp}”.
+relevantes para este trabajo: \comillas{\acrfull{br}}, \comillas{\acrfull{cc}} y
+\comillas{\acrfull{lp}}.
 
 \paragraph{\acrfull{br}}
 
@@ -557,8 +569,8 @@ problema de \acrshort{mll} en uno de clasificación multi-clase, de tal manera d
 poder abordarlo con algoritmos de este tipo. La clasificación multi-clase es un
 enfoque usado para tratar con ejemplos en donde la etiqueta es única pero cuenta
 con más de dos clases. Un ejemplo de este tipo de problemas es el de análisis de
-sentimiento de texto, en donde las clases pueden ser “positivo”, “negativo” y
-“neutral”. 
+sentimiento de texto, en donde las clases pueden ser \comillas{positivo},
+\comillas{negativo} y \comillas{neutral}. 
 
 En \acrshort{lp} cada etiqueta indica el subconjunto de etiquetas de
 la instancia. Esto es beneficioso en cuanto a que se logra preservar la
@@ -628,7 +640,249 @@ el uso de un perceptrón adaptativo en las hojas del árbol, lo cual le da la
 versatilidad de poder trabajar tanto con problemas de clasificación como de
 regresión.
 
+\todo[inline]{Explicación de enfoques de ensambles? (ebr, ecc, elp)}
+
+\subsection{Evaluación y métricas}
+\label{mll_evaluacion}
+
+Lalalalala todo
+
 \section{Clasificación de Flujos Continuos de Datos}
 
-\section{Evaluación y Métricas}
+\subsection{Definición}
 
+Un flujo continuo de datos o \textit{Data Stream} es un conjunto de datos
+ordenados, que arriban en el tiempo y son potencialmente infinitos. Un
+\textit{stream} se define como:
+
+\begin{equation}
+   S = \{s_{0}, s_{1}, \dots, s_{t}, \dots, s_{N}\}
+\end{equation}
+
+Donde $s_{t}$ es la instancia presente en el tiempo $t$ y $s_{N}$ es el
+último dato avistado en el \textit{stream}. Cada instancia $d_{t}$ posee
+atributos y una o más etiquetas y se define tal como en la sección
+\ref{clasificacion} de tratarse de datos uni-etiquetados o como en la sección
+\ref{mll_def_formal} de tratarse de datos multi-etiquetados. 
+
+El objetivo de la tarea de clasificación en este escenario es el mismo que para
+escenarios de \textit{batch}, esto es, hallar una función capaz de enlazar
+instancias nuevas con sus etiquetas correspondientes, con la salvedad de que se
+debe lograr bajo restricciones de tiempo y espacio de almacenamiento, además de
+otras vicisitudes presentadas por las características mismas de un flujo
+continuo de datos (ver sección \ref{stream_caracteristicas}). Además deben ser
+capaces de lidiar con cambios en la distribución de los datos, y otros
+requisitos ya mencionados en la sección \ref{stream_requisitos}). Estas
+características implican que obtener soluciones exactas es poco probable y es
+necesario aplicar técnicas y metodologías especiales de evaluación sobre los
+modelos, para reducir el error posible.
+
+\todo[inline]{sección para explicar concept drift?}
+
+\subsection{Evaluación}
+
+Como se describió en la sección \ref{clasificacion_evaluacion}, la tarea de
+evaluación para aprendizaje en ambientes de \textit{batch} consiste en dividir
+al conjunto de datos en un subconjunto de entrenamiento y uno de pruebas. El
+ambiente de \textit{stream} por su parte no permite llevar a cabo esta división
+ya que no se cuenta con los datos almacenados. Además, se debe tener en
+consideración la naturaleza incremental y evolutiva de los datos: a medida que
+pasa el tiempo pueden surgir nuevas etiquetas, ciertos atributos pueden dejar de
+tener peso en la predicción o incluso algunas reglas de decisión pueden perder
+relevancia. Por lo tanto, se han presentado dos enfoques para atacar este
+problema desde un punto de vista apto para este tipo de escenarios, los cuales
+son:
+
+\begin{description} 
+
+   \item[Evaluación \textit{holdout}] La evaluación por retención o
+      \textit{holdout} es un método derivado de la técnica de validación cruzada
+      pero adaptado a ambientes de flujos continuos. Consiste en usar una parte
+      del \textit{stream} como conjunto de entrenamiento y, periódicamente,
+      extraer una serie de conjuntos de prueba, llamados conjuntos de
+      \textit{holdout}, que son usados para computar las métricas de evaluación
+      y que, por tanto, no deben haber sido observados por el modelo
+      previamente.  \textit{Holdout} es un método que requiere contar con flujos
+      continuos lo suficientemente grandes para que la evaluación sea precisa,
+      lo cual no siempre es posible.
+
+   \item[Evaluación \textit{Prequential}] La técnica de evaluación
+      \textit{Prequential} o \textit{test-then-train} consiste en realizar la
+      evaluación de cada instancia primero y luego usarla para actualizar el
+      modelo, es decir, ya no hay una división del conjunto de datos sino que
+      todas las instancias son usadas para evaluar y clasificar. A diferencia
+      del enfoque de \textit{holdout}, no es necesario que el conjunto de datos
+      sea grande y la evaluación \textit{prequential} permite alimentar al
+      modelo con todos los datos de la colección lo cual significa un
+      aprovechamiento máximo del \textit{stream}. Por estas razones, el enfoque
+      \textit{prequential} tiende a ser el más usado en el campo de estudio.
+
+\end{description} 
+
+En cuanto a las métricas de rendimiento utilizadas, en el ámbito de
+clasificaciones de flujos se usan las mismas métricas que en clasificaciones por
+\textit{batch} con la salvedad que el cómputo se hace de manera incremental. En
+otras palabras, a diferencia de los métodos clásicos de validación cruzada donde
+la evaluación se hace en una única pasada, una vez generado el modelo final,
+aquí se debe calcular la métrica en cada nueva instancia y los resultados son
+acumulados.
+
+En definitiva, las métricas son las mismas que fueron presentadas en las secciones
+\ref{clasificacion_evaluacion} para datos uni-etiquetados y \ref{mll_evaluacion}
+para datos multi-etiquetados.
+
+\subsection{Datos sintéticos}
+
+Es común en la literatura generar datos sintéticos para simular ambientes de
+flujo continuos de datos. El principal motivo de esto es la falta de colecciones
+de \textit{streams} del mundo real que sean lo suficientemente grandes y que al
+mismo tiempo cumplan con todos los requisitos necesarios para evaluar algoritmos
+en este escenario \cite{kirkby_improving_2007}. Pese a esta restricción, se han
+hallado ventajas comparativas en la aplicación de flujos sintéticos en el
+análisis y evaluación de algoritmos, entre ellas se encuentran las siguientes:
+
+\begin{itemize} 
+
+   \item Son fácilmente generables y reproducibles.
+
+   \item Tiene un costo de almacenamiento relativamente menor.
+
+   \item Cumplen con el requisito de ser teóricamente infinitos.
+
+   \item Es posible introducir cambios de concepto artificiales para realizar un
+      análisis incisivo de los algoritmos de clasificación bajo escenarios
+      dinámicos y cambiantes.
+
+   \item Ayudan en el ámbito académico y científico a realizar estudios y
+      experimentos más abarcativos.
+
+\end{itemize} 
+
+En la actualidad existen varios generadores de flujos sintéticos que logran
+cumplir con los requisitos necesarios, aquí se describen dos de ellos:
+\textit{\acrfull{rtg}} y \textit{\acrfull{rbf}}.
+
+\begin{description}
+
+   \item[\textit{\acrfull{rtg}}] El generador se basa en la técnica presentada
+      por \citeauthor{domingos_mining_2002} \cite{domingos_mining_2002} y
+      consiste en producir un \textit{stream} partiendo de un árbol construido
+      aleatoriamente. A fines de generar el árbol, el método selecciona un
+      atributo al azar para realizar el corte y posteriormente le asigna una
+      clase aleatoria a cada hoja. A partir de este árbol se van a generar las
+      instancias sintéticas.  Primero se asignan valores aleatorios a los
+      atributos, siguiendo una distribución uniforme, y luego con esos valores
+      se atraviesa el árbol para hallar las clases de la etiqueta. Teniendo en
+      cuenta que las instancias son generadas y clasificadas según un modelo con
+      estructura de árbol, en teoría este método favorece a algoritmos del tipo
+      de árboles de decisión.
+
+   \item[\textit{\acrfull{rbf}}] El generador produce un \textit{stream} de
+      función de base radial aleatoria. El método actúa de la siguiente manera:
+      se generan un número fijo de centroides, cada centro tiene una posición
+      aleatoria, una única desviación estándar, una clase y un peso. Para
+      generar una instancia se selecciona un centro al azar, teniendo en cuenta
+      el peso asociado, de tal manera de favorecer a los centros con mayor peso.
+      La clase del ejemplo es determinada por el centroide elegido. El siguiente
+      paso es seleccionar una dirección tal que aleje los valores de atributo
+      del punto central. La dirección es obtenida aleatoriamente, siguiendo una
+      distribución gaussiana cuya desviación estándar es determinada por el
+      centroide elegido.  El resultado, en términos geométricos, es una
+      hiperesfera en donde cada ejemplo rodea un punto central con densidades
+      variables \cite{kirkby_improving_2007}. Este método surge de la
+      necesidad de generar conceptos que no favorezcan a modelos de tipo árbol,
+      tal como sí lo hacía la técnica \acrshort{rtg}.
+
+\end{description}
+
+En lo que refiere a datos multi-etiquetados, las herramientas existentes son más
+reducidas. \citeauthor{read_generating_2009} han presentado un marco general
+de trabajo para la generación de flujos continuos multi-etiquetados
+\cite{read_generating_2009} con el objetivo de generar datos realistas o que
+se aproximen a instancias del mundo real. El procedimiento consiste en tomar la
+salida obtenida por los algoritmos generadores de datos de etiqueta única y
+transformarla en datos multi-etiquetados, y esto lo hacen obedeciendo a
+fenómenos, comportamientos o cualidades intrínsecas a las colecciones
+multi-etiquetadas del mundo real. La idea es que si estos fenómenos capturados
+en datos reales se cumplen en grado similar para los datos sintéticos entonces
+se ha logrado generar una colección de datos de valor. Los fenómenos presentados
+son los siguientes:
+
+\begin{description}
+
+   \item[Sesgo de etiquetas] Es el fenómeno por el cual existen etiquetas que se
+      presentan en los datos más frecuentemente que otras. A diferencia de
+      colecciones de etiqueta única, puede haber más de una etiqueta por
+      instancia lo que lleva a que este fenómeno se magnifique en colecciones
+      multi-etiquetadas. A su vez, en colecciones de texto es muy común
+      encontrar unas pocas etiquetas que predominan y otras que pertenecen a
+      subconjuntos de instancias muy específicas. Por ejemplo, una etiqueta como
+      \comillas{\texttt{Ficción}} es muy probable que sea relevante en
+      colecciones de cuentos literarios e incluso que figure junto con otras
+      etiquetas, por ejemplo \texttt{\{Ficción, Drama\}}.  No sucede lo mismo
+      con etiquetas tales como \comillas{\texttt{Elefantes}}, que probablemente
+      aparezcan de manera aislada para este conjunto de datos.  Por lo tanto, si
+      se desea generar una colección sintética de texto es posible que se quiera
+      ajustar el valor del parámetro de sesgo de etiquetas para que sea mayor al
+      de otro tipo de colecciones.
+
+   \item[Distribución de etiquetas] La distribución de etiquetas tiene que ver
+      con la forma en que la cardinalidad de etiquetas se distribuye a lo largo
+      de la colección. La cardinalidad de etiquetas, tal como fue formulada en
+      la ecuación \ref{eq:mll_card}, es la cantidad de etiquetas promedio por
+      instancia y es una de las métricas usadas para conocer el grado de
+      multi-etiquetado de los datos (ver sección \ref{mll_def_formal}). Observar
+      la distribución de etiquetas es útil para entender la composición de dicha
+      cardinalidad y se calcula tomando el número de veces que se repite cada
+      posible tamaño de subconjuntos de etiquetas. En base a este fenómeno se
+      distinguen dos tipos de colecciones, \comillas{A} y \comillas{B}. Las
+      colecciones de tipo A son aquellas donde la cardinalidad de etiquetas es
+      muy cercana a uno pero resultan ser multi-etiquetadas por la existencia de
+      ejemplos donde el etiquetado único generaría ambigüedad y se resolvió
+      añadiendo etiquetas. Tal es el caso para colecciones de artículos
+      periodísticos \cite{lang_newsweeder_2008} o de imágenes para realizar
+      detección de objetos \cite{boutell_learning_2004}. Por contrapartida, las
+      colecciones de tipo \comillas{B} son aquellas donde existe más de una
+      etiqueta por instancia y suelen situarse en dominios abarcativos. Es el
+      caso para colecciones de funciones genómicas, por ejemplo, en la cual se
+      espera que los genes tengan múltiples funciones
+      \cite{diplaris_protein_2005}.  Otros ejemplos son los de correos
+      electrónicos \cite{hutchison_enron_2004} y conceptos semánticos
+      \cite{snoek_challenge_2006}.
+
+   \item[Relación entre etiquetas] Esta cualidad tiene que ver con el concepto
+      de interdependencia entre etiquetas, descripto en la sección
+      \ref{intro_mll}, y se trata de capturar la aparición mutua de etiquetas en
+      los ejemplos de tal manera de reflejar el grado de dependencia de las
+      etiquetas en el dominio del problema. La idea es que un generador de
+      instancias sintéticas debe ser capaz de asignar subconjuntos de etiquetas,
+      ya no de manera aleatoria, sino respetando esta relación subyacente. Esto
+      se puede lograr diseñando una matriz cuadrada de doble entrada que guarde
+      las probabilidades condicionales entre pares de etiquetas.
+
+   \item[Espacio de atributos] Así como existen relaciones entre etiquetas que
+      los algoritmos explotan para generar datos sintéticos de calidad, también
+      puede analizarse el espacio de atributos y las interdependencias entre sí
+      para optimizar los generadores. El estudio realizado por
+      \citeauthor{read_generating_2009} halló efectos o particularidades
+      frecuentes en los datos: uno de ellos es el efecto
+      \comillas{atributo-etiqueta} por el cual hay atributos que de aparecer en
+      un ejemplo activan una etiqueta. El ejemplo dado surgió en una colección
+      de artículos de noticias tecnológicas \cite{read_classifier_2011}, en
+      donde se observó que los atributos \comillas{\texttt{linux}} y
+      \comillas{\texttt{mobile}} estaban fuertemente emparentados con las
+      etiquetas \comillas{\texttt{Linux}} y \comillas{\texttt{Mobile}},
+      respectivamente. Otro efecto hallado es el denominado
+      \comillas{atributo-combinación} por el cual la aparición de un atributo
+      activa un subconjunto de etiquetas en simultáneo. Por ejemplo, en una
+      colección de noticias \cite{lang_newsweeder_2008} se descubrió que el
+      atributo \comillas{\texttt{arms}} ocurre frecuentemente con las etiquetas
+      \texttt{\{politics.guns, misc.religion\}}. Del mismo modo, existe el
+      \comilla{efecto aleatorio}, el cual engloba a los atributos que no proveen
+      información significativa sobre la presencia de etiquetas o combinaciones
+      de etiquetas. En definitiva, los generadores pueden sacar provecho de este
+      fenómeno otorgando parámetros que permitan ajustar el grado de presencia
+      de los efectos mencionados y así lograr colecciones de datos sintéticos
+      más realistas.
+      
+\end{description}
