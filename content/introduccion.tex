@@ -19,11 +19,15 @@ competitiva en el mercado y, en adición, proveer de un servicio valioso a la
 comunidad. Potencialmente, la \textit{big data} puede ser una fuente que
 proporcione a la comunidad de conocimiento nuevo sobre el mundo en el que
 habita, o como ha mencionado \citeauthor{fayyad_advances_1996} en su escrito
-sobre el descubrimiento de conocimiento, “Los datos que percibimos de nuestro
+sobre el descubrimiento de conocimiento: 
+
+\begin{displayquote}
+   \comillas{Los datos que percibimos de nuestro
 ambiente son la evidencia básica que usamos para construir teorías y modelos
-sobre el universo en el que vivimos”\footnote{“Data we capture about our
+sobre el universo en el que vivimos} \footnote{\comillas{Data we capture about our
    environment are the basic evidence we use to build theories and models of the
-universe we live in” \cite[p. 2]{fayyad_advances_1996}. Traducción propia.}.
+universe we live in} \cite[p. 2]{fayyad_advances_1996}. Traducción propia.}.
+\end{displayquote}
 
 Sin embargo, volúmenes masivos de datos tornan obsoletos los tradicionales
 métodos manuales de análisis de datos y surge la necesidad de desarrollar
@@ -39,7 +43,7 @@ misma definición: requiere de todos los datos de la colección presentes y
 accesibles en todo momento,  lo cual no siempre es posible. Además se suma una
 limitante que es clave en el contexto actual de alta disponibilidad de datos:
 hoy en día una buena parte de los datos generados proviene de flujos continuos o
-‘\textit{streamings}’ de datos \cite{bifet_big_2014}. Estos flujos son
+\comillas{\textit{streamings}} de datos \cite{bifet_big_2014}. Estos flujos son
 potencialmente ilimitados, arriban de a una instancia por vez, y son analizados
 con restricciones altas de tiempo de procesamiento y de memoria.  Tal es el caso
 para aplicaciones de sensores, monitoreo de redes y administración de tráfico,
@@ -57,13 +61,14 @@ una única etiqueta a una instancia desconocida. No obstante, existen problemas
 de clasificación en donde múltiples etiquetas son necesarias para caracterizar
 una instancia. Por ejemplo, una noticia de diario referida al accidente aéreo
 que sufrió el plantel de fútbol del club Chapecoense puede ser clasificado en la
-categoría de “Fútbol” tanto como en la de “Tragedias”. Del mismo modo, un video
-documental sobre la vida de Borges puede anotarse como “Biografía”, “Literatura”
-o incluso “Buenos Aires” si se mostraran imágenes de la ciudad. Este tipo de
-problemas es llamado \acrfull{mll} \footnote{Siglas provenientes de su
-abreviación en inglés, Multi-label learning} y representa un nuevo paradigma de
-aprendizaje automático, con sus propios retos por afrontar y que aún no ha sido
-suficientemente explorado en proyectos de investigación. 
+categoría de \comillas{Fútbol} tanto como en la de \comillas{Tragedias}. Del
+mismo modo, un video documental sobre la vida de Borges puede anotarse como
+\comillas{Biografía}, \comillas{Literatura} o incluso \comillas{Buenos Aires} si
+se mostraran imágenes de la ciudad. Este tipo de problemas es llamado
+\acrfull{mll} \footnote{Siglas provenientes de su abreviación en inglés,
+Multi-label learning} y representa un nuevo paradigma de aprendizaje automático,
+con sus propios retos por afrontar y que aún no ha sido suficientemente
+explorado en proyectos de investigación. 
 
 Una clasificación multi-etiqueta permite conocer el grado de correlación entre
 una instancia de la colección y una o más etiquetas. Esta cualidad significa un
@@ -208,31 +213,47 @@ taxonomía de algoritmos confeccionado por \citeauthor{zhang_review_2014} \cite
 {zhang_review_2014}.
 
 \subsection{Flujos continuos de datos}
+\label{flujos_continuos_datos}
 
 Hoy en día, los datos pueden ser generados por elementos de continuo monitoreo
 del medio, tales como sensores o archivos de registro.  La clasificación de
-\textit{streaming} de datos se enfoca en problemas de este tipo, en donde
-objetos del mundo real son analizados en tiempo real. En este tipo de
-escenarios, los datos deben cumplir con las siguientes características \cite
-{gama_knowledge_2010}: 
+flujos continuos de datos o \textit{streamings} se enfoca en problemas de este
+tipo, en donde objetos del mundo real son analizados en tiempo real. Un
+\textit{stream} se considera como una secuencia ordenada de datos que fluye a
+alta velocidad y es teóricamente infinita. A continuación se describe brevemente
+las características de este tipo de datos y los requisitos que debe cumplir un
+algoritmo para poder tratar con ellos.
+
+\subsubsection{Características}
+\label{stream_caracteristicas}
+
+En escenarios de \textit{streamings}, los datos deben cumplir con las siguientes
+características \cite {gama_knowledge_2010}: 
 
 \begin{itemize} 
 
    \item Los datos están disponibles a través de flujos continuos e ilimitados
-      en el tiempo. 
+      en el tiempo, a diferencia del aprendizaje por \textit{batch} donde los
+      datos son acotados.
 
    \item Las regularidades subyacentes de los datos no son estacionarias sino
-      que pueden evolucionar.
+      que pueden evolucionar. En otras palabras, la distribución de los datos es
+      susceptible a cambios en el tiempo.
 
    \item La data ya no es considerada independiente e idénticamente distribuida.
 
-   \item La data está situada tanto en el espacio como en el tiempo.  
+   \item La data está situada tanto en el espacio como en el tiempo. La lectura
+      y procesamiento de los datos debe ser lo suficientemente veloz como para
+      procesar el siguiente dato, de otro modo, el dato ya no podrá ser procesado
+      en el futuro.
 
 \end{itemize}
 
+\subsubsection{Requisitos de los algoritmos}
+\label{stream_requisitos}
+
 Para hacer frente a estas características de los datos, los sistemas o
-algoritmos deben contar con los siguientes requerimientos
-\cite{hulten_mining_2001}: 
+algoritmos deben contar con los siguientes requisitos \cite{hulten_mining_2001}: 
 
 \begin{itemize} 
 
@@ -294,7 +315,7 @@ herramientas para generar datos etiquetados, buena parte de ellos son solo
 aplicables para instancias de una única etiqueta y los que logran generar datos
 multi etiquetados no han sido lo suficientemente explorados en el área. Hasta el
 momento, los generadores de instancias multi etiquetadas son capaces de generar
-datos cercanos a los de colecciones del mundo real \cite{read_generating_nodate}
+datos cercanos a los de colecciones del mundo real \cite{read_generating_2009}
 y brindan la posibilidad de realizar estudios relativamente certeros de
 algoritmos de clasificación \cite{read_scalable_2012}. No obstante, debe notarse
 también que si bien se han obtenido colecciones sintéticas en sí mismas aún no
