@@ -1,5 +1,6 @@
 \chapter{Preliminares}
 
+
 En esta sección se presenta el marco teórico de este trabajo, dando un panorama
 general de cada una de las disciplinas abordadas e introduciendo los conceptos
 básicos y fundamentales para entender el proyecto. Se comienza con la definición
@@ -414,17 +415,219 @@ ponderada} y pueden llevar a un rendimiento superior.
 
 \todo[inline]{Figura de ensamble}
 
-\subsection{Evaluación y Métricas}
-\label{clasificacion_evaluacion}
+\subsection{Evaluación}
+\label{evaluacion_intro}
 
-Lalalalal
+Llevar a cabo evaluaciones de rendimiento es un aspecto importante del
+aprendizaje automático ya que nos permite conocer en qué medida un algoritmo es
+superior a otro para resolver una tarea. Particularmente, la tarea de
+clasificación es un desafío que se presenta en un contexto cambiante y
+evolutivo, donde nuevas herramientas surgen y se actualizan constantemente.
+Incluso la composición y estructura de los modelos de clasificación varía según
+la familia de algoritmos aplicadas, y es esperable que los conceptos extraídos
+de un modelo de tipo árbol tengan particularidades que lo diferencien de modelos
+de redes neuronales o modelos probabilísticos. Y del mismo modo, es esperable
+que alguno de estos modelos tenga un mejor rendimiento que otro en un
+determinado escenario, o incluso que sea mejor que un modelo generado por el
+mismo algoritmo pero con distintos hiper-parámetros. La tarea de evaluación es la
+que permite hallar estas cuestiones y sacar provecho de los algoritmos para
+obtener aún mejores modelos. Por lo tanto, es necesario estudiar las métricas y
+llevar a cabo procedimientos que nos permitan observar y entender la eficiencia
+de un clasificador. 
+
+En esta sección se describen algunas de las técnicas para evaluar las
+predicciones y las métricas que se calculan durante este proceso.
+
+\subsubsection{Métricas}
+\label{evaluacion_metricas}
+
+Las métricas de evaluación se usan para conocer la habilidad predictiva de un
+modelo de clasificación. Se van a describir aquí las métricas más conocidas del
+campo y que proveen, a su vez, un primer vistazo de lo que serán las métricas
+usadas para evaluar algoritmos para datos multi-etiquetados en las futuras
+secciones del escrito. 
+
+Antes de comenzar es importante aclarar algunos términos que serán usados para
+definir las métricas. Se entiende como \comillas{ejemplos positivos} a aquellas
+instancias cuya etiqueta pertenece a la clase de interés en el problema de
+estudio y \comillas{ejemplos negativos} como aquellas que no pertenecen a dicha
+clase. Al mismo tiempo, se derivan cuatro características que estarán presentes
+en las fórmulas para calcular las métricas, ellas son: 
+
+\begin{description}
+
+   \item[\acrfull{vp}] Son los ejemplos positivos que fueron correctamente
+      clasificadas como positivos.
+
+   \item[\acrfull{vn}] Son los ejemplos negativos que fueron correctamente
+      clasificados como negativos.
+
+   \item[\acrfull{fp}] Son los ejemplos negativos que fueron incorrectamente
+      clasificados como positivos.
+
+   \item[\acrfull{fn}] Son los ejemplos positivos que fueron incorrectamente
+      clasificados como negativos.
+
+\end{description}
+
+A partir de ellas, se definen las siguientes métricas:
+
+\paragraph{Exactitud}
+\label{evaluacion_metricas_exactitud}
+
+La exactitud o \textit{accuracy} es la proporción de ejemplos correctamente
+clasificados sobre el número total de instancias y mayor el valor de exactitud
+mejor es el rendimiento del clasificador. Se define  como: 
+
+\begin{equation}
+   exactitud = \frac{\acrshort{vp} + \acrshort{vn}}{\acrshort{vp} +
+   \acrshort{vn} + \acrshort{fp} + \acrshort{fn}}
+\end{equation}
+
+\paragraph{Tasa de Error}
+
+A la inversa de la exactitud, la tasa de error es la proporción de ejemplos
+incorrectamente clasificados sobre el número total de instancias y menor el
+valor de la tasa de error mejor es el rendimiento del clasificador. Se define
+como: 
+
+\begin{equation}
+   tasaError = \frac{\acrshort{fp} + \acrshort{fn}}{\acrshort{vp} +
+   \acrshort{vn} + \acrshort{fp} + \acrshort{fn}}
+\end{equation}
+
+\paragraph{Precisión}
+
+La precisión es la proporción de ejemplos que fueron clasificados como positivos
+y que efectivamente lo son. Mayor el valor de precisión mejor es el rendimiento
+del clasificador. Se dice que es una medida de exactitud y se define como: 
+
+\begin{equation} 
+   precision = \frac{\acrshort{vp}}{\acrshort{vp} + \acrshort{fp}}
+\end{equation}
+
+\paragraph{Exhaustividad}
+
+La exhaustividad o \textit{recall} es la proporción de ejemplos positivos que
+fueron clasificados como positivos. Mayor el valor de exhaustividad mejor es el
+rendimiento del clasificador. Se dice que es una medida de completitud y se
+define como: 
+
+\begin{equation} 
+   exhaustividad = \frac{\acrshort{vp}}{\acrshort{vp} + \acrshort{fn}} 
+\end{equation}
+
+\paragraph{Medida-F1}
+
+La medida-F1 o \textit{f1-score} es una medida que integra las métricas de
+precisión y exhaustividad tomando la media harmónica entre ambas. Mayor el valor
+de esta medida, mejor es el rendimiento del clasificador. Se define como: 
+
+\begin{equation}
+   medidaF1 = \frac{2 \times precision \times exhaustividad}{ precision +
+   exhaustividad }
+\end{equation}
+
+Por otro lado, existen métricas para evaluar la eficiencia del clasificador en
+términos de velocidad y consumo de memoria. Estas métricas cobran especial
+importancia en ambientes de flujos continuos de datos, donde el volumen de datos
+es grande, la velocidad es alta y los recursos escasean. A continuación se añade
+una breve descripción de ambas.
+
+\paragraph{Velocidad}
+
+La velocidad se refiere al costo computacional de generar el modelo y realizar
+predicciones, en general se deja fuera del cálculo los tiempos invertidos en
+cargar la colección en memoria, realizar tareas de normalización y
+pre-procesamiento sobre los datos y otras etapas de la clasificación. A menor el
+tiempo de ejecución, mejor es el rendimiento del algoritmo.
+
+\paragraph{Consumo de Memoria}
+
+El consumo de memoria es un indicador de los requerimientos de memoria
+aproximados de almacenar el modelo del clasificador así como de las variaciones
+que se producen durante la ejecución. A menor el consumo de memoria, mejor es el
+algoritmo.
+
+\subsubsection{Estrategias}
+\label{evaluacion_estrategias}
+
+Una vez que se define la métrica o el conjunto de métricas apropiadas para
+medir el rendimiento de los clasificadores, el siguiente desafío es seguir un
+procedimiento de pruebas capaz de lograr resultados de evaluación que puedan ser
+generalizables a conjunto de datos aún no observados. Las técnicas de
+\comillas{\textit{Holdout}} y \comillas{Validación Cruzada} son dos de las
+técnicas más populares para evaluar la habilidad predictiva de los
+clasificadores y se describen a continuación.
+
+
+\paragraph{\textit{Holdout}} 
+
+En este método un conjunto de instancias es separado de la colección y se
+reserva para evaluar el rendimiento del clasificador.  Este subconjunto es
+distinto del conjunto de datos de entrenamiento usado para generar el modelo y
+es llamado \comillas{conjunto de pruebas o \textit{testing}}. Una vez entrenado,
+el clasificador recibe las instancias del conjunto de pruebas pero sin incluir
+las etiquetas. La salida del clasificador son las etiquetas de cada instancia.
+Finalmente, las etiquetas producidas durante la predicción y las etiquetas
+reales de cada instancia se combinan y se calculan las métricas de evaluación.
+Esta técnica se basa en la idea de que, separando los datos que se usan durante
+el entrenamiento de aquellos usados durante la predicción, se logra una
+independencia en los datos que derivará en un mayor grado de generalización en
+el modelo. 
+
+Por contrapartida, el enfoque de \textit{Holdout} tiene la limitación de que
+para lograr generalizar requiere de un considerable número de instancias
+\todo{citar fuente}. Por un lado, muy pocos datos en el conjunto de
+entrenamiento puede derivar en predicciones pobres, pero a la vez, muy pocos
+datos en el conjunto de pruebas tampoco es recomendable, ya que podría resultar
+en medidas de rendimiento poco fiables. A esto se suma una de las dificultades
+más comunes en el área de aprendizaje automático que es la falta de
+disponibilidad de suficientes colecciones de datos. 
+
+Por estas razones, ha tomado peso el uso de técnicas de muestreos de datos para
+reutilizar instancias de entrenamiento y de prueba. Una de ellas es la de
+validación cruzada.
+
+\paragraph{Validación Cruzada de K iteraciones} 
+
+La técnica de validación cruzada, más conocida por el inglés \textit{k-fold
+cross-validation}, consiste en particionar el conjunto de datos en $k$
+subconjuntos de manera aleatoria y en la forma $\{d_{1}, d_{2},  \dots, d_{k}
+\}$, siendo cada uno de los subconjuntos mutuamente excluyentes entre sí y de
+igual o similar tamaño. El proceso itera sobre cada uno de los subconjuntos para
+generar $k$ modelos. En la primera iteración $i$, se separa el subconjunto
+$d_{i}$ y se entrena el modelo con los restantes subconjuntos para luego medir
+el rendimiento con él. En la segunda iteración se repite este procedimiento pero
+usando como pruebas al subconjunto $d_{i+1}$, y así en cada iteración. Así pues,
+cada subconjunto es usado una vez para probar el modelo. Finalmente, se toman
+los $k$ modelos generados y se promedian las métricas. 
+
+De esta técnica derivan otras similares como \comillas{\textit{leave-one-out}}
+en donde cada subconjunto es conformado por $n-1$ instancias, siendo $n$ el
+tamaño de la colección, dejando un elemento fuera del subconjunto y que será
+usado para validar el modelo. El proceso se repite $n$ veces y se combinan los
+modelos tal como en el método de validación cruzada. 
+
+Otra técnica similar es la de \comillas{Validación Cruzada Estratificada}, la
+cual consiste en generar subconjuntos de entrenamiento y pruebas que respeten la
+representación de clases existentes en la colección inicial. Por ejemplo, si una
+de las clases del problema aparece en el $25\%$ de las instancias, este método
+asegura que al generar las particiones esa clase continuará siendo representada
+por el $25\%$ de las tuplas. Esta técnica puede ser útil para problemas donde
+existe una diversidad que es necesario reflejar en las particiones para obtener
+medidas precisas.
+
+En general, los investigadores recomiendan usar validación cruzada con $k=10$ ya
+que se suelen conseguir estimaciones menos sesgadas sin incurrir en costos
+computacionales demasiado altos.
 
 \section{Clasificación Multi-etiquetas}
 
 A diferencia del aprendizaje automático tradicional, que usa datos de etiqueta
 única para representar objetos del mundo real, cada instancia en el aprendizaje
 multi-etiquetas representa un único objeto pero puede contener más de una
-etiqueta. Por consiguiente, la tarea de clasificación consiste hallar una
+etiqueta. Por consiguiente, la tarea de clasificación consiste en hallar una
 función que logre asignar a cada objeto, nuevo y desconocido, el conjunto de
 etiquetas que lo caracteriza.
 
@@ -433,7 +636,7 @@ un conjunto de datos multi-etiquetados y se  describen algunos métodos
 tradicionales de clasificación multi-etiquetas junto con sus ventajas,
 desventajas, aplicaciones y motivaciones.
 
-\subsection{Definición Formal y Métricas}
+\subsection{Definición}
 \label{mll_def_formal}
 
 Asumiendo que $X=\mathbb{R}^{d}$ denota el espacio de instancias $d$
@@ -443,7 +646,7 @@ consiste en entrenar un conjunto $D = \{(x_{i}, Y_{i}) \mid 1 \leq i \leq m\}$
 para hallar una función $h$ tal que $h: X \rightarrow 2^y$. A su vez, $X_{i}$ es
 un vector de atributos $d$ dimensional definido como $(x_{i1}, x_{i2}, \dots,
 x_{id})$. $Y_{i}$, por su parte, es el conjunto de etiquetas asociadas a la
-instancia $X_{i}$. Luego, para cada instancia desconocida $X \rightarrow X$ el
+instancia $X_{i}$. Luego, para cada instancia desconocida $x \in X$ el
 clasificador $h$ predice $h(x) \subseteq Y$ que representa el conjunto de
 etiquetas hallado para $x$.
 
@@ -642,10 +845,195 @@ regresión.
 
 \todo[inline]{Explicación de enfoques de ensambles? (ebr, ecc, elp)}
 
-\subsection{Evaluación y métricas}
+\subsection{Evaluación}
 \label{mll_evaluacion}
 
-Lalalalala todo
+Como se describió en la sección \ref{evaluacion_metricas}, en escenarios de
+clasificación tradicionales el poder de generalización de un modelo es evaluado
+a partir de métricas tales como la exactitud o la exhaustividad las cuales
+trabajan con una única etiqueta. Una predicción multi-etiquetada, por el
+contrario, carga con la complejidad de que cada ejemplo puede ser asociado a más
+de una o dos etiquetas. Esto implica que ya no se puede trabajar con la idea de
+que una clasificación solo puede ser correcta o incorrecta. De lo contrario, se
+incursionaría en una evaluación excesivamente rigurosa. Por este motivo, en el
+campo de \acrshort{mll} se han diseñado una serie de métricas nuevas y
+específicas para abordar este tipo de problemas, y se clasifican en dos grupos:
+existen las métricas \comillas{basadas en ejemplos}, que son computadas por cada
+instancia y luego promediadas; y las métricas \comillas{basadas en etiquetas},
+las cuales son calculadas para cada etiqueta por separado y devuelven el
+promedio micro o el promedio macro. 
+
+A continuación se describe en detalle ambas categorías, incluyendo métricas
+presentadas por cada enfoque, junto con su definición formal y una
+interpretación de la evaluación que proveen.
+
+\subsubsection{Métricas basadas en Ejemplos}
+
+En esta categoría se hallan las métricas que evalúan la calidad de la
+clasificación ejemplo por ejemplo y determinan qué tan buena es la clasificación
+sobre los distintos ejemplos. Tienen en común que comparan las etiquetas de la
+predicción contra las etiquetas reales para cada instancia y luego combinan la
+salida aplicando la media sobre el total de instancias. Entre ellas se
+encuentran las siguientes:
+
+\paragraph{\textit{Hamming Loss}}
+
+Esta es una de las métricas más populares en la literatura y se encarga de
+evaluar la proporción de pares instancia-etiqueta incorrectamente clasificados,
+es decir, toma en cuenta para el conteo tanto si se marcó como irrelevante una
+etiqueta relevante o si, por el contrario, se activó una etiqueta que no era
+relevante. Se define como: 
+
+\begin{equation}
+   HLoss = \frac{1}{m} \sum_{i=1}^{m} \left\|h(x_{i}) \triangle Y_{i}\right\|
+\end{equation}
+
+Aquí el símbolo \comillas{$\triangle$} es la diferencia simétrica entre
+conjuntos. Tener en cuenta también que cuanto menor es el valor de
+\textit{hamming loss} mejor es el rendimiento del clasificador. 
+
+De manera complementaria, algunos autores de la literatura han decidido usar la
+métrica \comillas{\textit{hamming score}} que es un derivado del \textit{hamming
+loss} y se calcula como:
+
+\begin{equation}
+   HScore = 1 - HLoss
+\end{equation}
+
+\paragraph{Exactitud del Subconjunto} Se la conoce también como
+\textit{exact-match} en la literatura y es la métrica equivalente a la exactitud
+en clasificaciones de etiqueta única (ver \comillas{Exactitud} en sección
+\ref{evaluacion_metricas_exactitud}). El cómputo toma en cuenta la proporción de
+instancias que fueron clasificadas de manera exacta, es decir, que todas sus
+etiquetas fueron correctamente clasificadas o, en otras palabras, que el
+subconjunto de etiquetas de la predicción es idéntico al subconjunto de
+etiquetas reales. En términos formales, se calcula como:
+
+\begin{equation}
+   exactitudSubconjunto = \frac{1}{m} \sum_{i=1}^{m} \left\|h(x_{i}) =
+   Y_{i}\right\|
+\end{equation}
+
+Es considerada una métrica excesivamente rigurosa, especialmente para
+colecciones donde el número de etiquetas es alto.
+
+\paragraph{Exactitud basada en ejemplos} 
+
+La exactitud basada en ejemplos también es conocida como \comillas{Índice de
+Jaccard} y consiste en tomar la proporción de etiquetas activas y correctamente
+clasificadas con respecto al total de etiquetas activas.
+
+\begin{equation} 
+   exactitudEj = \frac{1}{m} \sum_{i=1}^{m} 
+   \frac{\left\|Y_{i} \cap h(x_{i})\right\|}
+   {\left\|Y_{i} \cup h_(x_{i})\right\|} 
+\end{equation}
+
+
+\paragraph{Precisión, Exhaustividad y Medida-F1 (basadas en ejemplos)} 
+
+Las métricas de precisión, exhaustividad y medida-F1 presentadas en la sección
+\ref{evaluacion_metricas} también tienen sus equivalentes para datos
+multi-etiquetados y se definen de la siguiente manera:
+
+\begin{equation}
+   precisionEj = \frac{1}{m} \sum_{i=1}^{m} 
+   \frac{\left\|Y_{i} \cap h(x_{i})\right\|}
+   {\left\|h_(x_{i})\right\|} 
+\end{equation}
+
+\begin{equation}
+   exhaustividadEj = \frac{1}{m} \sum_{i=1}^{m} 
+   \frac{\left\|Y_{i} \cap h(x_{i})\right\|}
+   {\left\|Y_{i}\right\|} 
+\end{equation}
+
+\begin{equation}
+   medidaF1Ej = \frac{2 \times precisionEj \times exhaustividadEj}{ precisionEj +
+   exhaustividadEj }
+\end{equation}
+
+
+\subsubsection{Métricas basadas en Etiquetas}
+
+Hasta aquí, todas las métricas mencionadas son calculadas individualmente para
+cada instancia y luego promediadas por el total de instancias. No obstante,
+también existen otros tipos de métricas, las basadas en etiquetas, que se
+encargan de evaluar la calidad de la clasificación etiqueta por etiqueta y
+determinan qué tan buena es la clasificación sobre las distintas etiquetas.  En
+síntesis, comparan las etiquetas de la predicción contra las etiquetas reales,
+cada una por separado y luego combinan el rendimiento entre todas las etiquetas.
+Dicha combinación se realiza aplicando el promedio micro o el promedio macro.
+Más adelante se explicará en qué consiste cada una de ellas.
+
+De manera similar a lo que sucedía con las métricas de la sección
+\ref{evaluacion_metricas}, donde para definirlas fue necesario introducir el
+concepto de verdaderos positivos, verdaderos negativos, falsos negativos y
+falsos positivos, las métricas basadas en etiquetas también se fundamentan en
+esos conceptos pero su fórmula varia para adaptarse al escenario de
+\acrshort{mll}.
+
+\begin{equation}
+   \acrshort{vp}_{j} = \left\|\{x_{i}\mid y_{j} \in Y_{i} \land y_{j} \in
+   h(x_{i}), 1 \leq i \leq m\}\right\|
+\end{equation}
+
+\begin{equation}
+   \acrshort{fp}_{j} = \left\|\{x_{i}\mid y_{j} \notin Y_{i} \land y_{j} \in
+   h(x_{i}), 1 \leq i \leq m\}\right\|
+\end{equation}
+
+\begin{equation}
+   \acrshort{vn}_{j} = \left\|\{x_{i}\mid y_{j} \notin Y_{i} \land y_{j} \notin
+   h(x_{i}), 1 \leq i \leq m\}\right\|
+\end{equation}
+
+\begin{equation} 
+   \acrshort{fn}_{j} = \left\|\{x_{i}\mid y_{j} \in Y_{i} \land y_{j} \notin
+   h(x_{i}), 1 \leq i \leq m\}\right\| 
+\end{equation}
+
+Tal como sucede con el aprendizaje tradicional, bajo esta definición las
+evaluaciones basadas en etiquetas logran satisfacer la condición:
+
+\begin{equation}
+   \acrshort{vp} + \acrshort{fp} + \acrshort{vn} + \acrshort{fn} = m
+\end{equation}
+
+A partir de estos cuatro conceptos se pueden derivar cualquiera de las métricas
+definidas en la sección \ref{evaluacion_metricas}. O dicho en términos formales,
+sea $B(\acrshort{vp}_{j}, \acrshort{fp}_{j}, \acrshort{vn}_{j},
+\acrshort{fn}_{j})$ una función cuyo dominio es $B \in \{ exactitud, precision,
+exhaustividad, medidaF1 \}$, las métricas pueden ser obtenidas siguiendo dos
+estrategias:
+
+\paragraph{Promedio Macro}
+
+\begin{equation}
+   B_{macro}(h) = \frac{1}{q} \sum_{j=1}^{q} 
+   B(\acrshort{vp}_{j}, \acrshort{fp}_{j}, \acrshort{vn}_{j}, \acrshort{fn}_{j})
+\end{equation}
+
+\paragraph{Promedio Micro}
+
+\begin{equation}
+   B_{micro}(h) = B( \sum_{j=1}^{q} \acrshort{vp}_{j}, \sum_{j=1}^{q}
+   \acrshort{fp}_{j},\sum_{j=1}^{q}  \acrshort{vn}_{j},\sum_{j=1}^{q}
+   \acrshort{fn}_{j})
+\end{equation}
+
+El enfoque de promedio macro tiene una semejanza al enfoque basado en ejemplos
+en cuanto a que ambas estrategias promedian por el mismo valor a todas sus
+etiquetas/ejemplos, siendo en este caso el número total de etiquetas. Esto se
+traduce en que esta categoría de métricas le asigna a cada etiqueta el mismo
+peso, sin importar la frecuencia de la misma. 
+
+Por el contrario, el enfoque de promedio micro sí provoca una ponderación en las
+etiquetas y la contribución de cada etiqueta al valor final no será el mismo.
+Esto sucede porque la métrica se computa solo una vez, habiendo ya calculado la
+cantidad de etiquetas para cada uno de los cuatro conceptos, lo que hace que
+aquellas etiquetas que se activan en escasas ocasiones vayan a tener una menor
+injerencia y por tanto serán sobrepasadas por aquellas etiquetas más frecuentes.
 
 \section{Clasificación de Flujos Continuos de Datos}
 
@@ -681,17 +1069,18 @@ modelos, para reducir el error posible.
 
 \subsection{Evaluación}
 
-Como se describió en la sección \ref{clasificacion_evaluacion}, la tarea de
-evaluación para aprendizaje en ambientes de \textit{batch} consiste en dividir
-al conjunto de datos en un subconjunto de entrenamiento y uno de pruebas. El
-ambiente de \textit{stream} por su parte no permite llevar a cabo esta división
-ya que no se cuenta con los datos almacenados. Además, se debe tener en
-consideración la naturaleza incremental y evolutiva de los datos: a medida que
-pasa el tiempo pueden surgir nuevas etiquetas, ciertos atributos pueden dejar de
-tener peso en la predicción o incluso algunas reglas de decisión pueden perder
-relevancia. Por lo tanto, se han presentado dos enfoques para atacar este
-problema desde un punto de vista apto para este tipo de escenarios, los cuales
-son:
+Como se describió en la sección \ref{evaluacion_intro}, la tarea de evaluación
+para aprendizaje en ambientes de \textit{batch} consiste en dividir al conjunto
+de datos en uno o más subconjuntos de entrenamiento y pruebas.  El ambiente de
+\textit{stream}, por su parte, presenta un desafio extra y es que no permite
+llevar a cabo esta división debido a que no se cuenta con los datos previamente
+almacenados. Además se debe tener en consideración la naturaleza incremental y
+evolutiva de los datos: a medida que pasa el tiempo pueden surgir nuevas
+etiquetas, ciertos atributos pueden dejar de tener peso en la predicción o
+incluso algunas reglas de decisión en el modelo pueden llegar a perder
+relevancia. Por lo tanto, se han presentado dos enfoques nuevos, similares a las
+estrategias definidas en la sección \ref{evaluacion_estrategias} pero
+acondicionados a los escenarios de flujos continuos de datos.
 
 \begin{description} 
 
@@ -704,32 +1093,34 @@ son:
       y que, por tanto, no deben haber sido observados por el modelo
       previamente.  \textit{Holdout} es un método que requiere contar con flujos
       continuos lo suficientemente grandes para que la evaluación sea precisa,
-      lo cual no siempre es posible.
+      lo cual no siempre es posible y es uno de los impedimentos que hacen que
+      esta estrategia tenga menor trascendencia que otras.
 
    \item[Evaluación \textit{Prequential}] La técnica de evaluación
       \textit{Prequential} o \textit{test-then-train} consiste en realizar la
       evaluación de cada instancia primero y luego usarla para actualizar el
-      modelo, es decir, ya no hay una división del conjunto de datos sino que
-      todas las instancias son usadas para evaluar y clasificar. A diferencia
-      del enfoque de \textit{holdout}, no es necesario que el conjunto de datos
-      sea grande y la evaluación \textit{prequential} permite alimentar al
-      modelo con todos los datos de la colección lo cual significa un
-      aprovechamiento máximo del \textit{stream}. Por estas razones, el enfoque
-      \textit{prequential} tiende a ser el más usado en el campo de estudio.
+      modelo. En consecuencia, ya no hay una división en subconjuntos de datos
+      independientes sino que todas las instancias son usadas para evaluar y
+      luego clasificar, en un mismo instante de tiempo. A diferencia del enfoque
+      de \textit{holdout}, no es necesario que el conjunto de datos sea grande y
+      la evaluación \textit{prequential} permite alimentar al modelo con todos
+      los datos de la colección, lo que se traduce en un aprovechamiento máximo
+      del \textit{stream}. Por estas razones, el enfoque \textit{prequential}
+      tiende a ser el más usado en este campo de estudio.
 
 \end{description} 
 
 En cuanto a las métricas de rendimiento utilizadas, en el ámbito de
-clasificaciones de flujos se usan las mismas métricas que en clasificaciones por
-\textit{batch} con la salvedad que el cómputo se hace de manera incremental. En
-otras palabras, a diferencia de los métodos clásicos de validación cruzada donde
-la evaluación se hace en una única pasada, una vez generado el modelo final,
-aquí se debe calcular la métrica en cada nueva instancia y los resultados son
-acumulados.
+clasificaciones de flujos continuos se usan las mismas métricas de
+clasificaciones por \textit{batch} con la salvedad que el cómputo se hace de
+manera incremental. En otras palabras, a diferencia de los métodos clásicos de
+validación cruzada donde la evaluación se hace en una única pasada, una vez
+generado el modelo final, aquí se debe calcular la métrica en cada nueva
+instancia y los resultados se van acumulando.
 
-En definitiva, las métricas son las mismas que fueron presentadas en las secciones
-\ref{clasificacion_evaluacion} para datos uni-etiquetados y \ref{mll_evaluacion}
-para datos multi-etiquetados.
+En definitiva, las métricas son las mismas que fueron presentadas en las
+secciones \ref{evaluacion_metricas} para datos de etiqueta única y
+\ref{mll_evaluacion} para datos multi-etiquetados.
 
 \subsection{Datos sintéticos}
 
