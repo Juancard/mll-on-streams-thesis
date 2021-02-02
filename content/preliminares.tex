@@ -19,9 +19,7 @@ secciones}
 En pocas palabras, el presente trabajo de investigación se enmarca en las áreas
 de \textit{big data} y minería de datos, con aplicación en escenarios de
 \textit{streaming} o flujos continuos de datos y abordando clasificaciones
-multi-etiquetas. También se aprovechan técnicas del área de procesamiento de
-lenguaje natural para tratar corpus de texto libre y extraer \textit{features} o
-características representativas de los datos.
+multi-etiquetas. 
 
 La figura \ref{fig:campo_estudio} es un esquema que ilustra la taxonomía del
 campo de estudio y la interrelación entre las áreas de investigación
@@ -48,8 +46,9 @@ consulta.
 Estos problemas se suelen categorizar en aprendizaje supervisado o no
 supervisado, de acuerdo a si se conoce o no de antemano el concepto o etiqueta
 que define a los datos. Se desarrollará más sobre este punto en las próximas
-secciones. De entre los problemas de aprendizaje supervisado se destaca aquí el
-de clasificación, el cual será descrito a continuación.
+secciones\todo{expandir la definición de supervisada vs no supervisada}. De
+entre los problemas de aprendizaje supervisado se destaca aquí el de
+clasificación, el cual será descrito a continuación.
 
 \begin{figure}
    \includegraphics[width=0.66\linewidth]{figures/digits_recognition_v2.png}
@@ -75,14 +74,15 @@ correos electrónicos  de acuerdo a si se trata de correo basura (también
 conocido como \comillas{\textit{spam}}) o no. Dicho análisis puede ayudar a
 obtener un mayor entendimiento de los datos a alto nivel. Las tareas de
 clasificación han sido aplicadas en áreas tales como las de aprendizaje
-automático, reconocimiento de patrones o estadística. En un principio, buena
-parte de los algoritmos se ejecutaban en memoria, con la limitación de espacio
-de almacenamiento que eso conlleva. Investigaciones más recientes han
-desarrollado técnicas para escalar los algoritmos de tal manera que puedan
-manejar datos de mayor tamaño, alojados en memoria, en disco o procesados bajo
-demanda. Las aplicaciones para este tipo de tareas son numerosas y entre ellas
-se encuentran las de detectar fraudes o realizar diagnósticos médicos, entre
-otras.
+automático, reconocimiento de patrones o estadística. 
+
+En un principio, buena parte de los algoritmos se ejecutaban en memoria, con la
+limitación de espacio de almacenamiento que eso conlleva. Investigaciones más
+recientes han desarrollado técnicas para escalar los algoritmos de tal manera
+que puedan manejar datos de mayor tamaño, alojados en memoria, en disco o
+procesados bajo demanda. Las aplicaciones para este tipo de tareas son numerosas
+y entre ellas se encuentran las de detectar fraudes o realizar diagnósticos
+médicos, entre otras.
 
 La clasificación de datos consta de dos etapas, una de aprendizaje y otra de
 clasificación o predicción. Durante la tarea de aprendizaje se construye el
@@ -94,8 +94,8 @@ etiquetas asociadas. Formalmente, el problema de clasificación puede ser
 formulado de la siguiente manera. Se recibe un conjunto etiquetado de
 instancias, tupas o ejemplos de la forma $( X, y )$ donde cada tupla es un
 vector $X=(x_{1},x_{2},\dots,x_{n})$, siendo cada valor una característica
-distintiva, atributo o \textit{feature} de la instancia. El vector $y$ por su parte toma
-un valor de entre $n$ clases diferentes.
+distintiva, atributo o \textit{feature} de la instancia. El vector $y$ por su
+parte toma un valor de entre $n$ clases diferentes.
 
 Este tipo de tareas se engloban dentro del campo de aprendizaje supervisado ya
 que para cada instancia la etiqueta es conocida de antemano, y es aprovechada
@@ -111,37 +111,50 @@ decisión de si se trata de un correo basura o no. Desde esta perspectiva
 queremos aprender una función que sea capaz de distinguir las clases
 subyacentes.  Usualmente, esta asociación es llevada a cabo por algoritmos de
 aprendizaje, los cuales internamente usan funciones matemáticas o reglas de
-decisión. Algunos ejemplos de este tipo de algoritmos son los árboles de
-decisión, \textit{naive} bayes, perceptrón, entre otros.
+decisión que les permiten procesar los atributos de entrada y generar una salida
+acorde. Algunos ejemplos de este tipo de algoritmos son los árboles de decisión,
+\textit{naive} bayes, perceptrón, entre otros. Más adelante se retomará sobre
+este punto para describir en detalle algunos algoritmos representativos del
+campo.
 
-En la segunda etapa el modelo es usado para clasificar. En primer lugar, se
-calcula una métrica de evaluación, tal como la exactitud o \textit{accuracy}.
-Durante la etapa de entrenamiento esta estimación puede ser imprecisa, tomando
-un valor que tiende a ser \comillas{optimista} o que da un valor de exactitud
-mayor al rendimiento real. Esto sucede porque el clasificador puede llegar a
-incorporar anomalías particulares en el conjunto de datos de entrenamiento. Este
-fenómeno es llamado sobreajuste u \comillas{\textit{overfit}} y una técnica para
-reducirlo es separar de entre los datos un subconjunto de prueba o de
-\textit{testing} que no se usa durante el entrenamiento y a partir del cual se
-realizan predicciones y se calculan las métricas de evaluación. En este
-contexto, la tarea de evaluación es fundamental ya que es la vía a partir de la
+En la segunda etapa el modelo es usado para clasificar y realizar predicciones
+sobre datos desconocidos. A este fin, se calcula un valor que refleja la calidad
+del clasificador y es denominado \comillas{métrica de evaluación}. Una de ellas
+es la exactitud o \textit{accuracy} pero no es la única.  Durante la etapa de
+entrenamiento esta estimación puede ser imprecisa, tomando un valor que tiende a
+ser \comillas{optimista} o que da un valor de exactitud mayor al rendimiento
+real.  Esto sucede porque el clasificador puede llegar a incorporar anomalías
+particulares en el conjunto de datos de entrenamiento, las cuales no tienen que
+ver tanto con el dominio de aplicación en el cual se enmarca la tarea, sino más
+bien con \comillas{ruido}, datos erroneos o simplemente instancias que no
+reflejan correctamente los objetos del mundo real. Este fenómeno es llamado
+\comillas{sobreajuste} u \comillas{\textit{overfit}} y se han diseñado técnicas
+para reducirlo. Una de ellas consiste en separar de entre los datos de la
+colección completa, un subconjunto conocido como \comillas{conjunto de prueba} o
+de \textit{testing} que no se usa durante el entrenamiento y a partir del cual
+se realizan predicciones y se calculan las métricas de evaluación. 
+
+Así pues, la tarea de evaluación es fundamental ya que es la vía a partir de la
 cual se determina qué algoritmos o técnicas son más apropiados que otros para un
-problema en particular. Además provee la información necesaria para corregir o
-ajustar los parámetros de los algoritmos y así obtener modelos más robustos.
+problema en particular. Asimismo, provee la información necesaria para corregir
+o ajustar los parámetros de los algoritmos y así obtener modelos más robustos. 
 
-En definitiva, ambos pasos se aplican consecutivamente con el objetivo de lograr
-hallar un modelo capaz de predecir etiquetas en instancias nuevas y
-desconocidas.
+En definitiva, las etapas de aprendizaje y predicción se aplican
+consecutivamente con el objetivo de lograr generar un clasificador capaz de
+predecir con éxito las etiquetas de instancias nuevas y a priori desconocidas
+por el modelo.
 
 \subsection{Algoritmos}
 \label{clasificacion_algoritmos}
 
-Como se mencionó en la sección anterior, una de las etapas de clasificación
-consiste en generar un modelo capaz de clasificar instancias desconocidas. En
-esta etapa se pueden aplicar diversos tipos de algoritmos de acuerdo a la
-naturaleza de la tarea en particular que se desea abordar. A continuación se
-describen algunos algoritmos para generar modelos y que son particularmente
-relevantes para este trabajo de investigación.
+Como se mencionó en la sección anterior, una de las etapas de la clasificación
+consiste en generar un modelo capaz de clasificar instancias no observadas. En
+esta etapa de aprendizaje, se pueden aplicar diversos tipos de algoritmos de
+clasificación de acuerdo a la naturaleza de la tarea en particular que se desea
+abordar. A continuación, se describen algunos de estos algoritmos en detalle a
+fin de ahondar sobre el concepto de clasificación en el aprendizaje automático.
+Ademas, más adelante estos algoritmos serán particularmente relevantes para el
+desarrollo del presente trabajo de investigación.
 
 \subsubsection{\textit{Naive} Bayes}
 
