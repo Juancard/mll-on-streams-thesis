@@ -158,19 +158,22 @@ desarrollo del presente trabajo de investigación.
 
 \subsubsection{\textit{Naive} Bayes}
 
-\textit{Naive} Bayes es un modelo de clasificación computacionalmente simple
-pero cuyo rendimiento es competitivo contra otros modelos más complejos. Se dice
-que es un clasificador estadístico ya que se basa en el teorema de Bayes. La
-idea es computar una probabilidad para cada una de las clases, basada en los
-atributos de la instancia y seleccionar aquella de mayor probabilidad. El
-término \comillas{\textit{naive}} es el inglés para el término
+\textit{Naive} Bayes es uno de los algoritmos que pertenecen a la familia de
+clasificadores probabilísticos y se destaca por ser computacionalmente simple,
+interpretación, y al mismo tiempo brinda un  rendimiento competitivo en
+comparación con otros modelos más complejos. Se dice que es un clasificador
+estadístico ya que se basa en el teorema de Bayes. La idea es computar una
+probabilidad para cada una de las clases, basada en los atributos de la
+instancia y seleccionar aquella de mayor probabilidad. El término
+\comillas{\textit{naive}} es el inglés para el término
 \comillas{\textit{ingenuo}} y nace de la presunción que hace el algoritmo de que
 los atributos son independientes entre sí, o condicionalmente independientes.
 Esta presunción raramente se cumple en los escenarios donde se aplica pero
 contribuye a su simplicidad computacional y a su velocidad durante el
 entrenamiento.
 
-El teorema de Bayes se define formalmente de la siguiente manera:
+Para entender cómo funciona este algoritmo, es bueno abordar primero  el teorema
+de Bayes. Formalmente, se define de la siguiente manera:
 
 \begin{equation}
    P(H \mid X) = \frac{P(X \mid H) P(H)}{P(X)}
@@ -179,18 +182,20 @@ El teorema de Bayes se define formalmente de la siguiente manera:
 En esta ecuación, el vector $X$ es una tupla definida tal como en la sección
 anterior y en términos bayesianos representa la \comillas{evidencia}. $P(X)$,
 por lo tanto, es la probabilidad de que la tupla contenga los atributos que
-posee. Por su parte, $H$ es la hipótesis de que la tupla pertenece a una
-determinada clase y $P(H)$ su probabilidad. Esta es conocida como probabilidad
-\comillas{a priori}. De la misma manera, $P(H|X)$ es la probabilidad de que la
-hipótesis $H$ sea cierta bajo la evidencia $X$. A esta se la llama probabilidad
-\comillas{a posteriori} con $H$ condicionada por $X$ y es el valor que se quiere
-determinar en una tarea de clasificación.  Finalmente, $P(X|H)$ indica la
-probabilidad de que la tupla tenga unos atributos determinados dado que se
-satisface la hipótesis.
+efectivamente posee. Por su parte, $H$ es la hipótesis de que la tupla pertenece
+a una determinada clase y $P(H)$ su probabilidad. Esta es conocida como
+probabilidad \comillas{a priori}. De la misma manera, $P(H|X)$ es la
+probabilidad de que la hipótesis $H$ sea cierta bajo la evidencia $X$. A esta se
+la llama probabilidad \comillas{a posteriori} con $H$ condicionada por $X$ y es
+el valor que se quiere determinar en una tarea de clasificación.  Finalmente,
+$P(X|H)$ indica la probabilidad de que la tupla tenga unos atributos
+determinados dado que se satisface la hipótesis.
 
-Por su parte, la fórmula de \textit{Naive} Bayes es similar:
+A partir de dicha definición, y de forma similar, se expresa la ecuación de
+\textit{Naive} Bayes de la siguiente manera: \todo{m = clases pero en
+las siguientes secciones m = instancias} 
 
-\begin{equation}
+\begin{equation} 
    P(C_{i} \mid X) = P(X \mid C_{i}) P(C_{i})
 \end{equation}
 
@@ -208,7 +213,7 @@ C_{i})$ gracias a lo cual se puede definir de la siguiente manera:
 \end{equation}
 
 Finalmente, el modelo seleccionará la clase que maximice el valor de
-probabilidad.  
+probabilidad y esa será la salida final del algoritmo.  
 
 Como se ha dicho anteriormente, la simplicidad, velocidad computacional y su
 competitividad en métricas de exactitud hacen de \textit{Naive} Bayes un
@@ -222,39 +227,39 @@ tales como el de hallar errores en programas de computación
 
 \subsubsection{Árboles de Decisión}
 
-Los árboles de decisión son un modelo de clasificación que se destaca por ser de
+Árboles de decisión es un modelo de clasificación que se destaca por ser de
 fácil interpretación e intuitivo para el ser humano. De hecho, se puede generar
 una representación gráfica del árbol generado para asistir a la comprensión del
-del modelo y de cómo se comporta durante una predicción. En cuanto a su
-estructura, un árbol de decisión contiene nodos, cada uno representando un
-atributo de la colección. Estos nodos se conectan con otros nodos a partir de
-enlaces o \comillas{ramas} que representan un valor o un rango de valores de ese
-atributo. Los nodos de menor jerarquía son llamados \comillas{hojas} y contienen
-la clase de la predicción, y el nodo de mayor jerarquía es llamado
-\comillas{raíz}. Al momento de predecir una instancia nueva, la clasificación se
-realiza de la siguiente manera:  se toma la instancia nueva, la cual no tiene
-una etiqueta asociada, y los valores de sus atributos son comparados contra los
-del árbol, luego se traza un camino desde el nodo raíz hasta la hoja que
-contiene una clase y dicha clase es la predicción resultante. 
+modelo y así entender a más alto nivel cómo se comporta durante una predicción.
+En cuanto a su estructura, un árbol de decisión contiene nodos, cada uno
+representando un atributo de la colección. Estos nodos se conectan con otros
+nodos a partir de enlaces o \comillas{ramas} que representan un valor o un rango
+de valores de ese atributo.  Los nodos de menor jerarquía son llamados
+\comillas{hojas} y contienen la clase de la predicción, y el nodo de mayor
+jerarquía es llamado \comillas{raíz}. Al momento de predecir una instancia
+nueva, la clasificación se realiza de la siguiente manera:  se toma la instancia
+nueva, la cual no tiene una etiqueta asociada, y los valores de sus atributos
+son comparados contra los del árbol, luego se traza un camino desde el nodo raíz
+hasta la hoja. Finalmente, la clase que contiene la hoja es seleccionada y será
+parte de la predicción resultante. \todo{Figura de un árbol}
 
 Los árboles de decisión se generan a partir de un algoritmo de inducción.
 Existen varios de estos algoritmos pero todos son variantes que han sido
 diseñadas bajo un misma principio: construir  el árbol de una manera
 \comillas{voraz} \footnote{Se le llama voraz o \textit{greedy} a un algoritmo
    que busca hallar la opción óptima en cada paso y, de esta manera, alcanzar la
-solución general óptima para resolver un problema.  Esto lo diferencia de
-algoritmos como los de \textit{backtracking}, los cuales exploran distintas
-posibilidades y pueden volver al inicio en búsqueda de una mejor solución},
+   solución general óptima para resolver un problema.  Esto lo diferencia de
+   algoritmos como los de \textit{backtracking}, los cuales exploran distintas
+posibilidades y pueden volver al inicio en búsqueda de una mejor solución.},
 comenzando desde el nodo raíz (conocido como enfoque \textit{top-down}) y
 eligiendo en cada paso el atributo más informativo o que maximice alguna medida
-de ganancia de información. 
-
-Algunos de estos algoritmos son:
+de ganancia de información. Entre estos algoritmos de inducción vale destacar
+los siguientes:
 
 \begin{description} 
 
-   \item[\acrshort{id3}] Son las siglas de \textit{\acrlong{id3}} y fue
-      desarrollado en 1986 por Ross Quinlan. Consiste en crear un árbol de
+   \item[\acrshort{id3}] Son las siglas de \comillas{\textit{\acrlong{id3}}} y
+      fue desarrollado en 1986 por Ross Quinlan. Consiste en crear un árbol de
       múltiples vías, buscando para cada nodo el atributo categórico que lance
       la mayor ganancia de información para las clases categóricas. Los árboles
       crecen en un tamaño máximo y luego se realiza el paso de poda para mejorar
@@ -263,32 +268,33 @@ Algunos de estos algoritmos son:
    \item[C4.5] Es la evolución del algoritmo \acrshort{id3}. La principal mejora
       con respecto a su predecesor es que elimina la restricción de que los
       atributos deban ser categóricos. Esto lo consigue particionando el valor
-      continuo en rangos o en un conjunto de intervalos discretos. C4.5
-      convierte el árbol entrenado en conjuntos de reglas de decisión. 
+      continuo en rangos o en un conjunto de intervalos discretos. A su vez,
+      C4.5 convierte el árbol entrenado en conjuntos de reglas de decisión. 
 
-   \item[\acrshort{cart}] Son las siglas de \acrlong{cart} y es un algoritmo muy
-      similar al C4.5 pero que soporta clases numéricas, lo cual permite
-      resolver problemas de regresión. 
+   \item[\acrshort{cart}] Son las siglas de \comillas{\textit{\acrlong{cart}}} y
+      es un algoritmo muy similar al C4.5 pero que soporta clases numéricas, lo
+      cual permite que este algoritmo pueda ser utilizado para resolver
+      problemas de regresión. 
 
 \end{description}
 
 Una tarea fundamental en la generación de un árbol es definir un criterio de
-división para seleccionar el mejor atributo en cada paso. Existen diversas
-técnicas para abordarla, una de ellas es la de \comillas{Ganancia de
-Información}, usada por el algoritmo \acrshort{id3}. La Ganancia de información
-busca seleccionar el atributo que posee mayor variabilidad o representatividad
-de los datos y se sustenta en el cálculo de la entropía o medida de desorden. La
-idea de fondo es hallar el atributo que reduzca la entropía esperada. La
-entropía en el conjunto de datos $D$ se calcula de la siguiente manera:
+división. El objetivo del criterio de división es seleccionar el mejor atributo
+en cada paso y existen diversas técnicas para abordar el problema. Una de ellas
+es la de \comillas{Ganancia de Información}, usada por el algoritmo
+\acrshort{id3}. La técnica de ganancia de información busca seleccionar el
+atributo que posee mayor variabilidad o representatividad de los datos y se
+sustenta en el cálculo de la entropía o medida de desorden. La idea de fondo es
+hallar el atributo que reduzca la entropía esperada. La entropía en el conjunto
+de datos $D$ se calcula de la siguiente manera:
 
 \begin{equation}
    Entropia(D) = - \sum_{i=1}^{m} p_{i}\log_{2}(p_{i})
-\end{equation}
+\end{equation} \todo{m = clases. Misma consideración que en naive bayes}
 
-Aquí $p_{i}$ corresponde a la probabilidad de que una tupla de $D$ corresponda a
-la clase $C_{i}$.  
-
-Luego, la ganancia de información es:
+Notese que $p_{i}$ corresponde a la probabilidad de que una tupla de $D$
+corresponda a la clase $C_{i}$.  A partir de la entropía, se define la ganancia
+de información como:
 
 \begin{equation}
    Ganancia(A) = Entropia(D) 
@@ -301,10 +307,10 @@ los valores posibles que toma $A$. $D_{j}$ es el subconjunto de los datos cuyas
 tuplas poseen el valor $v$ del atributo $A$, siendo $\left\|D_{j}\right\|$ su
 cardinalidad o número de instancias del subconjunto. Al dividir este término por
 la cardinalidad del conjunto de datos, se obtiene un valor que representa el
-peso de la partición y es aplicado sobre la entropía esperada.
-
-Una vez obtenidos los valores de ganancia para cada atributo, se selecciona
-aquel que maximiza la ganancia y este será el criterio de separación en el nodo.
+peso de la partición y que es aplicado sobre la entropía esperada. Este proceso
+se repite para todos los atributos y, una vez obtenidos los valores de ganancia
+para cada uno de ellos, se elige aquel que maximiza la ganancia y finalmente el
+atributo seleccionado será el criterio de separación en el nodo.
 
 El algoritmo C4.5 introdujo una mejora en esta técnica llamada \comillas{Razón
 de Ganancia}. La misma busca disminuir uno de los efectos adversos que provoca
@@ -317,49 +323,54 @@ primer lugar, reemplaza la fórmula $Entropia(D)$ por la siguiente:
    \times \log_{2}(\frac{\left\| D_{j} \right\|}{\left\| D \right\|})
 \end{equation}
 
-A su vez, el nuevo cálculo de la ganancia se formula así:
+A partir de allí, el cálculo de la razón de ganancia hace uso de la ganancia y
+de la entropía y se formula como:
 
 \begin{equation} \label{eq:gan_c45}
    RazonGanancia(A) = \frac{Ganancia(A)}{EntropiaRG_{A}(D)} 
 \end{equation}
 
-Finalmente, el atributo de mayor razón de ganancia es seleccionado.
-
-\todo[inline]{Aplicaciones de árboles de decisión en la literatura}
-
-\todo[inline]{Figura de un árbol}
+Finalmente, el atributo de mayor razón de ganancia es seleccionado como criterio
+de corte y se continúa el calculo con los siguientes subnodos.
+\todo{Aplicaciones de árboles de decisión ?}
 
 \todo[inline]{Subsección para sgd?, svm?, perceptrones?}
 
-\subsubsection{Ensambles}
+\subsubsection{Ensambles} \todo{Figura de ensamble}
 
-Los ensambles son un conjunto de clasificadores que, al ser combinados, pueden
-realizar mejores predicciones que cualquiera de ellos individualmente. En pocas
-palabras, el enfoque de ensambles consiste en generar $k$ clasificadores, de un
-mismo tipo o no, y entrenarlos con subconjuntos de la colección de entrenamiento
-original. Dada una tupla nueva, cada clasificador devuelve su propia predicción,
-llamada \comillas{voto} y luego el ensamble devuelve la predicción final basada
-en esos votos.
+Los ensambles son un conjunto de clasificadores cuyas salidas son combinadas
+entre sí con el objetivo de realizar mejores predicciones que cualquiera de
+ellos individualmente. En pocas palabras, el enfoque de ensambles consiste en
+generar $k$ clasificadores llamados \comillas{clasificadores base}, desde un
+mismo algoritmo o no, y entrenarlos con distintos subconjuntos de la colección
+de entrenamiento original. Dada una tupla nueva, cada clasificador devuelve su
+propia predicción, llamada \comillas{voto}, y luego el ensamble combina cada uno
+de estos votos siguiendo algún método de combinación elegido, de forma tal de
+producir una predicción final óptima.
 
 La aplicación de ensambles en problemas de clasificación nace de la
 imposibilidad de generar un único modelo capaz de generalizar lo suficiente como
 para lograr un rendimiento perfecto. Ante la presencia de datos ruidosos,
 atípicos o erróneos los clasificadores pueden tender a clasificar mejor para un
 subconjunto de datos y no tan bien para otros. Este escenario es aprovechado por
-el enfoque de ensambles ya que su éxito tiene correlación con la existencia de
-diversidad en la clasificación, esto es, que haya variabilidad entre los
-subconjuntos de datos, modelos o hiper-parámetros, entre otros factores. A mayor
-esta diversidad, los errores particulares de un ensamble se aíslan y serán
-filtrados por la clasificación final. Como resultado se espera una disminución
-del error total de la clasificación así como también una mayor exactitud en la
-predicción, comparando contra los clasificadores base. Por otro lado, un enfoque
-de ensambles abre la posibilidad de distribuir y/o paralelizar el cómputo de la
-predicción, pudiendo así mejorar los tiempos de ejecución durante el
-entrenamiento.
+el enfoque de ensambles ya que su éxito tiene correlación directa con la
+existencia de \comillas{diversidad} en la clasificación, distinguiendo el
+concepto de diversidad como la existencia de variabilidad entre los modelos,
+entre hiper-parámetros o entre particiones del conjunto de datos. En definitiva
+se entiende que, cuanto mayor es esta diversidad, mayor es la probabilidad de
+aislar los posibles errores particulares de un modelo, y al suceder esto, el
+error terminará siendo filtrado por el ensamble en la clasificación final. En
+consecuencia, se espera lograr una disminución del error total de la
+clasificación así como también una mayor exactitud en la predicción, comparando
+contra la salida individual de cada clasificador base. Sumado a esto, un
+enfoque de ensambles abre la posibilidad de distribuir y/o paralelizar el
+cómputo de la predicción, pudiendo así mejorar los tiempos de ejecución durante
+el entrenamiento.
 
-Existen distintos tipos de ensamble, de acuerdo a su construcción y
-arquitectura. A continuación se describen 3 de ellos: los ensambles de tipo
-\textit{bagging}, los de tipo \textit{boosting} y los de tipo \textit{stacked}. 
+En suma, existen distintos tipos de ensamble de acuerdo a su construcción y
+arquitectura. A continuación se describen tres de ellos: los ensambles de tipo
+\comillas{\textit{bagging}}, los de tipo \comillas{\textit{boosting}} y los de
+tipo \comillas{\textit{stacked}}.
 
 \begin{description} 
 
@@ -372,29 +383,30 @@ arquitectura. A continuación se describen 3 de ellos: los ensambles de tipo
       tuplas del conjunto original de manera aleatoria y con reemplazo, es decir
       que puede haber tuplas repetidas y otras que no están incluidas en el
       nuevo conjunto.  Luego a partir de cada conjunto nuevo, se entrena un
-      clasificador $M_{i}$. Cada clasificador puede ser del mismos tipo ya que
-      la diversidad está dada por los datos. En la etapa de clasificación, cada
+      clasificador $M_{i}$. Cada clasificador puede ser del mismo tipo ya que la
+      diversidad está dada por los datos. En la etapa de clasificación, cada
       modelo $M_{i}$ genera una predicción que cuenta como un voto. El ensamble
       cuenta los votos y elige la clase con mayor cantidad de votos, siendo esta
       la decisión final del ensamble.
 
 
    \item[Boosting] En la técnica de \textit{boosting} se asigna un peso a cada
-      tupla de entrenamiento y se generan un conjunto de clasificadores, uno
-      luego del siguiente. A diferencia del método de \textit{bagging},
+      tupla de entrenamiento y se generan un conjunto de clasificadores, cada
+      uno a partir del anterior. A diferencia del método de \textit{bagging},
       \textit{boosting} trabaja siempre sobre el mismo conjunto de datos y la
       variabilidad está dada por los pesos que son asignados. El proceso es el
       siguiente: para el primer modelo de clasificación, $M_{i}$, los pesos son
       inicializados en un mismo valor para todas las tuplas. Una vez que se
       entrena este modelo, los pesos son actualizados de tal manera que el
       siguiente clasificador $M_{i} + 1$ trate de manera particular a las tuplas
-      mal clasificadas por Mi, de tal manera de llegar a una clasificación
-      correcta.  El clasificador final combina los votos de cada clasificador
-      individual , donde el peso del voto de cada clasificador es una función de
-      su exactitud. 
+      mal clasificadas por $M_{i}$. De ese modo se busca llegar a una
+      clasificación correcta en las sucesivas iteraciones.  Finalmente, el
+      modelo de ensamble combina los votos de cada clasificador individual. Cabe
+      notar que el peso de cada voto también es ponderado de acuerdo al
+      rendimiento del clasificador base.
 
 
-   \item[Stacking] Stacking es una técnica desarrollada por
+   \item[Stacking] La técnica de \textit{stacking} fue desarrollada por
       \citeauthor{wolpert_stacked_1992}\cite{wolpert_stacked_1992} y consiste en
       entrenar un nuevo clasificador de acuerdo a las predicciones realizadas
       por otros modelos, tomando la salida de estos modelos como entrada, de tal
@@ -413,28 +425,28 @@ arquitectura. A continuación se describen 3 de ellos: los ensambles de tipo
 
 Una de las tareas a tener en cuenta durante el entrenamiento de un ensamble es
 la de combinar las salidas de cada modelo en una salida final. La estrategia más
-común y simple es la de mayoría de voto, aplicada por los métodos de
-\textit{bagging}, pero existen múltiples y no necesariamente un ensamble de tipo
-\textit{bagging} debe aplicar esta estrategia. Por ejemplo, algunos
-clasificadores pueden decidir producir una salida sólo en el caso de que más de
-la mitad de ellos coincidan, o incluso ser más restrictivos y obligar a que la
-coincidencia sea total. El enfoque de \textit{boosting} por su parte, pondera al
-voto de acuerdo a los pesos que calcula, dando predominio a determinadas
-instancias.  También se suele dar un mayor peso a determinados clasificadores
-por sobre otros. Este tipo de métodos se los denomina \comillas{mayoría de voto
-ponderada} y pueden llevar a un rendimiento superior.
+común y simple es la de mayoría de voto, la cual normalmente es aplicada por los
+métodos de \textit{bagging}. No obstante, existen múltiples métodos de combinar
+los votos, e incluso no siempre un ensamble de tipo \textit{bagging} debe
+aplicar esta estrategia. Por ejemplo, algunos clasificadores pueden decidir
+producir una salida sólo en el caso de que más de la mitad de ellos coincidan, o
+incluso ser más restrictivos y obligar a que la coincidencia sea total. El
+enfoque de \textit{boosting} por su parte, pondera al voto de acuerdo a los
+pesos que calcula, dando predominio a determinadas instancias.  También se suele
+dar un mayor peso a determinados clasificadores por sobre otros. Este tipo de
+métodos se los denomina \comillas{mayoría de voto ponderada} y pueden llevar a
+un rendimiento superior si es aplicada en el escenario adecuado.
 
 \todo[inline]{Aplicaciones de ensambles en la literatura}
 
-\todo[inline]{Figura de ensamble}
 
 \subsection{Evaluación}
 \label{evaluacion_intro}
 
-Llevar a cabo evaluaciones de rendimiento es un aspecto importante del
-aprendizaje automático ya que nos permite conocer en qué medida un algoritmo es
-superior a otro para resolver una tarea. Particularmente, la tarea de
-clasificación es un desafío que se presenta en un contexto cambiante y
+Llevar a cabo evaluaciones de rendimiento sobre los modelos es un aspecto
+importante del aprendizaje automático ya que nos permite conocer en qué medida
+un algoritmo es superior a otro para resolver una tarea. Particularmente, la
+tarea de clasificación es un desafío que se presenta en un contexto cambiante y
 evolutivo, donde nuevas herramientas surgen y se actualizan constantemente.
 Incluso la composición y estructura de los modelos de clasificación varía según
 la familia de algoritmos aplicadas, y es esperable que los conceptos extraídos
@@ -442,14 +454,20 @@ de un modelo de tipo árbol tengan particularidades que lo diferencien de modelo
 de redes neuronales o modelos probabilísticos. Y del mismo modo, es esperable
 que alguno de estos modelos tenga un mejor rendimiento que otro en un
 determinado escenario, o incluso que sea mejor que un modelo generado por el
-mismo algoritmo pero con distintos hiper-parámetros. La tarea de evaluación es la
-que permite hallar estas cuestiones y sacar provecho de los algoritmos para
-obtener aún mejores modelos. Por lo tanto, es necesario estudiar las métricas y
-llevar a cabo procedimientos que nos permitan observar y entender la eficiencia
-de un clasificador. 
+mismo algoritmo pero con distintos hiper-parámetros. La tarea de evaluación es
+la que permite detectar estas particularidades y sacar provecho de los
+algoritmos para obtener aún mejores modelos. 
 
-En esta sección se describen algunas de las técnicas para evaluar las
-predicciones y las métricas que se calculan durante este proceso.
+A su vez, es importante estudiar las métricas de evaluación existentes y llevar
+adelante estrategias que nos permitan obtener medidas de evaluación confiables y
+que no hayan sido sesgadas por los datos que se usaron durante el entrenamiento.
+Y del mismo modo, entender los factores que provocaron un valor de métrica puede
+ser el paso inicial para hallar mejoras al modelo que optimizan su capacidad de
+predicción en el futuro.
+
+Por consiguiente, a continuación se estudian algunas de las estrategias llevadas
+a cabo durante la evaluación para evitar sesgos, así como también las métricas
+que se calculan durante este proceso.
 
 \subsubsection{Métricas}
 \label{evaluacion_metricas}
@@ -464,13 +482,13 @@ Antes de comenzar es importante aclarar algunos términos que serán usados para
 definir las métricas. Se entiende como \comillas{ejemplos positivos} a aquellas
 instancias cuya etiqueta pertenece a la clase de interés en el problema de
 estudio y \comillas{ejemplos negativos} como aquellas que no pertenecen a dicha
-clase. Al mismo tiempo, se derivan cuatro características que estarán presentes
-en las fórmulas para calcular las métricas, ellas son: 
+clase. Al mismo tiempo, se derivan cuatro conceptos que estarán presentes en las
+fórmulas para calcular las métricas, los cuales son: 
 
 \begin{description}
 
    \item[\acrfull{vp}] Son los ejemplos positivos que fueron correctamente
-      clasificadas como positivos.
+      clasificados como positivos.
 
    \item[\acrfull{vn}] Son los ejemplos negativos que fueron correctamente
       clasificados como negativos.
@@ -483,13 +501,14 @@ en las fórmulas para calcular las métricas, ellas son:
 
 \end{description}
 
-A partir de ellas, se definen las siguientes métricas:
+Una vez obtenidos estos conceptos se pueden calcular una serie de métricas a
+partir de ellos. Estas métricas son:  
 
 \paragraph{Exactitud}
 \label{evaluacion_metricas_exactitud}
 
 La exactitud o \textit{accuracy} es la proporción de ejemplos correctamente
-clasificados sobre el número total de instancias y mayor el valor de exactitud
+clasificados sobre el número total de instancias y a mayor el valor de exactitud
 mejor es el rendimiento del clasificador. Se define  como: 
 
 \begin{equation}
@@ -500,7 +519,7 @@ mejor es el rendimiento del clasificador. Se define  como:
 \paragraph{Tasa de Error}
 
 A la inversa de la exactitud, la tasa de error es la proporción de ejemplos
-incorrectamente clasificados sobre el número total de instancias y menor el
+incorrectamente clasificados sobre el número total de instancias y a menor el
 valor de la tasa de error mejor es el rendimiento del clasificador. Se define
 como: 
 
@@ -512,8 +531,9 @@ como:
 \paragraph{Precisión}
 
 La precisión es la proporción de ejemplos que fueron clasificados como positivos
-y que efectivamente lo son. Mayor el valor de precisión mejor es el rendimiento
-del clasificador. Se dice que es una medida de exactitud y se define como: 
+y que efectivamente lo son. Mayor es el valor de precisión mejor es el
+rendimiento del clasificador. Se dice que es una medida de exactitud y se define
+como: 
 
 \begin{equation} 
    precision = \frac{\acrshort{vp}}{\acrshort{vp} + \acrshort{fp}}
@@ -522,8 +542,8 @@ del clasificador. Se dice que es una medida de exactitud y se define como:
 \paragraph{Exhaustividad}
 
 La exhaustividad o \textit{recall} es la proporción de ejemplos positivos que
-fueron clasificados como positivos. Mayor el valor de exhaustividad mejor es el
-rendimiento del clasificador. Se dice que es una medida de completitud y se
+fueron clasificados como positivos. Mayor es el valor de exhaustividad mejor es
+el rendimiento del clasificador. Se dice que es una medida de completitud y se
 define como: 
 
 \begin{equation} 
@@ -544,8 +564,8 @@ de esta medida, mejor es el rendimiento del clasificador. Se define como:
 Por otro lado, existen métricas para evaluar la eficiencia del clasificador en
 términos de velocidad y consumo de memoria. Estas métricas cobran especial
 importancia en ambientes de flujos continuos de datos, donde el volumen de datos
-es grande, la velocidad es alta y los recursos escasean. A continuación se añade
-una breve descripción de ambas.
+es grande, la velocidad en la que arriban es alta y los recursos escasean. A
+continuación se añade una breve descripción de ambas.
 
 \paragraph{Velocidad}
 
@@ -558,9 +578,10 @@ tiempo de ejecución, mejor es el rendimiento del algoritmo.
 \paragraph{Consumo de Memoria}
 
 El consumo de memoria es un indicador de los requerimientos de memoria
-aproximados de almacenar el modelo del clasificador así como de las variaciones
-que se producen durante la ejecución. A menor el consumo de memoria, mejor es el
-algoritmo.
+aproximados para almacenar el modelo, así como también un indicador de resguardo
+para estimar el posible consumo de memoria durante la ejecución y asegurarse que
+el algoritmo se mantiene en actividad. A menor el consumo de memoria, mayor es
+la eficiencia del modelo.
 
 \subsubsection{Estrategias}
 \label{evaluacion_estrategias}
@@ -590,13 +611,13 @@ independencia en los datos que derivará en un mayor grado de generalización en
 el modelo. 
 
 Por contrapartida, el enfoque de \textit{Holdout} tiene la limitación de que
-para lograr generalizar requiere de un considerable número de instancias
-\todo{citar fuente}. Por un lado, muy pocos datos en el conjunto de
-entrenamiento puede derivar en predicciones pobres, pero a la vez, muy pocos
-datos en el conjunto de pruebas tampoco es recomendable, ya que podría resultar
-en medidas de rendimiento poco fiables. A esto se suma una de las dificultades
-más comunes en el área de aprendizaje automático que es la falta de
-disponibilidad de suficientes colecciones de datos. 
+para lograr generalizar requiere de un número de instancias considerable.
+\todo{citar fuente} Esta idea proviene del hecho de que muy pocos datos en el
+conjunto de entrenamiento puede derivar en predicciones pobres, pero por el
+contrario, muy pocos datos en el conjunto de pruebas tampoco es recomendable, ya
+que podría resultar en medidas de rendimiento poco fiables. A esto se suma una
+de las dificultades más comunes en el área de aprendizaje automático: la falta
+de disponibilidad de colecciones grandes de datos del mundo real. 
 
 Por estas razones, ha tomado peso el uso de técnicas de muestreos de datos para
 reutilizar instancias de entrenamiento y de prueba. Una de ellas es la de
@@ -611,10 +632,10 @@ subconjuntos de manera aleatoria y en la forma $\{d_{1}, d_{2},  \dots, d_{k}
 igual o similar tamaño. El proceso itera sobre cada uno de los subconjuntos para
 generar $k$ modelos. En la primera iteración $i$, se separa el subconjunto
 $d_{i}$ y se entrena el modelo con los restantes subconjuntos para luego medir
-el rendimiento con él. En la segunda iteración se repite este procedimiento pero
-usando como pruebas al subconjunto $d_{i+1}$, y así en cada iteración. Así pues,
-cada subconjunto es usado una vez para probar el modelo. Finalmente, se toman
-los $k$ modelos generados y se promedian las métricas. 
+el rendimiento con él. En la segunda iteración, se repite este procedimiento
+pero usando como pruebas al subconjunto $d_{i+1}$, y así en cada iteración. Así
+pues, cada subconjunto es usado una vez para probar el modelo. Finalmente, se
+toman los $k$ modelos generados y se promedian las métricas. 
 
 De esta técnica derivan otras similares como \comillas{\textit{leave-one-out}}
 en donde cada subconjunto es conformado por $n-1$ instancias, siendo $n$ el
