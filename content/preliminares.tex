@@ -32,7 +32,7 @@ El aprendizaje automático, también conocido por su término en ingles
 \acrfull{ia} y estudia cómo las computadoras pueden \comillas{aprender} o
 mejorar su rendimiento meramente a partir de datos y sin la intervención de un
 ser humano.  La idea detrás de esta disciplina es lograr reconocer patrones
-subyacentes en los datos y tomar decisiones en base a estos. Por ejemplo, un
+subyacentes en los datos y tomar decisiones basándose en ellos. Por ejemplo, un
 problema de aprendizaje automático es el de reconocer dígitos escritos a mano a
 partir de un conjunto de ejemplos (ver figura \ref{fig:reconocimiento_digitos}).
 Aquí se tienen un conjunto de imágenes, cada una representando un dígito del 0
@@ -46,7 +46,7 @@ consulta.
 Estos problemas se suelen categorizar en aprendizaje supervisado o no
 supervisado, de acuerdo a si se conoce o no de antemano el concepto o etiqueta
 que define a los datos. Se desarrollará más sobre este punto en las próximas
-secciones\todo{expandir la definición de supervisada vs no supervisada}. De
+secciones \todo{expandir la definición de supervisada vs no supervisada}. De
 entre los problemas de aprendizaje supervisado se destaca aquí el de
 clasificación, el cual será descrito a continuación.
 
@@ -126,7 +126,7 @@ ser \comillas{optimista} o que da un valor de exactitud mayor al rendimiento
 real.  Esto sucede porque el clasificador puede llegar a incorporar anomalías
 particulares en el conjunto de datos de entrenamiento, las cuales no tienen que
 ver tanto con el dominio de aplicación en el cual se enmarca la tarea, sino más
-bien con \comillas{ruido}, datos erroneos o simplemente instancias que no
+bien con \comillas{ruido}, datos erróneos o simplemente instancias que no
 reflejan correctamente los objetos del mundo real. Este fenómeno es llamado
 \comillas{sobreajuste} u \comillas{\textit{overfit}} y se han diseñado técnicas
 para reducirlo. Una de ellas consiste en separar de entre los datos de la
@@ -291,7 +291,7 @@ de datos $D$ se calcula de la siguiente manera:
    Entropia(D) = - \sum_{i=1}^{q} p_{i}\log_{2}(p_{i})
 \end{equation}
 
-Notese que $p_{i}$ corresponde a la probabilidad de que una tupla de $D$
+Nótese que $p_{i}$ corresponde a la probabilidad de que una tupla de $D$
 corresponda a la clase $C_{i}$.  A partir de la entropía, se define la ganancia
 de información como:
 
@@ -315,7 +315,7 @@ El algoritmo C4.5 introdujo una mejora en esta técnica llamada \comillas{Razón
 de Ganancia}. La misma busca disminuir uno de los efectos adversos que provoca
 la técnica de ganancia de información, esta es, que tiende a favorecer a
 atributos con un mayor número de valores posibles. La razón de ganancia, en
-primer lugar, reemplaza la fórmula $Entropia(D)$ por la siguiente:
+primer lugar, reemplaza la fórmula $Entropia(D)$ por la siguiente expresión: 
 
 \begin{equation}
    EntropiaRG_{A}(D) = - \sum_{j=1}^{v} \frac{\left\| D_{j} \right\|}{\left\| D \right\|} 
@@ -428,7 +428,7 @@ común y simple es la de mayoría de voto, la cual normalmente es aplicada por l
 métodos de \textit{bagging}. No obstante, existen múltiples métodos de combinar
 los votos, e incluso no siempre un ensamble de tipo \textit{bagging} debe
 aplicar esta estrategia. Por ejemplo, algunos clasificadores pueden decidir
-producir una salida sólo en el caso de que más de la mitad de ellos coincidan, o
+producir una salida solo en el caso de que más de la mitad de ellos coincidan, o
 incluso ser más restrictivos y obligar a que la coincidencia sea total. El
 enfoque de \textit{boosting} por su parte, pondera al voto de acuerdo a los
 pesos que calcula, dando predominio a determinadas instancias.  También se suele
@@ -772,21 +772,21 @@ tienen en cuenta la relación entre etiquetas.
 
 Las cadenas de clasificadores o \textit{\acrlong{cc}}
 \cite{read_classifier_2011} es una técnica que convierte el problema de
-\acrshort{mll} en una ”cadena” de problemas de clasificación binaria, tal que el
-siguiente clasificador de la cadena posee las predicciones de los anteriores. En
-principio, la división del conjunto de datos es similar a la que se hace en el
-enfoque anterior, designando un clasificador por cada etiqueta. Durante el
-entrenamiento, el clasificador inicial, seleccionado aleatoriamente, usa de
-entrada los atributos originales, tal como el clasificador \acrshort{br}. Luego
-la salida de este clasificador es añadida al espacio de atributos como un
+\acrshort{mll} en una \comillas{cadena} de problemas de clasificación binaria,
+tal que el siguiente clasificador de la cadena posee las predicciones de los
+anteriores. En principio, la división del conjunto de datos es similar a la que
+se hace en el enfoque anterior, designando un clasificador por cada etiqueta.
+Durante el entrenamiento, el clasificador inicial, seleccionado aleatoriamente,
+usa de entrada los atributos originales, tal como el clasificador \acrshort{br}.
+Luego la salida de este clasificador es añadida al espacio de atributos como un
 atributo más de cada instancia, para que posteriormente, estos atributos sean la
 entrada del siguiente clasificador, el cual también es seleccionado al azar.
 Este proceso es repetido hasta completar todos los clasificadores.  Como se
-puede observar, lo que se produce es un ”encadenamiento” de clasificadores, el
-cual no es accidental y tiene como fin conservar la dependencia entre etiquetas:
-en el entrenamiento se van acumulando las salidas de los clasificadores
-anteriores de tal manera que el siguiente clasificador absorbe la correlación
-entre las etiquetas de los anteriores clasificadores. 
+puede observar, lo que se produce es un \comillas{encadenamiento} de
+clasificadores, el cual no es accidental y tiene como fin conservar la
+dependencia entre etiquetas: en el entrenamiento se van acumulando las salidas
+de los clasificadores anteriores de tal manera que el siguiente clasificador
+absorbe la correlación entre las etiquetas de los anteriores clasificadores. 
 
 Cabe notar que en esta técnica cobra especial importancia el ordenamiento de los
 clasificadores ya que este orden tiene un impacto directo sobre el resultado de
@@ -890,15 +890,15 @@ clasificación tradicionales el poder de generalización de un modelo es evaluad
 a partir de métricas tales como la exactitud o la exhaustividad las cuales
 trabajan con una única etiqueta. Una predicción multi-etiquetada, por el
 contrario, carga con la complejidad de que cada ejemplo puede ser asociado a más
-de una o dos etiquetas. Esto implica que ya no se puede trabajar con la idea de
-que una clasificación solo puede ser correcta o incorrecta. De lo contrario, se
-incursionaría en una evaluación excesivamente rigurosa. Por este motivo, en el
-campo de \acrshort{mll} se han diseñado una serie de métricas nuevas y
-específicas para abordar este tipo de problemas, y se clasifican en dos grupos:
-existen las métricas \comillas{basadas en ejemplos}, que son computadas por cada
-instancia y luego promediadas; y las métricas \comillas{basadas en etiquetas},
-las cuales son calculadas para cada etiqueta por separado y devuelven el
-promedio micro o el promedio macro. 
+de una o dos etiquetas. Esto implica que ya no se puede trabajar con la
+presunción de que una clasificación solo puede ser correcta o incorrecta. De lo
+contrario, se incursionaría en una evaluación excesivamente rigurosa. Por este
+motivo, en el campo de \acrshort{mll} se han diseñado una serie de métricas
+nuevas y específicas para abordar este tipo de problemas, y se clasifican en dos
+grupos: existen las métricas \comillas{basadas en ejemplos}, que son computadas
+por cada instancia y luego promediadas; y las métricas \comillas{basadas en
+etiquetas}, las cuales son calculadas para cada etiqueta por separado y
+devuelven el promedio micro o el promedio macro. 
 
 A continuación se describe en detalle ambas categorías, incluyendo métricas
 presentadas por cada enfoque, junto con su definición formal y una
@@ -1122,7 +1122,7 @@ el error posible.
 Como se describió en la sección \ref{evaluacion_intro}, la tarea de evaluación
 para aprendizaje en ambientes de \textit{batch} consiste en dividir al conjunto
 de datos en uno o más subconjuntos de entrenamiento y pruebas.  El ambiente de
-\textit{stream}, por su parte, presenta un desafio extra y es que no permite
+\textit{stream}, por su parte, presenta un desafío extra y es que no permite
 llevar a cabo esta división debido a que no se cuenta con los datos previamente
 almacenados. Además se debe tener en consideración la naturaleza incremental y
 evolutiva de los datos: a medida que pasa el tiempo pueden surgir nuevas
@@ -1275,7 +1275,7 @@ son los siguientes:
       multi-etiquetado de los datos (ver sección \ref{mll_def_formal}). Observar
       la distribución de etiquetas es útil para entender la composición de dicha
       cardinalidad y se calcula tomando el número de veces que se repite cada
-      posible tamaño de subconjuntos de etiquetas. En base a este fenómeno se
+      posible tamaño de subconjuntos de etiquetas. Basándose en este fenómeno se
       distinguen dos tipos de colecciones, \comillas{A} y \comillas{B}. Las
       colecciones de tipo A son aquellas donde la cardinalidad de etiquetas es
       muy cercana a uno pero resultan ser multi-etiquetadas por la existencia de

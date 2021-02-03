@@ -96,16 +96,16 @@ restricciones de tiempo de respuesta y memoria.
 
 Tradicionalmente, el aprendizaje supervisado ha consistido en asociar una
 instancia o ejemplo a una única etiqueta. Dicho ejemplo es una representación de
-un objeto del mundo real, y por lo tanto, consta de características o
-\textit{features} particulares. La etiqueta corresponde a un significado
-semántico o concepto que lo caracteriza. La tarea de clasificación entonces,
-reside en aprender una función que permita enlazar ejemplos no observados con
-una etiqueta. Es preciso notar aquí que dicha definición encubre la restricción
-de que cada instancia pertenece a una única etiqueta, o dicho de otra manera,
-cada objeto del mundo real se asocia a un único concepto y ningún otro. Sin
-embargo, existen problemas de clasificación donde más de una etiqueta puede ser
-asignada a un ejemplo. La anterior presunción no se amolda a problemas complejos
-donde un objeto pueda tener más de un significado simultáneamente. 
+un objeto del mundo real, y por lo tanto, consta de características o atributos
+particulares. La etiqueta corresponde a un significado semántico o concepto que
+lo caracteriza. La tarea de clasificación entonces, reside en aprender una
+función que permita enlazar ejemplos no observados con una etiqueta. Es preciso
+notar aquí que dicha definición encubre la restricción de que cada instancia
+pertenece a una única etiqueta, o dicho de otra manera, cada objeto del mundo
+real se asocia a un único concepto y ningún otro. Sin embargo, existen problemas
+de clasificación donde más de una etiqueta puede ser asignada a un ejemplo. La
+anterior presunción no se amolda a problemas complejos donde un objeto pueda
+tener más de un significado simultáneamente. 
 
 Tareas de este tipo pueden surgir en áreas como las de categorización de texto,
 recuperación de información musical, clasificación semántica de escenas,
@@ -137,7 +137,7 @@ siguientes características \cite{gibaja_tutorial_2015}:
 
    \item Las etiquetas pueden estar correlacionadas. Esto significa que se
       pueden aplicar técnicas que exploten estas relaciones con el objetivo de
-      reducir los tiempo de procesamiento de los algoritmos.  
+      reducir los tiempos de procesamiento de los algoritmos.  
 
    \item La distribución de los datos puede estar desbalanceada, es decir, que
       una etiqueta puede tener un mayor número de ejemplos que otras. 
@@ -204,7 +204,8 @@ propone dos grandes grupos:
 
 \begin{figure}
    \includegraphics[width=\linewidth]{figures/algorithm_taxonomy.png}
-   \caption{Categorización de los algoritmos de \acrshort{mll} más representativos}
+   \caption{Categorización de los algoritmos de \acrshort{mll} más
+   representativos.}
    \label{fig:algorithm_taxonomy} 
 \end{figure}
 
@@ -294,39 +295,39 @@ métricas de evaluación ante cada nueva instancia abordada. Todo esto en un
 contexto cambiante, de alta disponibilidad y de limitación en el espacio de
 almacenamiento. Si bien existen métodos de clasificación para flujos continuos
 que han dado resultados satisfactorios, aún es un campo conveniente de ser
-abordado. Asímismo, reproducir los experimentos realizados y fortalecer las
+abordado. Asimismo, reproducir los experimentos realizados y fortalecer las
 técnicas y herramientas actuales puede ser beneficioso para lograr estudios
 precisos y pormenorizados que sean valiosos tanto para la comunidad científica
 en sí misma, como también para la sociedad en general.
 
-Por otro lado, si bien existen en el mundo real infinidad de datos multi
-etiquetados aún no es posible hallar colecciones disponibles al público que
-cuenten con todas las características de un flujo continuo de datos. Uno de los
-enfoques abordados es convertir las colecciones existentes en flujos tales que
-arriben en conjuntos predefinidos y a lo largo del tiempo. De esta manera los
-algoritmos pueden ser utilizados para realizar clasificaciones en un ambiente
-similar al de un escenario de \textit{streaming}. Sin embargo, estas colecciones
-tienen un número limitado de instancias y por lo tanto no cumplen con la
-condición de ser teóricamente infinitos. Es entonces aquí donde surgen las
-técnicas de generación sintética de instancias, que buscan reproducir la
+Por otro lado, si bien existen en el mundo real infinidad de datos
+multi-etiquetados aún no es posible hallar colecciones disponibles al público
+que cuenten con todas las características de un flujo continuo de datos. Uno de
+los enfoques abordados es convertir las colecciones existentes en flujos tales
+que arriben en conjuntos predefinidos y a lo largo del tiempo. De esta manera
+los algoritmos pueden ser utilizados para realizar clasificaciones en un
+ambiente similar al de un escenario de \textit{streaming}. Sin embargo, estas
+colecciones tienen un número limitado de instancias y por lo tanto no cumplen
+con la condición de ser teóricamente infinitos. Es entonces aquí donde surgen
+las técnicas de generación sintética de instancias, que buscan reproducir la
 distribución subyacente de los datos para simular colecciones de datos del mundo
 real. La contracara de este enfoque es que, si bien existen técnicas y
 herramientas para generar datos etiquetados, buena parte de ellos son solo
 aplicables para instancias de una única etiqueta y los que logran generar datos
-multi etiquetados no han sido lo suficientemente explorados en el área. Hasta el
-momento, los generadores de instancias multi etiquetadas son capaces de generar
-datos cercanos a los de colecciones del mundo real \cite{read_generating_2009}
-y brindan la posibilidad de realizar estudios relativamente certeros de
-algoritmos de clasificación \cite{read_scalable_2012}. No obstante, debe notarse
-también que si bien se han obtenido colecciones sintéticas en sí mismas aún no
-han logrado generar instancias para una colección en concreto, respetando sus
+multi-etiquetados no han sido lo suficientemente explorados en el área. Hasta el
+momento, los generadores de instancias multi-etiquetadas son capaces de generar
+datos cercanos a los de colecciones del mundo real \cite{read_generating_2009} y
+brindan la posibilidad de realizar estudios relativamente certeros de algoritmos
+de clasificación \cite{read_scalable_2012}. No obstante, debe notarse también
+que si bien se han obtenido colecciones sintéticas en sí mismas aún no han
+logrado generar instancias para una colección en concreto, respetando sus
 cualidades particulares y que las distinguen de otras, tales como la
 co-ocurrencia de etiquetas, la densidad y cardinalidad de las etiquetas y la
-relación entre las etiquetas y sus \textit{features}, por mencionar algunas. De
-lograr esta aproximación se podrán realizar estudios sobre el impacto de los
-algoritmos sobre flujos de datos de naturaleza distintiva, o en otras palabras,
-entender en qué medida un algoritmo es más apropiado que otro para un conjunto
-de datos en un determinado contexto. 
+relación entre las etiquetas y sus atributos, por mencionar algunas. De lograr
+esta aproximación se podrán realizar estudios sobre el impacto de los algoritmos
+sobre flujos de datos de naturaleza distintiva, o en otras palabras, entender en
+qué medida un algoritmo es más apropiado que otro para un conjunto de datos en
+un determinado contexto. 
 
 Esta última idea mencionada, es decir, el ser capaz de hallar las fortalezas y
 debilidades de un algoritmo de \acrshort{mll} en un contexto determinado es
@@ -355,11 +356,11 @@ sobre datos multi-etiquetados en ambientes de \textit{streaming} provenientes de
 fuentes de distinto origen y naturaleza, en particular se
 seleccionan colecciones de datos que son puntos de referencia en la literatura y
 que poseen características distintivas entre sí, tales como el número de
-etiquetas, el número de \textit{features}, o la cantidad de instancias. A su
-vez, es necesario convertir estos datos a flujos continuos y a este fin se
-generan instancias sintéticas que sean fieles a estas características
-mencionadas, aplicando técnicas existentes pero también extendiéndolas para
-detectar co-ocurrencias entre etiquetas. De esta manera, se buscan obtener
+etiquetas, el número de atributos, o la cantidad de instancias. A su vez, es
+necesario convertir estos datos a flujos continuos y a este fin se generan
+instancias sintéticas que sean fieles a estas características mencionadas,
+aplicando técnicas existentes pero también extendiéndolas para detectar
+co-ocurrencias entre etiquetas. De esta manera, se buscan obtener
 representaciones óptimas de las colecciones. Finalmente, se llevarán a cabo
 clasificaciones con algoritmos clásicos y con soluciones de ensambles, en
 búsqueda de maximizar los valores de las métricas de evaluación en cada
