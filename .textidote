@@ -1,0 +1,3 @@
+--output html --read-all
+--dict es.utf-8.add
+--check es tesis.tex
