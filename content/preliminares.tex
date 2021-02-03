@@ -192,8 +192,7 @@ $P(X|H)$ indica la probabilidad de que la tupla tenga unos atributos
 determinados dado que se satisface la hipótesis.
 
 A partir de dicha definición, y de forma similar, se expresa la ecuación de
-\textit{Naive} Bayes de la siguiente manera: \todo{m = clases pero en
-las siguientes secciones m = instancias} 
+\textit{Naive} Bayes de la siguiente manera:
 
 \begin{equation} 
    P(C_{i} \mid X) = P(X \mid C_{i}) P(C_{i})
@@ -201,7 +200,7 @@ las siguientes secciones m = instancias}
 
 Aquí el término $P(X)$ es descartado ya que se asume constante para todas las
 clases. La hipótesis $H$ es representada como $C_{i}$ que es un valor de la
-tupla $C=(C_{1},C_{2},\dots,C_{m})$, donde $m$ es el número de clases. La
+tupla $C=(C_{1},C_{2},\dots,C_{q})$, donde $q$ es el número de clases. La
 presunción \comillas{ingenua} es aplicada para el cálculo del término $P(X \mid
 C_{i})$ gracias a lo cual se puede definir de la siguiente manera:
 
@@ -289,8 +288,8 @@ hallar el atributo que reduzca la entropía esperada. La entropía en el conjunt
 de datos $D$ se calcula de la siguiente manera:
 
 \begin{equation}
-   Entropia(D) = - \sum_{i=1}^{m} p_{i}\log_{2}(p_{i})
-\end{equation} \todo{m = clases. Misma consideración que en naive bayes}
+   Entropia(D) = - \sum_{i=1}^{q} p_{i}\log_{2}(p_{i})
+\end{equation}
 
 Notese que $p_{i}$ corresponde a la probabilidad de que una tupla de $D$
 corresponda a la clase $C_{i}$.  A partir de la entropía, se define la ganancia
@@ -777,15 +776,17 @@ Las cadenas de clasificadores o \textit{\acrlong{cc}}
 siguiente clasificador de la cadena posee las predicciones de los anteriores. En
 principio, la división del conjunto de datos es similar a la que se hace en el
 enfoque anterior, designando un clasificador por cada etiqueta. Durante el
-entrenamiento el clasificador inicial, seleccionado aleatoriamente, usa de
+entrenamiento, el clasificador inicial, seleccionado aleatoriamente, usa de
 entrada los atributos originales, tal como el clasificador \acrshort{br}. Luego
 la salida de este clasificador es añadida al espacio de atributos como un
 atributo más de cada instancia, para que posteriormente, estos atributos sean la
 entrada del siguiente clasificador, el cual también es seleccionado al azar.
-proceso es repetido hasta completar todos los clasificadores.  Como se ve se
-produce un ”encadenamiento” de clasificadores que no es accidental y tiene como
-fin conservar la dependencia entre etiquetas, ya que cada clasificador logra
-capturar la correlación entre las etiquetas de los anteriores clasificadores. 
+Este proceso es repetido hasta completar todos los clasificadores.  Como se
+puede observar, lo que se produce es un ”encadenamiento” de clasificadores, el
+cual no es accidental y tiene como fin conservar la dependencia entre etiquetas:
+en el entrenamiento se van acumulando las salidas de los clasificadores
+anteriores de tal manera que el siguiente clasificador absorbe la correlación
+entre las etiquetas de los anteriores clasificadores. 
 
 Cabe notar que en esta técnica cobra especial importancia el ordenamiento de los
 clasificadores ya que este orden tiene un impacto directo sobre el resultado de
@@ -802,52 +803,54 @@ individual.
 
 El conjunto de potencias de etiquetas o \textit{\acrlong{lp}}
 \cite{tsoumakas_random_2011} es una técnica que se encarga de transformar el
-problema de \acrshort{mll} en uno de clasificación multi-clase, de tal manera de
-poder abordarlo con algoritmos de este tipo. La clasificación multi-clase es un
+problema de \acrshort{mll} en uno de clasificación multi-clase y así poder
+abordarlo con algoritmos de este tipo. La clasificación multi-clase es un
 enfoque usado para tratar con ejemplos en donde la etiqueta es única pero cuenta
 con más de dos clases. Un ejemplo de este tipo de problemas es el de análisis de
 sentimiento de texto, en donde las clases pueden ser \comillas{positivo},
 \comillas{negativo} y \comillas{neutral}. 
 
-En \acrshort{lp} cada etiqueta indica el subconjunto de etiquetas de
-la instancia. Esto es beneficioso en cuanto a que se logra preservar la
-dependencia entre etiquetas. Sin embargo, el modelo tiene algunas dificultades.
-En primer lugar, el espacio de clases posibles es exponencial y su cantidad de
-clases puede llegar a ser de $2^{\left\|L\right\|}$ como máximo. A su vez, pueden
+En \acrshort{lp} cada etiqueta indica el subconjunto de etiquetas de la
+instancia. Esto es beneficioso en cuanto a que se logra preservar la dependencia
+entre etiquetas. Sin embargo, el modelo tiene algunas dificultades.  En primer
+lugar, el espacio de clases posibles es exponencial y su cantidad de clases
+puede llegar a ser de $2^{\left\|q\right\|}$ como máximo. A su vez, pueden
 llegar a arribar ejemplos con una combinación de etiquetas que el modelo no
 recibió durante el entrenamiento, por lo cual no logra generalizar lo suficiente
 y se lo considera un modelo incompleto. A fin de sobrepasar estas complicaciones
-se desarrolló la técnica de Conjuntos Podados o \acrfull{ps}. La misma consiste
-en preservar para la clasificación aquellos subconjuntos de etiquetas que son
-más frecuentes en la colección, y eliminar los demás. Con esto se logra
-disminuir considerablemente el espacio de clases y disminuye la complejidad
-computacional, tanto durante el entrenamiento como durante la predicción.
+se desarrolló la técnica de \comillas{Conjuntos Podados} o
+\comillas{\acrfull{ps}}. La misma consiste en preservar para la clasificación
+aquellos subconjuntos de etiquetas que son más frecuentes en la colección, y
+eliminar los demás. Con esto se logra disminuir considerablemente el espacio de
+clases y disminuye la complejidad computacional, tanto durante el entrenamiento
+como durante la predicción.
 
 \subsubsection{Adaptación del Algoritmo}
 
-Además del enfoque de transformación del problema, otros autores abordan la
+Además del enfoque de transformación del problema, algunos autores abordan la
 clasificación multi-etiquetas a partir de la adaptación de algoritmos clásicos y
-bien conocidos. Esta categoría engloba al conjunto de algoritmos que abordan el
-problema de \acrshort{mll} mediante la modificación de algoritmos de etiqueta
-única para que sean capaces de manejar la nueva naturaleza de los datos en estas
-tareas. Las modificaciones que se introducen pueden variar en complejidad según
-el algoritmo tratado y las características de la colección.  Se han adaptado una
-diversa cantidad de algoritmos incluyendo aquellos basados en redes neuronales,
-árboles, métodos probabilísticos, entre otros \cite{herrera_multilabel_2016}.
-Por mencionar algunos ejemplos, \citeauthor{gargiulo_deep_2018} usan redes
-neuronales profundas para clasificar documentos de texto libre y comparan su
-funcionamiento variando el número de etiquetas y aprovechando su estructura
-jerárquica \cite{gargiulo_deep_2018}. Asimismo,
-\citeauthor{tanaka_multi-label_2015} agregan al algoritmo de \acrshort{br} la
-capacidad de capturar relaciones entre etiquetas a través del uso de árboles de
-decisión y lo aplican en el área de la genómica \cite{tanaka_multi-label_2015}.
+bien conocidos a este tipo de escenarios. La categoría engloba al conjunto de
+algoritmos que acometen el problema de \acrshort{mll} mediante la modificación
+de algoritmos de etiqueta única para que sean capaces de manejar la nueva
+naturaleza de los datos en estas tareas. Las modificaciones que se introducen
+pueden variar en complejidad según el algoritmo tratado y las características de
+la colección.  Se han adaptado una diversa cantidad de algoritmos incluyendo
+aquellos basados en redes neuronales, árboles, métodos probabilísticos, entre
+otros \cite{herrera_multilabel_2016}.  Por mencionar algunos ejemplos,
+\citeauthor{gargiulo_deep_2018} usan redes neuronales profundas para clasificar
+documentos de texto libre y comparan su funcionamiento variando el número de
+etiquetas y aprovechando su estructura jerárquica \cite{gargiulo_deep_2018}.
+Asimismo, \citeauthor{tanaka_multi-label_2015} agregan al algoritmo de
+\acrshort{br} la capacidad de capturar relaciones entre etiquetas a través del
+uso de árboles de decisión y lo aplican en el área de la genómica
+\cite{tanaka_multi-label_2015}.
 
 En lo que confiere a ambientes de flujos continuos de datos una de las técnicas
 más populares en la literatura es la de Árbol de Hoeffding o
-\textit{\acrfull{ht}} \cite{domingos_mining_2002}. A diferencia de los
-algoritmos convencionales de árboles de decisión, \acrlong{ht} aborda los datos
-de manera incremental. Así pues, en lugar de realizar decisiones de corte de
-acuerdo a los datos previamente almacenados, \acrshort{ht} espera a tener una
+\textit{\acrfull{ht}} \cite{domingos_mining_2002}, que a diferencia de los
+algoritmos convencionales de árboles de decisión, aborda los datos de manera
+incremental. Así pues, en lugar de realizar decisiones de corte de acuerdo a los
+datos previamente almacenados, el algoritmo de \acrshort{ht} espera a tener una
 cantidad suficiente de instancias para realizar el corte, con un cierto grado de
 confianza. Esto significa que ya no es necesario guardar todos los datos de la
 colección y que mantener una serie de estadísticas es suficiente para realizar
@@ -861,21 +864,21 @@ A partir de esto, y buscando sacar provecho de las ventajas mencionadas,
 multi-etiquetas y desarrollaron el algoritmo llamado Árbol de Hoeffding
 Multi-etiquetado o \textit{\acrfull{mlht}} \cite{read_scalable_2012}. Esto lo
 consiguen a partir de rediseñar la fórmula de ganancia de información (ver
-fórmula \ref{eq:gan_c45}) de tal manera de reflejar el impacto de todas las
-clases a las cuales el ejemplo no pertenece. Desde que fue introducido en el año
-\citeyear{read_scalable_2012}, \acrshort{mlht} ha sido usado como modelo de
-comparación en reiteradas oportunidades \cite{sousa_multi-label_2018} y es uno
-de los métodos más populares para atacar problemas de \acrshort{mll} en
-ambientes de flujo continuo de datos.
+fórmula \ref{eq:gan_c45}) de tal manera de reflejar en el cálculo de la entropía
+el impacto de todas las clases a las cuales el ejemplo no pertenece. Desde que
+fue introducido en el año \citeyear{read_scalable_2012}, \acrshort{mlht} ha sido
+usado como modelo de comparación en reiteradas oportunidades
+\cite{sousa_multi-label_2018} y es uno de los métodos más populares para atacar
+problemas de \acrshort{mll} en ambientes de flujo continuo de datos.
 
-Otro algoritmo muy popular para abordar este tipo de problemas y basado en
-árboles de decisión incrementales es el llamado \acrshort{isoup} (siglas del
-inglés \textit{\acrlong{isoup}}) \cite{osojnik_multi-label_2017}. El mismo fue
-desarrollado inicialmente para hacer regresión de múltiples objetivos y luego
-fue adaptado a tareas de \acrshort{mll}. Una de las novedades que introduce es
-el uso de un perceptrón adaptativo en las hojas del árbol, lo cual le da la
-versatilidad de poder trabajar tanto con problemas de clasificación como de
-regresión.
+Otro algoritmo muy popular para abordar este tipo de problemas y que también se
+basa en árboles de decisión incrementales es el llamado \acrshort{isoup} (siglas
+del inglés \textit{\acrlong{isoup}}) \cite{osojnik_multi-label_2017}. El mismo
+fue desarrollado inicialmente para hacer regresión de múltiples objetivos y
+luego fue adaptado a tareas de \acrshort{mll}. Una de las novedades que
+introduce es el uso de un perceptrón adaptativo en las hojas del árbol, lo cual
+le da la versatilidad de poder trabajar tanto con problemas de clasificación
+como de regresión.
 
 \todo[inline]{Explicación de enfoques de ensambles? (ebr, ecc, elp)}
 
@@ -1071,6 +1074,17 @@ injerencia y por tanto serán sobrepasadas por aquellas etiquetas más frecuente
 
 \section{Clasificación de Flujos Continuos de Datos}
 
+En esta sección se profundiza sobre algunos conceptos referidos a flujos
+continuos de datos y su tratamiento, de forma tal de llevar a cabo tareas de
+clasificación de manera exitosa.  Como se describió en la sección
+\ref{intro_streams}, un flujo continuo cuenta con características específicas
+que obligan a los algoritmos de aprendizaje a adaptarse a nuevos requerimientos.
+A continuación se define formalmente el concepto de flujo, se extiende el
+análisis sobre la tarea de evaluación para dar cuenta de su aplicación en este
+escenario, se describe el concepto de dato sintético y se presentan algunos
+algoritmos y técnicas para generar datos sintéticos útiles para clasificaciones
+de etiqueta única y de multi-etiquetas.  
+
 \subsection{Definición}
 
 Un flujo continuo de datos o \textit{Data Stream} es un conjunto de datos
@@ -1081,23 +1095,25 @@ ordenados, que arriban en el tiempo y son potencialmente infinitos. Un
    S = \{s_{0}, s_{1}, \dots, s_{t}, \dots, s_{N}\}
 \end{equation}
 
-Donde $s_{t}$ es la instancia presente en el tiempo $t$ y $s_{N}$ es el
-último dato avistado en el \textit{stream}. Cada instancia $d_{t}$ posee
-atributos y una o más etiquetas y se define tal como en la sección
-\ref{clasificacion} de tratarse de datos uni-etiquetados o como en la sección
-\ref{mll_def_formal} de tratarse de datos multi-etiquetados. 
+Donde $s_{t}$ es la instancia presente en el tiempo $t$ y $s_{N}$ es el último
+dato avistado en el \textit{stream} pero que no necesariamente representa el
+final del flujo. Cada instancia $d_{t}$ posee un conjunto de atributos y
+etiquetas y se puede definir tal como se hizo en la sección \ref{clasificacion}
+de tratarse de datos uni-etiquetados o como en la sección \ref{mll_def_formal}
+de tratarse de datos multi-etiquetados. 
 
 El objetivo de la tarea de clasificación en este escenario es el mismo que para
 escenarios de \textit{batch}, esto es, hallar una función capaz de enlazar
 instancias nuevas con sus etiquetas correspondientes, con la salvedad de que se
 debe lograr bajo restricciones de tiempo y espacio de almacenamiento, además de
 otras vicisitudes presentadas por las características mismas de un flujo
-continuo de datos (ver sección \ref{stream_caracteristicas}). Además deben ser
-capaces de lidiar con cambios en la distribución de los datos, y otros
-requisitos ya mencionados en la sección \ref{stream_requisitos}). Estas
-características implican que obtener soluciones exactas es poco probable y es
-necesario aplicar técnicas y metodologías especiales de evaluación sobre los
-modelos, para reducir el error posible.
+continuo de datos (ver sección \ref{stream_caracteristicas}). Del mismo, deben
+ser capaces de lidiar con cambios en la distribución de los datos, deben estar
+listos para realizar predicciones en cualquier momento y otros requisitos ya
+mencionados en la sección \ref{stream_requisitos}. Estas características
+implican que obtener soluciones exactas es poco probable y es necesario aplicar
+técnicas y metodologías especiales de evaluación sobre los modelos, para reducir
+el error posible.
 
 \todo[inline]{sección para explicar concept drift?}
 
@@ -1185,7 +1201,7 @@ análisis y evaluación de algoritmos, entre ellas se encuentran las siguientes:
 
 En la actualidad existen varios generadores de flujos sintéticos que logran
 cumplir con los requisitos necesarios, aquí se describen dos de ellos:
-\textit{\acrfull{rtg}} y \textit{\acrfull{rbf}}.
+\comillas{\acrfull{rtg}} y \comillas{\acrfull{rbf}}.
 
 \begin{description}
 
@@ -1204,7 +1220,7 @@ cumplir con los requisitos necesarios, aquí se describen dos de ellos:
 
    \item[\textit{\acrfull{rbf}}] El generador produce un \textit{stream} de
       función de base radial aleatoria. El método actúa de la siguiente manera:
-      se generan un número fijo de centroides, cada centro tiene una posición
+      se generan un número fijo de centroides y cada centro tiene una posición
       aleatoria, una única desviación estándar, una clase y un peso. Para
       generar una instancia se selecciona un centro al azar, teniendo en cuenta
       el peso asociado, de tal manera de favorecer a los centros con mayor peso.
@@ -1214,9 +1230,9 @@ cumplir con los requisitos necesarios, aquí se describen dos de ellos:
       distribución gaussiana cuya desviación estándar es determinada por el
       centroide elegido.  El resultado, en términos geométricos, es una
       hiperesfera en donde cada ejemplo rodea un punto central con densidades
-      variables \cite{kirkby_improving_2007}. Este método surge de la
-      necesidad de generar conceptos que no favorezcan a modelos de tipo árbol,
-      tal como sí lo hacía la técnica \acrshort{rtg}.
+      variables \cite{kirkby_improving_2007}. Este método surge de la necesidad
+      de generar conceptos que no favorezcan a modelos de tipo árbol, tal como
+      sí lo hacía la técnica \acrshort{rtg}.
 
 \end{description}
 
