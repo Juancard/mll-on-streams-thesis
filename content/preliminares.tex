@@ -1,25 +1,25 @@
 \chapter{Preliminares}
 
 
-En esta sección se presenta el marco teórico de este trabajo, dando un panorama
+En este capítulo se presenta el marco teórico de este trabajo, dando un panorama
 general de cada una de las disciplinas abordadas e introduciendo los conceptos
 básicos y fundamentales para entender el proyecto. Se comienza con la definición
 de la taxonomía del campo de estudio, luego \todo{describir las siguientes
-secciones}
+	secciones}
 
 \section{Taxonomía del Campo de Estudio}
 
 \begin{figure}
-   \includegraphics[width=.9\linewidth]{figures/study_field_taxonomy_v2.png}
-   \centering
-   \caption{Taxonomía del campo de estudio.}
-   \label{fig:campo_estudio}
+	\includegraphics[width=.9\linewidth]{figures/study_field_taxonomy_v2.png}
+	\centering
+	\caption{Taxonomía del campo de estudio.}
+	\label{fig:campo_estudio}
 \end{figure}
 
 En pocas palabras, el presente trabajo de investigación se enmarca en las áreas
 de \textit{big data} y minería de datos, con aplicación en escenarios de
 \textit{streaming} o flujos continuos de datos y abordando clasificaciones
-multi-etiquetas. 
+multi-etiquetas.
 
 La figura \ref{fig:campo_estudio} es un esquema que ilustra la taxonomía del
 campo de estudio y la interrelación entre las áreas de investigación
@@ -41,7 +41,7 @@ dígito se trata. Otro ejemplo es el de hallar documentos de texto que son
 relevantes a una consulta del usuario. En este caso el modelo recibe un conjunto
 acotado de términos, los cuales describen una necesidad de información del
 usuario, y el modelo debe ser capaz de retornar los documentos que satisfacen la
-consulta.  
+consulta.
 
 Estos problemas se suelen categorizar en aprendizaje supervisado o no
 supervisado, de acuerdo a si se conoce o no de antemano el concepto o etiqueta
@@ -51,11 +51,11 @@ entre los problemas de aprendizaje supervisado se destaca aquí el de
 clasificación, el cual será descrito a continuación.
 
 \begin{figure}
-   \includegraphics[width=0.66\linewidth]{figures/digits_recognition_v2.png}
-   \centering
-   \caption{Dígitos escritos a mano. Fuente: \citetitle{hastie_elements_2009}
-   (\citeyear{hastie_elements_2009}).}
-   \label{fig:reconocimiento_digitos}
+	\includegraphics[width=0.66\linewidth]{figures/digits_recognition_v2.png}
+	\centering
+	\caption{Dígitos escritos a mano. Fuente: \citetitle{hastie_elements_2009}
+		(\citeyear{hastie_elements_2009}).}
+	\label{fig:reconocimiento_digitos}
 \end{figure}
 
 \section{Clasificación}
@@ -74,7 +74,7 @@ correos electrónicos  de acuerdo a si se trata de correo basura (también
 conocido como \comillas{\textit{spam}}) o no. Dicho análisis puede ayudar a
 obtener un mayor entendimiento de los datos a alto nivel. Las tareas de
 clasificación han sido aplicadas en áreas tales como las de aprendizaje
-automático, reconocimiento de patrones o estadística. 
+automático, reconocimiento de patrones o estadística.
 
 En un principio, buena parte de los algoritmos se ejecutaban en memoria, con la
 limitación de espacio de almacenamiento que eso conlleva. Investigaciones más
@@ -132,12 +132,12 @@ reflejan correctamente los objetos del mundo real. Este fenómeno es llamado
 para reducirlo. Una de ellas consiste en separar de entre los datos de la
 colección completa, un subconjunto conocido como \comillas{conjunto de prueba} o
 de \textit{testing} que no se usa durante el entrenamiento y a partir del cual
-se realizan predicciones y se calculan las métricas de evaluación. 
+se realizan predicciones y se calculan las métricas de evaluación.
 
 Así pues, la tarea de evaluación es fundamental ya que es la vía a partir de la
 cual se determina qué algoritmos o técnicas son más apropiados que otros para un
 problema en particular. Asimismo, provee la información necesaria para corregir
-o ajustar los parámetros de los algoritmos y así obtener modelos más robustos. 
+o ajustar los parámetros de los algoritmos y así obtener modelos más robustos.
 
 En definitiva, las etapas de aprendizaje y predicción se aplican
 consecutivamente con el objetivo de lograr generar un clasificador capaz de
@@ -176,7 +176,7 @@ Para entender cómo funciona este algoritmo, es bueno abordar primero  el teorem
 de Bayes. Formalmente, se define de la siguiente manera:
 
 \begin{equation}
-   P(H \mid X) = \frac{P(X \mid H) P(H)}{P(X)}
+	P(H \mid X) = \frac{P(X \mid H) P(H)}{P(X)}
 \end{equation}
 
 En esta ecuación, el vector $X$ es una tupla definida tal como en la sección
@@ -194,25 +194,25 @@ determinados dado que se satisface la hipótesis.
 A partir de dicha definición, y de forma similar, se expresa la ecuación de
 \textit{Naive} Bayes de la siguiente manera:
 
-\begin{equation} 
-   P(C_{i} \mid X) = P(X \mid C_{i}) P(C_{i})
+\begin{equation}
+	P(C_{i} \mid X) = P(X \mid C_{i}) P(C_{i})
 \end{equation}
 
 Aquí el término $P(X)$ es descartado ya que se asume constante para todas las
 clases. La hipótesis $H$ es representada como $C_{i}$ que es un valor de la
 tupla $C=(C_{1},C_{2},\dots,C_{q})$, donde $q$ es el número de clases. La
 presunción \comillas{ingenua} es aplicada para el cálculo del término $P(X \mid
-C_{i})$ gracias a lo cual se puede definir de la siguiente manera:
+	C_{i})$ gracias a lo cual se puede definir de la siguiente manera:
 
-\begin{equation} 
-   P(X \mid C_{i}) = \prod\limits_{k=1}^n{P(x_{k} \mid C_{i})} =
-   P(x_{1} \mid C_{i}) \times 
-   P(x_{2} \mid C_{i}) \times \dots, \times 
-   P(x_{n} \mid C_{i})   
+\begin{equation}
+	P(X \mid C_{i}) = \prod\limits_{k=1}^n{P(x_{k} \mid C_{i})} =
+	P(x_{1} \mid C_{i}) \times
+	P(x_{2} \mid C_{i}) \times \dots, \times
+	P(x_{n} \mid C_{i})
 \end{equation}
 
 Finalmente, el modelo seleccionará la clase que maximice el valor de
-probabilidad y esa será la salida final del algoritmo.  
+probabilidad y esa será la salida final del algoritmo.
 
 Como se ha dicho anteriormente, la simplicidad, velocidad computacional y su
 competitividad en métricas de exactitud hacen de \textit{Naive} Bayes un
@@ -246,34 +246,34 @@ Los árboles de decisión se generan a partir de un algoritmo de inducción.
 Existen varios de estos algoritmos pero todos son variantes que han sido
 diseñadas bajo un misma principio: construir  el árbol de una manera
 \comillas{voraz} \footnote{Se le llama voraz o \textit{greedy} a un algoritmo
-   que busca hallar la opción óptima en cada paso y, de esta manera, alcanzar la
-   solución general óptima para resolver un problema.  Esto lo diferencia de
-   algoritmos como los de \textit{backtracking}, los cuales exploran distintas
-posibilidades y pueden volver al inicio en búsqueda de una mejor solución.},
+	que busca hallar la opción óptima en cada paso y, de esta manera, alcanzar la
+	solución general óptima para resolver un problema.  Esto lo diferencia de
+	algoritmos como los de \textit{backtracking}, los cuales exploran distintas
+	posibilidades y pueden volver al inicio en búsqueda de una mejor solución.},
 comenzando desde el nodo raíz (conocido como enfoque \textit{top-down}) y
 eligiendo en cada paso el atributo más informativo o que maximice alguna medida
 de ganancia de información. Entre estos algoritmos de inducción vale destacar
 los siguientes:
 
-\begin{description} 
+\begin{description}
 
-   \item[\acrshort{id3}] Son las siglas de \comillas{\textit{\acrlong{id3}}} y
-      fue desarrollado en 1986 por Ross Quinlan. Consiste en crear un árbol de
-      múltiples vías, buscando para cada nodo el atributo categórico que lance
-      la mayor ganancia de información para las clases categóricas. Los árboles
-      crecen en un tamaño máximo y luego se realiza el paso de poda para mejorar
-      el poder de generalización del modelo sobre datos desconocidos.
+	\item[\acrshort{id3}] Son las siglas de \comillas{\textit{\acrlong{id3}}} y
+	      fue desarrollado en 1986 por Ross Quinlan. Consiste en crear un árbol de
+	      múltiples vías, buscando para cada nodo el atributo categórico que lance
+	      la mayor ganancia de información para las clases categóricas. Los árboles
+	      crecen en un tamaño máximo y luego se realiza el paso de poda para mejorar
+	      el poder de generalización del modelo sobre datos desconocidos.
 
-   \item[C4.5] Es la evolución del algoritmo \acrshort{id3}. La principal mejora
-      con respecto a su predecesor es que elimina la restricción de que los
-      atributos deban ser categóricos. Esto lo consigue particionando el valor
-      continuo en rangos o en un conjunto de intervalos discretos. A su vez,
-      C4.5 convierte el árbol entrenado en conjuntos de reglas de decisión. 
+	\item[C4.5] Es la evolución del algoritmo \acrshort{id3}. La principal mejora
+	      con respecto a su predecesor es que elimina la restricción de que los
+	      atributos deban ser categóricos. Esto lo consigue particionando el valor
+	      continuo en rangos o en un conjunto de intervalos discretos. A su vez,
+	      C4.5 convierte el árbol entrenado en conjuntos de reglas de decisión.
 
-   \item[\acrshort{cart}] Son las siglas de \comillas{\textit{\acrlong{cart}}} y
-      es un algoritmo muy similar al C4.5 pero que soporta clases numéricas, lo
-      cual permite que este algoritmo pueda ser utilizado para resolver
-      problemas de regresión. 
+	\item[\acrshort{cart}] Son las siglas de \comillas{\textit{\acrlong{cart}}} y
+	      es un algoritmo muy similar al C4.5 pero que soporta clases numéricas, lo
+	      cual permite que este algoritmo pueda ser utilizado para resolver
+	      problemas de regresión.
 
 \end{description}
 
@@ -288,7 +288,7 @@ hallar el atributo que reduzca la entropía esperada. La entropía en el conjunt
 de datos $D$ se calcula de la siguiente manera:
 
 \begin{equation}
-   Entropia(D) = - \sum_{i=1}^{q} p_{i}\log_{2}(p_{i})
+	Entropia(D) = - \sum_{i=1}^{q} p_{i}\log_{2}(p_{i})
 \end{equation}
 
 Nótese que $p_{i}$ corresponde a la probabilidad de que una tupla de $D$
@@ -296,9 +296,9 @@ corresponda a la clase $C_{i}$.  A partir de la entropía, se define la ganancia
 de información como:
 
 \begin{equation}
-   Ganancia(A) = Entropia(D) 
-   - \sum_{j=1}^{v} \frac{\left\| D_{j} \right\|}{\left\| D \right\|} 
-   \times Entropia(D_{j})
+	Ganancia(A) = Entropia(D)
+	- \sum_{j=1}^{v} \frac{\left\| D_{j} \right\|}{\left\| D \right\|}
+	\times Entropia(D_{j})
 \end{equation}
 
 Aquí el atributo $A$ divide al conjunto de datos en $v$ particiones, siendo $v$
@@ -312,21 +312,21 @@ para cada uno de ellos, se elige aquel que maximiza la ganancia y finalmente el
 atributo seleccionado será el criterio de separación en el nodo.
 
 El algoritmo C4.5 introdujo una mejora en esta técnica llamada \comillas{Razón
-de Ganancia}. La misma busca disminuir uno de los efectos adversos que provoca
+	de Ganancia}. La misma busca disminuir uno de los efectos adversos que provoca
 la técnica de ganancia de información, esta es, que tiende a favorecer a
 atributos con un mayor número de valores posibles. La razón de ganancia, en
-primer lugar, reemplaza la fórmula $Entropia(D)$ por la siguiente expresión: 
+primer lugar, reemplaza la fórmula $Entropia(D)$ por la siguiente expresión:
 
 \begin{equation}
-   EntropiaRG_{A}(D) = - \sum_{j=1}^{v} \frac{\left\| D_{j} \right\|}{\left\| D \right\|} 
-   \times \log_{2}(\frac{\left\| D_{j} \right\|}{\left\| D \right\|})
+	EntropiaRG_{A}(D) = - \sum_{j=1}^{v} \frac{\left\| D_{j} \right\|}{\left\| D \right\|}
+	\times \log_{2}(\frac{\left\| D_{j} \right\|}{\left\| D \right\|})
 \end{equation}
 
 A partir de allí, el cálculo de la razón de ganancia hace uso de la ganancia y
 de la entropía y se formula como:
 
 \begin{equation} \label{eq:gan_c45}
-   RazonGanancia(A) = \frac{Ganancia(A)}{EntropiaRG_{A}(D)} 
+	RazonGanancia(A) = \frac{Ganancia(A)}{EntropiaRG_{A}(D)}
 \end{equation}
 
 Finalmente, el atributo de mayor razón de ganancia es seleccionado como criterio
@@ -371,54 +371,54 @@ arquitectura. A continuación se describen tres de ellos: los ensambles de tipo
 \comillas{\textit{bagging}}, los de tipo \comillas{\textit{boosting}} y los de
 tipo \comillas{\textit{stacked}}.
 
-\begin{description} 
+\begin{description}
 
-   \item[Bagging] Esta es una de las primeras técnicas de ensambles conocidas y
-      fue introducida por
-      \citeauthor{breiman_bagging_1996}\cite{breiman_bagging_1996}. La misma se
-      desarrolla de la siguiente manera: dado un conjunto de entrenamiento $D$
-      con $n$  tuplas, \textit{bagging} genera un número $m$ de nuevos conjuntos
-      de datos de entrenamiento, cada uno con $n$ tuplas. Para esto se toman
-      tuplas del conjunto original de manera aleatoria y con reemplazo, es decir
-      que puede haber tuplas repetidas y otras que no están incluidas en el
-      nuevo conjunto.  Luego a partir de cada conjunto nuevo, se entrena un
-      clasificador $M_{i}$. Cada clasificador puede ser del mismo tipo ya que la
-      diversidad está dada por los datos. En la etapa de clasificación, cada
-      modelo $M_{i}$ genera una predicción que cuenta como un voto. El ensamble
-      cuenta los votos y elige la clase con mayor cantidad de votos, siendo esta
-      la decisión final del ensamble.
-
-
-   \item[Boosting] En la técnica de \textit{boosting} se asigna un peso a cada
-      tupla de entrenamiento y se generan un conjunto de clasificadores, cada
-      uno a partir del anterior. A diferencia del método de \textit{bagging},
-      \textit{boosting} trabaja siempre sobre el mismo conjunto de datos y la
-      variabilidad está dada por los pesos que son asignados. El proceso es el
-      siguiente: para el primer modelo de clasificación, $M_{i}$, los pesos son
-      inicializados en un mismo valor para todas las tuplas. Una vez que se
-      entrena este modelo, los pesos son actualizados de tal manera que el
-      siguiente clasificador $M_{i} + 1$ trate de manera particular a las tuplas
-      mal clasificadas por $M_{i}$. De ese modo se busca llegar a una
-      clasificación correcta en las sucesivas iteraciones.  Finalmente, el
-      modelo de ensamble combina los votos de cada clasificador individual. Cabe
-      notar que el peso de cada voto también es ponderado de acuerdo al
-      rendimiento del clasificador base.
+	\item[Bagging] Esta es una de las primeras técnicas de ensambles conocidas y
+	      fue introducida por
+	      \citeauthor{breiman_bagging_1996}\cite{breiman_bagging_1996}. La misma se
+	      desarrolla de la siguiente manera: dado un conjunto de entrenamiento $D$
+	      con $n$  tuplas, \textit{bagging} genera un número $m$ de nuevos conjuntos
+	      de datos de entrenamiento, cada uno con $n$ tuplas. Para esto se toman
+	      tuplas del conjunto original de manera aleatoria y con reemplazo, es decir
+	      que puede haber tuplas repetidas y otras que no están incluidas en el
+	      nuevo conjunto.  Luego a partir de cada conjunto nuevo, se entrena un
+	      clasificador $M_{i}$. Cada clasificador puede ser del mismo tipo ya que la
+	      diversidad está dada por los datos. En la etapa de clasificación, cada
+	      modelo $M_{i}$ genera una predicción que cuenta como un voto. El ensamble
+	      cuenta los votos y elige la clase con mayor cantidad de votos, siendo esta
+	      la decisión final del ensamble.
 
 
-   \item[Stacking] La técnica de \textit{stacking} fue desarrollada por
-      \citeauthor{wolpert_stacked_1992}\cite{wolpert_stacked_1992} y consiste en
-      entrenar un nuevo clasificador de acuerdo a las predicciones realizadas
-      por otros modelos, tomando la salida de estos modelos como entrada, de tal
-      manera de lograr hallar una combinación que produzca una mejor predicción.
-      Este tipo de ensambles puede ser visto como un conjunto de capas. La
-      primera capa consta de un ensamble de clasificadores que aprenden a partir
-      de los datos de entrenamiento. Esta capa no necesariamente usa
-      clasificadores del mismo tipo, mismos hiper-parámetros o particiones de la
-      colección iguales, quedando estos detalles a cargo de quien diseña esta
-      capa. La siguiente capa es el clasificador individual, o
-      meta-clasificador, que se alimenta de las salidas de los clasificadores de
-      la capa inferior y realiza el aprendizaje a partir de las clases
-      producidas por estas salidas y las clases reales.
+	\item[Boosting] En la técnica de \textit{boosting} se asigna un peso a cada
+	      tupla de entrenamiento y se generan un conjunto de clasificadores, cada
+	      uno a partir del anterior. A diferencia del método de \textit{bagging},
+	      \textit{boosting} trabaja siempre sobre el mismo conjunto de datos y la
+	      variabilidad está dada por los pesos que son asignados. El proceso es el
+	      siguiente: para el primer modelo de clasificación, $M_{i}$, los pesos son
+	      inicializados en un mismo valor para todas las tuplas. Una vez que se
+	      entrena este modelo, los pesos son actualizados de tal manera que el
+	      siguiente clasificador $M_{i} + 1$ trate de manera particular a las tuplas
+	      mal clasificadas por $M_{i}$. De ese modo se busca llegar a una
+	      clasificación correcta en las sucesivas iteraciones.  Finalmente, el
+	      modelo de ensamble combina los votos de cada clasificador individual. Cabe
+	      notar que el peso de cada voto también es ponderado de acuerdo al
+	      rendimiento del clasificador base.
+
+
+	\item[Stacking] La técnica de \textit{stacking} fue desarrollada por
+	      \citeauthor{wolpert_stacked_1992}\cite{wolpert_stacked_1992} y consiste en
+	      entrenar un nuevo clasificador de acuerdo a las predicciones realizadas
+	      por otros modelos, tomando la salida de estos modelos como entrada, de tal
+	      manera de lograr hallar una combinación que produzca una mejor predicción.
+	      Este tipo de ensambles puede ser visto como un conjunto de capas. La
+	      primera capa consta de un ensamble de clasificadores que aprenden a partir
+	      de los datos de entrenamiento. Esta capa no necesariamente usa
+	      clasificadores del mismo tipo, mismos hiper-parámetros o particiones de la
+	      colección iguales, quedando estos detalles a cargo de quien diseña esta
+	      capa. La siguiente capa es el clasificador individual, o
+	      meta-clasificador, que se alimenta de las salidas de los clasificadores de
+	      la capa inferior y realiza el aprendizaje a partir de las clases
+	      producidas por estas salidas y las clases reales.
 
 \end{description}
 
@@ -455,7 +455,7 @@ que alguno de estos modelos tenga un mejor rendimiento que otro en un
 determinado escenario, o incluso que sea mejor que un modelo generado por el
 mismo algoritmo pero con distintos hiper-parámetros. La tarea de evaluación es
 la que permite detectar estas particularidades y sacar provecho de los
-algoritmos para obtener aún mejores modelos. 
+algoritmos para obtener aún mejores modelos.
 
 A su vez, es importante estudiar las métricas de evaluación existentes y llevar
 adelante estrategias que nos permitan obtener medidas de evaluación confiables y
@@ -475,44 +475,44 @@ Las métricas de evaluación se usan para conocer la habilidad predictiva de un
 modelo de clasificación. Se van a describir aquí las métricas más conocidas del
 campo y que proveen, a su vez, un primer vistazo de lo que serán las métricas
 usadas para evaluar algoritmos para datos multi-etiquetados en las futuras
-secciones del escrito. 
+secciones del escrito.
 
 Antes de comenzar es importante aclarar algunos términos que serán usados para
 definir las métricas. Se entiende como \comillas{ejemplos positivos} a aquellas
 instancias cuya etiqueta pertenece a la clase de interés en el problema de
 estudio y \comillas{ejemplos negativos} como aquellas que no pertenecen a dicha
 clase. Al mismo tiempo, se derivan cuatro conceptos que estarán presentes en las
-fórmulas para calcular las métricas, los cuales son: 
+fórmulas para calcular las métricas, los cuales son:
 
 \begin{description}
 
-   \item[\acrfull{vp}] Son los ejemplos positivos que fueron correctamente
-      clasificados como positivos.
+	\item[\acrfull{vp}] Son los ejemplos positivos que fueron correctamente
+	      clasificados como positivos.
 
-   \item[\acrfull{vn}] Son los ejemplos negativos que fueron correctamente
-      clasificados como negativos.
+	\item[\acrfull{vn}] Son los ejemplos negativos que fueron correctamente
+	      clasificados como negativos.
 
-   \item[\acrfull{fp}] Son los ejemplos negativos que fueron incorrectamente
-      clasificados como positivos.
+	\item[\acrfull{fp}] Son los ejemplos negativos que fueron incorrectamente
+	      clasificados como positivos.
 
-   \item[\acrfull{fn}] Son los ejemplos positivos que fueron incorrectamente
-      clasificados como negativos.
+	\item[\acrfull{fn}] Son los ejemplos positivos que fueron incorrectamente
+	      clasificados como negativos.
 
 \end{description}
 
 Una vez obtenidos estos conceptos se pueden calcular una serie de métricas a
-partir de ellos. Estas métricas son:  
+partir de ellos. Estas métricas son:
 
 \paragraph{Exactitud}
 \label{evaluacion_metricas_exactitud}
 
 La exactitud o \textit{accuracy} es la proporción de ejemplos correctamente
 clasificados sobre el número total de instancias y a mayor el valor de exactitud
-mejor es el rendimiento del clasificador. Se define  como: 
+mejor es el rendimiento del clasificador. Se define  como:
 
 \begin{equation}
-   exactitud = \frac{\acrshort{vp} + \acrshort{vn}}{\acrshort{vp} +
-   \acrshort{vn} + \acrshort{fp} + \acrshort{fn}}
+	exactitud = \frac{\acrshort{vp} + \acrshort{vn}}{\acrshort{vp} +
+		\acrshort{vn} + \acrshort{fp} + \acrshort{fn}}
 \end{equation}
 
 \paragraph{Tasa de Error}
@@ -520,11 +520,11 @@ mejor es el rendimiento del clasificador. Se define  como:
 A la inversa de la exactitud, la tasa de error es la proporción de ejemplos
 incorrectamente clasificados sobre el número total de instancias y a menor el
 valor de la tasa de error mejor es el rendimiento del clasificador. Se define
-como: 
+como:
 
 \begin{equation}
-   tasaError = \frac{\acrshort{fp} + \acrshort{fn}}{\acrshort{vp} +
-   \acrshort{vn} + \acrshort{fp} + \acrshort{fn}}
+	tasaError = \frac{\acrshort{fp} + \acrshort{fn}}{\acrshort{vp} +
+		\acrshort{vn} + \acrshort{fp} + \acrshort{fn}}
 \end{equation}
 
 \paragraph{Precisión}
@@ -532,10 +532,10 @@ como:
 La precisión es la proporción de ejemplos que fueron clasificados como positivos
 y que efectivamente lo son. Mayor es el valor de precisión mejor es el
 rendimiento del clasificador. Se dice que es una medida de exactitud y se define
-como: 
+como:
 
-\begin{equation} 
-   precision = \frac{\acrshort{vp}}{\acrshort{vp} + \acrshort{fp}}
+\begin{equation}
+	precision = \frac{\acrshort{vp}}{\acrshort{vp} + \acrshort{fp}}
 \end{equation}
 
 \paragraph{Exhaustividad}
@@ -543,21 +543,21 @@ como:
 La exhaustividad o \textit{recall} es la proporción de ejemplos positivos que
 fueron clasificados como positivos. Mayor es el valor de exhaustividad mejor es
 el rendimiento del clasificador. Se dice que es una medida de completitud y se
-define como: 
+define como:
 
-\begin{equation} 
-   exhaustividad = \frac{\acrshort{vp}}{\acrshort{vp} + \acrshort{fn}} 
+\begin{equation}
+	exhaustividad = \frac{\acrshort{vp}}{\acrshort{vp} + \acrshort{fn}}
 \end{equation}
 
 \paragraph{Medida-F1}
 
 La medida-F1 o \textit{f1-score} es una medida que integra las métricas de
 precisión y exhaustividad tomando la media harmónica entre ambas. Mayor el valor
-de esta medida, mejor es el rendimiento del clasificador. Se define como: 
+de esta medida, mejor es el rendimiento del clasificador. Se define como:
 
 \begin{equation}
-   medidaF1 = \frac{2 \times precision \times exhaustividad}{ precision +
-   exhaustividad }
+	medidaF1 = \frac{2 \times precision \times exhaustividad}{ precision +
+		exhaustividad }
 \end{equation}
 
 Por otro lado, existen métricas para evaluar la eficiencia del clasificador en
@@ -594,7 +594,7 @@ técnicas más populares para evaluar la habilidad predictiva de los
 clasificadores y se describen a continuación.
 
 
-\paragraph{\textit{Holdout}} 
+\paragraph{\textit{Holdout}}
 
 En este método un conjunto de instancias es separado de la colección y se
 reserva para evaluar el rendimiento del clasificador.  Este subconjunto es
@@ -607,7 +607,7 @@ reales de cada instancia se combinan y se calculan las métricas de evaluación.
 Esta técnica se basa en la idea de que, separando los datos que se usan durante
 el entrenamiento de aquellos usados durante la predicción, se logra una
 independencia en los datos que derivará en un mayor grado de generalización en
-el modelo. 
+el modelo.
 
 Por contrapartida, el enfoque de \textit{Holdout} tiene la limitación de que
 para lograr generalizar requiere de un número de instancias considerable.
@@ -616,31 +616,31 @@ conjunto de entrenamiento puede derivar en predicciones pobres, pero por el
 contrario, muy pocos datos en el conjunto de pruebas tampoco es recomendable, ya
 que podría resultar en medidas de rendimiento poco fiables. A esto se suma una
 de las dificultades más comunes en el área de aprendizaje automático: la falta
-de disponibilidad de colecciones grandes de datos del mundo real. 
+de disponibilidad de colecciones grandes de datos del mundo real.
 
 Por estas razones, ha tomado peso el uso de técnicas de muestreos de datos para
 reutilizar instancias de entrenamiento y de prueba. Una de ellas es la de
 validación cruzada.
 
-\paragraph{Validación Cruzada de K iteraciones} 
+\paragraph{Validación Cruzada de K iteraciones}
 
 La técnica de validación cruzada, más conocida por el inglés \textit{k-fold
-cross-validation}, consiste en particionar el conjunto de datos en $k$
+	cross-validation}, consiste en particionar el conjunto de datos en $k$
 subconjuntos de manera aleatoria y en la forma $\{d_{1}, d_{2},  \dots, d_{k}
-\}$, siendo cada uno de los subconjuntos mutuamente excluyentes entre sí y de
+	\}$, siendo cada uno de los subconjuntos mutuamente excluyentes entre sí y de
 igual o similar tamaño. El proceso itera sobre cada uno de los subconjuntos para
 generar $k$ modelos. En la primera iteración $i$, se separa el subconjunto
 $d_{i}$ y se entrena el modelo con los restantes subconjuntos para luego medir
 el rendimiento con él. En la segunda iteración, se repite este procedimiento
 pero usando como pruebas al subconjunto $d_{i+1}$, y así en cada iteración. Así
 pues, cada subconjunto es usado una vez para probar el modelo. Finalmente, se
-toman los $k$ modelos generados y se promedian las métricas. 
+toman los $k$ modelos generados y se promedian las métricas.
 
 De esta técnica derivan otras similares como \comillas{\textit{leave-one-out}}
 en donde cada subconjunto es conformado por $n-1$ instancias, siendo $n$ el
 tamaño de la colección, dejando un elemento fuera del subconjunto y que será
 usado para validar el modelo. El proceso se repite $n$ veces y se combinan los
-modelos tal como en el método de validación cruzada. 
+modelos tal como en el método de validación cruzada.
 
 Otra técnica similar es la de \comillas{Validación Cruzada Estratificada}, la
 cual consiste en generar subconjuntos de entrenamiento y pruebas que respeten la
@@ -678,47 +678,47 @@ etiquetas con $q$ etiquetas posibles, la tarea de clasificación multi-etiquetas
 consiste en entrenar un conjunto $D = \{(x_{i}, Y_{i}) \mid 1 \leq i \leq m\}$
 para hallar una función $h$ tal que $h: X \rightarrow 2^y$. A su vez, $X_{i}$ es
 un vector de atributos $d$ dimensional definido como $(x_{i1}, x_{i2}, \dots,
-x_{id})$. $Y_{i}$, por su parte, es el conjunto de etiquetas asociadas a la
+	x_{id})$. $Y_{i}$, por su parte, es el conjunto de etiquetas asociadas a la
 instancia $X_{i}$. Luego, para cada instancia desconocida $x \in X$ el
 clasificador $h$ predice $h(x) \subseteq Y$ que representa el conjunto de
 etiquetas hallado para $x$.
 
 A su vez, se definen un conjunto de métricas que describen el grado de
 multi-etiquetado que tiene un conjunto de datos dado, o en otras palabras, hasta
-qué punto cada ejemplo posee más de una etiqueta. Algunas de ellas son: 
+qué punto cada ejemplo posee más de una etiqueta. Algunas de ellas son:
 
 \begin{description}
-   \item{Cardinalidad de etiquetas}: Es el promedio de etiquetas por instancia
-      del conjunto de datos. Se define como: 
-      \begin{equation}
-      \label{eq:mll_card}
-         CardE(D) = \frac{1}{m} \sum_{i=1}^{m} \left\|Y_{i}\right\|
-      \end{equation}
-      Por lo tanto, a mayor el valor de cardinalidad, mayor es el número de
-      etiquetas de una instancia. Por ejemplo, si $CardE = 1$, entonces la
-      mayoría de ejemplos tiene una única etiqueta y, por consiguiente, se puede
-      decir que la colección tiene un grado bajo de multi-etiquetado.  
-   \item{Densidad de etiquetas}: Es la cardinalidad de etiquetas normalizada al
-      número total de etiquetas de $D$ y se define como:
-      \begin{equation}
-         DenE(D) = \frac{CardE(D)}{\left\|Y\right\|}
-      \end{equation}
-      Así pues, un valor alto de densidad significaría que cada instancia puede
-      ser una buena representación de las etiquetas del conjunto. De la misma
-      manera, un valor bajo suele implicar dispersión, esto es, que la mayoría
-      de las instancias tienen un subconjunto acotado de las etiquetas. 
-   \item{Diversidad de etiquetas}: Es el número de conjuntos de etiquetas
-      unívocos que aparecen en instancias de $D$. Se define como:
-      \begin{equation}
-         DivE(D) = \left\|\{Y \mid \exists x: (x, Y) \in D\}\right\|
-      \end{equation}
-      Aquí la interpretación es que, a mayor el valor de diversidad, menor es la
-      constancia con la que las etiquetas aparecen en las instancias. De manera
-      similar a la cardinalidad, el valor de diversidad también puede
-      normalizarse por el número de instancias del conjunto de datos: 
-      \begin{equation}
-         DivEProm(D) = \frac{DivE(D)}{\left\|D\right\|}
-      \end{equation}
+	\item{Cardinalidad de etiquetas}: Es el promedio de etiquetas por instancia
+	      del conjunto de datos. Se define como:
+	      \begin{equation}
+		      \label{eq:mll_card}
+		      CardE(D) = \frac{1}{m} \sum_{i=1}^{m} \left\|Y_{i}\right\|
+	      \end{equation}
+	      Por lo tanto, a mayor el valor de cardinalidad, mayor es el número de
+	      etiquetas de una instancia. Por ejemplo, si $CardE = 1$, entonces la
+	      mayoría de ejemplos tiene una única etiqueta y, por consiguiente, se puede
+	      decir que la colección tiene un grado bajo de multi-etiquetado.
+	\item{Densidad de etiquetas}: Es la cardinalidad de etiquetas normalizada al
+	      número total de etiquetas de $D$ y se define como:
+	      \begin{equation}
+		      DenE(D) = \frac{CardE(D)}{\left\|Y\right\|}
+	      \end{equation}
+	      Así pues, un valor alto de densidad significaría que cada instancia puede
+	      ser una buena representación de las etiquetas del conjunto. De la misma
+	      manera, un valor bajo suele implicar dispersión, esto es, que la mayoría
+	      de las instancias tienen un subconjunto acotado de las etiquetas.
+	\item{Diversidad de etiquetas}: Es el número de conjuntos de etiquetas
+	      unívocos que aparecen en instancias de $D$. Se define como:
+	      \begin{equation}
+		      DivE(D) = \left\|\{Y \mid \exists x: (x, Y) \in D\}\right\|
+	      \end{equation}
+	      Aquí la interpretación es que, a mayor el valor de diversidad, menor es la
+	      constancia con la que las etiquetas aparecen en las instancias. De manera
+	      similar a la cardinalidad, el valor de diversidad también puede
+	      normalizarse por el número de instancias del conjunto de datos:
+	      \begin{equation}
+		      DivEProm(D) = \frac{DivE(D)}{\left\|D\right\|}
+	      \end{equation}
 \end{description}
 
 \subsection{Algoritmos}
@@ -726,10 +726,10 @@ qué punto cada ejemplo posee más de una etiqueta. Algunas de ellas son:
 Como se había anticipado en la sección \ref{intro_mll}, la tarea de aprendizaje
 sobre datos multi-etiquetados puede ser encarada siguiendo dos grandes enfoques,
 llamados \comillas{Transformación del Problema} y \comillas{Adaptación del
-Algoritmo}. A continuación se describen ambos enfoques y algunos de sus
+	Algoritmo}. A continuación se describen ambos enfoques y algunos de sus
 algoritmos más representativos.
 
-\subsubsection{Transformación del Problema} 
+\subsubsection{Transformación del Problema}
 
 Esta categoría engloba al conjunto de algoritmos que abordan el problema de
 clasificación multi-etiquetas transformándolo en múltiples problemas de
@@ -750,12 +750,12 @@ clasificador binario $g_{j}$ es entrenado con todas las instancias de la
 colección pero incluyendo solo la etiqueta $j$, la cual se activa o desactiva de
 acuerdo a si es relevante a la instancia. Luego la predicción de una instancia
 desconocida se realiza combinando las salidas de cada clasificador individual,
-esto es: 
+esto es:
 
 \begin{equation}
-   Y = {y_{j} \mid g_{j}(x) > 0, 1 \leq j \leq q}
+	Y = {y_{j} \mid g_{j}(x) > 0, 1 \leq j \leq q}
 \end{equation}
- 
+
 Llegado el caso en que ninguno de los clasificadores retornen etiquetas activas,
 el conjunto $Y$ será vacío.
 
@@ -766,7 +766,7 @@ problemas de \acrshort{mll}, es usual hallar que determinadas etiquetas se
 activan en conjunto con mayor probabilidad. Pese a ello, \acrshort{br} es un
 enfoque muy utilizado \cite{zhang_review_2014} ya que es simple de implementar,
 intuitivo y computacionalmente poco costoso en comparación con algoritmos que sí
-tienen en cuenta la relación entre etiquetas.  
+tienen en cuenta la relación entre etiquetas.
 
 \paragraph{\acrfull{cc}}
 
@@ -786,7 +786,7 @@ puede observar, lo que se produce es un \comillas{encadenamiento} de
 clasificadores, el cual no es accidental y tiene como fin conservar la
 dependencia entre etiquetas: en el entrenamiento se van acumulando las salidas
 de los clasificadores anteriores de tal manera que el siguiente clasificador
-absorbe la correlación entre las etiquetas de los anteriores clasificadores. 
+absorbe la correlación entre las etiquetas de los anteriores clasificadores.
 
 Cabe notar que en esta técnica cobra especial importancia el ordenamiento de los
 clasificadores ya que este orden tiene un impacto directo sobre el resultado de
@@ -798,7 +798,7 @@ con diversos subconjuntos de datos, generados con reemplazo o no. Durante la
 predicción, cada cadena produce un conjunto de etiquetas, que son los votos, y
 la salida final será computada por un algoritmo que combine cada salida
 individual.
- 
+
 \paragraph{\acrfull{lp}}
 
 El conjunto de potencias de etiquetas o \textit{\acrlong{lp}}
@@ -808,7 +808,7 @@ abordarlo con algoritmos de este tipo. La clasificación multi-clase es un
 enfoque usado para tratar con ejemplos en donde la etiqueta es única pero cuenta
 con más de dos clases. Un ejemplo de este tipo de problemas es el de análisis de
 sentimiento de texto, en donde las clases pueden ser \comillas{positivo},
-\comillas{negativo} y \comillas{neutral}. 
+\comillas{negativo} y \comillas{neutral}.
 
 En \acrshort{lp} cada etiqueta indica el subconjunto de etiquetas de la
 instancia. Esto es beneficioso en cuanto a que se logra preservar la dependencia
@@ -857,7 +857,7 @@ colección y que mantener una serie de estadísticas es suficiente para realizar
 la clasificación. Otra de las propiedades a destacar de este método es que en
 teoría se puede entrenar un árbol cuyo rendimiento se aproxime al generado en un
 ambiente de \textit{batch}, con la suficiente cantidad de datos
-\cite{bifet_machine_2018}. 
+\cite{bifet_machine_2018}.
 
 A partir de esto, y buscando sacar provecho de las ventajas mencionadas,
 \citeauthor{read_scalable_2012} decidieron adaptar este algoritmo a problemas de
@@ -897,8 +897,8 @@ motivo, en el campo de \acrshort{mll} se han diseñado una serie de métricas
 nuevas y específicas para abordar este tipo de problemas, y se clasifican en dos
 grupos: existen las métricas \comillas{basadas en ejemplos}, que son computadas
 por cada instancia y luego promediadas; y las métricas \comillas{basadas en
-etiquetas}, las cuales son calculadas para cada etiqueta por separado y
-devuelven el promedio micro o el promedio macro. 
+	etiquetas}, las cuales son calculadas para cada etiqueta por separado y
+devuelven el promedio micro o el promedio macro.
 
 A continuación se describe en detalle ambas categorías, incluyendo métricas
 presentadas por cada enfoque, junto con su definición formal y una
@@ -919,22 +919,22 @@ Esta es una de las métricas más populares en la literatura y se encarga de
 evaluar la proporción de pares instancia-etiqueta incorrectamente clasificados,
 es decir, toma en cuenta para el conteo tanto si se marcó como irrelevante una
 etiqueta relevante o si, por el contrario, se activó una etiqueta que no era
-relevante. Se define como: 
+relevante. Se define como:
 
 \begin{equation}
-   HLoss = \frac{1}{m} \sum_{i=1}^{m} \left\|h(x_{i}) \triangle Y_{i}\right\|
+	HLoss = \frac{1}{m} \sum_{i=1}^{m} \left\|h(x_{i}) \triangle Y_{i}\right\|
 \end{equation}
 
 Aquí el símbolo \comillas{$\triangle$} es la diferencia simétrica entre
 conjuntos. Tener en cuenta también que cuanto menor es el valor de
-\textit{hamming loss} mejor es el rendimiento del clasificador. 
+\textit{hamming loss} mejor es el rendimiento del clasificador.
 
 De manera complementaria, algunos autores de la literatura han decidido usar la
 métrica \comillas{\textit{hamming score}} que es un derivado del \textit{hamming
-loss} y se calcula como:
+	loss} y se calcula como:
 
 \begin{equation}
-   HScore = 1 - HLoss
+	HScore = 1 - HLoss
 \end{equation}
 
 \paragraph{Exactitud del Subconjunto} Se la conoce también como
@@ -947,47 +947,47 @@ subconjunto de etiquetas de la predicción es idéntico al subconjunto de
 etiquetas reales. En términos formales, se calcula como:
 
 \begin{equation}
-   exactitudSubconjunto = \frac{1}{m} \sum_{i=1}^{m} \left\|h(x_{i}) =
-   Y_{i}\right\|
+	exactitudSubconjunto = \frac{1}{m} \sum_{i=1}^{m} \left\|h(x_{i}) =
+	Y_{i}\right\|
 \end{equation}
 
 Es considerada una métrica excesivamente rigurosa, especialmente para
 colecciones donde el número de etiquetas es alto.
 
-\paragraph{Exactitud basada en ejemplos} 
+\paragraph{Exactitud basada en ejemplos}
 
 La exactitud basada en ejemplos también es conocida como \comillas{Índice de
-Jaccard} y consiste en tomar la proporción de etiquetas activas y correctamente
+	Jaccard} y consiste en tomar la proporción de etiquetas activas y correctamente
 clasificadas con respecto al total de etiquetas activas.
 
-\begin{equation} 
-   exactitudEj = \frac{1}{m} \sum_{i=1}^{m} 
-   \frac{\left\|Y_{i} \cap h(x_{i})\right\|}
-   {\left\|Y_{i} \cup h_(x_{i})\right\|} 
+\begin{equation}
+	exactitudEj = \frac{1}{m} \sum_{i=1}^{m}
+	\frac{\left\|Y_{i} \cap h(x_{i})\right\|}
+	{\left\|Y_{i} \cup h_(x_{i})\right\|}
 \end{equation}
 
 
-\paragraph{Precisión, Exhaustividad y Medida-F1 (basadas en ejemplos)} 
+\paragraph{Precisión, Exhaustividad y Medida-F1 (basadas en ejemplos)}
 
 Las métricas de precisión, exhaustividad y medida-F1 presentadas en la sección
 \ref{evaluacion_metricas} también tienen sus equivalentes para datos
 multi-etiquetados y se definen de la siguiente manera:
 
 \begin{equation}
-   precisionEj = \frac{1}{m} \sum_{i=1}^{m} 
-   \frac{\left\|Y_{i} \cap h(x_{i})\right\|}
-   {\left\|h_(x_{i})\right\|} 
+	precisionEj = \frac{1}{m} \sum_{i=1}^{m}
+	\frac{\left\|Y_{i} \cap h(x_{i})\right\|}
+	{\left\|h_(x_{i})\right\|}
 \end{equation}
 
 \begin{equation}
-   exhaustividadEj = \frac{1}{m} \sum_{i=1}^{m} 
-   \frac{\left\|Y_{i} \cap h(x_{i})\right\|}
-   {\left\|Y_{i}\right\|} 
+	exhaustividadEj = \frac{1}{m} \sum_{i=1}^{m}
+	\frac{\left\|Y_{i} \cap h(x_{i})\right\|}
+	{\left\|Y_{i}\right\|}
 \end{equation}
 
 \begin{equation}
-   medidaF1Ej = \frac{2 \times precisionEj \times exhaustividadEj}{ precisionEj +
-   exhaustividadEj }
+	medidaF1Ej = \frac{2 \times precisionEj \times exhaustividadEj}{ precisionEj +
+		exhaustividadEj }
 \end{equation}
 
 
@@ -1011,59 +1011,59 @@ esos conceptos pero su fórmula varia para adaptarse al escenario de
 \acrshort{mll}.
 
 \begin{equation}
-   \acrshort{vp}_{j} = \left\|\{x_{i}\mid y_{j} \in Y_{i} \land y_{j} \in
-   h(x_{i}), 1 \leq i \leq m\}\right\|
+	\acrshort{vp}_{j} = \left\|\{x_{i}\mid y_{j} \in Y_{i} \land y_{j} \in
+	h(x_{i}), 1 \leq i \leq m\}\right\|
 \end{equation}
 
 \begin{equation}
-   \acrshort{fp}_{j} = \left\|\{x_{i}\mid y_{j} \notin Y_{i} \land y_{j} \in
-   h(x_{i}), 1 \leq i \leq m\}\right\|
+	\acrshort{fp}_{j} = \left\|\{x_{i}\mid y_{j} \notin Y_{i} \land y_{j} \in
+	h(x_{i}), 1 \leq i \leq m\}\right\|
 \end{equation}
 
 \begin{equation}
-   \acrshort{vn}_{j} = \left\|\{x_{i}\mid y_{j} \notin Y_{i} \land y_{j} \notin
-   h(x_{i}), 1 \leq i \leq m\}\right\|
+	\acrshort{vn}_{j} = \left\|\{x_{i}\mid y_{j} \notin Y_{i} \land y_{j} \notin
+	h(x_{i}), 1 \leq i \leq m\}\right\|
 \end{equation}
 
-\begin{equation} 
-   \acrshort{fn}_{j} = \left\|\{x_{i}\mid y_{j} \in Y_{i} \land y_{j} \notin
-   h(x_{i}), 1 \leq i \leq m\}\right\| 
+\begin{equation}
+	\acrshort{fn}_{j} = \left\|\{x_{i}\mid y_{j} \in Y_{i} \land y_{j} \notin
+	h(x_{i}), 1 \leq i \leq m\}\right\|
 \end{equation}
 
 Tal como sucede con el aprendizaje tradicional, bajo esta definición las
 evaluaciones basadas en etiquetas logran satisfacer la condición:
 
 \begin{equation}
-   \acrshort{vp} + \acrshort{fp} + \acrshort{vn} + \acrshort{fn} = m
+	\acrshort{vp} + \acrshort{fp} + \acrshort{vn} + \acrshort{fn} = m
 \end{equation}
 
 A partir de estos cuatro conceptos se pueden derivar cualquiera de las métricas
 definidas en la sección \ref{evaluacion_metricas}. O dicho en términos formales,
 sea $B(\acrshort{vp}_{j}, \acrshort{fp}_{j}, \acrshort{vn}_{j},
-\acrshort{fn}_{j})$ una función cuyo dominio es $B \in \{ exactitud, precision,
-exhaustividad, medidaF1 \}$, las métricas pueden ser obtenidas siguiendo dos
+	\acrshort{fn}_{j})$ una función cuyo dominio es $B \in \{ exactitud, precision,
+	exhaustividad, medidaF1 \}$, las métricas pueden ser obtenidas siguiendo dos
 estrategias:
 
 \paragraph{Promedio Macro}
 
 \begin{equation}
-   B_{macro}(h) = \frac{1}{q} \sum_{j=1}^{q} 
-   B(\acrshort{vp}_{j}, \acrshort{fp}_{j}, \acrshort{vn}_{j}, \acrshort{fn}_{j})
+	B_{macro}(h) = \frac{1}{q} \sum_{j=1}^{q}
+	B(\acrshort{vp}_{j}, \acrshort{fp}_{j}, \acrshort{vn}_{j}, \acrshort{fn}_{j})
 \end{equation}
 
 \paragraph{Promedio Micro}
 
 \begin{equation}
-   B_{micro}(h) = B( \sum_{j=1}^{q} \acrshort{vp}_{j}, \sum_{j=1}^{q}
-   \acrshort{fp}_{j},\sum_{j=1}^{q}  \acrshort{vn}_{j},\sum_{j=1}^{q}
-   \acrshort{fn}_{j})
+	B_{micro}(h) = B( \sum_{j=1}^{q} \acrshort{vp}_{j}, \sum_{j=1}^{q}
+	\acrshort{fp}_{j},\sum_{j=1}^{q}  \acrshort{vn}_{j},\sum_{j=1}^{q}
+	\acrshort{fn}_{j})
 \end{equation}
 
 El enfoque de promedio macro tiene una semejanza al enfoque basado en ejemplos
 en cuanto a que ambas estrategias promedian por el mismo valor a todas sus
 etiquetas/ejemplos, siendo en este caso el número total de etiquetas. Esto se
 traduce en que esta categoría de métricas le asigna a cada etiqueta el mismo
-peso, sin importar la frecuencia de la misma. 
+peso, sin importar la frecuencia de la misma.
 
 Por el contrario, el enfoque de promedio micro sí provoca una ponderación en las
 etiquetas y la contribución de cada etiqueta al valor final no será el mismo.
@@ -1083,7 +1083,7 @@ A continuación se define formalmente el concepto de flujo, se extiende el
 análisis sobre la tarea de evaluación para dar cuenta de su aplicación en este
 escenario, se describe el concepto de dato sintético y se presentan algunos
 algoritmos y técnicas para generar datos sintéticos útiles para clasificaciones
-de etiqueta única y de multi-etiquetas.  
+de etiqueta única y de multi-etiquetas.
 
 \subsection{Definición}
 
@@ -1092,7 +1092,7 @@ ordenados, que arriban en el tiempo y son potencialmente infinitos. Un
 \textit{stream} se define como:
 
 \begin{equation}
-   S = \{s_{0}, s_{1}, \dots, s_{t}, \dots, s_{N}\}
+	S = \{s_{0}, s_{1}, \dots, s_{t}, \dots, s_{N}\}
 \end{equation}
 
 Donde $s_{t}$ es la instancia presente en el tiempo $t$ y $s_{N}$ es el último
@@ -1100,7 +1100,7 @@ dato avistado en el \textit{stream} pero que no necesariamente representa el
 final del flujo. Cada instancia $d_{t}$ posee un conjunto de atributos y
 etiquetas y se puede definir tal como se hizo en la sección \ref{clasificacion}
 de tratarse de datos uni-etiquetados o como en la sección \ref{mll_def_formal}
-de tratarse de datos multi-etiquetados. 
+de tratarse de datos multi-etiquetados.
 
 El objetivo de la tarea de clasificación en este escenario es el mismo que para
 escenarios de \textit{batch}, esto es, hallar una función capaz de enlazar
@@ -1118,6 +1118,7 @@ el error posible.
 \todo[inline]{sección para explicar concept drift?}
 
 \subsection{Evaluación}
+\label{stream_evaluacion}
 
 Como se describió en la sección \ref{evaluacion_intro}, la tarea de evaluación
 para aprendizaje en ambientes de \textit{batch} consiste en dividir al conjunto
@@ -1132,33 +1133,33 @@ relevancia. Por lo tanto, se han presentado dos enfoques nuevos, similares a las
 estrategias definidas en la sección \ref{evaluacion_estrategias} pero
 acondicionados a los escenarios de flujos continuos de datos.
 
-\begin{description} 
+\begin{description}
 
-   \item[Evaluación \textit{holdout}] La evaluación por retención o
-      \textit{holdout} es un método derivado de la técnica de validación cruzada
-      pero adaptado a ambientes de flujos continuos. Consiste en usar una parte
-      del \textit{stream} como conjunto de entrenamiento y, periódicamente,
-      extraer una serie de conjuntos de prueba, llamados conjuntos de
-      \textit{holdout}, que son usados para computar las métricas de evaluación
-      y que, por tanto, no deben haber sido observados por el modelo
-      previamente.  \textit{Holdout} es un método que requiere contar con flujos
-      continuos lo suficientemente grandes para que la evaluación sea precisa,
-      lo cual no siempre es posible y es uno de los impedimentos que hacen que
-      esta estrategia tenga menor trascendencia que otras.
+	\item[Evaluación \textit{holdout}] La evaluación por retención o
+	      \textit{holdout} es un método derivado de la técnica de validación cruzada
+	      pero adaptado a ambientes de flujos continuos. Consiste en usar una parte
+	      del \textit{stream} como conjunto de entrenamiento y, periódicamente,
+	      extraer una serie de conjuntos de prueba, llamados conjuntos de
+	      \textit{holdout}, que son usados para computar las métricas de evaluación
+	      y que, por tanto, no deben haber sido observados por el modelo
+	      previamente.  \textit{Holdout} es un método que requiere contar con flujos
+	      continuos lo suficientemente grandes para que la evaluación sea precisa,
+	      lo cual no siempre es posible y es uno de los impedimentos que hacen que
+	      esta estrategia tenga menor trascendencia que otras.
 
-   \item[Evaluación \textit{Prequential}] La técnica de evaluación
-      \textit{Prequential} o \textit{test-then-train} consiste en realizar la
-      evaluación de cada instancia primero y luego usarla para actualizar el
-      modelo. En consecuencia, ya no hay una división en subconjuntos de datos
-      independientes sino que todas las instancias son usadas para evaluar y
-      luego clasificar, en un mismo instante de tiempo. A diferencia del enfoque
-      de \textit{holdout}, no es necesario que el conjunto de datos sea grande y
-      la evaluación \textit{prequential} permite alimentar al modelo con todos
-      los datos de la colección, lo que se traduce en un aprovechamiento máximo
-      del \textit{stream}. Por estas razones, el enfoque \textit{prequential}
-      tiende a ser el más usado en este campo de estudio.
+	\item[Evaluación \textit{Prequential}] La técnica de evaluación
+	      \textit{Prequential} o \textit{test-then-train} consiste en realizar la
+	      evaluación de cada instancia primero y luego usarla para actualizar el
+	      modelo. En consecuencia, ya no hay una división en subconjuntos de datos
+	      independientes sino que todas las instancias son usadas para evaluar y
+	      luego clasificar, en un mismo instante de tiempo. A diferencia del enfoque
+	      de \textit{holdout}, no es necesario que el conjunto de datos sea grande y
+	      la evaluación \textit{prequential} permite alimentar al modelo con todos
+	      los datos de la colección, lo que se traduce en un aprovechamiento máximo
+	      del \textit{stream}. Por estas razones, el enfoque \textit{prequential}
+	      tiende a ser el más usado en este campo de estudio.
 
-\end{description} 
+\end{description}
 
 En cuanto a las métricas de rendimiento utilizadas, en el ámbito de
 clasificaciones de flujos continuos se usan las mismas métricas de
@@ -1173,6 +1174,7 @@ secciones \ref{evaluacion_metricas} para datos de etiqueta única y
 \ref{mll_evaluacion} para datos multi-etiquetados.
 
 \subsection{Datos sintéticos}
+\label{stream_syn}
 
 Es común en la literatura generar datos sintéticos para simular ambientes de
 flujo continuos de datos. El principal motivo de esto es la falta de colecciones
@@ -1182,22 +1184,22 @@ en este escenario \cite{kirkby_improving_2007}. Pese a esta restricción, se han
 hallado ventajas comparativas en la aplicación de flujos sintéticos en el
 análisis y evaluación de algoritmos, entre ellas se encuentran las siguientes:
 
-\begin{itemize} 
+\begin{itemize}
 
-   \item Son fácilmente generables y reproducibles.
+	\item Son fácilmente generables y reproducibles.
 
-   \item Tiene un costo de almacenamiento relativamente menor.
+	\item Tiene un costo de almacenamiento relativamente menor.
 
-   \item Cumplen con el requisito de ser teóricamente infinitos.
+	\item Cumplen con el requisito de ser teóricamente infinitos.
 
-   \item Es posible introducir cambios de concepto artificiales para realizar un
-      análisis incisivo de los algoritmos de clasificación bajo escenarios
-      dinámicos y cambiantes.
+	\item Es posible introducir cambios de concepto artificiales para realizar un
+	      análisis incisivo de los algoritmos de clasificación bajo escenarios
+	      dinámicos y cambiantes.
 
-   \item Ayudan en el ámbito académico y científico a realizar estudios y
-      experimentos más abarcativos.
+	\item Ayudan en el ámbito académico y científico a realizar estudios y
+	      experimentos más abarcativos.
 
-\end{itemize} 
+\end{itemize}
 
 En la actualidad existen varios generadores de flujos sintéticos que logran
 cumplir con los requisitos necesarios, aquí se describen dos de ellos:
@@ -1205,34 +1207,34 @@ cumplir con los requisitos necesarios, aquí se describen dos de ellos:
 
 \begin{description}
 
-   \item[\textit{\acrfull{rtg}}] El generador se basa en la técnica presentada
-      por \citeauthor{domingos_mining_2002} \cite{domingos_mining_2002} y
-      consiste en producir un \textit{stream} partiendo de un árbol construido
-      aleatoriamente. A fines de generar el árbol, el método selecciona un
-      atributo al azar para realizar el corte y posteriormente le asigna una
-      clase aleatoria a cada hoja. A partir de este árbol se van a generar las
-      instancias sintéticas.  Primero se asignan valores aleatorios a los
-      atributos, siguiendo una distribución uniforme, y luego con esos valores
-      se atraviesa el árbol para hallar las clases de la etiqueta. Teniendo en
-      cuenta que las instancias son generadas y clasificadas según un modelo con
-      estructura de árbol, en teoría este método favorece a algoritmos del tipo
-      de árboles de decisión.
+	\item[\textit{\acrfull{rtg}}] El generador se basa en la técnica presentada
+	      por \citeauthor{domingos_mining_2002} \cite{domingos_mining_2002} y
+	      consiste en producir un \textit{stream} partiendo de un árbol construido
+	      aleatoriamente. A fines de generar el árbol, el método selecciona un
+	      atributo al azar para realizar el corte y posteriormente le asigna una
+	      clase aleatoria a cada hoja. A partir de este árbol se van a generar las
+	      instancias sintéticas.  Primero se asignan valores aleatorios a los
+	      atributos, siguiendo una distribución uniforme, y luego con esos valores se
+	      atraviesa el árbol para hallar las clases de la etiqueta. Teniendo en
+	      cuenta que las instancias son generadas y clasificadas según un modelo con
+	      estructura de árbol, en teoría este método favorece a algoritmos del tipo
+	      de árboles de decisión.
 
-   \item[\textit{\acrfull{rbf}}] El generador produce un \textit{stream} de
-      función de base radial aleatoria. El método actúa de la siguiente manera:
-      se generan un número fijo de centroides y cada centro tiene una posición
-      aleatoria, una única desviación estándar, una clase y un peso. Para
-      generar una instancia se selecciona un centro al azar, teniendo en cuenta
-      el peso asociado, de tal manera de favorecer a los centros con mayor peso.
-      La clase del ejemplo es determinada por el centroide elegido. El siguiente
-      paso es seleccionar una dirección tal que aleje los valores de atributo
-      del punto central. La dirección es obtenida aleatoriamente, siguiendo una
-      distribución gaussiana cuya desviación estándar es determinada por el
-      centroide elegido.  El resultado, en términos geométricos, es una
-      hiperesfera en donde cada ejemplo rodea un punto central con densidades
-      variables \cite{kirkby_improving_2007}. Este método surge de la necesidad
-      de generar conceptos que no favorezcan a modelos de tipo árbol, tal como
-      sí lo hacía la técnica \acrshort{rtg}.
+	\item[\textit{\acrfull{rbf}}] El generador produce un \textit{stream} de
+	      función de base radial aleatoria. El método actúa de la siguiente manera:
+	      se generan un número fijo de centroides y cada centro tiene una posición
+	      aleatoria, una única desviación estándar, una clase y un peso. Para
+	      generar una instancia se selecciona un centro al azar, teniendo en cuenta
+	      el peso asociado, de tal manera de favorecer a los centros con mayor peso.
+	      La clase del ejemplo es determinada por el centroide elegido. El siguiente
+	      paso es seleccionar una dirección tal que aleje los valores de atributo
+	      del punto central. La dirección es obtenida aleatoriamente, siguiendo una
+	      distribución gaussiana cuya desviación estándar es determinada por el
+	      centroide elegido.  El resultado, en términos geométricos, es una
+	      hiperesfera en donde cada ejemplo rodea un punto central con densidades
+	      variables \cite{kirkby_improving_2007}. Este método surge de la necesidad
+	      de generar conceptos que no favorezcan a modelos de tipo árbol, tal como
+	      sí lo hacía la técnica \acrshort{rtg}.
 
 \end{description}
 
@@ -1251,79 +1253,79 @@ son los siguientes:
 
 \begin{description}
 
-   \item[Sesgo de etiquetas] Es el fenómeno por el cual existen etiquetas que se
-      presentan en los datos más frecuentemente que otras. A diferencia de
-      colecciones de etiqueta única, puede haber más de una etiqueta por
-      instancia lo que lleva a que este fenómeno se magnifique en colecciones
-      multi-etiquetadas. A su vez, en colecciones de texto es muy común
-      encontrar unas pocas etiquetas que predominan y otras que pertenecen a
-      subconjuntos de instancias muy específicas. Por ejemplo, una etiqueta como
-      \comillas{\texttt{Ficción}} es muy probable que sea relevante en
-      colecciones de cuentos literarios e incluso que figure junto con otras
-      etiquetas, por ejemplo \texttt{\{Ficción, Drama\}}.  No sucede lo mismo
-      con etiquetas tales como \comillas{\texttt{Elefantes}}, que probablemente
-      aparezcan de manera aislada para este conjunto de datos.  Por lo tanto, si
-      se desea generar una colección sintética de texto es posible que se quiera
-      ajustar el valor del parámetro de sesgo de etiquetas para que sea mayor al
-      de otro tipo de colecciones.
+	\item[Sesgo de etiquetas] Es el fenómeno por el cual existen etiquetas que se
+	      presentan en los datos más frecuentemente que otras. A diferencia de
+	      colecciones de etiqueta única, puede haber más de una etiqueta por
+	      instancia lo que lleva a que este fenómeno se magnifique en colecciones
+	      multi-etiquetadas. A su vez, en colecciones de texto es muy común
+	      encontrar unas pocas etiquetas que predominan y otras que pertenecen a
+	      subconjuntos de instancias muy específicas. Por ejemplo, una etiqueta como
+	      \comillas{\texttt{Ficción}} es muy probable que sea relevante en
+	      colecciones de cuentos literarios e incluso que figure junto con otras
+	      etiquetas, por ejemplo \texttt{\{Ficción, Drama\}}.  No sucede lo mismo
+	      con etiquetas tales como \comillas{\texttt{Elefantes}}, que probablemente
+	      aparezcan de manera aislada para este conjunto de datos.  Por lo tanto, si
+	      se desea generar una colección sintética de texto es posible que se quiera
+	      ajustar el valor del parámetro de sesgo de etiquetas para que sea mayor al
+	      de otro tipo de colecciones.
 
-   \item[Distribución de etiquetas] La distribución de etiquetas tiene que ver
-      con la forma en que la cardinalidad de etiquetas se distribuye a lo largo
-      de la colección. La cardinalidad de etiquetas, tal como fue formulada en
-      la ecuación \ref{eq:mll_card}, es la cantidad de etiquetas promedio por
-      instancia y es una de las métricas usadas para conocer el grado de
-      multi-etiquetado de los datos (ver sección \ref{mll_def_formal}). Observar
-      la distribución de etiquetas es útil para entender la composición de dicha
-      cardinalidad y se calcula tomando el número de veces que se repite cada
-      posible tamaño de subconjuntos de etiquetas. Basándose en este fenómeno se
-      distinguen dos tipos de colecciones, \comillas{A} y \comillas{B}. Las
-      colecciones de tipo A son aquellas donde la cardinalidad de etiquetas es
-      muy cercana a uno pero resultan ser multi-etiquetadas por la existencia de
-      ejemplos donde el etiquetado único generaría ambigüedad y se resolvió
-      añadiendo etiquetas. Tal es el caso para colecciones de artículos
-      periodísticos \cite{lang_newsweeder_1995} o de imágenes para realizar
-      detección de objetos \cite{boutell_learning_2004}. Por contrapartida, las
-      colecciones de tipo \comillas{B} son aquellas donde existe más de una
-      etiqueta por instancia y suelen situarse en dominios abarcativos. Es el
-      caso para colecciones de funciones genómicas, por ejemplo, en la cual se
-      espera que los genes tengan múltiples funciones
-      \cite{diplaris_protein_2005}.  Otros ejemplos son los de correos
-      electrónicos \cite{hutchison_enron_2004} y conceptos semánticos
-      \cite{snoek_challenge_2006}.
+	\item[Distribución de etiquetas] La distribución de etiquetas tiene que ver
+	      con la forma en que la cardinalidad de etiquetas se distribuye a lo largo
+	      de la colección. La cardinalidad de etiquetas, tal como fue formulada en
+	      la ecuación \ref{eq:mll_card}, es la cantidad de etiquetas promedio por
+	      instancia y es una de las métricas usadas para conocer el grado de
+	      multi-etiquetado de los datos (ver sección \ref{mll_def_formal}). Observar
+	      la distribución de etiquetas es útil para entender la composición de dicha
+	      cardinalidad y se calcula tomando el número de veces que se repite cada
+	      posible tamaño de subconjuntos de etiquetas. Basándose en este fenómeno se
+	      distinguen dos tipos de colecciones, \comillas{A} y \comillas{B}. Las
+	      colecciones de tipo A son aquellas donde la cardinalidad de etiquetas es
+	      muy cercana a uno pero resultan ser multi-etiquetadas por la existencia de
+	      ejemplos donde el etiquetado único generaría ambigüedad y se resolvió
+	      añadiendo etiquetas. Tal es el caso para colecciones de artículos
+	      periodísticos \cite{lang_newsweeder_1995} o de imágenes para realizar
+	      detección de objetos \cite{boutell_learning_2004}. Por contrapartida, las
+	      colecciones de tipo \comillas{B} son aquellas donde existe más de una
+	      etiqueta por instancia y suelen situarse en dominios abarcativos. Es el
+	      caso para colecciones de funciones genómicas, por ejemplo, en la cual se
+	      espera que los genes tengan múltiples funciones
+	      \cite{diplaris_protein_2005}.  Otros ejemplos son los de correos
+	      electrónicos \cite{hutchison_enron_2004} y conceptos semánticos
+	      \cite{snoek_challenge_2006}.
 
-   \item[Relación entre etiquetas] Esta cualidad tiene que ver con el concepto
-      de interdependencia entre etiquetas, descripto en la sección
-      \ref{intro_mll}, y se trata de capturar la aparición mutua de etiquetas en
-      los ejemplos de tal manera de reflejar el grado de dependencia de las
-      etiquetas en el dominio del problema. La idea es que un generador de
-      instancias sintéticas debe ser capaz de asignar subconjuntos de etiquetas,
-      ya no de manera aleatoria, sino respetando esta relación subyacente. Esto
-      se puede lograr diseñando una matriz cuadrada de doble entrada que guarde
-      las probabilidades condicionales entre pares de etiquetas.
+	\item[Relación entre etiquetas] Esta cualidad tiene que ver con el concepto
+	      de interdependencia entre etiquetas, descripto en la sección
+	      \ref{intro_mll}, y se trata de capturar la aparición mutua de etiquetas en
+	      los ejemplos de tal manera de reflejar el grado de dependencia de las
+	      etiquetas en el dominio del problema. La idea es que un generador de
+	      instancias sintéticas debe ser capaz de asignar subconjuntos de etiquetas,
+	      ya no de manera aleatoria, sino respetando esta relación subyacente. Esto
+	      se puede lograr diseñando una matriz cuadrada de doble entrada que guarde
+	      las probabilidades condicionales entre pares de etiquetas.
 
-   \item[Espacio de atributos] Así como existen relaciones entre etiquetas que
-      los algoritmos explotan para generar datos sintéticos de calidad, también
-      puede analizarse el espacio de atributos y las interdependencias entre sí
-      para optimizar los generadores. El estudio realizado por
-      \citeauthor{read_generating_2009} halló efectos o particularidades
-      frecuentes en los datos: uno de ellos es el efecto
-      \comillas{atributo-etiqueta} por el cual hay atributos que de aparecer en
-      un ejemplo activan una etiqueta. El ejemplo dado surgió en una colección
-      de artículos de noticias tecnológicas \cite{read_classifier_2011}, en
-      donde se observó que los atributos \comillas{\texttt{linux}} y
-      \comillas{\texttt{mobile}} estaban fuertemente emparentados con las
-      etiquetas \comillas{\texttt{Linux}} y \comillas{\texttt{Mobile}},
-      respectivamente. Otro efecto hallado es el denominado
-      \comillas{atributo-combinación} por el cual la aparición de un atributo
-      activa un subconjunto de etiquetas en simultáneo. Por ejemplo, en una
-      colección de noticias \cite{lang_newsweeder_1995} se descubrió que el
-      atributo \comillas{\texttt{arms}} ocurre frecuentemente con las etiquetas
-      \texttt{\{politics.guns, misc.religion\}}. Del mismo modo, existe el
-      \comillas{efecto aleatorio}, el cual engloba a los atributos que no proveen
-      información significativa sobre la presencia de etiquetas o combinaciones
-      de etiquetas. En definitiva, los generadores pueden sacar provecho de este
-      fenómeno otorgando parámetros que permitan ajustar el grado de presencia
-      de los efectos mencionados y así lograr colecciones de datos sintéticos
-      más realistas.
-      
+	\item[Espacio de atributos] Así como existen relaciones entre etiquetas que
+	      los algoritmos explotan para generar datos sintéticos de calidad, también
+	      puede analizarse el espacio de atributos y las interdependencias entre sí
+	      para optimizar los generadores. El estudio realizado por
+	      \citeauthor{read_generating_2009} halló efectos o particularidades
+	      frecuentes en los datos: uno de ellos es el efecto
+	      \comillas{atributo-etiqueta} por el cual hay atributos que de aparecer en
+	      un ejemplo activan una etiqueta. El ejemplo dado surgió en una colección
+	      de artículos de noticias tecnológicas \cite{read_classifier_2011}, en
+	      donde se observó que los atributos \comillas{\texttt{linux}} y
+	      \comillas{\texttt{mobile}} estaban fuertemente emparentados con las
+	      etiquetas \comillas{\texttt{Linux}} y \comillas{\texttt{Mobile}},
+	      respectivamente. Otro efecto hallado es el denominado
+	      \comillas{atributo-combinación} por el cual la aparición de un atributo
+	      activa un subconjunto de etiquetas en simultáneo. Por ejemplo, en una
+	      colección de noticias \cite{lang_newsweeder_1995} se descubrió que el
+	      atributo \comillas{\texttt{arms}} ocurre frecuentemente con las etiquetas
+	      \texttt{\{politics.guns, misc.religion\}}. Del mismo modo, existe el
+	      \comillas{efecto aleatorio}, el cual engloba a los atributos que no proveen
+	      información significativa sobre la presencia de etiquetas o combinaciones
+	      de etiquetas. En definitiva, los generadores pueden sacar provecho de este
+	      fenómeno otorgando parámetros que permitan ajustar el grado de presencia
+	      de los efectos mencionados y así lograr colecciones de datos sintéticos
+	      más realistas.
+
 \end{description}
