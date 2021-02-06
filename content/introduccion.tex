@@ -19,14 +19,14 @@ competitiva en el mercado y, en adición, proveer de un servicio valioso a la
 comunidad. Potencialmente, la \textit{big data} puede ser una fuente que
 proporcione a la comunidad de conocimiento nuevo sobre el mundo en el que
 habita, o como ha mencionado \citeauthor{fayyad_advances_1996} en su escrito
-sobre el descubrimiento de conocimiento: 
+sobre el descubrimiento de conocimiento:
 
 \begin{displayquote}
-   \comillas{Los datos que percibimos de nuestro
-ambiente son la evidencia básica que usamos para construir teorías y modelos
-sobre el universo en el que vivimos} \footnote{\comillas{Data we capture about our
-   environment are the basic evidence we use to build theories and models of the
-universe we live in} \cite[p. 2]{fayyad_advances_1996}. Traducción propia.}
+	\comillas{Los datos que percibimos de nuestro
+		ambiente son la evidencia básica que usamos para construir teorías y modelos
+		sobre el universo en el que vivimos}\footnote{\comillas{Data we capture about our
+			environment are the basic evidence we use to build theories and models of the
+			universe we live in} \cite[p. 2]{fayyad_advances_1996}. Traducción propia.}
 \end{displayquote}
 
 Sin embargo, volúmenes masivos de datos tornan obsoletos los tradicionales
@@ -65,10 +65,10 @@ categoría de \comillas{Fútbol} tanto como en la de \comillas{Tragedias}. Del
 mismo modo, un video documental sobre la vida de Borges puede anotarse como
 \comillas{Biografía}, \comillas{Literatura} o incluso \comillas{Buenos Aires} si
 se mostraran imágenes de la ciudad. Este tipo de problemas es llamado
-\acrfull{mll} \footnote{Siglas provenientes de su abreviación en inglés,
-Multi-label learning} y representa un nuevo paradigma de aprendizaje automático,
+\acrfull{mll}\footnote{Siglas provenientes de su abreviación en inglés,
+	Multi-label learning} y representa un nuevo paradigma de aprendizaje automático,
 con sus propios retos por afrontar y que aún no ha sido suficientemente
-explorado en proyectos de investigación. 
+explorado en proyectos de investigación.
 
 Una clasificación multi-etiqueta permite conocer el grado de correlación entre
 una instancia de la colección y una o más etiquetas. Esta cualidad significa un
@@ -105,7 +105,7 @@ pertenece a una única etiqueta, o dicho de otra manera, cada objeto del mundo
 real se asocia a un único concepto y ningún otro. Sin embargo, existen problemas
 de clasificación donde más de una etiqueta puede ser asignada a un ejemplo. La
 anterior presunción no se amolda a problemas complejos donde un objeto pueda
-tener más de un significado simultáneamente. 
+tener más de un significado simultáneamente.
 
 Tareas de este tipo pueden surgir en áreas como las de categorización de texto,
 recuperación de información musical, clasificación semántica de escenas,
@@ -120,27 +120,27 @@ musical una pieza sinfónica puede tener \textit{tags} como ‘Mozart’, ‘pia
 ‘clásica’.
 
 Este nuevo paradigma es llamado '\acrlong{mll}'   y ataca problemas con las
-siguientes características \cite{gibaja_tutorial_2015}: 
+siguientes características \cite{gibaja_tutorial_2015}:
 
-\begin{itemize} 
+\begin{itemize}
 
-   \item El conjunto de etiquetas es previamente definido y tiene un significado
-      interpretable por un humano.  
+	\item El conjunto de etiquetas es previamente definido y tiene un significado
+	      interpretable por un humano.
 
-   \item El número de etiquetas es limitado y no mayor que el número de
-      atributos. 
+	\item El número de etiquetas es limitado y no mayor que el número de
+	      atributos.
 
-   \item En caso que el número de atributos sea grande, se debe poder aplicar
-      estrategias de reducción de atributos.
+	\item En caso que el número de atributos sea grande, se debe poder aplicar
+	      estrategias de reducción de atributos.
 
-   \item El número de ejemplos puede ser grande.  
+	\item El número de ejemplos puede ser grande.
 
-   \item Las etiquetas pueden estar correlacionadas. Esto significa que se
-      pueden aplicar técnicas que exploten estas relaciones con el objetivo de
-      reducir los tiempos de procesamiento de los algoritmos.  
+	\item Las etiquetas pueden estar correlacionadas. Esto significa que se
+	      pueden aplicar técnicas que exploten estas relaciones con el objetivo de
+	      reducir los tiempos de procesamiento de los algoritmos.
 
-   \item La distribución de los datos puede estar desbalanceada, es decir, que
-      una etiqueta puede tener un mayor número de ejemplos que otras. 
+	\item La distribución de los datos puede estar desbalanceada, es decir, que
+	      una etiqueta puede tener un mayor número de ejemplos que otras.
 
 \end{itemize}
 
@@ -156,21 +156,21 @@ sería mayor que si se etiquetara con la etiqueta ‘tenis’.
 \citeauthor{zhang_multi-label_2010} clasifican estos algoritmos en tres grupos
 según la estrategia de correlación aplicada \cite{zhang_multi-label_2010}:
 
-\begin{description} 
-\label{estrategias_mll}
+\begin{description}
+	\label{estrategias_mll}
 
-   \item[Estrategia de primer orden] La tarea de \acrshort{mll} es dividida en
-      $q$ tareas de clasificación binarias, siendo $q$ el número de etiquetas de
-      la colección.  
+	\item[Estrategia de primer orden] La tarea de \acrshort{mll} es dividida en
+	      $q$ tareas de clasificación binarias, siendo $q$ el número de etiquetas de
+	      la colección.
 
-   \item[Estrategia de segundo orden] La tarea de \acrshort{mll} se basa en la
-      generación de relaciones de a pares de etiquetas ya sea por
-      \textit{rankings} entre clases relevantes y no relevantes o por
-      interacción entre pares de etiquetas.  
+	\item[Estrategia de segundo orden] La tarea de \acrshort{mll} se basa en la
+	      generación de relaciones de a pares de etiquetas ya sea por
+	      \textit{rankings} entre clases relevantes y no relevantes o por
+	      interacción entre pares de etiquetas.
 
-   \item[Estrategia de alto orden] La tarea de \acrshort{mll} considera
-      relaciones de alto orden entre etiquetas.
-  
+	\item[Estrategia de alto orden] La tarea de \acrshort{mll} considera
+	      relaciones de alto orden entre etiquetas.
+
 \end{description}
 
 Las estrategias de primer orden son conceptualmente simples y eficientes pero
@@ -178,38 +178,38 @@ logran resultados de menor calidad ya que no consideran correlaciones. Las
 estrategias de segundo orden tienen un mayor poder de generalización pero no
 todos los problemas de \acrshort{mll} pueden ser abarcados. El último grupo, por
 su parte, modela las correlaciones más potentes pero conlleva un costo
-computacional alto. 
+computacional alto.
 
 En el último tiempo, muchos son los algoritmos que han sido desarrollados para
 atacar el problema de la clasificación \acrshort{mll}. La comunidad de
 investigación ha aceptado la taxonomía definida por
 \citeauthor{tsoumakas_multi-label_2007}, para estudiar y clasificar los
 distintos algoritmos de la literatura \cite {gibaja_tutorial_2015}. La misma
-propone dos grandes grupos: 
+propone dos grandes grupos:
 
-\begin{description} 
+\begin{description}
 
-   \item[Métodos de transformación del problema] Este tipo de algoritmos
-      transforman el problema de clasificación \acrshort{mll} en un problema de
-      clasificación tradicional. Ejemplos típicos de este grupo son \acrfull{br}
-      \cite{tsoumakas_multi-label_2007} y \acrfull{cc}
-      \cite{read_classifier_2011}. Ambos convierten la tarea en una de
-      clasificación binaria.  
+	\item[Métodos de transformación del problema] Este tipo de algoritmos
+	      transforman el problema de clasificación \acrshort{mll} en un problema de
+	      clasificación tradicional. Ejemplos típicos de este grupo son \acrfull{br}
+	      \cite{tsoumakas_multi-label_2007} y \acrfull{cc}
+	      \cite{read_classifier_2011}. Ambos convierten la tarea en una de
+	      clasificación binaria.
 
-   \item[Métodos de adaptación del algoritmo] Son algoritmos que toman métodos
-      tradicionales de aprendizaje, como árboles de decisión o \textit{naive
-      bayes}, y los adaptan a la tarea de clasificación \acrshort{mll}.  
+	\item[Métodos de adaptación del algoritmo] Son algoritmos que toman métodos
+	      tradicionales de aprendizaje, como árboles de decisión o \textit{naive
+		      bayes}, y los adaptan a la tarea de clasificación \acrshort{mll}.
 
 \end{description}
 
 \begin{figure}
-   \includegraphics[width=\linewidth]{figures/algorithm_taxonomy.png}
-   \caption{Categorización de los algoritmos de \acrshort{mll} más
-   representativos.}
-   \label{fig:algorithm_taxonomy} 
+	\includegraphics[width=\linewidth]{figures/algorithm_taxonomy.png}
+	\caption{Categorización de los algoritmos de \acrshort{mll} más
+		representativos.}
+	\label{fig:algorithm_taxonomy}
 \end{figure}
 
-A modo ilustrativo, la figura \ref{fig:algorithm_taxonomy} es un diagrama de la
+A modo ilustrativo, la figura~\ref{fig:algorithm_taxonomy} es un diagrama de la
 taxonomía de algoritmos confeccionado por \citeauthor{zhang_review_2014} \cite
 {zhang_review_2014}.
 
@@ -229,24 +229,24 @@ algoritmo para poder tratar con ellos.
 \label{stream_caracteristicas}
 
 En escenarios de \textit{streamings}, los datos deben cumplir con las siguientes
-características \cite {gama_knowledge_2010}: 
+características \cite {gama_knowledge_2010}:
 
-\begin{itemize} 
+\begin{itemize}
 
-   \item Los datos están disponibles a través de flujos continuos e ilimitados
-      en el tiempo, a diferencia del aprendizaje por \textit{batch} donde los
-      datos son acotados.
+	\item Los datos están disponibles a través de flujos continuos e ilimitados
+	      en el tiempo, a diferencia del aprendizaje por \textit{batch} donde los
+	      datos son acotados.
 
-   \item Las regularidades subyacentes de los datos no son estacionarias sino
-      que pueden evolucionar. En otras palabras, la distribución de los datos es
-      susceptible a cambios en el tiempo.
+	\item Las regularidades subyacentes de los datos no son estacionarias sino
+	      que pueden evolucionar. En otras palabras, la distribución de los datos es
+	      susceptible a cambios en el tiempo.
 
-   \item La data ya no es considerada independiente e idénticamente distribuida.
+	\item La data ya no es considerada independiente e idénticamente distribuida.
 
-   \item La data está situada tanto en el espacio como en el tiempo. La lectura
-      y procesamiento de los datos debe ser lo suficientemente veloz como para
-      procesar el siguiente dato, de otro modo, el dato ya no podrá ser procesado
-      en el futuro.
+	\item La data está situada tanto en el espacio como en el tiempo. La lectura
+	      y procesamiento de los datos debe ser lo suficientemente veloz como para
+	      procesar el siguiente dato, de otro modo, el dato ya no podrá ser procesado
+	      en el futuro.
 
 \end{itemize}
 
@@ -254,35 +254,35 @@ características \cite {gama_knowledge_2010}:
 \label{stream_requisitos}
 
 Para hacer frente a estas características de los datos, los sistemas o
-algoritmos deben contar con los siguientes requisitos \cite{hulten_mining_2001}: 
+algoritmos deben contar con los siguientes requisitos \cite{hulten_mining_2001}:
 
-\begin{itemize} 
+\begin{itemize}
 
-   \item El tiempo para procesar cada registro debe ser constante y pequeño. 
+	\item El tiempo para procesar cada registro debe ser constante y pequeño.
 
-   \item Debe usar un tamaño fijo de memoria principal y no dependiente de la
-      cantidad de registros ya procesados. 
+	\item Debe usar un tamaño fijo de memoria principal y no dependiente de la
+	      cantidad de registros ya procesados.
 
-   \item El modelo es generado a partir de una única pasada sobre los datos. 
+	\item El modelo es generado a partir de una única pasada sobre los datos.
 
-   \item Debe contar con un modelo listo para realizar predicciones en cualquier
-      momento.  
+	\item Debe contar con un modelo listo para realizar predicciones en cualquier
+	      momento.
 
-   \item Idealmente deberá producir un modelo equivalente o casi idéntico al que
-      hubiera sido producido en un ambiente de \textit{batch}.
+	\item Idealmente deberá producir un modelo equivalente o casi idéntico al que
+	      hubiera sido producido en un ambiente de \textit{batch}.
 
-   \item Debe mantenerse actualizado ante evoluciones o derivas de concepto en
-      los datos.  
+	\item Debe mantenerse actualizado ante evoluciones o derivas de concepto en
+	      los datos.
 
 \end{itemize}
 
 Los algoritmos que cumplen con estas cualidades son llamados algoritmos de
 aprendizaje adaptativo y, aplicados a tareas de clasificación como el de
 multi-etiquetas, pueden aprovecharse para entrenar un mayor número de objetos y
-predecir en cualquier instante. 
+predecir en cualquier instante.
 
 
-\section{Motivación} 
+\section{Motivación}
 
 Ante la necesidad de hacer frente a un contexto global de generación masiva de
 datos y a ritmo acelerado, se hace preciso fortalecer las técnicas de
@@ -327,7 +327,7 @@ relación entre las etiquetas y sus atributos, por mencionar algunas. De lograr
 esta aproximación se podrán realizar estudios sobre el impacto de los algoritmos
 sobre flujos de datos de naturaleza distintiva, o en otras palabras, entender en
 qué medida un algoritmo es más apropiado que otro para un conjunto de datos en
-un determinado contexto. 
+un determinado contexto.
 
 Esta última idea mencionada, es decir, el ser capaz de hallar las fortalezas y
 debilidades de un algoritmo de \acrshort{mll} en un contexto determinado es
@@ -370,30 +370,30 @@ variando los estimadores base y probando distintas implementaciones. Con esto
 \todo{describir qué es este algoritmo de mayoría de voto} para el lenguaje
 Python \todo{referencia bibliografica} y se compara su rendimiento contra el de
 las implementaciones de Java \todo{no estan los experimentos todavía, este punto
-podría cambiar}.
+	podría cambiar}.
 
 Con esto en mente, se listan a continuación los objetivos particulares del
 trabajo:
 \begin{itemize}
 
-   \item Obtener colecciones de datos que cumplan con las propiedades requeridas
-      para considerarse un flujo continuo. Las características deben variar
-      entre colecciones. Cada colección debe tener las instancias propias del
-      juego de datos e instancias sintéticas potencialmente ilimitadas.
+	\item Obtener colecciones de datos que cumplan con las propiedades requeridas
+	      para considerarse un flujo continuo. Las características deben variar
+	      entre colecciones. Cada colección debe tener las instancias propias del
+	      juego de datos e instancias sintéticas potencialmente ilimitadas.
 
 
-   \item Generar flujos continuos de datos a partir de la colección
-      proporcionada replicando su número de etiquetas, atributos e instancias, su
-      cardinalidad y densidad de etiquetas y la co-ocurrencia entre dos
-      etiquetas.
+	\item Generar flujos continuos de datos a partir de la colección
+	      proporcionada replicando su número de etiquetas, atributos e instancias, su
+	      cardinalidad y densidad de etiquetas y la co-ocurrencia entre dos
+	      etiquetas.
 
-   \item Ejecutar algoritmos de clasificación de \acrshort{mll}, para obtener
-      modelos y realizar evaluaciones sobre los resultados. Todo esto sobre
-      distintos escenarios de flujos continuos.
+	\item Ejecutar algoritmos de clasificación de \acrshort{mll}, para obtener
+	      modelos y realizar evaluaciones sobre los resultados. Todo esto sobre
+	      distintos escenarios de flujos continuos.
 
-   \item Proponer una solución de ensambles a partir de la combinación de
-      algoritmos seleccionados de la literatura.
-      
+	\item Proponer una solución de ensambles a partir de la combinación de
+	      algoritmos seleccionados de la literatura.
+
 \end{itemize}
 
 
@@ -441,9 +441,9 @@ trabajo espera contribuir al estudio de métodos y técnicas asentadas, pero
 también examinar algoritmos exitosos del campo de aprendizaje por
 \textit{batch}, particularmente los de ensambles de estimadores, a fin de
 extender su funcionalidad a ambientes de flujos continuos, analizar su desempeño
-y determinar en qué medida son aptos o no para este tipo de ambientes.  
+y determinar en qué medida son aptos o no para este tipo de ambientes.
 
 
-\section{Organización del Trabajo} 
+\section{Organización del Trabajo}
 
 \todo[inline]{Describir las distintas secciones del trabajo}

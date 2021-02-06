@@ -21,7 +21,7 @@ de \textit{big data} y minería de datos, con aplicación en escenarios de
 \textit{streaming} o flujos continuos de datos y abordando clasificaciones
 multi-etiquetas.
 
-La figura \ref{fig:campo_estudio} es un esquema que ilustra la taxonomía del
+La figura~\ref{fig:campo_estudio} es un esquema que ilustra la taxonomía del
 campo de estudio y la interrelación entre las áreas de investigación
 involucradas.
 
@@ -34,7 +34,7 @@ mejorar su rendimiento meramente a partir de datos y sin la intervención de un
 ser humano.  La idea detrás de esta disciplina es lograr reconocer patrones
 subyacentes en los datos y tomar decisiones basándose en ellos. Por ejemplo, un
 problema de aprendizaje automático es el de reconocer dígitos escritos a mano a
-partir de un conjunto de ejemplos (ver figura \ref{fig:reconocimiento_digitos}).
+partir de un conjunto de ejemplos (ver figura~\ref{fig:reconocimiento_digitos}).
 Aquí se tienen un conjunto de imágenes, cada una representando un dígito del 0
 al 9, y el objetivo es construir un modelo que sea capaz de detectar de qué
 dígito se trata. Otro ejemplo es el de hallar documentos de texto que son
@@ -245,8 +245,8 @@ parte de la predicción resultante. \todo{Figura de un árbol}
 Los árboles de decisión se generan a partir de un algoritmo de inducción.
 Existen varios de estos algoritmos pero todos son variantes que han sido
 diseñadas bajo un misma principio: construir  el árbol de una manera
-\comillas{voraz} \footnote{Se le llama voraz o \textit{greedy} a un algoritmo
-	que busca hallar la opción óptima en cada paso y, de esta manera, alcanzar la
+\comillas{voraz}\footnote{Se le llama voraz o \textit{greedy} a un algoritmo que
+	busca hallar la opción óptima en cada paso y, de esta manera, alcanzar la
 	solución general óptima para resolver un problema.  Esto lo diferencia de
 	algoritmos como los de \textit{backtracking}, los cuales exploran distintas
 	posibilidades y pueden volver al inicio en búsqueda de una mejor solución.},
@@ -331,7 +331,7 @@ de la entropía y se formula como:
 
 Finalmente, el atributo de mayor razón de ganancia es seleccionado como criterio
 de corte y se continúa el calculo con los siguientes subnodos.
-\todo{Aplicaciones de árboles de decisión ?}
+\todo{Aplicaciones de árboles de decisión?}
 
 \todo[inline]{Subsección para sgd?, svm?, perceptrones?}
 
@@ -556,8 +556,8 @@ precisión y exhaustividad tomando la media harmónica entre ambas. Mayor el val
 de esta medida, mejor es el rendimiento del clasificador. Se define como:
 
 \begin{equation}
-	medidaF1 = \frac{2 \times precision \times exhaustividad}{ precision +
-		exhaustividad }
+	medidaF1 = \frac{2 \times precision \times exhaustividad}
+	{precision + exhaustividad}
 \end{equation}
 
 Por otro lado, existen métricas para evaluar la eficiencia del clasificador en
@@ -723,7 +723,7 @@ qué punto cada ejemplo posee más de una etiqueta. Algunas de ellas son:
 
 \subsection{Algoritmos}
 
-Como se había anticipado en la sección \ref{intro_mll}, la tarea de aprendizaje
+Como se había anticipado en la sección~\ref{intro_mll}, la tarea de aprendizaje
 sobre datos multi-etiquetados puede ser encarada siguiendo dos grandes enfoques,
 llamados \comillas{Transformación del Problema} y \comillas{Adaptación del
 	Algoritmo}. A continuación se describen ambos enfoques y algunos de sus
@@ -745,7 +745,7 @@ literatura, es un enfoque que consiste en descomponer la tarea de clasificación
 \acrshort{mll} en $\left\|q\right\|$ clasificadores binarios, independientes y
 de etiqueta única.  A partir de esta transformación se puede seleccionar
 cualquier algoritmo de clasificación como clasificador base del problema (ver
-los algoritmos presentados en la sección \ref{clasificacion_algoritmos}).  Cada
+los algoritmos presentados en la sección~\ref{clasificacion_algoritmos}).  Cada
 clasificador binario $g_{j}$ es entrenado con todas las instancias de la
 colección pero incluyendo solo la etiqueta $j$, la cual se activa o desactiva de
 acuerdo a si es relevante a la instancia. Luego la predicción de una instancia
@@ -759,7 +759,7 @@ esto es:
 Llegado el caso en que ninguno de los clasificadores retornen etiquetas activas,
 el conjunto $Y$ será vacío.
 
-Este enfoque se dice que es de primer orden (ver sección \ref{estrategias_mll})
+Este enfoque se dice que es de primer orden (ver sección~\ref{estrategias_mll})
 y no tiene en cuenta la correlación o interdependencias entre etiquetas. Este es
 uno de los principales inconvenientes de este algoritmo ya que, en este tipo de
 problemas de \acrshort{mll}, es usual hallar que determinadas etiquetas se
@@ -864,7 +864,7 @@ A partir de esto, y buscando sacar provecho de las ventajas mencionadas,
 multi-etiquetas y desarrollaron el algoritmo llamado Árbol de Hoeffding
 Multi-etiquetado o \textit{\acrfull{mlht}} \cite{read_scalable_2012}. Esto lo
 consiguen a partir de rediseñar la fórmula de ganancia de información (ver
-fórmula \ref{eq:gan_c45}) de tal manera de reflejar en el cálculo de la entropía
+fórmula~\ref{eq:gan_c45}) de tal manera de reflejar en el cálculo de la entropía
 el impacto de todas las clases a las cuales el ejemplo no pertenece. Desde que
 fue introducido en el año \citeyear{read_scalable_2012}, \acrshort{mlht} ha sido
 usado como modelo de comparación en reiteradas oportunidades
@@ -885,7 +885,7 @@ como de regresión.
 \subsection{Evaluación}
 \label{mll_evaluacion}
 
-Como se describió en la sección \ref{evaluacion_metricas}, en escenarios de
+Como se describió en la sección~\ref{evaluacion_metricas}, en escenarios de
 clasificación tradicionales el poder de generalización de un modelo es evaluado
 a partir de métricas tales como la exactitud o la exhaustividad las cuales
 trabajan con una única etiqueta. Una predicción multi-etiquetada, por el
@@ -939,11 +939,11 @@ métrica \comillas{\textit{hamming score}} que es un derivado del \textit{hammin
 
 \paragraph{Exactitud del Subconjunto} Se la conoce también como
 \textit{exact-match} en la literatura y es la métrica equivalente a la exactitud
-en clasificaciones de etiqueta única (ver \comillas{Exactitud} en sección
-\ref{evaluacion_metricas_exactitud}). El cómputo toma en cuenta la proporción de
-instancias que fueron clasificadas de manera exacta, es decir, que todas sus
-etiquetas fueron correctamente clasificadas o, en otras palabras, que el
-subconjunto de etiquetas de la predicción es idéntico al subconjunto de
+en clasificaciones de etiqueta única (ver \comillas{Exactitud} en
+sección~\ref{evaluacion_metricas_exactitud}). El cómputo toma en cuenta la
+proporción de instancias que fueron clasificadas de manera exacta, es decir, que
+todas sus etiquetas fueron correctamente clasificadas o, en otras palabras, que
+el subconjunto de etiquetas de la predicción es idéntico al subconjunto de
 etiquetas reales. En términos formales, se calcula como:
 
 \begin{equation}
@@ -969,8 +969,8 @@ clasificadas con respecto al total de etiquetas activas.
 
 \paragraph{Precisión, Exhaustividad y Medida-F1 (basadas en ejemplos)}
 
-Las métricas de precisión, exhaustividad y medida-F1 presentadas en la sección
-\ref{evaluacion_metricas} también tienen sus equivalentes para datos
+Las métricas de precisión, exhaustividad y medida-F1 presentadas en la
+sección~\ref{evaluacion_metricas} también tienen sus equivalentes para datos
 multi-etiquetados y se definen de la siguiente manera:
 
 \begin{equation}
@@ -986,8 +986,8 @@ multi-etiquetados y se definen de la siguiente manera:
 \end{equation}
 
 \begin{equation}
-	medidaF1Ej = \frac{2 \times precisionEj \times exhaustividadEj}{ precisionEj +
-		exhaustividadEj }
+	medidaF1Ej = \frac{2 \times precisionEj \times exhaustividadEj}
+	{precisionEj + exhaustividadEj }
 \end{equation}
 
 
@@ -1003,12 +1003,12 @@ cada una por separado y luego combinan el rendimiento entre todas las etiquetas.
 Dicha combinación se realiza aplicando el promedio micro o el promedio macro.
 Más adelante se explicará en qué consiste cada una de ellas.
 
-De manera similar a lo que sucedía con las métricas de la sección
-\ref{evaluacion_metricas}, donde para definirlas fue necesario introducir el
-concepto de verdaderos positivos, verdaderos negativos, falsos negativos y
-falsos positivos, las métricas basadas en etiquetas también se fundamentan en
-esos conceptos pero su fórmula varia para adaptarse al escenario de
-\acrshort{mll}.
+De manera similar a lo que sucedía con las métricas de la
+sección~\ref{evaluacion_metricas}, donde para definirlas fue necesario
+introducir el concepto de verdaderos positivos, verdaderos negativos, falsos
+negativos y falsos positivos, las métricas basadas en etiquetas también se
+fundamentan en esos conceptos pero su fórmula varia para adaptarse al escenario
+de \acrshort{mll}.
 
 \begin{equation}
 	\acrshort{vp}_{j} = \left\|\{x_{i}\mid y_{j} \in Y_{i} \land y_{j} \in
@@ -1038,7 +1038,7 @@ evaluaciones basadas en etiquetas logran satisfacer la condición:
 \end{equation}
 
 A partir de estos cuatro conceptos se pueden derivar cualquiera de las métricas
-definidas en la sección \ref{evaluacion_metricas}. O dicho en términos formales,
+definidas en la sección~\ref{evaluacion_metricas}. O dicho en términos formales,
 sea $B(\acrshort{vp}_{j}, \acrshort{fp}_{j}, \acrshort{vn}_{j},
 	\acrshort{fn}_{j})$ una función cuyo dominio es $B \in \{ exactitud, precision,
 	exhaustividad, medidaF1 \}$, las métricas pueden ser obtenidas siguiendo dos
@@ -1076,14 +1076,14 @@ injerencia y por tanto serán sobrepasadas por aquellas etiquetas más frecuente
 
 En esta sección se profundiza sobre algunos conceptos referidos a flujos
 continuos de datos y su tratamiento, de forma tal de llevar a cabo tareas de
-clasificación de manera exitosa.  Como se describió en la sección
-\ref{intro_streams}, un flujo continuo cuenta con características específicas
-que obligan a los algoritmos de aprendizaje a adaptarse a nuevos requerimientos.
-A continuación se define formalmente el concepto de flujo, se extiende el
-análisis sobre la tarea de evaluación para dar cuenta de su aplicación en este
-escenario, se describe el concepto de dato sintético y se presentan algunos
-algoritmos y técnicas para generar datos sintéticos útiles para clasificaciones
-de etiqueta única y de multi-etiquetas.
+clasificación de manera exitosa.  Como se describió en la
+sección~\ref{intro_streams}, un flujo continuo cuenta con características
+específicas que obligan a los algoritmos de aprendizaje a adaptarse a nuevos
+requerimientos.  A continuación se define formalmente el concepto de flujo, se
+extiende el análisis sobre la tarea de evaluación para dar cuenta de su
+aplicación en este escenario, se describe el concepto de dato sintético y se
+presentan algunos algoritmos y técnicas para generar datos sintéticos útiles
+para clasificaciones de etiqueta única y de multi-etiquetas.
 
 \subsection{Definición}
 
@@ -1098,8 +1098,8 @@ ordenados, que arriban en el tiempo y son potencialmente infinitos. Un
 Donde $s_{t}$ es la instancia presente en el tiempo $t$ y $s_{N}$ es el último
 dato avistado en el \textit{stream} pero que no necesariamente representa el
 final del flujo. Cada instancia $d_{t}$ posee un conjunto de atributos y
-etiquetas y se puede definir tal como se hizo en la sección \ref{clasificacion}
-de tratarse de datos uni-etiquetados o como en la sección \ref{mll_def_formal}
+etiquetas y se puede definir tal como se hizo en la sección~\ref{clasificacion}
+de tratarse de datos uni-etiquetados o como en la sección~\ref{mll_def_formal}
 de tratarse de datos multi-etiquetados.
 
 El objetivo de la tarea de clasificación en este escenario es el mismo que para
@@ -1107,10 +1107,10 @@ escenarios de \textit{batch}, esto es, hallar una función capaz de enlazar
 instancias nuevas con sus etiquetas correspondientes, con la salvedad de que se
 debe lograr bajo restricciones de tiempo y espacio de almacenamiento, además de
 otras vicisitudes presentadas por las características mismas de un flujo
-continuo de datos (ver sección \ref{stream_caracteristicas}). Del mismo, deben
+continuo de datos (ver sección~\ref{stream_caracteristicas}). Del mismo, deben
 ser capaces de lidiar con cambios en la distribución de los datos, deben estar
 listos para realizar predicciones en cualquier momento y otros requisitos ya
-mencionados en la sección \ref{stream_requisitos}. Estas características
+mencionados en la sección~\ref{stream_requisitos}. Estas características
 implican que obtener soluciones exactas es poco probable y es necesario aplicar
 técnicas y metodologías especiales de evaluación sobre los modelos, para reducir
 el error posible.
@@ -1120,7 +1120,7 @@ el error posible.
 \subsection{Evaluación}
 \label{stream_evaluacion}
 
-Como se describió en la sección \ref{evaluacion_intro}, la tarea de evaluación
+Como se describió en la sección~\ref{evaluacion_intro}, la tarea de evaluación
 para aprendizaje en ambientes de \textit{batch} consiste en dividir al conjunto
 de datos en uno o más subconjuntos de entrenamiento y pruebas.  El ambiente de
 \textit{stream}, por su parte, presenta un desafío extra y es que no permite
@@ -1130,7 +1130,7 @@ evolutiva de los datos: a medida que pasa el tiempo pueden surgir nuevas
 etiquetas, ciertos atributos pueden dejar de tener peso en la predicción o
 incluso algunas reglas de decisión en el modelo pueden llegar a perder
 relevancia. Por lo tanto, se han presentado dos enfoques nuevos, similares a las
-estrategias definidas en la sección \ref{evaluacion_estrategias} pero
+estrategias definidas en la sección~\ref{evaluacion_estrategias} pero
 acondicionados a los escenarios de flujos continuos de datos.
 
 \begin{description}
@@ -1170,8 +1170,8 @@ generado el modelo final, aquí se debe calcular la métrica en cada nueva
 instancia y los resultados se van acumulando.
 
 En definitiva, las métricas son las mismas que fueron presentadas en las
-secciones \ref{evaluacion_metricas} para datos de etiqueta única y
-\ref{mll_evaluacion} para datos multi-etiquetados.
+secciones~\ref{evaluacion_metricas} para datos de etiqueta única
+y~\ref{mll_evaluacion} para datos multi-etiquetados.
 
 \subsection{Datos sintéticos}
 \label{stream_syn}
@@ -1272,9 +1272,9 @@ son los siguientes:
 	\item[Distribución de etiquetas] La distribución de etiquetas tiene que ver
 	      con la forma en que la cardinalidad de etiquetas se distribuye a lo largo
 	      de la colección. La cardinalidad de etiquetas, tal como fue formulada en
-	      la ecuación \ref{eq:mll_card}, es la cantidad de etiquetas promedio por
+	      la ecuación~\ref{eq:mll_card}, es la cantidad de etiquetas promedio por
 	      instancia y es una de las métricas usadas para conocer el grado de
-	      multi-etiquetado de los datos (ver sección \ref{mll_def_formal}). Observar
+	      multi-etiquetado de los datos (ver sección~\ref{mll_def_formal}). Observar
 	      la distribución de etiquetas es útil para entender la composición de dicha
 	      cardinalidad y se calcula tomando el número de veces que se repite cada
 	      posible tamaño de subconjuntos de etiquetas. Basándose en este fenómeno se
@@ -1293,15 +1293,15 @@ son los siguientes:
 	      electrónicos \cite{hutchison_enron_2004} y conceptos semánticos
 	      \cite{snoek_challenge_2006}.
 
-	\item[Relación entre etiquetas] Esta cualidad tiene que ver con el concepto
-	      de interdependencia entre etiquetas, descripto en la sección
-	      \ref{intro_mll}, y se trata de capturar la aparición mutua de etiquetas en
-	      los ejemplos de tal manera de reflejar el grado de dependencia de las
-	      etiquetas en el dominio del problema. La idea es que un generador de
-	      instancias sintéticas debe ser capaz de asignar subconjuntos de etiquetas,
-	      ya no de manera aleatoria, sino respetando esta relación subyacente. Esto
-	      se puede lograr diseñando una matriz cuadrada de doble entrada que guarde
-	      las probabilidades condicionales entre pares de etiquetas.
+	\item[Relación entre etiquetas] Esta cualidad tiene que ver con el concepto de
+	      interdependencia entre etiquetas, descripto en la sección~\ref{intro_mll},
+	      y se trata de capturar la aparición mutua de etiquetas en los ejemplos de
+	      tal manera de reflejar el grado de dependencia de las etiquetas en el
+	      dominio del problema. La idea es que un generador de instancias sintéticas
+	      debe ser capaz de asignar subconjuntos de etiquetas, ya no de manera
+	      aleatoria, sino respetando esta relación subyacente. Esto se puede lograr
+	      diseñando una matriz cuadrada de doble entrada que guarde las
+	      probabilidades condicionales entre pares de etiquetas.
 
 	\item[Espacio de atributos] Así como existen relaciones entre etiquetas que
 	      los algoritmos explotan para generar datos sintéticos de calidad, también
