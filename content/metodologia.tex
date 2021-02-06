@@ -1,3 +1,213 @@
 \chapter{Metodología}
 
-ABCDEF
+Conforme a los objetivos planteados en la sección~\ref{intro_objetivos} se
+presentan las colecciones y algoritmos que serán evaluados junto con el
+escenario de flujos continuos diseñado a este fin.
+
+Se seleccionan tres colecciones de datos multi-etiquetados que han sido puntos
+de referencia en otros trabajos de investigación. Cada uno de ellos es
+transformado en un flujo continuo de datos que cumple con las características
+presentadas en la sección~\ref{stream_caracteristicas}. A su vez, se generan
+instancias sintéticas que sean fieles a las cualidades subyacentes de los datos
+originales.  Para ello, se ha diseñado un algoritmo basado en la implementación
+de \citeauthor{read_multi-label_2008} \cite{read_multi-label_2008} pero que hace
+uso de la matriz de probabilidades condicionales entre pares de etiqueta para
+respetar sus interdependencias.
+
+La etapa de entrenamiento se lleva a cabo con algoritmos de clasificación
+multi-etiquetas que han sido adaptados a ambientes de flujos continuos para
+hacer frente a las cualidades incrementales inherentes a este contexto. Se
+seleccionan algoritmos de la familia de \comillas{Transformación del problema} y
+\comillas{Adaptación del algoritmo}, junto con soluciones de ensamble, a fines
+explorativos y para extender el conocimiento sobre sus fortalezas y debilidades.
+Al mismo tiempo, se diseña un algoritmo de ensambles del tipo \textit{bagging}
+\todo{es bagging?} que aplica mayoría de votos ponderada, basada en??
+\todo{citar fuente}, y se implementa en una librería de código del lenguaje
+Python \todo{link a web de python?}.
+
+Para la etapa de evaluación se sigue la estrategia
+\comillas{\textit{Prequential}}, descripta en la
+sección~\ref{stream_evaluacion}, se aplican métricas basadas en etiquetas y
+ejemplos, se mide la eficiencia de los modelos en términos de velocidad y
+espacio de almacenamiento y se analizan los resultados obtenidos.
+
+El marco metodológico de este proyecto se ajusta a los procedimientos efectuados
+por los investigadores de la literatura de referencia. Con ello se busca
+expandir el conocimiento empírico de los algoritmos al mismo tiempo que
+proporcionar nuevos estudios que puedan ser contrastables con los ya existentes.
+De la literatura relacionada se destaca el trabajo de
+\citeauthor{read_scalable_2012} \cite{read_scalable_2012}, quienes analizan
+algoritmos multi-etiquetados con flujos reales y sintéticos, pero a diferencia
+de este trabajo, generan instancias sintéticas para colecciones nuevas y sin
+basarse en colecciones reales específicas. La implementación del generador que
+usaron en sus experimentos se encuentra disponible al público y ha sido el punto
+de partida para desarrollar la técnica propuesta. \todo{mencionar parametros z y
+	u aquí?}
+
+\todo[inline]{mencionar otros trabajos: souza, gooweml, etc}
+
+\section{Técnicas Propuestas}
+
+En esta sección se describen dos técnicas implementadas para este trabajo: un
+generador de instancias sintéticas para flujos continuos de datos y el diseño de
+una solución de ensambles para realizar clasificaciones.
+
+\subsection{Generación de Flujos Sintéticos}
+
+El generador presentado es un algoritmo que emplea técnicas probabilísticas para
+hallar dependencias dependencias entre etiquetas y reproducirlas en las nuevas
+instancias. La existencia de interdependencias entre etiquetas ha sido explorada
+reiteradas veces en la literatura \cite{tsoumakas_multi-label_2007,
+	read_multi-label_2008} y se ha demostrado que existen dependencias condicionales
+e incondicionales, esto es, etiquetas que dependen entre sí dado uno o más
+atributos de una instancia (dependencia condicional), y etiquetas cuya
+dependencia existe para todo el conjunto de instancias (dependencia
+incondicional). Estas dos cualidades son directamente extraídas de las colección
+real y a partir de ellas se generan los atributos y etiquetas de la instancia
+sintética.
+
+La dependencia incondicional parte de la idea de que hay etiquetas que se
+activan en conjunto con frecuencia y otras que son mutuamente excluyentes. Véase
+el caso de las etiquetas \comillas{\texttt{Ficción}} y \comillas{\texttt{No
+		Ficción}}, por ejemplo, que son excluyentes en el dominio de géneros literarios.
+Para capturar esta relación se acude al concepto de probabilidad a priori y
+probabilidad condicional de etiquetas. La probabilidad a priori de una etiqueta
+es obtenida a partir de observar su frecuencia relativa en la colección
+normalizada por la cardinalidad de etiquetas. \todo{Chequear fórmula con
+	director!} La frecuencia relativa se formula de la manera tradicional:
+
+\begin{equation}
+	FrecRelE_{j} = \frac{1}{m} \sum_{i=1}^{m} y_{i,j}
+\end{equation}
+
+La normalización toma en cuenta el valor de cardinalidad de etiquetas del
+conjunto de datos, esto bajo la recomendación de los autores del trabajo de
+referencia \cite{read_scalable_2012}.
+
+\begin{equation}
+	NormCardE = \frac{1}{CardE} \sum_{j=1}^{q} FreqRelE_{j}
+\end{equation}
+
+Luego, la probabilidad a priori de la etiqueta $j$ se expresa de la forma:
+
+\begin{equation}
+	P(E_{j}) =\min{(1, \frac{FreqRelE_{j}}{NormCardE})}
+\end{equation}
+
+El resultado es un vector de probabilidades a priori $[P(E_{1}),
+			P(E_{2}), \dots, P(E_{q})]$ que expresa la probabilidad independiente de cada
+etiqueta.
+
+A partir de $P(E_{j})$ se puede calcular la matriz condicional $\theta$ sobre
+los pares de etiquetas, esto es, $\theta_{j,k} = P(Y_{j} = 1 \mid Y_{k} = 1)$,
+donde $L \geq j > k \leq 1$. \todo{L es menor o igual a j en la bibliografia, es
+	un error?} Con el vector de probabilidades a priori y extrayendo las
+co-ocurrencias de cada par de etiquetas en toda la colección, es posible obtener
+cada valor de la matriz $\theta$, aplicando la probabilidad condicional:
+
+\begin{equation}
+	P(Y_{j} = 1 \mid Y_{k} = 1) = \frac{P(Y_{k} = 1 \cap Y_{j} = 1)}{P(Y_{k})}
+\end{equation}
+
+Luego, la dependencia entre etiquetas es modelada como la distribución conjunta:
+
+\begin{equation}
+	\label{eq:syn_joint}
+	p_{\theta}(y) = P(y_{1}) \prod_{j=2}^q P(y_{j} \mid y_{j-1})
+\end{equation}
+
+Posteriormente, se realiza la generación del conjunto de etiquetas para la
+instancia sintética. El algoritmo~\ref{alg:generar_etiquetas} muestra las
+instrucciones ejecutadas para concretar esta tarea. Cabe aclarar que $sample()$
+retorna un índice de etiqueta de acuerdo a una función de masa de probabilidad
+basada en las probabilidades a priori, y $random()$ produce un número aleatorio
+de distribución uniforme.
+
+\begin{center}
+	\begin{algorithm}[H]
+		\label{alg:generar_etiquetas}
+		\SetAlgoLined
+		\DontPrintSemicolon
+		\KwIn{
+			$q$:  Número de etiquetas de la colección,
+			$p$: vector de probabilidades a priori,
+			$p_{\theta}(y)$: función definida en fórmula~\ref{eq:syn_joint}
+		}
+		\KwOut{$y$: las etiquetas generadas.}
+		$y \gets \emptyset_{q}$\;
+		$j \gets sample(p)$\;
+		$y_{j} \gets 1$\;
+		$i \gets 0$ \;
+		\While{$i < q$}{
+			\lIf{$i = j$}{$\Continue$}
+			$y^{\prime} \gets y$\;
+			$y^{\prime}_{i} \gets 1$\;
+			\lIf{$p_{\theta}(y^{\prime}) > random()$}{$y \gets y^{\prime}$ }
+			$i \gets i+1$\;
+		}
+		\caption{Algoritmo de generación del conjunto de etiquetas para una instancia
+			sintética}
+	\end{algorithm}
+\end{center}
+
+Una vez generado el conjunto de etiquetas resta generar los valores de atributos
+para la instancia. Para ello se retoma el concepto ya mencionado de
+\comillas{Dependencia Condicional}, para conocer en qué medida la presencia de
+un atributo activa una o más etiquetas en la instancia, o expresado en términos
+formales, hallar el término $P(y|x)$ tal que:
+
+\begin{equation}
+	P(y|x) = P(x|y)P(y)
+\end{equation}
+
+Como calcular la probabilidad conjunta es altamente complejo se define una
+función de mapeo $\zeta[a] \mapsto y_{a}$, donde $y_{a}$ es la combinación de
+etiquetas más probable para el atributo $a$.  La función $\theta$ se obtiene a
+través de muestreos sucesivos del generador de etiquetas, y guardando las $A$
+combinaciones más frecuentes, siendo el número total de atributos. Al mismo
+tiempo, el vector $x$ candidato es obtenido usando un generador binario tal como
+los descriptos en la sección~\ref{stream_syn}. El algoritmo~\ref{alg:generar_atributos} muestra un pseudocódigo de cómo se completa el
+proceso. Notar que el generador binario $g$ produce dos vectores de atributos
+candidatos, uno por cada clase, luego si la combinación de etiquetas para el
+atributo $a$ es un subconjunto de las etiquetas generadas se toma el valor del
+vector de atributos positivos. Caso contrario, se toma del vector de negativos.
+
+Finalmente, la instancia sintética se forma a partir de la salida de ambos
+algoritmos, siendo de la forma $(x, y)$. Este proceso será repetido para cada
+instancia que se solicite al generador a fin de generar el flujo sintético para
+la colección dada. El objetivo es obtener colecciones sintéticas que se asemejen
+a datos del mundo real, por lo tanto, la evaluación de los resultados se hará
+mediante un análisis de sus cualidades en relación a fenómenos hallados en datos
+reales (ver sección~\ref{mll_fenomenos}), y se contrastan los datos generados en
+este marco contra los producidos en el trabajo de referencia.
+
+\begin{center}
+	\begin{algorithm}[H]
+		\label{alg:generar_atributos}
+		\SetAlgoLined
+		\DontPrintSemicolon
+		\KwIn{
+			$A$:  Número de atributos de la colección,
+			$g$: Generador de atributos,
+			$\zeta$: Función de mapeo.
+		}
+		\KwOut{$x$: El vector de atributos generado.}
+		$x \gets \emptyset_{A}$\;
+		$positivos \gets g(1)$ \;
+		$negativos \gets g(0)$ \;
+		$i \gets 0$ \;
+		\While{$i < A$}{
+			\uIf{$\exists q : \zeta[a] \subseteq y_{q}$}{
+				$x_{i} \gets positivos_{i}$ \;
+			}
+			\Else{
+				$x_{i} \gets negativos_{i}$ \;
+			}
+			$i \gets i+1$ \;
+		}
+		\caption{Algoritmo de generación del conjunto de etiquetas para una instancia
+			sintética}
+	\end{algorithm}
+\end{center}
+
+\subsection{Algoritmo de Ensamble}
