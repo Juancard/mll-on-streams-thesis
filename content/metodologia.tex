@@ -4,7 +4,7 @@ Conforme a los objetivos planteados en la sección~\ref{intro_objetivos} se
 presentan las colecciones y algoritmos que serán evaluados junto con el
 escenario de flujos continuos diseñado a este fin.
 
-Se seleccionan tres colecciones de datos multi-etiquetados que han sido puntos
+Se seleccionan tres colecciones de datos de multi-etiquetas que han sido puntos
 de referencia en otros trabajos de investigación. Cada uno de ellos es
 transformado en un flujo continuo de datos que cumple con las características
 presentadas en la sección~\ref{stream_caracteristicas}. A su vez, se generan
@@ -18,33 +18,57 @@ La etapa de entrenamiento se lleva a cabo con algoritmos de clasificación
 multi-etiquetas que han sido adaptados a ambientes de flujos continuos para
 hacer frente a las cualidades incrementales inherentes a este contexto. Se
 seleccionan algoritmos de la familia de \comillas{Transformación del problema} y
-\comillas{Adaptación del algoritmo}, junto con soluciones de ensamble, a fines
-explorativos y para extender el conocimiento sobre sus fortalezas y debilidades.
-Al mismo tiempo, se diseña un algoritmo de ensambles del tipo \textit{bagging}
-\todo{es bagging?} que aplica mayoría de votos ponderada, basada en??
-\todo{citar fuente}, y se implementa en una librería de código del lenguaje
-Python \todo{link a web de python?}.
+\comillas{Adaptación del algoritmo} \todo{por el momento no se experimentó con
+	algoritmos AA en Python}, junto con soluciones de ensamble, a fines explorativos
+y para extender el conocimiento sobre sus fortalezas y debilidades. Los
+experimentos se realizan con algoritmos implementados en el lenguaje de
+programación Python.  Aquellos que no soportan datos de múltiples etiquetas han
+sido acondicionados a ese fin de acuerdo al diseño especificado en la literatura
+y consultando las respectivas implementaciones en otros lenguajes de
+programación, de hallarse estas disponibles al público.
+
+De manera complementaria, se diseña una solución de ensambles llamada
+\acrfull{efmp} \todo{nombre tentativo}, basada en las implementaciones
+existentes. La misma usa como clasificadores base tres algoritmos de
+\acrshort{mll} diferentes, que se mantienen fijos durante todo el entrenamiento.
+Además, el ensamble mantiene una ponderación de cada clasificador de acuerdo a
+su rendimiento, penalizando por cada etiqueta mal clasificada, y la combinación
+de los votos se lleva a cabo por mayoría de voto ponderada. La implementación se
+basa en la presentada
+por~\citeauthor{kolter_dynamic_2007}~\cite{kolter_dynamic_2007}, quienes también
+ponderan los clasificadores pero usan un único tipo de clasificador base y no
+contemplan problemas de múltiples etiquetas. Los experimentos se realizan con
+dos versiones, una de ellas se entrena con todas las instancias del subconjunto
+de entrenamientos y la otra tomando muestreos siguiendo la distribución de
+\textit{poisson}, tal como se realiza para ensambles del tipo de \textit{Oza
+	bagging} \cite{oza_online_2005}.
 
 Para la etapa de evaluación se sigue la estrategia
 \comillas{\textit{Prequential}}, descripta en la
-sección~\ref{stream_evaluacion}, se aplican métricas basadas en etiquetas y
+sección~\ref{stream_evaluacion}, y se aplican métricas basadas en etiquetas y
 ejemplos, se mide la eficiencia de los modelos en términos de velocidad y
 espacio de almacenamiento y se analizan los resultados obtenidos.
 
 El marco metodológico de este proyecto se ajusta a los procedimientos efectuados
-por los investigadores de la literatura de referencia. Con ello se busca
-expandir el conocimiento empírico de los algoritmos al mismo tiempo que
-proporcionar nuevos estudios que puedan ser contrastables con los ya existentes.
-De la literatura relacionada se destaca el trabajo de
+previamente por otros investigadores de la literatura
+\cite{osojnik_multi-label_2017, sousa_multi-label_2018, buyukcakir_novel_2018,
+	zheng_survey_2020, read_scalable_2012}. Con ello se busca expandir el
+conocimiento empírico de los algoritmos al mismo tiempo que proporcionar nuevos
+estudios que sean contrastables con los ya existentes.  Se destaca el trabajo de
 \citeauthor{read_scalable_2012} \cite{read_scalable_2012}, quienes analizan
-algoritmos multi-etiquetados con flujos reales y sintéticos, pero a diferencia
-de este trabajo, generan instancias sintéticas para colecciones nuevas y sin
+algoritmos multi-etiquetas con flujos reales y sintéticos, pero a diferencia de
+este trabajo, generan instancias sintéticas para colecciones nuevas y sin
 basarse en colecciones reales específicas. La implementación del generador que
-usaron en sus experimentos se encuentra disponible al público y ha sido el punto
-de partida para desarrollar la técnica propuesta. \todo{mencionar parametros z y
-	u aquí?}
+usaron en sus experimentos se encuentra disponible al
+público~\footnote{\url{https://www.cs.waikato.ac.nz/~abifet/MOA/API/classmoa_1_1streams_1_1generators_1_1multilabel_1_1_meta_multilabel_generator.html}}
+y ha sido el punto de partida para desarrollar la técnica aquí propuesta.
+\citeauthor{buyukcakir_novel_2018}, por su parte, no generan flujos sintéticos
+pero conducen experimentos similares en lo que respecta al análisis de
+algoritmos, poniendo el foco en modelos de ensambles. La implementación de sus
+experimentos también ha sido liberada al
+público~\footnote{\url{https://github.com/abuyukcakir/gooweml}} pero solo para
+el lenguaje de programación Java.
 
-\todo[inline]{mencionar otros trabajos: souza, gooweml, etc}
 
 \section{Técnicas Propuestas}
 
@@ -55,16 +79,16 @@ una solución de ensambles para realizar clasificaciones.
 \subsection{Generación de Flujos Sintéticos}
 
 El generador presentado es un algoritmo que emplea técnicas probabilísticas para
-hallar dependencias dependencias entre etiquetas y reproducirlas en las nuevas
-instancias. La existencia de interdependencias entre etiquetas ha sido explorada
-reiteradas veces en la literatura \cite{tsoumakas_multi-label_2007,
-	read_multi-label_2008} y se ha demostrado que existen dependencias condicionales
-e incondicionales, esto es, etiquetas que dependen entre sí dado uno o más
-atributos de una instancia (dependencia condicional), y etiquetas cuya
-dependencia existe para todo el conjunto de instancias (dependencia
-incondicional). Estas dos cualidades son directamente extraídas de las colección
-real y a partir de ellas se generan los atributos y etiquetas de la instancia
-sintética.
+hallar dependencias entre etiquetas y reproducirlas en las nuevas instancias. La
+existencia de interdependencias entre etiquetas ha sido explorada reiteradas
+veces en la literatura \cite{tsoumakas_multi-label_2007, read_multi-label_2008}
+y se ha demostrado que existen dependencias condicionales e incondicionales,
+esto es, etiquetas que dependen entre sí dado uno o más atributos de una
+instancia (dependencia condicional), y etiquetas cuya dependencia existe para
+todo el conjunto de instancias (dependencia incondicional). Estas dos cualidades
+son directamente extraídas de las colecciones reales y a partir de ellas se
+genera el espacio de atributos y etiquetas que, al fusionarse, constituyen la
+instancia sintética.
 
 La dependencia incondicional parte de la idea de que hay etiquetas que se
 activan en conjunto con frecuencia y otras que son mutuamente excluyentes. Véase
@@ -73,7 +97,7 @@ el caso de las etiquetas \comillas{\texttt{Ficción}} y \comillas{\texttt{No
 Para capturar esta relación se acude al concepto de probabilidad a priori y
 probabilidad condicional de etiquetas. La probabilidad a priori de una etiqueta
 es obtenida a partir de observar su frecuencia relativa en la colección
-normalizada por la cardinalidad de etiquetas. \todo{Chequear fórmula con
+normalizada por la Cardinalidad de etiquetas. \todo{Chequear fórmula con
 	director!} La frecuencia relativa se formula de la manera tradicional:
 
 \begin{equation}
@@ -95,12 +119,12 @@ Luego, la probabilidad a priori de la etiqueta $j$ se expresa de la forma:
 \end{equation}
 
 El resultado es un vector de probabilidades a priori $[P(E_{1}),
-			P(E_{2}), \dots, P(E_{q})]$ que expresa la probabilidad independiente de cada
+			P(E_{2}),\dots, P(E_{q})]$ que expresa la probabilidad independiente de cada
 etiqueta.
 
 A partir de $P(E_{j})$ se puede calcular la matriz condicional $\theta$ sobre
 los pares de etiquetas, esto es, $\theta_{j,k} = P(Y_{j} = 1 \mid Y_{k} = 1)$,
-donde $L \geq j > k \leq 1$. \todo{L es menor o igual a j en la bibliografia, es
+donde $L \geq j > k \leq 1$. \todo{L es menor o igual a j en la bibliografía, es
 	un error?} Con el vector de probabilidades a priori y extrayendo las
 co-ocurrencias de cada par de etiquetas en toda la colección, es posible obtener
 cada valor de la matriz $\theta$, aplicando la probabilidad condicional:
@@ -123,6 +147,7 @@ retorna un índice de etiqueta de acuerdo a una función de masa de probabilidad
 basada en las probabilidades a priori, y $random()$ produce un número aleatorio
 de distribución uniforme.
 
+% textidote: ignore begin
 \begin{center}
 	\begin{algorithm}[H]
 		\label{alg:generar_etiquetas}
@@ -149,6 +174,7 @@ de distribución uniforme.
 			sintética}
 	\end{algorithm}
 \end{center}
+% textidote: ignore end
 
 Una vez generado el conjunto de etiquetas resta generar los valores de atributos
 para la instancia. Para ello se retoma el concepto ya mencionado de
@@ -166,21 +192,24 @@ etiquetas más probable para el atributo $a$.  La función $\theta$ se obtiene a
 través de muestreos sucesivos del generador de etiquetas, y guardando las $A$
 combinaciones más frecuentes, siendo el número total de atributos. Al mismo
 tiempo, el vector $x$ candidato es obtenido usando un generador binario tal como
-los descriptos en la sección~\ref{stream_syn}. El algoritmo~\ref{alg:generar_atributos} muestra un pseudocódigo de cómo se completa el
-proceso. Notar que el generador binario $g$ produce dos vectores de atributos
-candidatos, uno por cada clase, luego si la combinación de etiquetas para el
-atributo $a$ es un subconjunto de las etiquetas generadas se toma el valor del
-vector de atributos positivos. Caso contrario, se toma del vector de negativos.
+los descriptos en la sección~\ref{stream_syn}. El
+algoritmo~\ref{alg:generar_atributos} muestra un pseudocódigo de cómo se
+completa el proceso. Notar que el generador binario $g$ produce dos vectores de
+atributos candidatos, uno por cada clase, luego si la combinación de etiquetas
+para el atributo $a$ es un subconjunto de las etiquetas generadas se toma el
+valor del vector de atributos positivos. Caso contrario, se toma del vector de
+negativos.
 
 Finalmente, la instancia sintética se forma a partir de la salida de ambos
 algoritmos, siendo de la forma $(x, y)$. Este proceso será repetido para cada
 instancia que se solicite al generador a fin de generar el flujo sintético para
 la colección dada. El objetivo es obtener colecciones sintéticas que se asemejen
 a datos del mundo real, por lo tanto, la evaluación de los resultados se hará
-mediante un análisis de sus cualidades en relación a fenómenos hallados en datos
-reales (ver sección~\ref{mll_fenomenos}), y se contrastan los datos generados en
-este marco contra los producidos en el trabajo de referencia.
+mediante un análisis de sus cualidades en relación con fenómenos hallados en
+datos reales (ver sección~\ref{mll_fenomenos}), y se contrastan los datos
+generados en este marco contra los producidos en el trabajo de referencia.
 
+% textidote: ignore begin
 \begin{center}
 	\begin{algorithm}[H]
 		\label{alg:generar_atributos}
@@ -209,5 +238,6 @@ este marco contra los producidos en el trabajo de referencia.
 			sintética}
 	\end{algorithm}
 \end{center}
+% textidote: ignore end
 
 \subsection{Algoritmo de Ensamble}

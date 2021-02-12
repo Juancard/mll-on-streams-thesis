@@ -105,7 +105,7 @@ https://moa.cms.waikato.ac.nz/book/},
 	langid = {english},
 	doi = {10.1007/978-3-540-30115-8_22},
 	note = {Series Title: Lecture Notes in Computer Science},
-	keywords = {enron, datasets}
+	keywords = {datasets, enron}
 }
 
 @inproceedings{snoek_challenge_2006,
@@ -397,13 +397,6 @@ https://moa.cms.waikato.ac.nz/book/},
 	journaltitle = {{IEEE} Trans. Knowl. Data Eng.},
 	author = {Zhang, Min-Ling and Zhou, Zhi-Hua},
 	date = {2014}
-}
-
-@article{sousa_multi-label_2018-1,
-	title = {Multi-label classification from high-speed data streams with adaptive model rules and random rules},
-	journaltitle = {Progress in Artificial Intelligence},
-	author = {Sousa, Ricardo and Gama, João},
-	date = {2018}
 }
 
 @article{dembczynski_bayes_nodate,
@@ -715,4 +708,60 @@ This book is beneficial for professionals and researchers in a variety of fields
 	langid = {english},
 	doi = {10.1016/B978-1-55860-377-6.50048-7},
 	keywords = {20ng}
+}
+
+@book{japkowicz_evaluating_2011,
+	location = {Cambridge},
+	title = {Evaluating Learning Algorithms: A Classification Perspective},
+	isbn = {978-0-521-19600-0},
+	url = {https://www.cambridge.org/core/books/evaluating-learning-algorithms/3CB22D16AB609D1770C24CA2CB5A11BF},
+	shorttitle = {Evaluating Learning Algorithms},
+	abstract = {The field of machine learning has matured to the point where many sophisticated learning approaches can be applied to practical applications. Thus it is of critical importance that researchers have the proper tools to evaluate learning approaches and understand the underlying issues. This book examines various aspects of the evaluation process with an emphasis on classification algorithms. The authors describe several techniques for classifier performance assessment, error estimation and resampling, obtaining statistical significance as well as selecting appropriate domains for evaluation. They also present a unified evaluation framework and highlight how different components of evaluation are both significantly interrelated and interdependent. The techniques presented in the book are illustrated using R and {WEKA}, facilitating better practical insight as well as implementation. Aimed at researchers in the theory and applications of machine learning, this book offers a solid basis for conducting performance evaluations of algorithms in practical settings.},
+	publisher = {Cambridge University Press},
+	author = {Japkowicz, Nathalie and Shah, Mohak},
+	urldate = {2021-02-02},
+	date = {2011},
+	doi = {10.1017/CBO9780511921803}
+}
+
+@article{kolter_dynamic_2007,
+	title = {Dynamic Weighted Majority: An Ensemble Method for Drifting Concepts},
+	volume = {8},
+	issn = {1532-4435},
+	shorttitle = {Dynamic Weighted Majority},
+	abstract = {We present an ensemble method for concept drift that dynamically creates and removes weighted experts in response to changes in performance. The method, dynamic weighted majority (*{DWM}*), uses four mechanisms to cope with concept drift: It trains online learners of the ensemble, it weights those learners based on their performance, it removes them, also based on their performance, and it adds new experts based on the global performance of the ensemble. After an extensive evaluation---consisting of five experiments, eight learners, and thirty data sets that varied in type of target concept, size, presence of noise, and the like---we concluded that *{DWM}* outperformed other learners that only incrementally learn concept descriptions, that maintain and use previously encountered examples, and that employ an unweighted, fixed-size ensemble of experts.},
+	pages = {2755--2790},
+	journaltitle = {The Journal of Machine Learning Research},
+	shortjournal = {J. Mach. Learn. Res.},
+	author = {Kolter, J. Zico and Maloof, Marcus A.},
+	date = {2007-12-01}
+}
+
+@inproceedings{oza_online_2005,
+	title = {Online bagging and boosting},
+	volume = {3},
+	doi = {10.1109/ICSMC.2005.1571498},
+	abstract = {Bagging and boosting are two of the most well-known ensemble learning methods due to their theoretical performance guarantees and strong experimental results. However, these algorithms have been used mainly in batch mode, i.e., they require the entire training set to be available at once and, in some cases, require random access to the data. In this paper, we present online versions of bagging and boosting that require only one pass through the training data. We build on previously presented work by describing some theoretical results. We also compare the online and batch algorithms experimentally in terms of accuracy and running time.},
+	eventtitle = {2005 {IEEE} International Conference on Systems, Man and Cybernetics},
+	pages = {2340--2345 Vol. 3},
+	booktitle = {2005 {IEEE} International Conference on Systems, Man and Cybernetics},
+	author = {Oza, N. C.},
+	date = {2005-10},
+	note = {{ISSN}: 1062-922X},
+	keywords = {Backpropagation algorithms, Bagging, batch mode, boosting, Boosting, ensemble learning, Intelligent systems, learning (artificial intelligence), Learning systems, {NASA}, online bagging learning method, online boosting learning method, online learning, Postal services, Predictive models, Supervised learning, training data, Training data}
+}
+
+@article{buyukcakir_novel_2018,
+	title = {A Novel Online Stacked Ensemble for Multi-Label Stream Classification},
+	url = {http://arxiv.org/abs/1809.09994},
+	doi = {10.1145/3269206.3271774},
+	abstract = {As data streams become more prevalent, the necessity for online algorithms that mine this transient and dynamic data becomes clearer. Multi-label data stream classification is a supervised learning problem where each instance in the data stream is classified into one or more pre-defined sets of labels. Many methods have been proposed to tackle this problem, including but not limited to ensemble-based methods. Some of these ensemble-based methods are specifically designed to work with certain multi-label base classifiers; some others employ online bagging schemes to build their ensembles. In this study, we introduce a novel online and dynamically-weighted stacked ensemble for multi-label classification, called {GOOWE}-{ML}, that utilizes spatial modeling to assign optimal weights to its component classifiers. Our model can be used with any existing incremental multi-label classification algorithm as its base classifier. We conduct experiments with 4 {GOOWE}-{ML}-based multi-label ensembles and 7 baseline models on 7 real-world datasets from diverse areas of interest. Our experiments show that {GOOWE}-{ML} ensembles yield consistently better results in terms of predictive performance in almost all of the datasets, with respect to the other prominent ensemble models.},
+	pages = {1063--1072},
+	journaltitle = {Proceedings of the 27th {ACM} International Conference on Information and Knowledge Management},
+	author = {Büyükçakır, Alican and Bonab, Hamed and Can, Fazli},
+	urldate = {2021-02-12},
+	date = {2018-10-17},
+	eprinttype = {arxiv},
+	eprint = {1809.09994},
+	keywords = {Computer Science - Information Retrieval, Computer Science - Machine Learning, Statistics - Machine Learning}
 }
