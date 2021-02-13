@@ -339,5 +339,9 @@ Las etiquetas cuyo valor superen un umbral de $0.5$ serán activadas:
 	\end{cases}
 \end{equation}
 
-\todo{explicar \acrshort{efmp2}}
-
+\acrshort{efmp2} introduce una única variación, durante el entrenamiento. Cuando
+arriba una instancia $i$, cada uno de los clasificador base entrena el modelo
+$Poisson(1)$ veces con dicha instancia. Esta técnica es conocida como
+\textit{online bagging} y se ha probado que se aproxima a la estrategia
+tradicional de \textit{bagging} en \textit{batch}, cuando se entrena con
+ejemplos de distribución similar \cite{oza_online_2005}.
