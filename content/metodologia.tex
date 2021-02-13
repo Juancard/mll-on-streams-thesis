@@ -59,13 +59,12 @@ estudios que sean contrastables con los ya existentes.  Se destaca el trabajo de
 algoritmos multi-etiquetas con flujos reales y sintéticos, pero a diferencia de
 este trabajo, generan instancias sintéticas para colecciones nuevas y sin
 basarse en colecciones reales específicas. La implementación del generador que
-usaron en sus experimentos se encuentra disponible al
-público~\footnote{\url{https://www.cs.waikato.ac.nz/~abifet/MOA/API/classmoa_1_1streams_1_1generators_1_1multilabel_1_1_meta_multilabel_generator.html}}
-y ha sido el punto de partida para desarrollar la técnica aquí propuesta.
-\citeauthor{buyukcakir_novel_2018}, por su parte, no generan flujos sintéticos
-pero conducen experimentos similares en lo que respecta al análisis de
-algoritmos, poniendo el foco en modelos de ensambles. La implementación de sus
-experimentos también ha sido liberada al
+usaron en sus experimentos se encuentra disponible al público
+\footnote{\url{shorturl.at/frsHU}} y ha sido el punto de partida para
+desarrollar la técnica aquí propuesta.  \citeauthor{buyukcakir_novel_2018}, por
+su parte, no generan flujos sintéticos pero conducen experimentos similares en
+lo que respecta al análisis de algoritmos, poniendo el foco en modelos de
+ensambles.  La implementación de sus experimentos también ha sido liberada al
 público~\footnote{\url{https://github.com/abuyukcakir/gooweml}} pero solo para
 el lenguaje de programación Java.
 
@@ -234,10 +233,111 @@ generados en este marco contra los producidos en el trabajo de referencia.
 			}
 			$i \gets i+1$ \;
 		}
-		\caption{Algoritmo de generación del conjunto de etiquetas para una instancia
-			sintética}
+		\caption{Algoritmo de generación del conjunto de atributos para una
+			instancia sintética}
 	\end{algorithm}
 \end{center}
 % textidote: ignore end
 
 \subsection{Algoritmo de Ensamble}
+
+El \acrfull{efmp} es una estrategia de ensamble en ambientes de flujos continuos
+que pondera a los clasificadores base de acuerdo a su rendimiento y ajusta los
+pesos en cada predicción, a fin de optimizar la exactitud y eficiencia de la
+respuesta, y al mismo tiempo mantenerse actualizado frente a los cambios de
+concepto. Además es un ensamble que permite definir clasificadores base
+modelados a partir de algoritmos de clasificación diferentes para explotar la
+variabilidad en los mismos. La técnica de ponderación se basa en la presentada
+por \citeauthor{kolter_dynamic_2007} para la estrategia \textit{\acrlong{dwm}}
+(\acrshort{dwm}) \cite{kolter_dynamic_2007} y fue ajustada para soportar datos
+de múltiples etiquetas. Otra de las cualidades del ensamble \acrshort{dwm} es
+que agrega y elimina clasificadores base dinámicamente de acuerdo a su
+ponderación. Sin embargo, el costo computacional acarreado es notorio y los
+nuevos modelos añadidos son de un mismo tipo y no permite variarlos.  En
+consecuencia, se presenta la estrategia \acrshort{efmp} como posible alternativa
+junto con una variación del mismo, \acrshort{efmp2}, que muestrea instancias
+según la distribución \textit{poisson}. A continuación, se describen ambas
+técnicas en detalle.
+
+\acrshort{efmp} mantiene un conjunto fijo de $m$ clasificadores base, cada uno
+con un vector de pesos $W_{k} = [w_{0}, w_{1}, \dots, w_{q}]$, donde $1 \leq k
+	\leq m$ y $w_{k,j}$ representa el peso del clasificador $k$ para la etiqueta
+$j$. En el entrenamiento del modelo se reciben $n$ instancias donde
+$n=\left\|D\right\|$ para la estrategia simple. Además se definen los parámetros
+$p$, que es la cantidad de instancias observadas entre actualizaciones de los
+pesos, y $\beta$, que representa el factor en el que se decrece el peso
+$w_{k,j}$ ante cada clasificación errónea. $\beta$ es un valor definido en el
+dominio $0 \leq \beta \leq 1$ y toma el valor $0.5$ por defecto. Todos los pesos
+son inicializados en 1.
+
+El proceso de aprendizaje se lleva a cabo de la siguiente manera: al arribar una
+instancia $i$, \acrshort{efmp} se la asigna a cada uno de los $m$
+clasificadores. En primer lugar se realiza la actualización de pesos y si un
+clasificador $C_{k}$ no predice correctamente una etiqueta $j$, su peso
+$w_{k,j}$ será multiplicado por el factor $\beta$. Luego, se entrena cada
+clasificador con la instancia nueva y se repite el procedimiento con la
+siguiente. El parámetro $p$ es usado durante esta etapa y determina los períodos
+entre los cuales no se deben actualizar los pesos. El
+algoritmo~\ref{alg:entrenamiento_efmp} refleja el proceso en detalle.
+
+% textidote: ignore begin
+\begin{center}
+	\begin{algorithm}[H]
+		\label{alg:entrenamiento_efmp}
+		\SetAlgoLined
+		\DontPrintSemicolon
+		\KwIn{
+			$\{X,Y\}$: Conjunto de entrenamiento,
+			$n$: Número de instancias de entrenamiento,
+			$q$: Número de etiquetas,
+			$\beta$: Factor de decrecimiento de los pesos,
+			$p$: Período entre actualizaciones de los pesos,
+			$C$: Clasificadores base,
+			$W$: Pesos de los clasificadores
+		}
+		$i \gets 0$ \;
+		$m \gets \left\|C\right\|$ \;
+		\While{$i < n$}{
+			$k \gets 0$ \;
+			\While{$k < m$}{
+				\If{$i \bmod p = 0$}{
+					$y_{i} \gets predecir(C_{k}, X_{i})$ \;
+					$j \gets 0$ \;
+					\While{$j < q $}{
+						\If{$y_{i, j} \neq Y_{i,j}$}{
+							$W_{k,j} \gets \beta * W_{k,j}$ \;
+						}
+						$j \gets j+1$ \;
+					}
+				}
+				$entrenar(C_{k}, X_{i}, Y_{i})$ \;
+				$k \gets k+1$\;
+			}
+			$i \gets i+1$\;
+		}
+		\caption{Algoritmo de entrenamiento y ajuste de pesos para \acrfull{efmp}}
+	\end{algorithm}
+\end{center}
+% textidote: ignore end
+
+Durante la etapa de predicción cada clasificador retorna su voto $v_{i,j,k}$ y
+el ensamble realiza la combinación computando la suma ponderada para cada
+etiqueta. La ecuación es la siguiente:
+
+\begin{equation}
+	y_{i,j} = \frac{1}{\sum_{k=1}^{m} w_{j,k}} \sum_{k=1}^{m} v_{i,j,k} *
+	w_{j,k}
+\end{equation}
+
+Las etiquetas cuyo valor superen un umbral de $0.5$ serán activadas:
+
+\begin{equation}
+	y_{i,j} =
+	\begin{cases}
+		1, & \text{si}\ y_{i,j} \geq 0.5 \\
+		0, & \text{de otro modo.}
+	\end{cases}
+\end{equation}
+
+\todo{explicar \acrshort{efmp2}}
+
