@@ -277,8 +277,10 @@ clasificador $C_{k}$ no predice correctamente una etiqueta $j$, su peso
 $w_{k,j}$ será multiplicado por el factor $\beta$. Luego, se entrena cada
 clasificador con la instancia nueva y se repite el procedimiento con la
 siguiente. El parámetro $p$ es usado durante esta etapa y determina los períodos
-entre los cuales no se deben actualizar los pesos. El
-algoritmo~\ref{alg:entrenamiento_efmp} refleja el proceso en detalle.
+entre los cuales no se deben actualizar los pesos. Una vez completado un período
+se normalizan los pesos de manera tal que el máximo peso entre etiquetas es uno.
+El algoritmo~\ref{alg:entrenamiento_efmp} presenta el pseudocódigo de este
+proceso en detalle.
 
 % textidote: ignore begin
 \begin{center}
@@ -298,9 +300,9 @@ algoritmo~\ref{alg:entrenamiento_efmp} refleja el proceso en detalle.
 		$i \gets 0$ \;
 		$m \gets \left\|C\right\|$ \;
 		\While{$i < n$}{
-			$k \gets 0$ \;
-			\While{$k < m$}{
-				\If{$i \bmod p = 0$}{
+			\If{$i \bmod p = 0$}{
+				$k \gets 0$ \;
+				\While{$k < m$}{
 					$y_{i} \gets predecir(C_{k}, X_{i})$ \;
 					$j \gets 0$ \;
 					\While{$j < q $}{
@@ -309,7 +311,12 @@ algoritmo~\ref{alg:entrenamiento_efmp} refleja el proceso en detalle.
 						}
 						$j \gets j+1$ \;
 					}
+					$k \gets k+1$\;
 				}
+				$W \gets escalarPesos(W)$ \;
+			}
+			$k \gets 0$ \;
+			\While{$k < m$}{
 				$entrenar(C_{k}, X_{i}, Y_{i})$ \;
 				$k \gets k+1$\;
 			}
