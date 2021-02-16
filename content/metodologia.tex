@@ -76,6 +76,7 @@ generador de instancias sintéticas para flujos continuos de datos y el diseño 
 una solución de ensambles para realizar clasificaciones.
 
 \subsection{Generación de Flujos Sintéticos}
+\label{generacion_flujos_sinteticos}
 
 El generador presentado es un algoritmo que emplea técnicas probabilísticas para
 hallar dependencias entre etiquetas y reproducirlas en las nuevas instancias. La
@@ -240,6 +241,7 @@ generados en este marco contra los producidos en el trabajo de referencia.
 % textidote: ignore end
 
 \subsection{Algoritmo de Ensamble}
+\label{tecnica_algoritmo_ensamble}
 
 El \acrfull{efmp} es una estrategia de ensamble en ambientes de flujos continuos
 que pondera a los clasificadores base de acuerdo a su rendimiento y ajusta los
@@ -352,3 +354,9 @@ $Poisson(1)$ veces con dicha instancia. Esta técnica es conocida como
 \textit{online bagging} y se ha probado que se aproxima a la estrategia
 tradicional de \textit{bagging} en \textit{batch}, cuando se entrena con
 ejemplos de distribución similar \cite{oza_online_2005}.
+
+\todo[inline]{explicar: como se adaptaron los algoritmos? el script usado para
+	entrenar y predecir? los archivos generados con los resultados? }
+
+\todo[inline]{Explicar más sobre el analisis y evaluación de los flujos
+	sintéticos??}
