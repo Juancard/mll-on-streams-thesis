@@ -1,4 +1,4 @@
-\chapter{Experimentos}
+\chapter{Experimentos y Resultados}
 \todo{escribir intro de capitulo}
 
 \section{Colecciones}
@@ -94,9 +94,9 @@ para la implementación y ejecución de los experimentos.
 	      limita a problemas de clasificación multi-etiquetas
 	      \cite{montiel_scikit-multiflow_2018}.
 
-	\item[\acrshort{moa}]\footnote{\url{https://moa.cms.waikato.ac.nz/}} Se trata
-	      de un \textit{framework} para realizar minería de datos sobre flujos
-	      continuos de datos, implementada en Java y de código libre.  Incluye
+	\item[\acrshort{moa}]\footnote{\url{https://moa.cms.waikato.ac.nz/}}
+	      \acrfull{moa} es un \textit{framework} para realizar minería de datos sobre
+	      flujos continuos de datos, implementada en Java y de código libre.  Incluye
 	      algoritmos de evaluación y de aprendizaje automático como clasificadores,
 	      regresores, o de \textit{clustering}, pudiendo ser aplicados a problemas de
 	      clasificación de etiqueta única o multi-etiquetas.  También incluye
@@ -140,6 +140,7 @@ El Sistema Operativo instalado es Ubuntu 18.04 LTS y cuenta con la versión 3.6.
 de Python, el instalador de paquetes Pip en su versión 20.3.3 y Java 1.8.
 
 \section{Algoritmos}
+\label{experimentos_algoritmos}
 
 Se realizan los experimentos usando algoritmos multi-etiquetas disponibles en la
 librería scikit-multiflow junto con la implementaciones de ensamble presentada
@@ -247,3 +248,38 @@ relación entre etiquetas, la distribución de etiquetas y el espacio de atribut
 
 \section{Configuración Experimental}
 
+En lo que respecta a modelos de aprendizaje automático, los experimentos fueron
+desarrollados en el lenguaje Python usando la librería
+\textit{scikit-multiflow}. Los algoritmos de transformación del problema se
+aplican tal como han sido implementados en la librería con la salvedad del
+\acrshort{mlht}, al que debió introducirle una modificación para manipular la
+predicción, se usaba un arreglo disperso para representar las etiquetas
+activadas, lo cual producía un desbordamiento de memoria en el entrenamiento de
+colecciones grandes como la de mediamill. Se lo suplantó por una estructura de
+representación densa. En cuanto a los modelos de ensambles, se adaptaron las
+implementaciones existentes de \acrshort{ebr}, \acrshort{ecc} y \acrshort{dwm}
+para soportar múltiples etiquetas y para ello se debió modificar la etapa de
+combinación de votos para hacer frente a la nueva dimensionalidad de los datos.
+Por lo demás, la configuración de los algoritmos es la definida en la sección
+\ref{experimentos_algoritmos}.
+
+Para la etapa de evaluación se aplica la técnica de evaluación secuencial
+predictiva (\textit{prequential}) con ventanas deslizantes, tal como se
+recomienda para ambientes de flujos continuos \cite{gama_evaluating_2013}. Ante
+cada ejemplo o ventana de ejemplos arribada el modelo primero realiza la
+predicción y luego el entrenamiento. Finalmente las métricas de evaluación son
+calculadas una vez procesados todos los ejemplos de la colección y a partir de
+todas las predicciones producidas.  Notar que a partir de esta técnica el modelo
+predice y entrena todas las instancias, y no solo un subconjunto de ellas como
+sucede con la estrategia de \textit{holdout}. La ventana deslizante se configura
+en $w = \frac{N}{20}$, es decir, se divide el número total de instancias del
+flujo en 20 ventanas, siguiendo las directivas de \textcite{read_scalable_2012}.
+Los resultados de la evaluación son agrupados según los tipos de métrica usados,
+para facilitar el análisis.
+
+Por otro lado, los flujo de datos sintéticos fueron generados a partir de las
+colecciones 20ng, enron y mediamill, y cada una cuenta con cien mil instancias.
+Sus atributos se generan usando el algoritmo \acrfull{rbf} (ver sección
+\ref{stream_syn}).
+
+\section{Resultados}
