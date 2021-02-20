@@ -112,6 +112,9 @@ referencia \cite{read_scalable_2012}.
 	NormCardE = \frac{1}{CardE} \sum_{j=1}^{q} FreqRelE_{j}
 \end{equation}
 
+Donde $CardE$ se define tal como en :
+ - CardE: 
+
 Luego, la probabilidad a priori de la etiqueta $j$ se expresa de la forma:
 
 \begin{equation}
@@ -124,7 +127,7 @@ etiqueta.
 
 A partir de $P(E_{j})$ se puede calcular la matriz condicional $\theta$ sobre
 los pares de etiquetas, esto es, $\theta_{j,k} = P(Y_{j} = 1 \mid Y_{k} = 1)$,
-donde $L \geq j > k \leq 1$. \todo{L es menor o igual a j en la bibliografía, es
+donde  $1 \leq j \leq L$ y $1 \leq k \leq L$ con $j \neq k$. \todo{L es menor o igual a j en la bibliografía, es
 	un error?} Con el vector de probabilidades a priori y extrayendo las
 co-ocurrencias de cada par de etiquetas en toda la colección, es posible obtener
 cada valor de la matriz $\theta$, aplicando la probabilidad condicional:
