@@ -110,8 +110,11 @@ referencia \cite{read_scalable_2012}.
 	NormCardE = \frac{1}{CardE} \sum_{j=1}^{q} FreqRelE_{j}
 \end{equation}
 
-Donde $CardE$ se define tal como en :
- - CardE: 
+Donde $CardE$ se define tal como en \ref{eq:mll_card}, esto es:
+
+\begin{equation}
+	CardE(D) = \frac{1}{m} \sum_{i=1}^{m} \left\|Y_{i}\right\|
+\end{equation}
 
 Luego, la probabilidad a priori de la etiqueta $j$ se expresa de la forma:
 
@@ -119,9 +122,7 @@ Luego, la probabilidad a priori de la etiqueta $j$ se expresa de la forma:
 	P(E_{j}) =\min{(1, \frac{FreqRelE_{j}}{NormCardE})}
 \end{equation}
 
-El resultado es un vector de probabilidades a priori $[P(E_{1}),
-			P(E_{2}),\dots, P(E_{q})]$ que expresa la probabilidad independiente de cada
-etiqueta.
+El resultado es un vector $[P(E_{1}), P(E_{2}),\dots, P(E_{q})]$.
 
 A partir de $P(E_{j})$ se puede calcular la matriz condicional $\theta$ sobre
 los pares de etiquetas, esto es, $\theta_{j,k} = P(Y_{j} = 1 \mid Y_{k} = 1)$,
