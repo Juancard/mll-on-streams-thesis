@@ -1,0 +1,3 @@
+zathura
+xdotool
+texlive-full
