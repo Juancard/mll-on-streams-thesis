@@ -1,5 +1,13 @@
 # mll-on-streams-thesis
 
+```bat
+sudo wget http://ftp.vim.org/vim/runtime/spell/es.utf-8.spl -P /usr/share/vim/vim82/spell/
+sudo wget http://ftp.vim.org/vim/runtime/spell/es.utf-8.sug -P /usr/share/vim/vim82/spell/
+sudo wget http://ftp.vim.org/vim/runtime/spell/es.latin1.spl -P /usr/share/vim/vim82/spell/
+sudo wget http://ftp.vim.org/vim/runtime/spell/es.latin1.sug -P /usr/share/vim/vim82/spell/
+
+```
+
 ## Useful commands
 - Update glossary:
 ```bat
