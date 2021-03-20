@@ -2,7 +2,7 @@
 
 # Install OS dependencies
 ```bat
-xargs sudo apt install < requirements_os.txt
+xargs sudo apt install -y < requirements_os.txt
 ```
 
 # Download dictionary files
