@@ -143,10 +143,10 @@ de Python, el instalador de paquetes Pip en su versión 20.3.3 y Java 1.8.
 \label{experimentos_algoritmos}
 
 Se realizan los experimentos usando algoritmos multi-etiquetas disponibles en la
-librería scikit-multiflow junto con la implementaciones de ensamble presentada
-en este trabajo, \acrfull{efmp} y su variación \acrshort{efmp2}. Entre los
-algoritmos del tipo de transformación del problema se seleccionan los de
-\acrfull{br}, \acrfull{cc} y \acrfull{mlht}. Tanto \acrshort{br} como
+librería scikit-multiflow junto con las implementaciones de ensambles
+presentadas en este trabajo: \acrfull{efmp} y su variación \acrshort{efmp2}.
+Entre los algoritmos del tipo de transformación del problema se seleccionan los
+de \acrfull{br}, \acrfull{cc} y \acrfull{mlht}. Tanto \acrshort{br} como
 \acrshort{cc} usan \textit{naive} bayes como modelo de clasificación base y
 \acrshort{mlht} es ejecutado en su versión basada en \acrfull{lp}, siguiendo los
 procedimientos de \citeauthor{read_scalable_2012} \cite{read_scalable_2012}.
@@ -283,3 +283,42 @@ Sus atributos se generan usando el algoritmo \acrfull{rbf} (ver sección
 \ref{stream_syn}).
 
 \section{Resultados}
+
+\todo{Completar valores faltantes}
+\begin{table}[htbp]
+	\centering
+	\label{tab:syn_datasets}
+	\begin{tabular}{lrrrr}
+		\toprule
+		Nombre  & N     & L  & LC    & LD    \\
+		\midrule
+		20NG    & 19300 & 20 & 1,029 & 0,051 \\
+		MOA     & 19300 & 20 & 3,397 & 0,170 \\
+		JC      & 19300 & 20 & 1,067 & 0,053 \\
+		JC\_80k & 80000 & 20 & ?     & ?     \\
+		\bottomrule
+	\end{tabular}
+	\begin{tabular}{lrrrr}
+		\toprule
+		Nombre   & N      & L  & LC    & LD    \\
+		\midrule
+		ENRON    & 1702   & 53 & 3,378 & 0,064 \\
+		MOA      & 1702   & 53 & 3,707 & 0,070 \\
+		JC       & 1702   & 53 & 2,330 & 0,044 \\
+		JC\_100k & 100000 & 53 & ?     & ?     \\
+		\bottomrule
+	\end{tabular}
+	\begin{tabular}{lrrrr}
+		\toprule
+		Nombre    & N      & L   & LC    & LD    \\
+		\midrule
+		MEDIAMILL & 43907  & 101 & 4,376 & 0,043 \\
+		MOA       & 43907  & 101 & 4,071 & 0,040 \\
+		JC        & 43907  & 101 & 2,435 & 0,024 \\
+		JC\_500k  & 500000 & 101 & 2,439 & 0,024 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Características de las colecciones sintéticas generadas.
+		N: número de instancias; L: número de etiquetas; LC: cardinalidad de
+		etiquetas; LD: densidad de etiquetas.}
+\end{table}
