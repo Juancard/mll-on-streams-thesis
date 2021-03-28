@@ -107,7 +107,7 @@ conjunto de datos, esto bajo la recomendación de los autores del trabajo de
 referencia \cite{read_scalable_2012}.
 
 \begin{equation}
-	NormCardE = \frac{1}{CardE} \sum_{j=1}^{q} FreqRelE_{j}
+	NormCardE = \frac{1}{CardE} \sum_{j=1}^{q} FrecRelE_{j}
 \end{equation}
 
 Donde $CardE$ se define tal como en \ref{eq:mll_card}, esto es:
@@ -119,7 +119,7 @@ Donde $CardE$ se define tal como en \ref{eq:mll_card}, esto es:
 Luego, la probabilidad a priori de la etiqueta $j$ se expresa de la forma:
 
 \begin{equation}
-	P(E_{j}) =\min{(1, \frac{FreqRelE_{j}}{NormCardE})}
+	P(E_{j}) =\min{(1, \frac{FrecRelE_{j}}{NormCardE})}
 \end{equation}
 
 El resultado es un vector $[P(E_{1}), P(E_{2}),\dots, P(E_{q})]$.
@@ -188,7 +188,7 @@ formales, hallar el término $P(y|x)$ tal que:
 	P(y|x) = P(x|y)P(y)
 \end{equation}
 
-Como calcular la probabilidad conjunta es altamente complejo se define una
+Como el cálculo de la probabilidad conjunta es altamente compleja se define una
 función de mapeo $\zeta[a] \mapsto y_{a}$, donde $y_{a}$ es la combinación de
 etiquetas más probable para el atributo $a$.  La función $\theta$ se obtiene a
 través de muestreos sucesivos del generador de etiquetas, y guardando las $A$
