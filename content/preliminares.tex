@@ -1176,21 +1176,23 @@ y~\ref{mll_evaluacion} para datos multi-etiquetados.
 \subsection{Datos sintéticos}
 \label{stream_syn}
 
-Es común en la literatura generar datos sintéticos para simular ambientes de
-flujo continuos de datos. El principal motivo de esto es la falta de colecciones
-de \textit{streams} del mundo real que sean lo suficientemente grandes y que al
-mismo tiempo cumplan con todos los requisitos necesarios para evaluar algoritmos
-en este escenario \cite{kirkby_improving_2007}. Pese a esta restricción, se han
-hallado ventajas comparativas en la aplicación de flujos sintéticos en el
-análisis y evaluación de algoritmos, entre ellas se encuentran las siguientes:
+Generar datos sintéticos es una práctica frecuente en la literatura para simular
+ambientes de flujo continuos de datos, el principal motivo es la falta de
+colecciones de \textit{streams} del mundo real que sean lo suficientemente
+grandes y que al mismo tiempo cumplan con todos los requisitos necesarios para
+evaluar algoritmos en este escenario \cite{kirkby_improving_2007}. Pese a esta
+restricción, se han hallado ventajas comparativas en la aplicación de flujos
+sintéticos en el análisis y evaluación de algoritmos, entre ellas se encuentran
+las siguientes:
 
 \begin{itemize}
-
-	\item Son fácilmente generables y reproducibles.
 
 	\item Tiene un costo de almacenamiento relativamente menor.
 
 	\item Cumplen con el requisito de ser teóricamente infinitos.
+
+	\item Su generación es automatizable lo cual facilita su reproducibilidad
+	      entre experimentos.
 
 	\item Es posible introducir cambios de concepto artificiales para realizar un
 	      análisis incisivo de los algoritmos de clasificación bajo escenarios
