@@ -371,11 +371,41 @@ hace un uso significativamente menor de tiempo que los ensambles presentados.
 
 \subsubsection{Comparativa contra Literatura de Referencia}
 
-El resultado de los métodos propuestos muestra que son competitivos respecto a
-la literatura de referencia. En particular, para las pruebas realizadas con el
-conjunto de datos 20NG los valores de F-Score basado en ejemplos obtenidos
-superan en 2.3\% a \cite{osojnik_multi-label_2017} pero no son mejores que otros
-como \cite{sousa_multi-label_2018, buyukcakir_novel_2018,
+A partir de los resultados obtenidos se realiza una comparativa contra otros
+estudios de la literatura similares. A este fin se seleccionaron los trabajos de
+\citeauthor{osojnik_multi-label_2017}
+(\citeyear{osojnik_multi-label_2017})~\cite{osojnik_multi-label_2017},
+\citeauthor{roseberry_multi-label_2018}
+(\citeyear{roseberry_multi-label_2018})~\cite{roseberry_multi-label_2018},
+\citeauthor{buyukcakir_novel_2018}
+(\citeyear{buyukcakir_novel_2018})~\cite{buyukcakir_novel_2018} y
+\citeauthor{sousa_multi-label_2018}
+(\citeyear{sousa_multi-label_2018})~\cite{sousa_multi-label_2018}. Si bien las
+métricas y colecciones utilizadas varian según el estudio, todos los trabajos
+parten de una configuración experimental similar a la de este trabajo y usan el
+método \textit{prequential} para evaluar rendimientos.
+
+\citeauthor{osojnik_multi-label_2017} presentan experimentos sobre las
+colecciones de 20ng y Enron bajo métricas basadas en ejemplos (\textit{Hamming
+	score}, \textit{F1} basado en ejemplos y \textit{Exact-match}), métricas basadas
+en etiquetas (Precisión, \textit{Recall} y \textit{F1}, todas ellas con promedio
+micro y macro) y métricas basadas en eficiencia (tiempo de ejecución y tamaño
+del modelo). Comenzando por las métricas basadas en ejemplos, el modelo
+\textit{iSOUP-MT} es el que mejor \textit{Hamming score} obtiene con un valor de
+0.9523 y es levemente superado por \acrshort{efmp} (0.954) y \acrshort{efmp2}
+(0.955). Para el caso de Enron el ganador es \textit{iSOUP-MT} (en su versión de
+ensambles) con un valor de 0.942 y supera a \acrshort{efmp2} (0.936). En cuanto
+al \textit{Exact-match} nuestras soluciones superan a la mejor solución de los
+autores, iSOUP-RT (0.117), en un 2.05\% para 20ng y son superadas en un 6.25\%
+por el modelo iSOUP-MT para Enron (0.244). En lo que respecta al \textit{F1},
+\acrshort{efmp} supera en un 2.8\% a iSOUP-RT (0.118) para 20ng y en poco más de
+un 1\% a iSOUP-MT para Enron (0.329).
+
+En resumen, el resultado de los métodos propuestos muestra que son competitivos
+respecto a la literatura de referencia. En particular, para las pruebas
+realizadas con el conjunto de datos 20NG los valores de F-Score basado en
+ejemplos obtenidos superan en 2.3\% a \cite{osojnik_multi-label_2017} pero no
+son mejores que otros como \cite{sousa_multi-label_2018, buyukcakir_novel_2018,
 	roseberry_multi-label_2018}.  En las pruebas realizadas con Enron, los métodos
 propuestos superan en 10.74\% a \cite{osojnik_multi-label_2017}, duplican el
 rendimiento de \cite{roseberry_multi-label_2018} y son superados por
