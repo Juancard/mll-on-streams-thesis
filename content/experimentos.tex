@@ -46,11 +46,11 @@ continuación:
 
 \begin{table}[htbp]
 	\centering
-	\label{tab:datasets}
 	\input{tables/datasets.tex}
 	\caption{Colecciones multi-etiquetas y sus características. N: número de
 		instancias; A: número de atributos; L: número de etiquetas; LC: cardinalidad
 		de etiquetas; LD: densidad de etiquetas.}
+	\label{tab:datasets}
 \end{table}
 
 \begin{figure}
@@ -164,12 +164,12 @@ clave que será usada en las tablas de resultados.
 
 \begin{table}[htbp]
 	\centering
-	\label{tab:algoritmos}
 	\begin{adjustbox}{max width=\textwidth}
 		\input{tables/algorithms.tex}
 	\end{adjustbox}
 	\caption{Métodos de clasificación multi-etiquetas seleccionados para ambientes
 		de flujos continuos de datos.}
+	\label{tab:algoritmos}
 \end{table}
 
 \section{Métricas de Evaluación}
@@ -253,7 +253,6 @@ Sus atributos se generan usando el algoritmo \acrfull{rbf} (ver sección
 \todo{Completar valores faltantes}
 \begin{table}[htbp]
 	\centering
-	\label{tab:syn_datasets}
 	\input{tables/syn/stats.tex}
 	%\begin{adjustbox}{max width=\textwidth}
 	%\input{tables/syn/stats.tex}
@@ -261,6 +260,127 @@ Sus atributos se generan usando el algoritmo \acrfull{rbf} (ver sección
 	\caption{Características de las colecciones sintéticas generadas.
 		N: número de instancias; L: número de etiquetas; LC: cardinalidad de
 		etiquetas; LD: densidad de etiquetas.}
+	\label{tab:syn_datasets}
 \end{table}
 
 \subsection{Clasificaciones}
+
+La metodología propuesta permitió evaluar los diferentes algoritmos de
+clasificación multi-etiqueta para los diferentes \textit{streams} utilizando las
+configuraciones sin ensambles, los ensambles de referencias y los métodos de
+ensamble propuestos. Los resultados se dividen en métricas de ajustes del modelo
+basadas en ejemplos (tabla~\ref{tab:example_based}), métricas basadas en
+etiquetas (tabla \ref{tab:label_based}), y por último las métricas de eficiencia
+(tabla \ref{tab:efficiency}) que cuantifican el tiempo de procesamiento y
+espacio de almacenamiento de los modelos. Se marca en negrita la celda
+correspondiente al modelo que obtuvo el mejor valor de métrica para la
+correspondiente colección de datos. Para cerrar la sección se hace una
+comparativa contra experimentos de la literatura de referencia.
+
+\subsubsection{Resultados para Métricas Basadas en Ejemplos}
+
+\begin{table}[htbp]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+		\input{tables/evaluations/example_based_1.tex}
+	\end{adjustbox}
+	\begin{adjustbox}{max width=\textwidth}
+		\input{tables/evaluations/example_based_2.tex}
+	\end{adjustbox}
+	\caption{Resultados de métricas basadas en ejemplos sobre los
+		\textit{streams} seleccionados para cada algoritmo evaluado.}
+	\label{tab:example_based}
+\end{table}
+
+Los valores de F1 obtenidos para la evaluación basada en ejemplos (Tabla
+\ref{tab:example_based}) muestra que \acrshort{efmp} y \acrshort{efmp2} fueron
+mejores que los \textit{baselines} de ensambles en todos los casos.  Además,
+superó a los que no utilizan ensambles en el \textit{stream} de Enron.  En los
+casos de 20ng, \acrshort{efmp} fue superado en un 0.001\% por \acrshort{br} y en
+Mediamill \acrshort{mlht} superó a \acrshort{efmp} en un 0.015\%. Para el caso
+de \textit{Exact-match} el modelo dominante es \acrshort{mlht}, lo cual es un
+resultado en consonancia con otros estudios de la literatura, y los modelos
+propuestos se ubican en segundo lugar para dos de las tres colecciones. En
+cuanto al \textit{Hamming score} los resultados son muy similares entre
+colecciones de datos, con los modelos de \acrshort{dwm} sacando una leve ventaja
+para 20ng y Enron pero siendo superado por \acrshort{efmp} y \acrshort{mlht}
+para Mediamill.
+
+\subsubsection{Resultados para Métricas Basadas en Etiquetas}
+
+\begin{table}[htbp]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+		\input{tables/evaluations/label_based_macro.tex}
+	\end{adjustbox}
+	\begin{adjustbox}{max width=\textwidth}
+		\input{tables/evaluations/label_based_micro.tex}
+	\end{adjustbox}
+	\caption{Resultados de métricas basadas en etiquetas sobre los
+		\textit{streams} seleccionados para cada algoritmo evaluado.}
+	\label{tab:label_based}
+\end{table}
+
+La métrica de \textit{F-score macro} muestra resultados favorecedores para los
+modelos presentados. \acrshort{efmp2} obtuvo un valor superior para Mediamill y
+\acrshort{efmp} fue el mejor para 20ng y el segundo mejor para Enron, por
+centésimas de diferencia con respecto al modelo \acrshort{br}. En lo que
+respecta a la comparativa entre soluciones de ensambles, \acrshort{efmp} y
+\acrshort{efmp2} superan a las demás para todas las colecciones evaluadas.  En
+relación a los modelos de \acrshort{dwm}, estos muestran una disparidad entre
+los valores de precisión y \textit{recall}. Vease por ejemplo el caso de
+\acrshort{dwm} (\acrshort{cc}) para 20ng, donde logra más de un 80\% de
+precisión (mejor clasificador) pero un \textit{recall} por debajo del 20\% (segundo peor
+clasificador). Mismo caso pero a la inversa con \acrshort{dwm} (\acrshort{br})
+para Mediamill, el cual consigue un 40\% de \textit{recall} (tercer mejor
+clasificador) pero apenas un 0.006\% de precisión (tercer peor clasificador).
+Esta imparidad logra suavizarse en los modelos de \acrshort{efmp} presentados y
+se ve reflejado en mejores valores de \textit{f-score}.
+
+También son favorecedores los valores de las métricas de \textit{F-score micro}
+para los modelos presentados. \acrshort{efmp} es el mejor para las colecciones
+20ng y Enron y es apenas superado por \acrshort{mlht} para el \textit{stream} de
+Mediamill. En la comparativa de métodos de ensambles, \acrshort{efmp} es el
+mejor modelo para todos las métricas a excepción del caso de \textit{recall}
+para Mediamill (donde \acrshort{ebr} obtiene el mejor valor), y los casos de
+precisión para Enron y 20ng, donde \acrshort{dwm} (\acrshort{cc}) logra una
+clara diferencia. Al respecto de este ultimo modelo se puede hacer las mismas
+consideraciones en cuanto a la disparidad entre precisión y \textit{recall}.
+
+\subsubsection{Resultados para Métricas de Eficiencia}
+
+\begin{table}[htbp]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+		\input{tables/evaluations/efficiency.tex}
+	\end{adjustbox}
+	\caption{Resultados de métricas de eficiencia sobre los
+		\textit{streams} seleccionados para cada algoritmo evaluado.}
+	\label{tab:efficiency}
+\end{table}
+
+Tal como es de esperar, la tabla~\ref{tab:efficiency} muestra que los modelos
+\textit{baselines} que no son soluciones de ensambles hacen un uso de espacio
+significativamente menor que los modelos de ensambles y logran tiempos de
+ejecución menores. Sin embargo, en la comparativa entre ensambles, los
+algoritmos propuestos (\acrshort{efmp} y \acrshort{efmp2}) reducen tanto el
+espacio de almacenamiento como el tiempo de procesamiento de los
+\textit{streams} de Enron y 20ng. Las métricas de tiempo se reducen
+significativamente para 20NG y Enron, mientras que en Mediamill \acrshort{ebr}
+hace un uso significativamente menor de tiempo que los ensambles presentados.
+
+\subsubsection{Comparativa contra Literatura de Referencia}
+
+El resultado de los métodos propuestos muestra que son competitivos respecto a
+la literatura de referencia. En particular, para las pruebas realizadas con el
+conjunto de datos 20NG los valores de F-Score basado en ejemplos obtenidos
+superan en 2.3\% a \cite{osojnik_multi-label_2017} pero no son mejores que otros
+como \cite{sousa_multi-label_2018, buyukcakir_novel_2018,
+	roseberry_multi-label_2018}.  En las pruebas realizadas con Enron, los métodos
+propuestos superan en 10.74\% a \cite{osojnik_multi-label_2017}, duplican el
+rendimiento de \cite{roseberry_multi-label_2018} y son superados por
+\cite{sousa_multi-label_2018} en un 22.6\%. Finalmente, para el conjunto de
+datos Mediamill tanto \cite{sousa_multi-label_2018} como
+\cite{roseberry_multi-label_2018} superan nuestra propuesta.
+
+
