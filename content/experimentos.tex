@@ -372,7 +372,7 @@ hace un uso significativamente menor de tiempo que los ensambles presentados.
 \subsubsection{Comparativa contra Literatura de Referencia}
 
 A partir de los resultados obtenidos se realiza una comparativa contra otros
-estudios de la literatura similares. A este fin se seleccionaron los trabajos de
+estudios del campo. A este fin se seleccionaron los trabajos de
 \citeauthor{osojnik_multi-label_2017}
 (\citeyear{osojnik_multi-label_2017})~\cite{osojnik_multi-label_2017},
 \citeauthor{roseberry_multi-label_2018}
@@ -385,12 +385,11 @@ métricas y colecciones utilizadas varian según el estudio, todos los trabajos
 parten de una configuración experimental similar a la de este trabajo y usan el
 método \textit{prequential} para evaluar rendimientos.
 
-\citeauthor{osojnik_multi-label_2017} presentan experimentos sobre las
+\citeauthor{osojnik_multi-label_2017} presentaron experimentos sobre las
 colecciones de 20ng y Enron bajo métricas basadas en ejemplos (\textit{Hamming
-	score}, \textit{F1} basado en ejemplos y \textit{Exact-match}), métricas basadas
-en etiquetas (Precisión, \textit{Recall} y \textit{F1}, todas ellas con promedio
-micro y macro) y métricas basadas en eficiencia (tiempo de ejecución y tamaño
-del modelo). Comenzando por las métricas basadas en ejemplos, el modelo
+	score}, \textit{F1} y \textit{Exact-match}), métricas basadas en etiquetas
+(Precisión, \textit{Recall} y \textit{F1}, todas ellas con promedio micro y
+macro). Comenzando por las métricas basadas en ejemplos, el modelo
 \textit{iSOUP-MT} es el que mejor \textit{Hamming score} obtiene con un valor de
 0.9523 y es levemente superado por \acrshort{efmp} (0.954) y \acrshort{efmp2}
 (0.955). Para el caso de Enron el ganador es \textit{iSOUP-MT} (en su versión de
@@ -400,6 +399,36 @@ autores, iSOUP-RT (0.117), en un 2.05\% para 20ng y son superadas en un 6.25\%
 por el modelo iSOUP-MT para Enron (0.244). En lo que respecta al \textit{F1},
 \acrshort{efmp} supera en un 2.8\% a iSOUP-RT (0.118) para 20ng y en poco más de
 un 1\% a iSOUP-MT para Enron (0.329).
+
+Con respecto a las métricas basadas en etiquetas los resultados también
+favorecen a los métodos aquí presentados. Para el stream 20ng \acrshort{efmp2}
+supera en un 25.5\% a iSOUP-RT bajo la métrica de precisión macro, en un 238\%
+en \textit{recall} macro a iSOUP-MT y en un 142\% en \textit{f1} a ese mismo
+modelo. Para Enron nuestros modelos superan en un 111\%, 156\% y 164\% a
+iSOUP-RT para las mismas medidas mencionadas, respectivamente. Las métricas de
+promedio micro también favorecen a nuestros modelos. Para 20ng \acrshort{efmp}
+es superado en un 41.1\% por iSOUP-MT (en versión ensamble) en precisión, supera
+en un 213.6\% a iSOUP-MT en \textit{recall} y en un 125\% en \textit{f1}. Para
+Enron es superado en 33.3\% por iSOUP-MT (en versión ensamble) en precisión,
+supera en un 45.5\% a iSOUP-RT en \textit{recall} y en un 10.8\% en \textit{f1}.
+
+\citeauthor{sousa_multi-label_2018} han presentado experimentos sobre los tres
+\ttextit{streams} y bajo métricas basadas en ejemplos, en particular las de
+\textit{accuracy}, \textit{exact-match}, precisión, \textit{recall} y
+\textit{f1}. Para la comparativa se toma el mejor modelo de los autores para
+cada métrica. Comenzando por la métrica de precisión, \acrshort{efmp} logra una
+mejora del 85.6\% para 20ng, un 125.8\% para Enron y un 161\% para Mediamill. En
+\textit{exact-match} los autores han logrado mejores resultados. Nuestros
+modelos son superados en un 50.6\% para 20ng, en un 71.7\% para Enron y en un
+75.5\% para Mediamill. También para la precisión, recall y \textit{f1}
+\citeauthor{sousa_multi-label_2018} han logrado mejores resultados en general.
+En precisión logran superar en un 42.5\% a \acrshort{efmp} para 20ng, en un
+25.6\% a \acrshort{efmp2} para Enron y son superados en un 0.5\% por
+\acrshort{efmp} para Mediamill. En \textit{recall} superan en un 27.5\% a
+nuestros modelos para 20ng, en un 29\% para Enron y en un 7\% para Mediamill.
+Finalmente, en \textit{f1} superan en un 37\% a nuestros modelos para 20ng, en
+un 23\% para Enron y en un 15\% para Mediamill. Los autores no presentan
+resultados bajo métricas basadas en etiquetas.
 
 En resumen, el resultado de los métodos propuestos muestra que son competitivos
 respecto a la literatura de referencia. En particular, para las pruebas
