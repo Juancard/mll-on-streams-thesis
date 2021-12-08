@@ -1,36 +1,41 @@
-\begin{tabular}{l:rrr:rrr:rrr}
+\begin{tabular}{l:rrr:rrr:rrr:rrr}
 	\toprule
-	                                            &
-	\multicolumn{3}{:c}{\textit{Exact-match}}   &
-	\multicolumn{3}{:c}{\textit{Hamming score}} &
-	\multicolumn{3}{:c}{\textit{Hamming loss}}                                                                                                     \\
-	\textit{Stream}                             & 20ng           & Enron
-	                                            & Mediamill      & 20ng           & Enron
-	                                            & Mediamill      & 20ng           & Enron          &
-	Mediamill                                                                                                                                      \\
+	                                                       &
+	\multicolumn{3}{:c}{\textit{Exact-match}}              &
+	\multicolumn{3}{:c}{\textit{Accuracy (jaccard index)}} &
+	\multicolumn{3}{:c}{\textit{Hamming score}}            &
+	\multicolumn{3}{:c}{\textit{Hamming loss}}                                                                                                                                        \\
+	\textit{Stream}                                        & 20ng           & Enron
+	                                                       & Mediamill      & 20ng           & Enron
+	                                                       & Mediamill      & 20ng           & Enron
+	                                                       & Mediamill      & 20ng           & Enron          &
+	Mediamill                                                                                                                                                                         \\
 	\midrule
-	\acrshort{br}                               & 0.228          & 0.018
-	                                            & 0.001          & 0.952          & 0.912
-	                                            & 0.711          & 0.048
-	                                            & 0.088          & 0.289                                                                           \\
-	\acrshort{cc}                               & 0.244          & 0.017          & 0.005          & 0.954 & 0.919 & 0.905 & 0.046 & 0.081 & 0.095 \\
-	\acrshort{mlht}                             & \textbf{0.315} & \textbf{0.055}
-	                                            & \textbf{0.048} & 0.934
-	                                            & 0.928          & \textbf{0.957}
-	                                            & 0.066          & 0.072
-	                                            & \textbf{0.043}                                                                                   \\
+	\acrshort{br}                                          & 0.228          & 0.018
+	                                                       & 0.001          & 0.292          & 0.210          & 0.091 & 0.952 & 0.912
+	                                                       & 0.711          & 0.048
+	                                                       & 0.088          & 0.289                                                                                                   \\
+	\acrshort{cc}                                          & 0.244          & 0.017          & 0.005          & 0.291 & 0.216 & 0.190 & 0.954 & 0.919 & 0.905 & 0.046 & 0.081 & 0.095 \\
+	\acrshort{mlht}                                        & \textbf{0.315} & \textbf{0.055}
+	                                                       & \textbf{0.048} &
+	\textbf{0.321}                                         & 0.127          &
+	\textbf{0.302}                                         & 0.934
+	                                                       & 0.928          & \textbf{0.957}
+	                                                       & 0.066          & 0.072
+	                                                       & \textbf{0.043}                                                                                                           \\
 	\hline
-	\acrshort{dwm} (\acrshort{br})              & 0.171          & 0.021
-	                                            & 0.001          &
-	\textbf{0.956}                              & 0.938          & 0.800          & \textbf{0.044} & 0.062 & 0.200                                 \\
-	\acrshort{dwm} (\acrshort{cc})              & 0.167          & 0.024
-	                                            & 0.014          & 0.956
-	                                            & \textbf{0.939} & 0.936          & 0.044
-	                                            & \textbf{0.061} & 0.064                                                                           \\
-	\acrshort{ebr}                              & 0.153          & 0.012          & 0.001          & 0.953 & 0.928 & 0.726 & 0.047 & 0.072 & 0.274 \\
-	\acrshort{ecc}                              & 0.115          & 0.012          & 0.001          & 0.952 & 0.938 & 0.923 & 0.048 & 0.062 & 0.077 \\
+	\acrshort{dwm} (\acrshort{br})                         & 0.171          & 0.021
+	                                                       & 0.001          & 0.185          & 0.152          & 0.123 &
+	\textbf{0.956}                                         & 0.938          & 0.800          & \textbf{0.044} & 0.062 & 0.200                                                         \\
+	\acrshort{dwm} (\acrshort{cc})                         & 0.167          & 0.024
+	                                                       & 0.014          & 0.176          & 0.156          & 0.259 & 0.956
+	                                                       & \textbf{0.939} & 0.936          & 0.044
+	                                                       & \textbf{0.061} & 0.064                                                                                                   \\
+	\acrshort{ebr}                                         & 0.153          & 0.012          & 0.001          & 0.182 & 0.193 & 0.096 & 0.953 & 0.928 & 0.726 & 0.047 & 0.072 & 0.274 \\
+	\acrshort{ecc}                                         & 0.115          & 0.012          & 0.001          & 0.133 & 0.189 & 0.246 & 0.952 & 0.938 & 0.923 & 0.048 & 0.062 & 0.077 \\
 	\hline
-	\acrshort{efmp}                             & 0.241          & 0.032          & 0.012          & 0.954 & 0.928 & 0.946 & 0.046 & 0.072 & 0.054 \\
-	\acrshort{efmp2}                            & 0.220          & 0.039          & 0.004          & 0.955 & 0.936 & 0.928 & 0.045 & 0.064 & 0.072 \\
+	\acrshort{efmp}                                        & 0.241          &
+	0.032                                                  & 0.012          & 0.298          & \textbf{0.239} & 0.267 & 0.954 & 0.928 & 0.946 & 0.046 & 0.072 & 0.054                 \\
+	\acrshort{efmp2}                                       & 0.220          & 0.039          & 0.004          & 0.249 & 0.234 & 0.247 & 0.955 & 0.936 & 0.928 & 0.045 & 0.064 & 0.072 \\
 	\bottomrule
 \end{tabular}
