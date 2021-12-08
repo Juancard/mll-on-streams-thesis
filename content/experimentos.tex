@@ -413,33 +413,49 @@ Enron es superado en 33.3\% por iSOUP-MT (en versión ensamble) en precisión,
 supera en un 45.5\% a iSOUP-RT en \textit{recall} y en un 10.8\% en \textit{f1}.
 
 \citeauthor{sousa_multi-label_2018} han presentado experimentos sobre los tres
-\ttextit{streams} y bajo métricas basadas en ejemplos, en particular las de
+\textit{streams} y bajo métricas basadas en ejemplos, en particular las de
 \textit{accuracy}, \textit{exact-match}, precisión, \textit{recall} y
 \textit{f1}. Para la comparativa se toma el mejor modelo de los autores para
-cada métrica. Comenzando por la métrica de precisión, \acrshort{efmp} logra una
-mejora del 85.6\% para 20ng, un 125.8\% para Enron y un 161\% para Mediamill. En
-\textit{exact-match} los autores han logrado mejores resultados. Nuestros
-modelos son superados en un 50.6\% para 20ng, en un 71.7\% para Enron y en un
-75.5\% para Mediamill. También para la precisión, recall y \textit{f1}
-\citeauthor{sousa_multi-label_2018} han logrado mejores resultados en general.
-En precisión logran superar en un 42.5\% a \acrshort{efmp} para 20ng, en un
-25.6\% a \acrshort{efmp2} para Enron y son superados en un 0.5\% por
-\acrshort{efmp} para Mediamill. En \textit{recall} superan en un 27.5\% a
-nuestros modelos para 20ng, en un 29\% para Enron y en un 7\% para Mediamill.
-Finalmente, en \textit{f1} superan en un 37\% a nuestros modelos para 20ng, en
-un 23\% para Enron y en un 15\% para Mediamill. Los autores no presentan
-resultados bajo métricas basadas en etiquetas.
+cada métrica. Comenzando por la métrica de \textit{exact-match} los autores han
+logrado mejores resultados. Nuestros modelos son superados en un 50.6\% para
+20ng, en un 71.7\% para Enron y en un 75.5\% para Mediamill. También para la
+precisión, recall y \textit{f1} \citeauthor{sousa_multi-label_2018} han logrado
+mejores resultados en general.  En precisión logran superar en un 42.5\% a
+\acrshort{efmp} para 20ng, en un 25.6\% a \acrshort{efmp2} para Enron y son
+superados en un 0.5\% por \acrshort{efmp} para Mediamill. En \textit{recall}
+superan en un 27.5\% a nuestros modelos para 20ng, en un 29\% para Enron y en un
+7\% para Mediamill.  Finalmente, en \textit{f1} superan en un 37\% a nuestros
+modelos para 20ng, en un 23\% para Enron y en un 15\% para Mediamill. Los
+autores no presentan resultados bajo métricas basadas en etiquetas.
+
+\citeauthor{roseberry_multi-label_2018}, por su parte, diseñaron el modelo
+ML-SAM-kNN y lo pusieron a prueba con las tres colecciones y las métricas de
+\textit{exact-match} y \textit{f1}. En la comparativa obtuvimos que
+\textit{efmp} es superado en un 26\% para 20ng, en un 86\% para Enron y en un
+92\% para Mediamill. No obstante, bajo la métrica de \textit{f1}, nuestros
+modelos superan en un 65\% y 229\% a sus modelos para 20ng y Enron
+respectivamente y es superado en un 26\% para Mediamill.
+
+Finalmente, \citeauthor{buyukcakir_novel_2018} presentaron el modelo de
+ensambles \textit{GOOWE-ML} bajo las métricas de \textit{hamming score},
+\textit{accuracy} basado en ejemplos, \textit{f1} basado en ejemplos y
+\textit{f1} micro, basado en etiquetas. Si bien realizaron pruebas sobre varios
+\textit{streams} el único en común con este trabajo es el de 20ng. Dicho esto,
+su modelo consigue mejores valores para las métricas de \textit{f1} micro,
+\textit{accuracy}, y \textit{f1} basado en ejemplos (13\%, 24\% y 26\% de
+mejora, respectivamente) y peores valores para la métricas de \textit{hamming
+	score} donde nuestros modelos lo superan en un 0.3\%.
 
 En resumen, el resultado de los métodos propuestos muestra que son competitivos
 respecto a la literatura de referencia. En particular, para las pruebas
 realizadas con el conjunto de datos 20NG los valores de F-Score basado en
-ejemplos obtenidos superan en 2.3\% a \cite{osojnik_multi-label_2017} pero no
-son mejores que otros como \cite{sousa_multi-label_2018, buyukcakir_novel_2018,
+ejemplos obtenidos superan a~\cite{osojnik_multi-label_2017} pero no son mejores
+que otros como~\cite{sousa_multi-label_2018, buyukcakir_novel_2018,
 	roseberry_multi-label_2018}.  En las pruebas realizadas con Enron, los métodos
-propuestos superan en 10.74\% a \cite{osojnik_multi-label_2017}, duplican el
-rendimiento de \cite{roseberry_multi-label_2018} y son superados por
-\cite{sousa_multi-label_2018} en un 22.6\%. Finalmente, para el conjunto de
-datos Mediamill tanto \cite{sousa_multi-label_2018} como
-\cite{roseberry_multi-label_2018} superan nuestra propuesta.
+propuestos superan a~\cite{osojnik_multi-label_2017}, duplican el rendimiento
+de~\cite{roseberry_multi-label_2018} y son superados
+por~\cite{sousa_multi-label_2018}. Finalmente, para el conjunto de datos
+Mediamill tanto~\cite{sousa_multi-label_2018}
+como~\cite{roseberry_multi-label_2018} superan nuestra propuesta.
 
 
