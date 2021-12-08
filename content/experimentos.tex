@@ -61,7 +61,7 @@ continuación:
 	\label{fig:mediamill}
 \end{figure}
 
-Estas son sólo tres de las colecciones usualmente abordadas en la literatura y
+Estas son solo tres de las colecciones usualmente abordadas en la literatura y
 se han seleccionado con el objetivo de diversificar el análisis. Enron es una
 colección de pocas instancias pero muchas etiquetas, 20ng a la inversa, cuenta
 con pocas etiquetas pero muchas instancias; y Mediamill, finalmente, es la
@@ -115,9 +115,9 @@ provee del marco de trabajo en el cual se implementó el algoritmo de generació
 descripto en \ref{generacion_flujos_sinteticos}. Los algoritmos de clasificación
 fueron implementados en Python y están disponibles bajo la librería
 \textit{scikit-multiflow}. La solución de ensamble \acrshort{efmp} también fue
-implementada en esta librería. \textit{scikit-learn}, por su parte, provee la
+implementada en esta librería. \textit{Scikit-learn}, por su parte, provee la
 implementación de las métricas basadas en etiquetas, y las colecciones de datos
-fueron extraídas de mulan.
+fueron extraídas de Mulan.
 
 \section{Hardware}
 
@@ -183,15 +183,17 @@ sección \ref{mll_evaluacion}. Estas son:
 
 \begin{description}
 
-	\item[Métricas Basadas en Ejemplos]: \textit{Hamming score}, exactitud del
-	      subconjunto, exactitud (ejemplos), precisión (ejemplos), exhaustividad
-	      (ejemplos) y medida-f1 (ejemplos).
+	\item[Métricas Basadas en Ejemplos]: \textit{Hamming score}, \textit{hamming
+		      loss}, \textit{exact-match} (exactitud del subconjunto),
+	      \textit{accuracy} (o exactitud, o \textit{jaccard index}), precisión,
+	      \textit{recall} (o exhaustividad) y \textit{f1}.
 
-	\item[Métricas Basadas en Etiquetas]: Micro-exactitud, micro-precisión,
-	      micro-exhaustividad, micro-f1, macro-exactitud, macro-precisión,
-	      macro-exhaustividad y macro-f1.
+	\item[Métricas Basadas en Etiquetas]: \textit{Accuracy} (micro), precisión
+	      (micro), \textit{recall} (micro), \textit{f1} (micro),
+	      \textit{accuracy} (macro), precisión (macro), \textit{recall} (macro)
+	      y \textit{f1} (macro).
 
-	\item[Métricas de Eficiencia]: Velocidad y consumo de memoria.
+	\item[Métricas de Eficiencia]: Velocidad y tamaño del modelo.
 
 \end{description}
 
@@ -219,7 +221,7 @@ aplican tal como han sido implementados en la librería con la salvedad del
 \acrshort{mlht}, al que debió introducirle una modificación para manipular la
 predicción, se usaba un arreglo disperso para representar las etiquetas
 activadas, lo cual producía un desbordamiento de memoria en el entrenamiento de
-colecciones grandes como la de mediamill. Se lo suplantó por una estructura de
+colecciones grandes como la de Mediamill. Se lo suplantó por una estructura de
 representación densa. En cuanto a los modelos de ensambles, se adaptaron las
 implementaciones existentes de \acrshort{ebr}, \acrshort{ecc} y \acrshort{dwm}
 para soportar múltiples etiquetas y para ello se debió modificar la etapa de
@@ -242,7 +244,7 @@ Los resultados de la evaluación son agrupados según los tipos de métrica usad
 para facilitar el análisis.
 
 Por otro lado, los flujo de datos sintéticos fueron generados a partir de las
-colecciones 20ng, enron y mediamill, y cada una cuenta con cien mil instancias.
+colecciones 20ng, Enron y Mediamill, y cada una cuenta con cien mil instancias.
 Sus atributos se generan usando el algoritmo \acrfull{rbf} (ver sección
 \ref{stream_syn}).
 
@@ -298,10 +300,10 @@ mejores que los \textit{baselines} de ensambles en todos los casos.  Además,
 superó a los que no utilizan ensambles en el \textit{stream} de Enron.  En los
 casos de 20ng, \acrshort{efmp} fue superado en un 0.001\% por \acrshort{br} y en
 Mediamill \acrshort{mlht} superó a \acrshort{efmp} en un 0.015\%. Para el caso
-de \textit{Exact-match} el modelo dominante es \acrshort{mlht}, lo cual es un
+de \textit{exact-match} el modelo dominante es \acrshort{mlht}, lo cual es un
 resultado en consonancia con otros estudios de la literatura, y los modelos
 propuestos se ubican en segundo lugar para dos de las tres colecciones. En
-cuanto al \textit{Hamming score} los resultados son muy similares entre
+cuanto al \textit{hamming score} los resultados son muy similares entre
 colecciones de datos, con los modelos de \acrshort{dwm} sacando una leve ventaja
 para 20ng y Enron pero siendo superado por \acrshort{efmp} y \acrshort{mlht}
 para Mediamill.
@@ -321,30 +323,30 @@ para Mediamill.
 	\label{tab:label_based}
 \end{table}
 
-La métrica de \textit{F-score macro} muestra resultados favorecedores para los
+La métrica de \textit{f1} macro muestra resultados favorecedores para los
 modelos presentados. \acrshort{efmp2} obtuvo un valor superior para Mediamill y
 \acrshort{efmp} fue el mejor para 20ng y el segundo mejor para Enron, por
 centésimas de diferencia con respecto al modelo \acrshort{br}. En lo que
 respecta a la comparativa entre soluciones de ensambles, \acrshort{efmp} y
-\acrshort{efmp2} superan a las demás para todas las colecciones evaluadas.  En
+\acrshort{efmp2} superan a las demás para todas las colecciones evaluadas.  Con
 relación a los modelos de \acrshort{dwm}, estos muestran una disparidad entre
-los valores de precisión y \textit{recall}. Vease por ejemplo el caso de
+los valores de precisión y \textit{recall}. Véase por ejemplo el caso de
 \acrshort{dwm} (\acrshort{cc}) para 20ng, donde logra más de un 80\% de
-precisión (mejor clasificador) pero un \textit{recall} por debajo del 20\% (segundo peor
-clasificador). Mismo caso pero a la inversa con \acrshort{dwm} (\acrshort{br})
-para Mediamill, el cual consigue un 40\% de \textit{recall} (tercer mejor
-clasificador) pero apenas un 0.006\% de precisión (tercer peor clasificador).
-Esta imparidad logra suavizarse en los modelos de \acrshort{efmp} presentados y
-se ve reflejado en mejores valores de \textit{f-score}.
+precisión (mejor clasificador) pero un \textit{recall} por debajo del 20\%
+(segundo peor clasificador). Mismo caso pero a la inversa con \acrshort{dwm}
+(\acrshort{br}) para Mediamill, el cual consigue un 40\% de \textit{recall}
+(tercer mejor clasificador) pero apenas un 0.006\% de precisión (tercer peor
+clasificador).  Esta imparidad logra suavizarse en los modelos de
+\acrshort{efmp} presentados y se ve reflejado en mejores valores de \textit{f1}.
 
-También son favorecedores los valores de las métricas de \textit{F-score micro}
-para los modelos presentados. \acrshort{efmp} es el mejor para las colecciones
-20ng y Enron y es apenas superado por \acrshort{mlht} para el \textit{stream} de
+También son favorecedores los valores de las métricas de \textit{f1} micro para
+los modelos presentados. \acrshort{efmp} es el mejor para las colecciones 20ng y
+Enron y es apenas superado por \acrshort{mlht} para el \textit{stream} de
 Mediamill. En la comparativa de métodos de ensambles, \acrshort{efmp} es el
 mejor modelo para todos las métricas a excepción del caso de \textit{recall}
 para Mediamill (donde \acrshort{ebr} obtiene el mejor valor), y los casos de
 precisión para Enron y 20ng, donde \acrshort{dwm} (\acrshort{cc}) logra una
-clara diferencia. Al respecto de este ultimo modelo se puede hacer las mismas
+clara diferencia. Al respecto de este último modelo se puede hacer las mismas
 consideraciones en cuanto a la disparidad entre precisión y \textit{recall}.
 
 \subsubsection{Resultados para Métricas de Eficiencia}
@@ -381,22 +383,22 @@ estudios del campo. A este fin se seleccionaron los trabajos de
 (\citeyear{buyukcakir_novel_2018})~\cite{buyukcakir_novel_2018} y
 \citeauthor{sousa_multi-label_2018}
 (\citeyear{sousa_multi-label_2018})~\cite{sousa_multi-label_2018}. Si bien las
-métricas y colecciones utilizadas varian según el estudio, todos los trabajos
+métricas y colecciones utilizadas varían según el estudio, todos los trabajos
 parten de una configuración experimental similar a la de este trabajo y usan el
 método \textit{prequential} para evaluar rendimientos.
 
 \citeauthor{osojnik_multi-label_2017} presentaron experimentos sobre las
-colecciones de 20ng y Enron bajo métricas basadas en ejemplos (\textit{Hamming
-	score}, \textit{F1} y \textit{Exact-match}), métricas basadas en etiquetas
-(Precisión, \textit{Recall} y \textit{F1}, todas ellas con promedio micro y
+colecciones de 20ng y Enron bajo métricas basadas en ejemplos (\textit{hamming
+	score}, \textit{f1} y \textit{exact-match}), métricas basadas en etiquetas
+(precisión, \textit{recall} y \textit{f1}, todas ellas con promedio micro y
 macro). Comenzando por las métricas basadas en ejemplos, el modelo
-\textit{iSOUP-MT} es el que mejor \textit{Hamming score} obtiene con un valor de
+\textit{iSOUP-MT} es el que mejor \textit{hamming score} obtiene con un valor de
 0.9523 y es levemente superado por \acrshort{efmp} (0.954) y \acrshort{efmp2}
 (0.955). Para el caso de Enron el ganador es \textit{iSOUP-MT} (en su versión de
 ensambles) con un valor de 0.942 y supera a \acrshort{efmp2} (0.936). En cuanto
-al \textit{Exact-match} nuestras soluciones superan a la mejor solución de los
+al \textit{exact-match} nuestras soluciones superan a la mejor solución de los
 autores, iSOUP-RT (0.117), en un 2.05\% para 20ng y son superadas en un 6.25\%
-por el modelo iSOUP-MT para Enron (0.244). En lo que respecta al \textit{F1},
+por el modelo iSOUP-MT para Enron (0.244). En lo que respecta al \textit{f1},
 \acrshort{efmp} supera en un 2.8\% a iSOUP-RT (0.118) para 20ng y en poco más de
 un 1\% a iSOUP-MT para Enron (0.329).
 
@@ -443,12 +445,12 @@ ensambles \textit{GOOWE-ML} bajo las métricas de \textit{hamming score},
 \textit{streams} el único en común con este trabajo es el de 20ng. Dicho esto,
 su modelo consigue mejores valores para las métricas de \textit{f1} micro,
 \textit{accuracy}, y \textit{f1} basado en ejemplos (13\%, 24\% y 26\% de
-mejora, respectivamente) y peores valores para la métricas de \textit{hamming
+mejora, respectivamente) y peores valores para la métrica de \textit{hamming
 	score} donde nuestros modelos lo superan en un 0.3\%.
 
 En resumen, el resultado de los métodos propuestos muestra que son competitivos
 respecto a la literatura de referencia. En particular, para las pruebas
-realizadas con el conjunto de datos 20NG los valores de F-Score basado en
+realizadas con el conjunto de datos 20NG los valores de \textit{f1} basado en
 ejemplos obtenidos superan a~\cite{osojnik_multi-label_2017} pero no son mejores
 que otros como~\cite{sousa_multi-label_2018, buyukcakir_novel_2018,
 	roseberry_multi-label_2018}.  En las pruebas realizadas con Enron, los métodos
