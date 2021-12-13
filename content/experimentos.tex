@@ -268,8 +268,8 @@ colecciones 20ng, Enron y Mediamill. Por cada uno de ellos se generan tres
 Una vez generados estos flujos sintéticos se realizó un análisis para determinar
 en qué grado se observan los fenómenos de la colección original en las
 colecciones sintéticas. Estos fenómenos son el sesgo de etiquetas, la
-distribución de etiquetas y la relación entre etiquetas. \todo{agregar espacio
-	de atributos?} y se capturaron de la siguiente manera:
+distribución de etiquetas, la relación entre etiquetas y el espacio de
+atributos, y se capturaron de la siguiente manera:
 
 \todo{a completar}
 \begin{description}
@@ -282,6 +282,8 @@ distribución de etiquetas y la relación entre etiquetas. \todo{agregar espacio
 	\item[Distribución de etiquetas]: a completar.
 
 	\item[Relación entre Etiquetas]: a completar.
+
+	\item[Espacio de Atributos]: a completar.
 
 \end{description}
 
@@ -360,14 +362,14 @@ ejemplos tienen un conjunto de etiquetas de cardinalidad uno.
 	\label{fig:syn_20ng_label_distribution}
 \end{figure}
 
-Finalmente, la figura~\ref{fig:syn_20ng_label_relationship} es una
-representación visual de la dependencia entre etiquetas. Ambos ejes del gráfico
-constan de las etiquetas de la colección y cuánto mayor es la tonalidad de
-blanco en la celda, mayor es la dependencia entre las dos etiquetas. Para 20ng
-los gráficos de la colección original, JC y JC\_BIG, son casi idénticos entre sí
-por lo que es posible aseverar que el uso de la matriz de correlaciones en la
-generación de \textit{streams} sintéticos ha contribuido a reproducir el
-fenómeno de la dependencia entre etiquetas para esta colección.
+La figura~\ref{fig:syn_20ng_label_relationship} es una representación visual de
+la dependencia entre etiquetas. Ambos ejes del gráfico constan de las etiquetas
+de la colección y cuánto mayor es la tonalidad de blanco en la celda, mayor es
+la dependencia entre las dos etiquetas. Para 20ng los gráficos de la colección
+original, JC y JC\_BIG, son casi idénticos entre sí por lo que es posible
+aseverar que el uso de la matriz de correlaciones en la generación de
+\textit{streams} sintéticos ha contribuido a reproducir el fenómeno de la
+dependencia entre etiquetas para esta colección.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth / 2]{figures/experiments/syn/20ng/20ng_relationship_graph.png}
@@ -380,6 +382,19 @@ fenómeno de la dependencia entre etiquetas para esta colección.
 		JC\_BIG. Abajo a la derecha: \textit{Stream} MOA.}
 	\label{fig:syn_20ng_label_relationship}
 \end{figure}
+
+Finalmente, la figura~\ref{tab:syn_20ng_features_space} lista los atributos más
+frecuentes de cada \textit{stream} y da una idea del espacio de atributos
+generado.
+
+\begin{table}[htbp]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+		\input{tables/syn/20ng_features_space.tex}
+	\end{adjustbox}
+	\caption{Espacio de atributos para \textit{streams} 20ng.}
+	\label{tab:syn_20ng_features_space}
+\end{table}
 
 \subsubsection{Enron}
 
@@ -440,7 +455,7 @@ ejemplos tienen una cardinalidad de etiquetas mayor que uno.
 	\label{fig:syn_enron_label_distribution}
 \end{figure}
 
-Por último, el fenómeno de la dependencia entre etiquetas es representado
+Por otro lado, el fenómeno de la dependencia entre etiquetas es representado
 visualmente por la figura~\ref{fig:syn_enron_label_relationship}. Tal como
 sucedió con la colección 20ng, los gráficos de JC y JC\_BIG para Enron reflejan
 una coloración muy similar al del original, aunque con una tonalidad de blanco
@@ -462,6 +477,19 @@ requieren más estudios para arribar a una conclusión al respecto.
 		JC\_BIG. Abajo a la derecha: \textit{Stream} MOA.}
 	\label{fig:syn_enron_label_relationship}
 \end{figure}
+
+Por último, la figura~\ref{tab:syn_enron_features_space} lista los atributos más
+frecuentes de cada \textit{stream} y da una idea del espacio de atributos
+generado.
+
+\begin{table}[htbp]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+		\input{tables/syn/enron_features_space.tex}
+	\end{adjustbox}
+	\caption{Espacio de atributos para \textit{streams} Enron.}
+	\label{tab:syn_enron_features_space}
+\end{table}
 
 \subsubsection{Mediamill}
 
@@ -542,6 +570,19 @@ cardinalidad existente en estos \textit{streams} y con respecto al original.
 		Arriba a la derecha: \textit{Stream} JC. Abajo a la izquierda:
 		\textit{Stream} JC\_BIG. Abajo a la derecha: \textit{Stream} MOA.}
 	\label{fig:syn_mediamill_label_relationship} \end{figure}
+
+Finalmente, la figura~\ref{tab:syn_mediamill_features_space} lista los atributos más
+frecuentes de cada \textit{stream} y da una idea del espacio de atributos
+generado.
+
+\begin{table}[htbp]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+		\input{tables/syn/mediamill_features_space.tex}
+	\end{adjustbox}
+	\caption{Espacio de atributos para \textit{streams} Mediamill.}
+	\label{tab:syn_mediamill_features_space}
+\end{table}
 
 \subsection{Clasificaciones}
 
