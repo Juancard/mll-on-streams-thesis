@@ -94,9 +94,9 @@ el caso de las etiquetas \comillas{\texttt{Ficción}} y \comillas{\texttt{No
 		Ficción}}, por ejemplo, que son excluyentes en el dominio de géneros literarios.
 Para capturar esta relación se acude al concepto de probabilidad a priori y
 probabilidad condicional de etiquetas. La probabilidad a priori de una etiqueta
-es obtenida a partir de observar su frecuencia relativa en la colección
-normalizada por la Cardinalidad de etiquetas. \todo{Chequear fórmula con
-	director!} La frecuencia relativa se formula de la manera tradicional:
+es obtenida a partir de observar su frecuencia relativa en la colección y
+normalizarla por la cardinalidad de etiquetas. La frecuencia relativa se formula
+de la manera tradicional:
 
 \begin{equation}
 	FrecRelE_{j} = \frac{1}{m} \sum_{i=1}^{m} y_{i,j}
@@ -199,8 +199,8 @@ algoritmo~\ref{alg:generar_atributos} muestra un pseudocódigo de cómo se
 completa el proceso. Notar que el generador binario $g$ produce dos vectores de
 atributos candidatos, uno por cada clase, luego si la combinación de etiquetas
 para el atributo $a$ es un subconjunto de las etiquetas generadas se toma el
-valor del vector de atributos positivos. Caso contrario, se toma del vector de
-negativos.
+valor de esa posición de atributo en el vector de atributos positivos. Caso
+contrario, se toma del vector de negativos.
 
 Finalmente, la instancia sintética se forma a partir de la salida de ambos
 algoritmos, siendo de la forma $(x, y)$. Este proceso será repetido para cada
