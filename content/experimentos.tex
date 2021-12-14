@@ -249,19 +249,19 @@ colecciones 20ng, Enron y Mediamill. Por cada uno de ellos se generan tres
 
 \begin{description}
 
-	\item[MOA]: Es un stream generado usando el método de los autores de
-	      referencia \cite{read_generating_2009}. El número de instancias es el
+	\item[MOA]: Es un \textit{stream} generado usando el método de los autores
+	      de referencia \cite{read_generating_2009}. El número de instancias es el
 	      mismo de la colección original y el generador de atributos es
 	      \acrfull{rbf} (ver sección~\ref{stream_syn}).
 
-	\item[JC]: Es un stream generado usando el método presentado en la sección
-	      ~\ref{generacion_flujos_sinteticos}. El número de instancias es el
-	      mismo de la colección original y el generador de atributos es
+	\item[JC]: Es un \textit{stream} generado usando el método presentado en la
+	      sección ~\ref{generacion_flujos_sinteticos}. El número de instancias es
+	      el mismo de la colección original y el generador de atributos es
 	      \acrfull{rbf}.
 
-	\item[JC\_BIG]: Es un stream similar a JC pero cuenta con un mayor número de
-	      instancias. La idea es poder determinar si a mayor el tamaño del
-	      \textit{stream} mayor es la similitud con la colección original.
+	\item[JC\_BIG]: Es un \textit{stream} similar a JC pero cuenta con un mayor
+	      número de instancias. La idea es poder determinar si a mayor el tamaño
+	      del \textit{stream} mayor es la similitud con la colección original.
 
 \end{description}
 
@@ -269,28 +269,60 @@ Una vez generados estos flujos sintéticos se realizó un análisis para determi
 en qué grado se observan los fenómenos de la colección original en las
 colecciones sintéticas. Estos fenómenos son el sesgo de etiquetas, la
 distribución de etiquetas, la relación entre etiquetas y el espacio de
-atributos, y se capturaron de la siguiente manera:
+atributos, y se capturaron siguiendo la metodología del trabajo de referencia,
+esto es:
 
 \todo{a completar}
 \begin{description}
 
 	\item[Sesgo de etiquetas]: Para observar el sesgo de etiquetas se toma la frecuencia de
-	      cada etiqueta y se traza un gráfico de lineas para cada \textit{stream}, de esta
+	      cada etiqueta y se traza un gráfico de linea para cada \textit{stream}, de esta
 	      manera es posible visualizar cuánto se asemeja el sesgo de los datos sintéticos
-	      al de los datos reales.
+	      al de los datos reales. Además se adjunta una tabla que lista las 5
+	      combinaciones principales para cada flujo continuo.
 
-	\item[Distribución de etiquetas]: a completar.
+	\item[Distribución de etiquetas]: El objetivo de estudiar este fenómeno es
+	      conocer de qué forma se compone la cardinalidad de etiquetas. Para ello
+	      se traza un gráfico que exhibe la frecuencia escalada de cada tamaño de
+	      etiquetas hallado en cada \textit{stream}. A su vez, se adjunta un
+	      gráfico que aplica el \textit{mean absolute error} de cada flujo
+	      continuo sintético sobre el de los datos originales, y así facilitar la
+	      comparativa entre \textit{streams}. De manera complementaria,
+	      \citeauthor{read_generating_2009} definen dos tipos de distribuciones de
+	      etiquetas: tipo A y tipo B (ver sección~\ref{mll_fenomenos}). En la
+	      sección de resultados se clasificarán los flujos sintéticos bajo esta
+	      taxonomía.
 
-	\item[Relación entre Etiquetas]: a completar.
+	\item[Relación entre Etiquetas]: Este fenómeno se estudia observando la
+	      aparición mutua de etiquetas. Para ello se genera un gráfico que pone de
+	      manifiesto la matriz de co-ocurrencias de pares de etiquetas. El gráfico
+	      es un mapa de colores de dos dimensiones donde la magnitud del color
+	      está dada por la frecuencia en la que dos etiquetas han sido activadas
+	      en conjunto.
 
-	\item[Espacio de Atributos]: a completar.
+	\item[Espacio de Atributos]: Se listan los atributos más frecuentes del
+	      flujo original y de los flujos sintéticos.
 
 \end{description}
 
 
 \section{Resultados}
 
+A continuación se exhiben los resultados obtenidos de los experimentos. En
+primer lugar, en la sección~\ref{experimentos_syn_streams} se estudian los
+flujos continuos sintéticos generados y luego, ya en la
+sección~\ref{experimentos_clasificaciones}, se analizan los resultados de las
+evaluaciones.
+
 \subsection{Flujos Continuos Sintéticos}
+\label{experimentos_syn_streams}
+
+El estudio de los \textit{streams} sintéticos generados se divide en tres
+secciones, una para cada colección de datos seleccionada. Cada sección incluye
+una tabla con las características tanto del \textit{stream} basado en datos
+reales como de los tres \textit{streams} sintéticos. Luego se analizan los
+fenómenos propios de colecciones multi-etiquetadas y cómo estos se presentan en
+los flujos sintéticos, con las particularidades observadas en cada caso.
 
 \subsubsection{20ng}
 
@@ -311,20 +343,7 @@ original y de los \textit{streams}. Allí se observa que la cardinalidad de la
 colección apenas sobrepasa la unidad, lo que significa que la mayoría de sus
 instancias tienen una única etiqueta. Esta característica logra ser capturada de
 manera aproximada por los \textit{streams} JC y JC\_BIG pero no así por MOA que
-asocia más de tres etiquetas por instancia. La
-figura~\ref{fig:syn_20ng_label_skew} es una representación gráfica del sesgo de
-etiquetas, y muestra que la colección original tiene alrededor de veinte
-combinaciones con una frecuencia escalada cercana a la máxima y luego un
-descenso brusco que culmina en la combinación 25, desde la cual se mantiene
-cercana a la frecuencia escalada mínima. Esta tendencia es bien replicada en los
-\textit{streams} JC pero no en MOA, donde el descenso es más escalonado y no
-alcanza la zona baja del eje y. La
-tabla~\ref{tab:syn_20ng_top_labels_combinations} muestra las principales 5
-combinaciones de etiquetas para cada \textit{stream}. Cabe destacar que todas
-las combinaciones en la tabla para los \textit{streams} JC y JC\_BIG son de una
-etiqueta cada una, tal como el original, pero además JC captura 3 de las 5
-combinaciones principales del original: $\{religion.cristian\}$,
-$\{rec.sport.hockey\}$ y $\{sci.crypt\}$.
+asocia más de tres etiquetas por instancia.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth]{figures/experiments/syn/20ng/label_skew.png}
@@ -343,15 +362,20 @@ $\{rec.sport.hockey\}$ y $\{sci.crypt\}$.
 	\label{tab:syn_20ng_top_labels_combinations}
 \end{table}
 
-La figura~\ref{fig:syn_20ng_label_distribution} representa de manera gráfica la
-distribución de las etiquetas. Allí se observa cómo los \textit{streams} aquí
-presentados reproducen con eficacia la composición de la cardinalidad a lo largo
-de los distintos tamaños de conjuntos de etiquetas. El gráfico de \textit{mean
-	absolute error} ayuda a reforzar esta idea. En cuanto al tipo de distribución,
-del cual se hace mención en el trabajo de referencia, los \textit{streams} JC y
-JC\_BIG, tanto como el original, obedecen al tipo A, esto es, la mayoría de los
-ejemplos tienen un conjunto de etiquetas de cardinalidad uno.
+La figura~\ref{fig:syn_20ng_label_skew} es una representación gráfica del sesgo
+de etiquetas, y muestra que la colección original tiene alrededor de veinte
+combinaciones con una frecuencia escalada cercana a la máxima y luego un
+descenso brusco que culmina en la combinación 25, desde la cual se mantiene
+cercana a la frecuencia escalada mínima. Esta tendencia es bien replicada en los
+\textit{streams} JC pero no en MOA, donde el descenso es más escalonado y no
+alcanza la zona baja del eje y.
 
+La tabla~\ref{tab:syn_20ng_top_labels_combinations} muestra las principales 5
+combinaciones de etiquetas para cada \textit{stream}. Cabe destacar que todas
+las combinaciones en la tabla para los \textit{streams} JC y JC\_BIG son de una
+etiqueta cada una, tal como el original, pero además JC captura 3 de las 5
+combinaciones principales del original: $\{religion.cristian\}$,
+$\{rec.sport.hockey\}$ y $\{sci.crypt\}$.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth]{figures/experiments/syn/20ng/label_distribution.png}
@@ -364,14 +388,14 @@ ejemplos tienen un conjunto de etiquetas de cardinalidad uno.
 	\label{fig:syn_20ng_label_distribution}
 \end{figure}
 
-La figura~\ref{fig:syn_20ng_label_relationship} es una representación visual de
-la dependencia entre etiquetas. Ambos ejes del gráfico constan de las etiquetas
-de la colección y cuánto mayor es la tonalidad de blanco en la celda, mayor es
-la dependencia entre las dos etiquetas. Para 20ng los gráficos de la colección
-original, JC y JC\_BIG, son casi idénticos entre sí por lo que es posible
-aseverar que el uso de la matriz de correlaciones en la generación de
-\textit{streams} sintéticos ha contribuido a reproducir el fenómeno de la
-dependencia entre etiquetas para esta colección.
+La figura~\ref{fig:syn_20ng_label_distribution} representa de manera gráfica la
+distribución de las etiquetas. Allí se observa cómo los \textit{streams} aquí
+presentados reproducen con eficacia la composición de la cardinalidad a lo largo
+de los distintos tamaños de conjuntos de etiquetas. El gráfico de \textit{mean
+	absolute error} ayuda a reforzar esta idea. En cuanto al tipo de distribución,
+del cual se hace mención en el trabajo de referencia, los \textit{streams} JC y
+JC\_BIG, tanto como el original, obedecen al tipo A, esto es, la mayoría de los
+ejemplos tienen un conjunto de etiquetas de cardinalidad uno.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth / 2]{figures/experiments/syn/20ng/20ng_relationship_graph.png}
@@ -386,9 +410,14 @@ dependencia entre etiquetas para esta colección.
 	\label{fig:syn_20ng_label_relationship}
 \end{figure}
 
-Finalmente, la figura~\ref{tab:syn_20ng_features_space} lista los atributos más
-frecuentes de cada \textit{stream} y da una idea del espacio de atributos
-generado.
+La figura~\ref{fig:syn_20ng_label_relationship} es una representación visual de
+la dependencia entre etiquetas. Ambos ejes del gráfico constan de las etiquetas
+de la colección y cuánto mayor es la tonalidad de blanco en la celda, mayor es
+la dependencia entre las dos etiquetas. Para 20ng los gráficos de la colección
+original, JC y JC\_BIG, son casi idénticos entre sí por lo que es posible
+aseverar que el uso de la matriz de correlaciones en la generación de
+\textit{streams} sintéticos ha contribuido a reproducir el fenómeno de la
+dependencia entre etiquetas para esta colección.
 
 \begin{table}[htbp]
 	\centering
@@ -398,6 +427,10 @@ generado.
 	\caption{Espacio de atributos para \textit{streams} 20ng.}
 	\label{tab:syn_20ng_features_space}
 \end{table}
+
+Finalmente, la figura~\ref{tab:syn_20ng_features_space} lista los atributos más
+frecuentes de cada \textit{stream} y da una idea del espacio de atributos
+generado.
 
 \subsubsection{Enron}
 
@@ -412,14 +445,6 @@ generado.
 		cardinalidad de etiquetas; LD: densidad de etiquetas.}
 	\label{tab:syn_enron_stats}
 \end{table}
-
-Partiendo de la tabla~\ref{tab:syn_enron_stats} se observa que el
-\textit{stream} MOA se aproxima más al valor de cardinalidad de la colección
-original que nuestra propuesta. Sin embargo, JC Y JC\_BIG, describen una curva
-en el gráfico de la figura~\ref{fig:syn_enron_label_skew} que, en comparación
-con MOA, tiene una mayor similitud con la curva de la colección original.  Se
-adjunta la tabla~\ref{tab:syn_enron_top_labels_combinations} como complemento al
-estudio del sesgo.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth]{figures/experiments/syn/enron/label_skew.png}
@@ -438,16 +463,13 @@ estudio del sesgo.
 	\label{tab:syn_enron_top_labels_combinations}
 \end{table}
 
-Con respecto a la distribución de etiquetas
-(figura~\ref{fig:syn_enron_label_distribution}) no es posible determinar si
-alguno de los \textit{streams} refleja el fenómeno en mayor grado que otro. Al
-mismo tiempo, si bien ninguno de ellos logra reproducir con exactitud la
-composición de la cardinalidad entre conjuntos de etiquetas, hay un grado de
-similitud entre curvas (ver gráfico de \textit{mean absolute error}) que podría
-ser aceptable, dependiendo de la tarea a resolver. En cuanto al tipo de
-distribución, del cual se hace mención en el trabajo de referencia, todos los
-\textit{streams} sintéticos obedecen al tipo B, es decir, la mayoría de los
-ejemplos tienen una cardinalidad de etiquetas mayor que uno.
+Partiendo de la tabla~\ref{tab:syn_enron_stats} se observa que el
+\textit{stream} MOA se aproxima más al valor de cardinalidad de la colección
+original que nuestra propuesta. Sin embargo, JC Y JC\_BIG, describen una curva
+en el gráfico de la figura~\ref{fig:syn_enron_label_skew} que, en comparación
+con MOA, tiene una mayor similitud con la curva de la colección original.  Se
+adjunta la tabla~\ref{tab:syn_enron_top_labels_combinations} como complemento al
+estudio del sesgo.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth]{figures/experiments/syn/enron/label_distribution.png}
@@ -460,13 +482,16 @@ ejemplos tienen una cardinalidad de etiquetas mayor que uno.
 	\label{fig:syn_enron_label_distribution}
 \end{figure}
 
-Por otro lado, el fenómeno de la dependencia entre etiquetas es representado
-visualmente por la figura~\ref{fig:syn_enron_label_relationship}. Tal como
-sucedió con la colección 20ng, los gráficos de JC y JC\_BIG para Enron reflejan
-una coloración muy similar al del original, aunque con una tonalidad de blanco
-menos intensa. Este comportamiento podría estar emparentado con la cardinalidad
-de etiquetas, que en estos \textit{streams} sintéticos es menor. No obstante, se
-requieren más estudios para arribar a una conclusión al respecto.
+Con respecto a la distribución de etiquetas
+(figura~\ref{fig:syn_enron_label_distribution}) no es posible determinar si
+alguno de los \textit{streams} refleja el fenómeno en mayor grado que otro. Al
+mismo tiempo, si bien ninguno de ellos logra reproducir con exactitud la
+composición de la cardinalidad entre conjuntos de etiquetas, hay un grado de
+similitud entre curvas (ver gráfico de \textit{mean absolute error}) que podría
+ser aceptable, dependiendo de la tarea a resolver. En cuanto al tipo de
+distribución, del cual se hace mención en el trabajo de referencia, todos los
+\textit{streams} sintéticos obedecen al tipo B, es decir, la mayoría de los
+ejemplos tienen una cardinalidad de etiquetas mayor que uno.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth / 2]{figures/experiments/syn/enron/enron_relationship_graph.png}
@@ -484,9 +509,13 @@ requieren más estudios para arribar a una conclusión al respecto.
 	\label{fig:syn_enron_label_relationship}
 \end{figure}
 
-Por último, la figura~\ref{tab:syn_enron_features_space} lista los atributos más
-frecuentes de cada \textit{stream} y da una idea del espacio de atributos
-generado.
+Por otro lado, el fenómeno de la dependencia entre etiquetas es representado
+visualmente por la figura~\ref{fig:syn_enron_label_relationship}. Tal como
+sucedió con la colección 20ng, los gráficos de JC y JC\_BIG para Enron reflejan
+una coloración muy similar al del original, aunque con una tonalidad de blanco
+menos intensa. Este comportamiento podría estar emparentado con la cardinalidad
+de etiquetas, que en estos \textit{streams} sintéticos es menor. No obstante, se
+requieren más estudios para arribar a una conclusión al respecto.
 
 \begin{table}[htbp]
 	\centering
@@ -496,6 +525,10 @@ generado.
 	\caption{Espacio de atributos para \textit{streams} Enron.}
 	\label{tab:syn_enron_features_space}
 \end{table}
+
+Por último, la figura~\ref{tab:syn_enron_features_space} lista los atributos más
+frecuentes de cada \textit{stream} y da una idea del espacio de atributos
+generado.
 
 \subsubsection{Mediamill}
 
@@ -510,13 +543,6 @@ generado.
 		cardinalidad de etiquetas; LD: densidad de etiquetas.}
 	\label{tab:syn_mediamill_stats}
 \end{table}
-
-La tabla~\ref{tab:syn_mediamill_stats} muestra que el \textit{stream} MOA hace
-un buen trabajo en aproximar la cardinalidad de la colección original y presenta
-la curva de sesgo más cercana a ella (ver
-figura~\ref{fig:syn_mediamill_label_skew}). Se adjunta la
-tabla~\ref{tab:syn_20ng_top_labels_combinations} como complemento al estudio del
-sesgo.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth]{figures/experiments/syn/mediamill/label_skew.png}
@@ -535,16 +561,12 @@ sesgo.
 	\label{tab:syn_mediamill_top_labels_combinations}
 \end{table}
 
-Con respecto a la distribución de etiquetas
-(figura~\ref{fig:syn_mediamill_label_distribution}) las conclusiones son
-similares a las realizadas a este efecto para Enron. No es posible determinar
-con certeza que alguno de los \textit{streams} refleja el fenómeno en mayor
-grado que otro, e incluso, si se analiza el gráfico de \textit{mean absolute
-	error}, se puede observar que hay 3 puntos donde la curva de JC se aproxima más
-al del original y 3 donde el más próximo es MOA. En cuanto al tipo de
-distribución, del cual se hace mención en el trabajo de referencia, todos los
-\textit{streams} sintéticos obedecen al tipo B, es decir, la mayoría de los
-ejemplos tienen una cardinalidad de etiquetas mayor que uno.
+La tabla~\ref{tab:syn_mediamill_stats} muestra que el \textit{stream} MOA hace
+un buen trabajo en aproximar la cardinalidad de la colección original y presenta
+la curva de sesgo más cercana a ella (ver
+figura~\ref{fig:syn_mediamill_label_skew}). Se adjunta la
+tabla~\ref{tab:syn_20ng_top_labels_combinations} como complemento al estudio del
+sesgo.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth]{figures/experiments/syn/mediamill/label_distribution.png}
@@ -557,12 +579,16 @@ ejemplos tienen una cardinalidad de etiquetas mayor que uno.
 	\label{fig:syn_mediamill_label_distribution}
 \end{figure}
 
-También sobre el fenómeno de la dependencia entre etiquetas se pueden hacer
-conclusiones similares a las de Enron (ver
-figura~\ref{fig:syn_mediamill_label_relationship}). Los gráficos de JC y JC\_BIG
-nuevamente reflejan una coloración muy similar al del original, y con una
-tonalidad de blanco menos intensa que podría ser producto de un menor valor de
-cardinalidad existente en estos \textit{streams} y con respecto al original.
+Con respecto a la distribución de etiquetas
+(figura~\ref{fig:syn_mediamill_label_distribution}) las conclusiones son
+similares a las realizadas a este efecto para Enron. No es posible determinar
+con certeza que alguno de los \textit{streams} refleja el fenómeno en mayor
+grado que otro, e incluso, si se analiza el gráfico de \textit{mean absolute
+	error}, se puede observar que hay 3 puntos donde la curva de JC se aproxima más
+al del original y 3 donde el más próximo es MOA. En cuanto al tipo de
+distribución, del cual se hace mención en el trabajo de referencia, todos los
+\textit{streams} sintéticos obedecen al tipo B, es decir, la mayoría de los
+ejemplos tienen una cardinalidad de etiquetas mayor que uno.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth /
@@ -581,9 +607,12 @@ cardinalidad existente en estos \textit{streams} y con respecto al original.
 	\label{fig:syn_mediamill_label_relationship}
 \end{figure}
 
-Finalmente, la figura~\ref{tab:syn_mediamill_features_space} lista los atributos más
-frecuentes de cada \textit{stream} y da una idea del espacio de atributos
-generado.
+También sobre el fenómeno de la dependencia entre etiquetas se pueden hacer
+conclusiones similares a las de Enron (ver
+figura~\ref{fig:syn_mediamill_label_relationship}). Los gráficos de JC y JC\_BIG
+nuevamente reflejan una coloración muy similar al del original, y con una
+tonalidad de blanco menos intensa que podría ser producto de un menor valor de
+cardinalidad existente en estos \textit{streams} y con respecto al original.
 
 \begin{table}[htbp]
 	\centering
@@ -594,7 +623,12 @@ generado.
 	\label{tab:syn_mediamill_features_space}
 \end{table}
 
+Finalmente, la figura~\ref{tab:syn_mediamill_features_space} lista los atributos más
+frecuentes de cada \textit{stream} y da una idea del espacio de atributos
+generado.
+
 \subsection{Clasificaciones}
+\label{experimentos_clasificaciones}
 
 La metodología propuesta permitió evaluar los diferentes algoritmos de
 clasificación multi-etiqueta para los diferentes \textit{streams} utilizando las
