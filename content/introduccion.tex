@@ -350,41 +350,39 @@ no han recibido la misma atención que aquellas aplicadas sobre ambientes de
 \section{Objetivos}
 \label{intro_objetivos}
 
-El presente trabajo tiene por objetivo principal estudiar el impacto de
-distintos algoritmos de clasificación sobre datos multi-etiquetados en ambientes
-de \textit{streaming} provenientes de fuentes de distinto origen y naturaleza,
-en particular se seleccionan colecciones de datos que son puntos de referencia
-en la literatura y que poseen características distintivas entre sí, tales como
-el número de etiquetas, el número de atributos, o la cantidad de instancias. A
-su vez, es necesario convertir estos datos a flujos continuos y a este fin se
-generan instancias sintéticas que sean fieles a estas características
-mencionadas, aplicando técnicas existentes pero también extendiéndolas para
-detectar co-ocurrencias entre etiquetas. De esta manera, se buscan obtener
-representaciones óptimas de las colecciones. Finalmente, se llevarán a cabo
+El objetivo principal es estudiar el impacto de distintos algoritmos de
+clasificación sobre datos multi-etiquetados en ambientes de \textit{streaming} y
+provenientes de fuentes de distinto origen y naturaleza, en particular se
+seleccionan colecciones de datos que son puntos de referencia en la literatura y
+que poseen características distintivas entre sí, tales como el número de
+etiquetas, el número de atributos, o la cantidad de instancias. A su vez, es
+necesario convertir estos datos a flujos continuos. A este fin se generan
+instancias sintéticas que sean fieles a estas características mencionadas,
+aplicando técnicas existentes pero también extendiéndolas para detectar
+co-ocurrencias entre etiquetas. De esta manera, se buscan obtener
+representaciones óptimas de las colecciones. Por otro lado, se llevarán a cabo
 clasificaciones con algoritmos clásicos y con soluciones de ensambles, en
 búsqueda de maximizar los valores de las métricas de evaluación en cada
-escenario. Adicionalmente, se diseñan distintas configuraciones de ensambles,
-variando los estimadores base y probando distintas implementaciones. Con esto
-último en mente, se desarrolla una versión del algoritmo de mayoría de voto
-\todo{describir qué es este algoritmo de mayoría de voto} para el lenguaje
-Python \todo{referencia bibliografica} y se compara su rendimiento contra el de
-las implementaciones de Java \todo{no estan los experimentos todavía, este punto
-	podría cambiar}.
+escenario. En este sentido, se diseñan distintas configuraciones de ensambles,
+variando los estimadores base y probando distintas implementaciones. A este fin,
+se diseña y desarrolla una nueva versión de algoritmo de mayoría de voto,
+llamada \acrshort{efmp}, y se compara su rendimiento contra otros algoritmos de
+\acrshort{mll} bien conocidos.
 
-Con esto en mente, se listan a continuación los objetivos particulares del
-trabajo:
+En resumen, se listan a continuación los objetivos particulares del trabajo:
+
 \begin{itemize}
 
 	\item Obtener colecciones de datos que cumplan con las propiedades requeridas
 	      para considerarse un flujo continuo. Las características deben variar
-	      entre colecciones. Cada colección debe tener las instancias propias del
-	      juego de datos e instancias sintéticas potencialmente ilimitadas.
-
+	      entre colecciones.
 
 	\item Generar flujos continuos de datos a partir de la colección
-	      proporcionada replicando su número de etiquetas, atributos e instancias, su
-	      cardinalidad y densidad de etiquetas y la co-ocurrencia entre dos
-	      etiquetas.
+	      proporcionada buscando replicar su número de etiquetas, atributos e
+	      instancias, su cardinalidad y densidad de etiquetas y la co-ocurrencia
+	      entre dos etiquetas. Aplicar técnicas conocidas de generación de
+	      instancias sintéticas, proponer una técnica nueva y comparar los
+	      resultados.
 
 	\item Ejecutar algoritmos de clasificación de \acrshort{mll}, para obtener
 	      modelos y realizar evaluaciones sobre los resultados. Todo esto sobre
