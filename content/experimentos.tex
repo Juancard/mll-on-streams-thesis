@@ -30,8 +30,8 @@ continuación:
 	      propiedades como la inclusión de fechas y una evolución de los datos en el
 	      tiempo \cite{read_scalable_2012}. Las etiquetas se dividen en cuatro
 	      grupos, según su género (acuerdos laborales, correos meramente personales,
-	      etc); según la información que incluyen, esto es, si el correo contiene
-	      enlaces externos, adjuntos, reenvíos, etc; según el tono emocional que
+	      etc.); según la información que incluyen, esto es, si el correo contiene
+	      enlaces externos, adjuntos, reenvíos, etc.; según el tono emocional que
 	      reflejan y según el tópico principal que abordan.
 
 	\item{Mediamill}
@@ -64,13 +64,13 @@ continuación:
 Estas son solo tres de las colecciones usualmente abordadas en la literatura y
 se han seleccionado con el objetivo de diversificar el análisis. Enron es una
 colección de pocas instancias pero muchas etiquetas, 20ng a la inversa, cuenta
-con pocas etiquetas pero muchas instancias; y Mediamill, finalmente, es la
+con pocas etiquetas, pero muchas instancias; y Mediamill, finalmente, es la
 colección con más instancias que hay disponible y cuenta también con un número
 relativamente alto de etiquetas.
 
 Durante la ejecución de experimentos, cada colección será convertida a un flujo
 sintético. Además, se generará una versión sintética de cada una, siguiendo la
-técnica descripta en la sección \ref{generacion_flujos_sinteticos}.
+técnica descrita en la sección \ref{generacion_flujos_sinteticos}.
 
 \section{Software}
 
@@ -112,7 +112,7 @@ para la implementación y ejecución de los experimentos.
 
 La herramienta \acrshort{moa} es usada para generar los flujos sintéticos y
 provee del marco de trabajo en el cual se implementó el algoritmo de generación
-descripto en \ref{generacion_flujos_sinteticos}. Los algoritmos de clasificación
+descrito en \ref{generacion_flujos_sinteticos}. Los algoritmos de clasificación
 fueron implementados en Python y están disponibles bajo la librería
 \textit{scikit-multiflow}. La solución de ensamble \acrshort{efmp} también fue
 implementada en esta librería. \textit{Scikit-learn}, por su parte, provee la
@@ -124,9 +124,9 @@ fueron extraídas de Mulan.
 Se ha recibido apoyo del \acrfull{cidetic}, el cual ha proveído de equipos de
 altas prestaciones que han proporcionado la capacidad de cómputo necesaria para
 llevar a cabo este proyecto. El equipamiento facilitado cuenta con dos nodos de
-12 núcleos cada uno, el CPU es un Intel Xeon X5675 de 3.07 GHz de velocidad de
-procesamiento, 12 Mb de memoria caché y 6 núcleos. El espacio de almacenamiento
-disponible es de 1 Tb y la memoria RAM es de 142 Gb. \todo{Chequear estos datos}
+12 núcleos cada uno, la CPU es un Intel Xeon X5675 de 3.07 GHz de velocidad de
+procesamiento, 12 MB de memoria caché y 6 núcleos. El espacio de almacenamiento
+disponible es de 1 TB y la memoria RAM es de 142 GB. \todo{Chequear estos datos}
 
 El Sistema Operativo instalado es Ubuntu 18.04 LTS y cuenta con la versión 3.6.9
 de Python, el instalador de paquetes Pip en su versión 20.3.3 y Java 1.8.
@@ -204,7 +204,7 @@ afuera las etapas de evaluación, carga de la colección en memoria, generación
 del flujo y configuración del entrenamiento. El consumo de memoria también es
 monitoreado durante la ejecución del entrenamiento y predicción y toma en cuenta
 la estructura completa del modelo y todos sus componentes, incluyendo pesos e
-hiper-parámetros propios y de sus clasificadores base.
+hiperparámetros propios y de sus clasificadores base.
 
 Los flujos sintéticos son analizados teniendo en cuenta los fenómenos propios de
 colecciones del mundo real. A ese fin se estudia el sesgo de etiquetas, la
@@ -233,7 +233,7 @@ Para la etapa de evaluación se aplica la técnica de evaluación secuencial
 predictiva (\textit{prequential}) con ventanas deslizantes, tal como se
 recomienda para ambientes de flujos continuos \cite{gama_evaluating_2013}. Ante
 cada ejemplo o ventana de ejemplos arribada el modelo primero realiza la
-predicción y luego el entrenamiento. Finalmente las métricas de evaluación son
+predicción y luego el entrenamiento. Finalmente, las métricas de evaluación son
 calculadas una vez procesados todos los ejemplos de la colección y a partir de
 todas las predicciones producidas.  Notar que a partir de esta técnica el modelo
 predice y entrena todas las instancias, y no solo un subconjunto de ellas como
@@ -243,7 +243,7 @@ flujo en 20 ventanas, siguiendo las directivas de \textcite{read_scalable_2012}.
 Los resultados de la evaluación son agrupados según los tipos de métrica usados,
 para facilitar el análisis.
 
-Por otro lado, los flujo de datos sintéticos fueron generados a partir de las
+Por otro lado, los flujos de datos sintéticos fueron generados a partir de las
 colecciones 20ng, Enron y Mediamill. Por cada uno de ellos se generan tres
 \textit{streams} sintéticos:
 
@@ -259,7 +259,7 @@ colecciones 20ng, Enron y Mediamill. Por cada uno de ellos se generan tres
 	      el mismo de la colección original y el generador de atributos es
 	      \acrfull{rbf}.
 
-	\item[JC\_BIG]: Es un \textit{stream} similar a JC pero cuenta con un mayor
+	\item[JC\_BIG]: Es un \textit{stream} similar a JC, pero cuenta con un mayor
 	      número de instancias. La idea es poder determinar si a mayor el tamaño
 	      del \textit{stream} mayor es la similitud con la colección original.
 
@@ -276,9 +276,9 @@ esto es:
 \begin{description}
 
 	\item[Sesgo de etiquetas]: Para observar el sesgo de etiquetas se toma la frecuencia de
-	      cada etiqueta y se traza un gráfico de linea para cada \textit{stream}, de esta
+	      cada etiqueta y se traza un gráfico de línea para cada \textit{stream}, de esta
 	      manera es posible visualizar cuánto se asemeja el sesgo de los datos sintéticos
-	      al de los datos reales. Además se adjunta una tabla que lista las 5
+	      al de los datos reales. Además, se adjunta una tabla que lista las 5
 	      combinaciones principales para cada flujo continuo.
 
 	\item[Distribución de etiquetas]: El objetivo de estudiar este fenómeno es
@@ -342,7 +342,7 @@ La tabla~\ref{tab:syn_20ng_stats} muestra las características de la colección
 original y de los \textit{streams}. Allí se observa que la cardinalidad de la
 colección apenas sobrepasa la unidad, lo que significa que la mayoría de sus
 instancias tienen una única etiqueta. Esta característica logra ser capturada de
-manera aproximada por los \textit{streams} JC y JC\_BIG pero no así por MOA que
+manera aproximada por los \textit{streams} JC y JC\_BIG, pero no así por MOA que
 asocia más de tres etiquetas por instancia.
 
 \begin{figure}[htbp]
@@ -367,7 +367,7 @@ de etiquetas, y muestra que la colección original tiene alrededor de veinte
 combinaciones con una frecuencia escalada cercana a la máxima y luego un
 descenso brusco que culmina en la combinación 25, desde la cual se mantiene
 cercana a la frecuencia escalada mínima. Esta tendencia es bien replicada en los
-\textit{streams} JC pero no en MOA, donde el descenso es más escalonado y no
+\textit{streams} JC, pero no en MOA, donde el descenso es más escalonado y no
 alcanza la zona baja del eje y.
 
 La tabla~\ref{tab:syn_20ng_top_labels_combinations} muestra las principales 5
@@ -690,12 +690,12 @@ se sitúa entre los dos mejores, siendo el de mejor rendimiento para Enron. De
 manera similar, \acrshort{efmp2} se sitúa en cuarto puesto para Enron y quinto
 para los demás. Es de notar que otros modelos no logran emparejar rendimientos
 entre \textit{streams}, véase el caso de \acrshort{mlht} por ejemplo, que es el
-mejor para Mediamill pero cae en el último puesto para Enron. Este resultado es
+mejor para Mediamill, pero cae en el último puesto para Enron. Este resultado es
 coherente con la idea de que los modelos derivados de \acrlong{ht} requieren de
 un mayor número de instancias para identificar el mejor punto de corte de un
 nodo y lograr mejores evaluaciones~\cite{read_scalable_2012}. Algo similar
 sucede con los dos modelos de \acrshort{dwm} que logran valores altos para
-Mediamill pero se ubican entre los tres menos performantes para Enron y 20ng.
+Mediamill, pero se ubican entre los tres menos performantes para Enron y 20ng.
 
 \subsubsection{Resultados para Métricas Basadas en Etiquetas}
 
@@ -736,7 +736,7 @@ relación a los modelos de \acrshort{dwm}, estos muestran una disparidad entre
 los valores de precisión y \textit{recall}. Véase por ejemplo el caso de
 \acrshort{dwm} (\acrshort{cc}) para 20ng, donde logra más de un 0.8 de precisión
 (mejor clasificador) pero un \textit{recall} por debajo de 0.2 (segundo peor
-clasificador). Mismo caso pero a la inversa con \acrshort{dwm} (\acrshort{br})
+clasificador). Mismo caso, pero a la inversa con \acrshort{dwm} (\acrshort{br})
 para Mediamill, el cual consigue alrededor de 0.4 de \textit{recall} (tercer
 mejor clasificador) pero apenas un 0.06 de precisión (tercer peor
 clasificador).  Esta disparidad logra suavizarse en los modelos de
@@ -827,7 +827,7 @@ Las métricas de promedio micro también favorecen a nuestros modelos. Para 20ng
 \acrshort{efmp} es superado en un 41.1\% por iSOUP-MT (en versión ensamble) en
 precisión, supera en un 213.6\% a iSOUP-MT en \textit{recall} y en un 125\% en
 \textit{f1}. Para Enron es superado en 33.3\% por iSOUP-MT (en versión ensamble)
-en precisión pero consigue superar en un 45.5\% a iSOUP-RT en \textit{recall} y
+en precisión, pero consigue superar en un 45.5\% a iSOUP-RT en \textit{recall} y
 en un 10.8\% en \textit{f1}.
 
 \citeauthor{sousa_multi-label_2018} han presentado experimentos sobre los tres

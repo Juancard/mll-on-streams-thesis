@@ -27,7 +27,7 @@ involucradas.
 
 \section{Aprendizaje Automático}
 
-El aprendizaje automático, también conocido por su término en ingles
+El aprendizaje automático, también conocido por su término en inglés
 \comillas{\textit{Machine Learning}}, se enmarca dentro del área de la
 \acrfull{ia} y estudia cómo las computadoras pueden \comillas{aprender} o
 mejorar su rendimiento meramente a partir de datos y sin la intervención de un
@@ -87,7 +87,7 @@ médicos, entre otras.
 La clasificación de datos consta de dos etapas, una de aprendizaje y otra de
 clasificación o predicción. Durante la tarea de aprendizaje se construye el
 modelo de clasificación  el cual describe un determinado número de clases o
-conceptos. También se conoce esta etapa como la de entrenamiento ya que se
+conceptos. También se conoce esta etapa como la de entrenamiento, ya que se
 selecciona un subconjunto de los datos, llamado conjunto de entrenamiento, que
 consta de instancias o tuplas seleccionadas aleatoriamente y con una o más
 etiquetas asociadas. Formalmente, el problema de clasificación puede ser
@@ -120,7 +120,7 @@ campo.
 En la segunda etapa el modelo es usado para clasificar y realizar predicciones
 sobre datos desconocidos. A este fin, se calcula un valor que refleja la calidad
 del clasificador y es denominado \comillas{métrica de evaluación}. Una de ellas
-es la exactitud o \textit{accuracy} pero no es la única.  Durante la etapa de
+es la exactitud o \textit{accuracy}, pero no es la única.  Durante la etapa de
 entrenamiento esta estimación puede ser imprecisa, tomando un valor que tiende a
 ser \comillas{optimista} o que da un valor de exactitud mayor al rendimiento
 real.  Esto sucede porque el clasificador puede llegar a incorporar anomalías
@@ -134,7 +134,7 @@ colección completa, un subconjunto conocido como \comillas{conjunto de prueba} 
 de \textit{testing} que no se usa durante el entrenamiento y a partir del cual
 se realizan predicciones y se calculan las métricas de evaluación.
 
-Así pues, la tarea de evaluación es fundamental ya que es la vía a partir de la
+Así pues, la tarea de evaluación es fundamental, ya que es la vía a partir de la
 cual se determina qué algoritmos o técnicas son más apropiados que otros para un
 problema en particular. Asimismo, provee la información necesaria para corregir
 o ajustar los parámetros de los algoritmos y así obtener modelos más robustos.
@@ -162,13 +162,13 @@ desarrollo del presente trabajo de investigación.
 clasificadores probabilísticos y se destaca por ser computacionalmente simple,
 interpretación, y al mismo tiempo brinda un  rendimiento competitivo en
 comparación con otros modelos más complejos. Se dice que es un clasificador
-estadístico ya que se basa en el teorema de Bayes. La idea es computar una
+estadístico porque se basa en el teorema de Bayes. La idea es computar una
 probabilidad para cada una de las clases, basada en los atributos de la
 instancia y seleccionar aquella de mayor probabilidad. El término
 \comillas{\textit{naive}} es el inglés para el término
 \comillas{\textit{ingenuo}} y nace de la presunción que hace el algoritmo de que
 los atributos son independientes entre sí, o condicionalmente independientes.
-Esta presunción raramente se cumple en los escenarios donde se aplica pero
+Esta presunción raramente se cumple en los escenarios donde se aplica, pero
 contribuye a su simplicidad computacional y a su velocidad durante el
 entrenamiento.
 
@@ -198,7 +198,7 @@ A partir de dicha definición, y de forma similar, se expresa la ecuación de
 	P(C_{i} \mid X) = P(X \mid C_{i}) P(C_{i})
 \end{equation}
 
-Aquí el término $P(X)$ es descartado ya que se asume constante para todas las
+Aquí el término $P(X)$ es descartado porque se asume constante para todas las
 clases. La hipótesis $H$ es representada como $C_{i}$ que es un valor de la
 tupla $C=(C_{1},C_{2},\dots,C_{q})$, donde $q$ es el número de clases. La
 presunción \comillas{ingenua} es aplicada para el cálculo del término $P(X \mid
@@ -243,8 +243,8 @@ hasta la hoja. Finalmente, la clase que contiene la hoja es seleccionada y será
 parte de la predicción resultante. \todo{Figura de un árbol}
 
 Los árboles de decisión se generan a partir de un algoritmo de inducción.
-Existen varios de estos algoritmos pero todos son variantes que han sido
-diseñadas bajo un misma principio: construir  el árbol de una manera
+Existen varios de estos algoritmos, pero todos son variantes que han sido
+diseñadas bajo un mismo principio: construir  el árbol de una manera
 \comillas{voraz}\footnote{Se le llama voraz o \textit{greedy} a un algoritmo que
 	busca hallar la opción óptima en cada paso y, de esta manera, alcanzar la
 	solución general óptima para resolver un problema.  Esto lo diferencia de
@@ -271,7 +271,7 @@ los siguientes:
 	      C4.5 convierte el árbol entrenado en conjuntos de reglas de decisión.
 
 	\item[\acrshort{cart}] Son las siglas de \comillas{\textit{\acrlong{cart}}} y
-	      es un algoritmo muy similar al C4.5 pero que soporta clases numéricas, lo
+	      es un algoritmo muy similar al C4.5, pero que soporta clases numéricas, lo
 	      cual permite que este algoritmo pueda ser utilizado para resolver
 	      problemas de regresión.
 
@@ -330,7 +330,7 @@ de la entropía y se formula como:
 \end{equation}
 
 Finalmente, el atributo de mayor razón de ganancia es seleccionado como criterio
-de corte y se continúa el calculo con los siguientes subnodos.
+de corte y se continúa el cálculo con los siguientes subnodos.
 \todo{Aplicaciones de árboles de decisión?}
 
 \todo[inline]{Subsección para sgd?, svm?, perceptrones?}
@@ -352,10 +352,10 @@ imposibilidad de generar un único modelo capaz de generalizar lo suficiente com
 para lograr un rendimiento perfecto. Ante la presencia de datos ruidosos,
 atípicos o erróneos los clasificadores pueden tender a clasificar mejor para un
 subconjunto de datos y no tan bien para otros. Este escenario es aprovechado por
-el enfoque de ensambles ya que su éxito tiene correlación directa con la
+el enfoque de ensambles, ya que su éxito tiene correlación directa con la
 existencia de \comillas{diversidad} en la clasificación, distinguiendo el
 concepto de diversidad como la existencia de variabilidad entre los modelos,
-entre hiper-parámetros o entre particiones del conjunto de datos. En definitiva
+entre hiperparámetros o entre particiones del conjunto de datos. En definitiva
 se entiende que, cuanto mayor es esta diversidad, mayor es la probabilidad de
 aislar los posibles errores particulares de un modelo, y al suceder esto, el
 error terminará siendo filtrado por el ensamble en la clasificación final. En
@@ -382,7 +382,7 @@ tipo \comillas{\textit{stacked}}.
 	      tuplas del conjunto original de manera aleatoria y con reemplazo, es decir
 	      que puede haber tuplas repetidas y otras que no están incluidas en el
 	      nuevo conjunto.  Luego a partir de cada conjunto nuevo, se entrena un
-	      clasificador $M_{i}$. Cada clasificador puede ser del mismo tipo ya que la
+	      clasificador $M_{i}$. Cada clasificador puede ser del mismo tipo porque la
 	      diversidad está dada por los datos. En la etapa de clasificación, cada
 	      modelo $M_{i}$ genera una predicción que cuenta como un voto. El ensamble
 	      cuenta los votos y elige la clase con mayor cantidad de votos, siendo esta
@@ -413,7 +413,7 @@ tipo \comillas{\textit{stacked}}.
 	      Este tipo de ensambles puede ser visto como un conjunto de capas. La
 	      primera capa consta de un ensamble de clasificadores que aprenden a partir
 	      de los datos de entrenamiento. Esta capa no necesariamente usa
-	      clasificadores del mismo tipo, mismos hiper-parámetros o particiones de la
+	      clasificadores del mismo tipo, mismos hiperparámetros o particiones de la
 	      colección iguales, quedando estos detalles a cargo de quien diseña esta
 	      capa. La siguiente capa es el clasificador individual, o
 	      meta-clasificador, que se alimenta de las salidas de los clasificadores de
@@ -424,7 +424,7 @@ tipo \comillas{\textit{stacked}}.
 
 Una de las tareas a tener en cuenta durante el entrenamiento de un ensamble es
 la de combinar las salidas de cada modelo en una salida final. La estrategia más
-común y simple es la de mayoría de voto, la cual normalmente es aplicada por los
+común y simple es la de votación por mayoría, la cual normalmente es aplicada por los
 métodos de \textit{bagging}. No obstante, existen múltiples métodos de combinar
 los votos, e incluso no siempre un ensamble de tipo \textit{bagging} debe
 aplicar esta estrategia. Por ejemplo, algunos clasificadores pueden decidir
@@ -443,17 +443,17 @@ un rendimiento superior si es aplicada en el escenario adecuado.
 \label{evaluacion_intro}
 
 Llevar a cabo evaluaciones de rendimiento sobre los modelos es un aspecto
-importante del aprendizaje automático ya que nos permite conocer en qué medida
+importante del aprendizaje automático, ya que nos permite conocer en qué medida
 un algoritmo es superior a otro para resolver una tarea. Particularmente, la
 tarea de clasificación es un desafío que se presenta en un contexto cambiante y
 evolutivo, donde nuevas herramientas surgen y se actualizan constantemente.
 Incluso la composición y estructura de los modelos de clasificación varía según
-la familia de algoritmos aplicadas, y es esperable que los conceptos extraídos
+la familia de algoritmos aplicados, y es esperable que los conceptos extraídos
 de un modelo de tipo árbol tengan particularidades que lo diferencien de modelos
 de redes neuronales o modelos probabilísticos. Y del mismo modo, es esperable
 que alguno de estos modelos tenga un mejor rendimiento que otro en un
 determinado escenario, o incluso que sea mejor que un modelo generado por el
-mismo algoritmo pero con distintos hiper-parámetros. La tarea de evaluación es
+mismo algoritmo pero con distintos hiperparámetros. La tarea de evaluación es
 la que permite detectar estas particularidades y sacar provecho de los
 algoritmos para obtener aún mejores modelos.
 
@@ -571,7 +571,7 @@ continuación se añade una breve descripción de ambas.
 La velocidad se refiere al costo computacional de generar el modelo y realizar
 predicciones, en general se deja fuera del cálculo los tiempos invertidos en
 cargar la colección en memoria, realizar tareas de normalización y
-pre-procesamiento sobre los datos y otras etapas de la clasificación. A menor el
+preprocesamiento sobre los datos y otras etapas de la clasificación. A menor el
 tiempo de ejecución, mejor es el rendimiento del algoritmo.
 
 \paragraph{Consumo de Memoria}
@@ -600,7 +600,7 @@ En este método un conjunto de instancias es separado de la colección y se
 reserva para evaluar el rendimiento del clasificador.  Este subconjunto es
 distinto del conjunto de datos de entrenamiento usado para generar el modelo y
 es llamado \comillas{conjunto de pruebas o \textit{testing}}. Una vez entrenado,
-el clasificador recibe las instancias del conjunto de pruebas pero sin incluir
+el clasificador recibe las instancias del conjunto de pruebas, pero sin incluir
 las etiquetas. La salida del clasificador son las etiquetas de cada instancia.
 Finalmente, las etiquetas producidas durante la predicción y las etiquetas
 reales de cada instancia se combinan y se calculan las métricas de evaluación.
@@ -612,7 +612,7 @@ el modelo.
 Por contrapartida, el enfoque de \textit{Holdout} tiene la limitación de que
 para lograr generalizar requiere de un número de instancias considerable.
 \todo{citar fuente} Esta idea proviene del hecho de que muy pocos datos en el
-conjunto de entrenamiento puede derivar en predicciones pobres, pero por el
+conjunto de entrenamiento puede derivar en predicciones pobres, pero, por el
 contrario, muy pocos datos en el conjunto de pruebas tampoco es recomendable, ya
 que podría resultar en medidas de rendimiento poco fiables. A esto se suma una
 de las dificultades más comunes en el área de aprendizaje automático: la falta
@@ -659,7 +659,7 @@ computacionales demasiado altos.
 
 A diferencia del aprendizaje automático tradicional, que usa datos de etiqueta
 única para representar objetos del mundo real, cada instancia en el aprendizaje
-multi-etiquetas representa un único objeto pero puede contener más de una
+multi-etiquetas representa un único objeto, pero puede contener más de una
 etiqueta. Por consiguiente, la tarea de clasificación consiste en hallar una
 función que logre asignar a cada objeto, nuevo y desconocido, el conjunto de
 etiquetas que lo caracteriza.
@@ -747,7 +747,7 @@ de etiqueta única.  A partir de esta transformación se puede seleccionar
 cualquier algoritmo de clasificación como clasificador base del problema (ver
 los algoritmos presentados en la sección~\ref{clasificacion_algoritmos}).  Cada
 clasificador binario $g_{j}$ es entrenado con todas las instancias de la
-colección pero incluyendo solo la etiqueta $j$, la cual se activa o desactiva de
+colección, pero incluyendo solo la etiqueta $j$, la cual se activa o desactiva de
 acuerdo a si es relevante a la instancia. Luego la predicción de una instancia
 desconocida se realiza combinando las salidas de cada clasificador individual,
 esto es:
@@ -761,7 +761,7 @@ el conjunto $Y$ será vacío.
 
 Este enfoque se dice que es de primer orden (ver sección~\ref{estrategias_mll})
 y no tiene en cuenta la correlación o interdependencias entre etiquetas. Este es
-uno de los principales inconvenientes de este algoritmo ya que, en este tipo de
+uno de los principales inconvenientes de este algoritmo porque, en este tipo de
 problemas de \acrshort{mll}, es usual hallar que determinadas etiquetas se
 activan en conjunto con mayor probabilidad. Pese a ello, \acrshort{br} es un
 enfoque muy utilizado \cite{zhang_review_2014} ya que es simple de implementar,
@@ -789,10 +789,10 @@ de los clasificadores anteriores de tal manera que el siguiente clasificador
 absorbe la correlación entre las etiquetas de los anteriores clasificadores.
 
 Cabe notar que en esta técnica cobra especial importancia el ordenamiento de los
-clasificadores ya que este orden tiene un impacto directo sobre el resultado de
+clasificadores, ya que este orden tiene un impacto directo sobre el resultado de
 la predicción. En otras palabras, si el ordenamiento de clasificadores se
 modifica, el modelo final otorgará resultados diferentes. Para salvar esta
-dificultad se han propuesto modelos como el de \acrfull{ecc}. El mismo genera un
+dificultad se han propuesto modelos como \acrfull{ecc}. El mismo genera un
 conjunto de modelos de \acrshort{cc} con distintos ordenamientos y entrenados
 con diversos subconjuntos de datos, generados con reemplazo o no. Durante la
 predicción, cada cadena produce un conjunto de etiquetas, que son los votos, y
@@ -805,7 +805,7 @@ El conjunto de potencias de etiquetas o \textit{\acrlong{lp}}
 \cite{tsoumakas_random_2011} es una técnica que se encarga de transformar el
 problema de \acrshort{mll} en uno de clasificación multi-clase y así poder
 abordarlo con algoritmos de este tipo. La clasificación multi-clase es un
-enfoque usado para tratar con ejemplos en donde la etiqueta es única pero cuenta
+enfoque usado para tratar con ejemplos en donde la etiqueta es única, pero cuenta
 con más de dos clases. Un ejemplo de este tipo de problemas es el de análisis de
 sentimiento de texto, en donde las clases pueden ser \comillas{positivo},
 \comillas{negativo} y \comillas{neutral}.
@@ -1007,7 +1007,7 @@ De manera similar a lo que sucedía con las métricas de la
 sección~\ref{evaluacion_metricas}, donde para definirlas fue necesario
 introducir el concepto de verdaderos positivos, verdaderos negativos, falsos
 negativos y falsos positivos, las métricas basadas en etiquetas también se
-fundamentan en esos conceptos pero su fórmula varia para adaptarse al escenario
+fundamentan en esos conceptos, pero su fórmula varía para adaptarse al escenario
 de \acrshort{mll}.
 
 \begin{equation}
@@ -1070,7 +1070,7 @@ etiquetas y la contribución de cada etiqueta al valor final no será el mismo.
 Esto sucede porque la métrica se computa solo una vez, habiendo ya calculado la
 cantidad de etiquetas para cada uno de los cuatro conceptos, lo que hace que
 aquellas etiquetas que se activan en escasas ocasiones vayan a tener una menor
-injerencia y por tanto serán sobrepasadas por aquellas etiquetas más frecuentes.
+injerencia y, por tanto, serán sobrepasadas por aquellas etiquetas más frecuentes.
 
 \section{Clasificación de Flujos Continuos de Datos}
 
@@ -1096,7 +1096,7 @@ ordenados, que arriban en el tiempo y son potencialmente infinitos. Un
 \end{equation}
 
 Donde $s_{t}$ es la instancia presente en el tiempo $t$ y $s_{N}$ es el último
-dato avistado en el \textit{stream} pero que no necesariamente representa el
+dato avistado en el \textit{stream}, pero que no necesariamente representa el
 final del flujo. Cada instancia $d_{t}$ posee un conjunto de atributos y
 etiquetas y se puede definir tal como se hizo en la sección~\ref{clasificacion}
 de tratarse de datos uni-etiquetados o como en la sección~\ref{mll_def_formal}
@@ -1125,7 +1125,7 @@ para aprendizaje en ambientes de \textit{batch} consiste en dividir al conjunto
 de datos en uno o más subconjuntos de entrenamiento y pruebas.  El ambiente de
 \textit{stream}, por su parte, presenta un desafío extra y es que no permite
 llevar a cabo esta división debido a que no se cuenta con los datos previamente
-almacenados. Además se debe tener en consideración la naturaleza incremental y
+almacenados. Además, se debe tener en consideración la naturaleza incremental y
 evolutiva de los datos: a medida que pasa el tiempo pueden surgir nuevas
 etiquetas, ciertos atributos pueden dejar de tener peso en la predicción o
 incluso algunas reglas de decisión en el modelo pueden llegar a perder
@@ -1151,7 +1151,7 @@ acondicionados a los escenarios de flujos continuos de datos.
 	      \textit{Prequential} o \textit{test-then-train} consiste en realizar la
 	      evaluación de cada instancia primero y luego usarla para actualizar el
 	      modelo. En consecuencia, ya no hay una división en subconjuntos de datos
-	      independientes sino que todas las instancias son usadas para evaluar y
+	      independientes, sino que todas las instancias son usadas para evaluar y
 	      luego clasificar, en un mismo instante de tiempo. A diferencia del enfoque
 	      de \textit{holdout}, no es necesario que el conjunto de datos sea grande y
 	      la evaluación \textit{prequential} permite alimentar al modelo con todos
@@ -1177,7 +1177,7 @@ y~\ref{mll_evaluacion} para datos multi-etiquetados.
 \label{stream_syn}
 
 Generar datos sintéticos es una práctica frecuente en la literatura para simular
-ambientes de flujo continuos de datos, el principal motivo es la falta de
+ambientes de flujos continuos de datos, el principal motivo es la falta de
 colecciones de \textit{streams} del mundo real que sean lo suficientemente
 grandes y que al mismo tiempo cumplan con todos los requisitos necesarios para
 evaluar algoritmos en este escenario \cite{kirkby_improving_2007}. Pese a esta
@@ -1282,7 +1282,7 @@ son los siguientes:
 	      posible tamaño de subconjuntos de etiquetas. Basándose en este fenómeno se
 	      distinguen dos tipos de colecciones, \comillas{A} y \comillas{B}. Las
 	      colecciones de tipo A son aquellas donde la cardinalidad de etiquetas es
-	      muy cercana a uno pero resultan ser multi-etiquetadas por la existencia de
+	      muy cercana a uno, pero resultan ser multi-etiquetadas por la existencia de
 	      ejemplos donde el etiquetado único generaría ambigüedad y se resolvió
 	      añadiendo etiquetas. Tal es el caso para colecciones de artículos
 	      periodísticos \cite{lang_newsweeder_1995} o de imágenes para realizar
@@ -1296,7 +1296,7 @@ son los siguientes:
 	      \cite{snoek_challenge_2006}.
 
 	\item[Relación entre etiquetas] Esta cualidad tiene que ver con el concepto de
-	      interdependencia entre etiquetas, descripto en la sección~\ref{intro_mll},
+	      interdependencia entre etiquetas, descrito en la sección~\ref{intro_mll},
 	      y se trata de capturar la aparición mutua de etiquetas en los ejemplos de
 	      tal manera de reflejar el grado de dependencia de las etiquetas en el
 	      dominio del problema. La idea es que un generador de instancias sintéticas

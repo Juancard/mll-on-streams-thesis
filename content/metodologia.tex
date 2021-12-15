@@ -10,7 +10,7 @@ transformado en un flujo continuo de datos que cumple con las características
 presentadas en la sección~\ref{stream_caracteristicas}. A su vez, se generan
 instancias sintéticas que sean fieles a las cualidades subyacentes de los datos
 originales.  Para ello, se ha diseñado un algoritmo basado en la implementación
-de \citeauthor{read_multi-label_2008} \cite{read_multi-label_2008} pero que hace
+de \citeauthor{read_multi-label_2008} \cite{read_multi-label_2008}, pero que hace
 uso de la matriz de probabilidades condicionales entre pares de etiqueta para
 respetar sus interdependencias.
 
@@ -33,10 +33,10 @@ existentes. La misma usa como clasificadores base tres algoritmos de
 \acrshort{mll} diferentes, que se mantienen fijos durante todo el entrenamiento.
 Además, el ensamble mantiene una ponderación de cada clasificador de acuerdo a
 su rendimiento, penalizando por cada etiqueta mal clasificada, y la combinación
-de los votos se lleva a cabo por mayoría de voto ponderada. La implementación se
+de los votos se lleva a cabo por votación por mayoría ponderada. La implementación se
 basa en la presentada
 por~\citeauthor{kolter_dynamic_2007}~\cite{kolter_dynamic_2007}, quienes también
-ponderan los clasificadores pero usan un único tipo de clasificador base y no
+ponderan los clasificadores, pero usan un único tipo de clasificador base y no
 contemplan problemas de múltiples etiquetas. Los experimentos se realizan con
 dos versiones, una de ellas se entrena con todas las instancias del subconjunto
 de entrenamientos y la otra tomando muestreos siguiendo la distribución de
@@ -44,7 +44,7 @@ de entrenamientos y la otra tomando muestreos siguiendo la distribución de
 	bagging} \cite{oza_online_2005}.
 
 Para la etapa de evaluación se sigue la estrategia
-\comillas{\textit{Prequential}}, descripta en la
+\comillas{\textit{Prequential}}, descrita en la
 sección~\ref{stream_evaluacion}, y se aplican métricas basadas en etiquetas y
 ejemplos, se mide la eficiencia de los modelos en términos de velocidad y
 espacio de almacenamiento y se analizan los resultados obtenidos.
@@ -62,7 +62,7 @@ basarse en colecciones reales específicas. La implementación del generador que
 usaron en sus experimentos se encuentra disponible al público
 \cite{read_moa_2012} y ha sido el punto de partida para desarrollar la técnica
 aquí propuesta.  \citeauthor{buyukcakir_novel_2018}, por su parte, no generan
-flujos sintéticos pero conducen experimentos similares en lo que respecta al
+flujos sintéticos, pero conducen experimentos similares en lo que respecta al
 análisis de algoritmos, poniendo el foco en modelos de ensambles.  La
 implementación de sus experimentos también ha sido liberada al
 público~\footnote{\url{https://github.com/abuyukcakir/gooweml}}.
@@ -194,7 +194,7 @@ etiquetas más probable para el atributo $a$.  La función $\theta$ se obtiene a
 través de muestreos sucesivos del generador de etiquetas, y guardando las $A$
 combinaciones más frecuentes, siendo el número total de atributos. Al mismo
 tiempo, el vector $x$ candidato es obtenido usando un generador binario tal como
-los descriptos en la sección~\ref{stream_syn}. El
+los descritos en la sección~\ref{stream_syn}. El
 algoritmo~\ref{alg:generar_atributos} muestra un pseudocódigo de cómo se
 completa el proceso. Notar que el generador binario $g$ produce dos vectores de
 atributos candidatos, uno por cada clase, luego si la combinación de etiquetas
@@ -245,11 +245,11 @@ generados en este marco contra los producidos en el trabajo de referencia.
 \subsection{Algoritmo de Ensamble}
 \label{tecnica_algoritmo_ensamble}
 
-El \acrfull{efmp} es una estrategia de ensamble en ambientes de flujos continuos
+\acrfull{efmp} es una estrategia de ensamble en ambientes de flujos continuos
 que pondera a los clasificadores base de acuerdo a su rendimiento y ajusta los
 pesos en cada predicción, a fin de optimizar la exactitud y eficiencia de la
 respuesta, y al mismo tiempo mantenerse actualizado frente a los cambios de
-concepto. Además es un ensamble que permite definir clasificadores base
+concepto. Además,es un ensamble que permite definir clasificadores base
 modelados a partir de algoritmos de clasificación diferentes para explotar la
 variabilidad en los mismos. La técnica de ponderación se basa en la presentada
 por \citeauthor{kolter_dynamic_2007} para la estrategia \textit{\acrlong{dwm}}
@@ -267,7 +267,7 @@ técnicas en detalle.
 con un vector de pesos $W_{k} = [w_{0}, w_{1}, \dots, w_{q}]$, donde $1 \leq k
 	\leq m$ y $w_{k,j}$ representa el peso del clasificador $k$ para la etiqueta
 $j$. En el entrenamiento del modelo se reciben $n$ instancias donde
-$n=\left\|D\right\|$ para la estrategia simple. Además se definen los parámetros
+$n=\left\|D\right\|$ para la estrategia simple. Además, se definen los parámetros
 $p$, que es la cantidad de instancias observadas entre actualizaciones de los
 pesos, y $\beta$, que representa el factor en el que se decrece el peso
 $w_{k,j}$ ante cada clasificación errónea. $\beta$ es un valor definido en el
@@ -276,7 +276,7 @@ son inicializados en 1.
 
 El proceso de aprendizaje se lleva a cabo de la siguiente manera: al arribar una
 instancia $i$, \acrshort{efmp} se la asigna a cada uno de los $m$
-clasificadores. En primer lugar se realiza la actualización de pesos y si un
+clasificadores. En primer lugar, se realiza la actualización de pesos y si un
 clasificador $C_{k}$ no predice correctamente una etiqueta $j$, su peso
 $w_{k,j}$ será multiplicado por el factor $\beta$. Luego, se entrena cada
 clasificador con la instancia nueva y se repite el procedimiento con la
@@ -351,7 +351,7 @@ Las etiquetas cuyo valor superen un umbral de $0.5$ serán activadas:
 \end{equation}
 
 \acrshort{efmp2} introduce una única variación, durante el entrenamiento. Cuando
-arriba una instancia $i$, cada uno de los clasificador base entrena el modelo
+arriba una instancia $i$, cada uno de los clasificadores base entrena el modelo
 $Poisson(1)$ veces con dicha instancia. Esta técnica es conocida como
 \textit{online bagging} y se ha probado que se aproxima a la estrategia
 tradicional de \textit{bagging} en \textit{batch}, cuando se entrena con
