@@ -14,6 +14,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[ruled,vlined]{algorithm2e} % para los algoritmos.
+\renewcommand{\listalgorithmcfname}{Índice de algoritmos}
 \usepackage{booktabs} % para las tablas.
 \usepackage{adjustbox} % para que las tablas no se salgan del margen.
 \usepackage{arydshln} % para agregar lineas puntuadas a tablas
@@ -74,7 +75,15 @@
 \cleardoublepage
 \tableofcontents
 \listoffigures
+\begingroup
+\let\clearpage\relax
+\vspace{1cm}
 \listoftables
+\vspace{1cm}
+\listofalgocfs
+\vspace{1cm}
+\listoftodos
+\endgroup
 
 \mainmatter
 \pagestyle{fancy}
@@ -85,6 +94,8 @@
 \input{content/metodologia.tex}
 \input{content/experimentos.tex}
 \input{content/conclusiones.tex}
+\appendix
+\input{appendix/clasificacion_tradicional.tex}
 
 \backmatter
 
