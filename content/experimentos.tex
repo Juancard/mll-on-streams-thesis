@@ -316,13 +316,20 @@ evaluaciones.
 \label{experimentos_syn_streams}
 
 El estudio de los \textit{streams} sintéticos generados se divide en tres
-secciones, una para cada colección de datos seleccionada. Cada sección incluye
+secciones, una para cada una de las colecciones. Cada sección incluye
 una tabla con las características tanto del \textit{stream} basado en datos
 reales como de los tres \textit{streams} sintéticos. Luego se analizan los
 fenómenos propios de colecciones multi-etiquetadas y cómo estos se presentan en
 los flujos sintéticos, con las particularidades observadas en cada caso.
 
 \subsubsection{20ng}
+
+La tabla~\ref{tab:syn_20ng_stats} muestra las características de la colección
+original y de los \textit{streams}. Allí se observa que la cardinalidad de la
+colección apenas sobrepasa la unidad, lo que significa que la mayoría de sus
+instancias tienen una única etiqueta. Esta característica logra ser capturada de
+manera aproximada por los \textit{streams} JC y JC\_BIG, pero no así por MOA que
+asocia más de tres etiquetas por instancia.
 
 \begin{table}[htbp]
 	\centering
@@ -336,12 +343,14 @@ los flujos sintéticos, con las particularidades observadas en cada caso.
 	\label{tab:syn_20ng_stats}
 \end{table}
 
-La tabla~\ref{tab:syn_20ng_stats} muestra las características de la colección
-original y de los \textit{streams}. Allí se observa que la cardinalidad de la
-colección apenas sobrepasa la unidad, lo que significa que la mayoría de sus
-instancias tienen una única etiqueta. Esta característica logra ser capturada de
-manera aproximada por los \textit{streams} JC y JC\_BIG, pero no así por MOA que
-asocia más de tres etiquetas por instancia.
+
+La figura~\ref{fig:syn_20ng_label_skew} es una representación gráfica del sesgo
+de etiquetas, y muestra que la colección original tiene alrededor de veinte
+combinaciones con una frecuencia escalada cercana a la máxima y luego un
+descenso brusco que culmina en la combinación 25, desde la cual se mantiene
+cercana a la frecuencia escalada mínima. Esta tendencia es bien replicada en los
+\textit{streams} JC, pero no en MOA, donde el descenso es más escalonado y no
+alcanza la zona baja del eje y.
 
 \begin{figure}[htbp]
 	\includegraphics[width=\linewidth]{figures/experiments/syn/20ng/label_skew.png}
@@ -359,14 +368,6 @@ asocia más de tres etiquetas por instancia.
 		\textit{streams} generados sobre la colección 20ng.}
 	\label{tab:syn_20ng_top_labels_combinations}
 \end{table}
-
-La figura~\ref{fig:syn_20ng_label_skew} es una representación gráfica del sesgo
-de etiquetas, y muestra que la colección original tiene alrededor de veinte
-combinaciones con una frecuencia escalada cercana a la máxima y luego un
-descenso brusco que culmina en la combinación 25, desde la cual se mantiene
-cercana a la frecuencia escalada mínima. Esta tendencia es bien replicada en los
-\textit{streams} JC, pero no en MOA, donde el descenso es más escalonado y no
-alcanza la zona baja del eje y.
 
 La tabla~\ref{tab:syn_20ng_top_labels_combinations} muestra las principales 5
 combinaciones de etiquetas para cada \textit{stream}. Cabe destacar que todas
