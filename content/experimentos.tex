@@ -3,7 +3,6 @@
 
 \section{Colecciones}
 
-
 Se seleccionan colecciones de datos multi-etiquetas del mundo real que han sido
 aplicados previamente en la literatura para evaluar la capacidad predictiva de
 los modelos de clasificación \cite{osojnik_multi-label_2017, read_scalable_2012,
@@ -108,7 +107,7 @@ para la implementación y ejecución de los experimentos.
 	      multi-etiquetas que han sido la fuente de otros trabajos de la literatura
 	      \cite{tsoumakas_mulan_2011}.
 
-\end{description} \todo{nombres de herramientas van en cursiva?}
+\end{description}
 
 La herramienta \acrshort{moa} es usada para generar los flujos sintéticos y
 provee del marco de trabajo en el cual se implementó el algoritmo de generación
@@ -209,8 +208,7 @@ hiperparámetros propios y de sus clasificadores base.
 Los flujos sintéticos son analizados teniendo en cuenta los fenómenos propios de
 colecciones del mundo real. A ese fin se estudia el sesgo de etiquetas, la
 relación entre etiquetas, la distribución de etiquetas y el espacio de atributos
-(ver sección \ref{mll_fenomenos}). \todo{es probable que este análisis se separe
-	en una sección aparte y se aborde con mayor profundidad}
+(ver sección \ref{mll_fenomenos}).
 
 \section{Configuración Experimental}
 
@@ -272,14 +270,14 @@ distribución de etiquetas, la relación entre etiquetas y el espacio de
 atributos, y se capturaron siguiendo la metodología del trabajo de referencia,
 esto es:
 
-\todo{a completar}
 \begin{description}
 
-	\item[Sesgo de etiquetas]: Para observar el sesgo de etiquetas se toma la frecuencia de
-	      cada etiqueta y se traza un gráfico de línea para cada \textit{stream}, de esta
-	      manera es posible visualizar cuánto se asemeja el sesgo de los datos sintéticos
-	      al de los datos reales. Además, se adjunta una tabla que lista las 5
-	      combinaciones principales para cada flujo continuo.
+	\item[Sesgo de etiquetas]: Para observar el sesgo de etiquetas se toma la
+	      frecuencia de cada etiqueta y se traza un gráfico de línea para cada
+	      \textit{stream}, de esta manera es posible visualizar cuánto se asemeja
+	      el sesgo de los datos sintéticos al de los datos reales. Además, se
+	      adjunta una tabla que lista las 5 combinaciones principales para cada
+	      flujo continuo.
 
 	\item[Distribución de etiquetas]: El objetivo de estudiar este fenómeno es
 	      conocer de qué forma se compone la cardinalidad de etiquetas. Para ello

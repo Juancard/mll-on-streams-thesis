@@ -28,13 +28,12 @@ y consultando las respectivas implementaciones en otros lenguajes de
 programación, de hallarse estas disponibles al público.
 
 De manera complementaria, se diseña una solución de ensambles llamada
-\acrfull{efmp} \todo{nombre tentativo}, basada en las implementaciones
-existentes. La misma usa como clasificadores base tres algoritmos de
-\acrshort{mll} diferentes, que se mantienen fijos durante todo el entrenamiento.
-Además, el ensamble mantiene una ponderación de cada clasificador de acuerdo a
-su rendimiento, penalizando por cada etiqueta mal clasificada, y la combinación
-de los votos se lleva a cabo por votación por mayoría ponderada. La implementación se
-basa en la presentada
+\acrfull{efmp}, basada en las implementaciones existentes. La misma usa como
+clasificadores base tres algoritmos de \acrshort{mll} diferentes, que se
+mantienen fijos durante todo el entrenamiento.  Además, el ensamble mantiene una
+ponderación de cada clasificador de acuerdo a su rendimiento, penalizando por
+cada etiqueta mal clasificada, y la combinación de los votos se lleva a cabo por
+votación por mayoría ponderada. La implementación se basa en la presentada
 por~\citeauthor{kolter_dynamic_2007}~\cite{kolter_dynamic_2007}, quienes también
 ponderan los clasificadores, pero usan un único tipo de clasificador base y no
 contemplan problemas de múltiples etiquetas. Los experimentos se realizan con
