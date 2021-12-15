@@ -13,13 +13,17 @@
 \usepackage{fancyhdr}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{soul}
+\usepackage{soul} % para tachar texto
 \usepackage[ruled,vlined]{algorithm2e} % para los algoritmos.
 \renewcommand{\listalgorithmcfname}{Índice de algoritmos}
 \usepackage{booktabs} % para las tablas.
 \usepackage{adjustbox} % para que las tablas no se salgan del margen.
 \usepackage{arydshln} % para agregar lineas puntuadas a tablas
 \SetKw{Continue}{continue}
+
+\usepackage{titlesec} % para dar estilos a titulos de secciones
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries}{\thesubsubsection.}{1em}{}
 
 \setlength{\marginparwidth}{2cm}
 \setlength{\headheight}{15pt}
@@ -68,10 +72,10 @@
 \input{abs_esp.tex}
 
 %\cleardoublepage
-%\input{agradecimientos.tex} % OPCIONAL: comentar si no se quiere
+%\input{agradecimientos.tex}  OPCIONAL: comentar si no se quiere
 
-% \cleardoublepage
-% \input{dedicatoria.tex}  % OPCIONAL: comentar si no se quiere
+%\cleardoublepage
+%\input{dedicatoria.tex}   OPCIONAL: comentar si no se quiere
 
 \cleardoublepage
 \tableofcontents
