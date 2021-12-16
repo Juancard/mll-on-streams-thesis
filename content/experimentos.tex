@@ -5,50 +5,51 @@
 
 Se seleccionan colecciones de datos multi-etiquetas del mundo real que han sido
 aplicados previamente en la literatura para evaluar la capacidad predictiva de
-los modelos de clasificación \cite{osojnik_multi-label_2017, read_scalable_2012,
-	buyukcakir_novel_2018}. La tabla \ref{tab:datasets} enumera sus características
-principales, incluyendo métricas que describen su grado de multi-etiquetado (ver
-sección \ref{mll_def_formal}). Una descripción detallada de cada una se lista a
+los modelos de
+clasificación~\cite{osojnik_multi-label_2017,read_scalable_2012,buyukcakir_novel_2018}.
+La tabla~\ref{tab:datasets} enumera sus características principales, incluyendo
+métricas que describen su grado de multi-etiquetado (ver
+sección~\ref{mll_def_formal}). Una descripción detallada de cada una se lista a
 continuación:
 
 \begin{description}
 
-	\item{20ng} \footnote{\url{https://www.uco.es/kdis/mllresources/}}: Es una
+	\item{20ng}\footnote{\url{https://www.uco.es/kdis/mllresources/}}: Es una
 	      colección que consta de casi 20 mil publicaciones provenientes de grupos de
-	      noticias y que abordan 20 tópicos diferentes \cite{lang_newsweeder_1995}.
+	      noticias y que abordan 20 tópicos diferentes~\cite{lang_newsweeder_1995}.
 	      La colección es de texto y fue preprocesada para formar 1006 atributos
 	      numéricos.
 
-	\item{Enron}
-	      \footnote{\url{http://sourceforge.net/projects/mulan/files/datasets/enron.rar}}:
-	      Es una colección de correos electrónicos seleccionados de entre los 500 mil
-	      generados por empleados de la compañía eléctrica \textit{Enron} y filtrados
-	      durante una investigación por corrupción \cite{hutchison_enron_2004}. Su
-	      tamaño, que no supera los 2000 elementos, no es lo suficientemente grande
-	      para ser considerado un flujo continuo voluminoso, pero sí cuenta con otras
-	      propiedades como la inclusión de fechas y una evolución de los datos en el
-	      tiempo \cite{read_scalable_2012}. Las etiquetas se dividen en cuatro
-	      grupos, según su género (acuerdos laborales, correos meramente personales,
-	      etc.); según la información que incluyen, esto es, si el correo contiene
-	      enlaces externos, adjuntos, reenvíos, etc.; según el tono emocional que
-	      reflejan y según el tópico principal que abordan.
+	\item{Enron}\footnote{\url{http://sourceforge.net/projects/mulan/files/datasets/enron.rar}}:
+	      Es una colección de correos electrónicos seleccionados de entre los 500
+	      mil generados por empleados de la compañía eléctrica \textit{Enron} y
+	      filtrados durante una investigación por
+	      corrupción~\cite{hutchison_enron_2004}. Su tamaño, que no supera los
+	      2000 elementos, no es lo suficientemente grande para ser considerado un
+	      flujo continuo voluminoso, pero sí cuenta con otras propiedades como la
+	      inclusión de fechas y una evolución de los datos en el
+	      tiempo~\cite{read_scalable_2012}. Las etiquetas se dividen en cuatro
+	      grupos, según su género (acuerdos laborales, correos meramente
+	      personales, etc.); según la información que incluyen, esto es, si el
+	      correo contiene enlaces externos, adjuntos, reenvíos, etc.; según el
+	      tono emocional que reflejan y según el tópico principal que abordan.
 
-	\item{Mediamill}
-	      \footnote{\url{https://sourceforge.net/projects/mulan/files/datasets/mediamill.rar}}:
+	\item{Mediamill}\footnote{\url{https://sourceforge.net/projects/mulan/files/datasets/mediamill.rar}}:
 	      Es una colección generada a partir de 80 horas de video provenientes de
-	      transmisiones de noticias durante noviembre de 2004
-	      \cite{snoek_challenge_2006}. Se seleccionaron más de 43 mil ejemplos y fue
-	      manualmente etiquetada con 101 conceptos, que pueden visualizarse en la
-	      figura \ref{fig:mediamill}.
+	      transmisiones de noticias durante noviembre de
+	      2004~\cite{snoek_challenge_2006}. Se seleccionaron más de 43 mil
+	      ejemplos y fue manualmente etiquetada con 101 conceptos, que pueden
+	      visualizarse en la figura~\ref{fig:mediamill}.
 
 \end{description}
 
 \begin{table}[htbp]
 	\centering
 	\input{tables/datasets.tex}
-	\caption[Colecciones multi-etiquetas y sus características.]{Colecciones multi-etiquetas y sus características. N: número de
-		instancias; A: número de atributos; L: número de etiquetas; LC: cardinalidad
-		de etiquetas; LD: densidad de etiquetas.}
+	\caption[Colecciones multi-etiquetas y sus características.]{Colecciones
+		multi-etiquetas y sus características. N:\@ número de
+		instancias; A:\@ número de atributos; L:\@ número de etiquetas; LC:\@ cardinalidad
+		de etiquetas; LD:\@ densidad de etiquetas.}
 	\label{tab:datasets}
 \end{table}
 
@@ -69,7 +70,7 @@ relativamente alto de etiquetas.
 
 Durante la ejecución de experimentos, cada colección será convertida a un flujo
 sintético. Además, se generará una versión sintética de cada una, siguiendo la
-técnica descrita en la sección \ref{generacion_flujos_sinteticos}.
+técnica descrita en la sección~\ref{generacion_flujos_sinteticos}.
 
 \section{Software}
 
@@ -78,40 +79,41 @@ para la implementación y ejecución de los experimentos.
 
 \begin{description}
 
-	\item[scikit-multiflow]\footnote{\url{https://scikit-multiflow.github.io/}} Es
-	      una librería disponible para el lenguaje de programación Python que provee
-	      un \textit{framework} para implementar y comparar algoritmos de aprendizaje
-	      automático en ambientes de flujos continuos de datos. Incluye pero no se
-	      limita a problemas de clasificación multi-etiquetas
-	      \cite{montiel_scikit-multiflow_2018}.
+	\item[scikit-multiflow]\footnote{\url{https://scikit-multiflow.github.io/}}
+	      Es una librería disponible para el lenguaje de programación Python que
+	      provee un \textit{framework} para implementar y comparar algoritmos de
+	      aprendizaje automático en ambientes de flujos continuos de datos.
+	      Incluye pero no se limita a problemas de clasificación
+	      multi-etiquetas~\cite{montiel_scikit-multiflow_2018}.
 
 	\item[\acrshort{moa}]\footnote{\url{https://moa.cms.waikato.ac.nz/}}
-	      \acrfull{moa} es un \textit{framework} para realizar minería de datos sobre
-	      flujos continuos de datos, implementada en Java y de código libre.  Incluye
-	      algoritmos de evaluación y de aprendizaje automático como clasificadores,
-	      regresores, o de \textit{clustering}, pudiendo ser aplicados a problemas de
-	      clasificación de etiqueta única o multi-etiquetas.  También incluye
-	      herramientas para generar datos sintéticos. Tanto \acrshort{moa} como
-	      scikit-multiflow facilitan la reiteración de experimentos con distintas
-	      configuraciones, así como la comparación de resultados y la extensión de
-	      funcionalidad \cite{bifet_moa_2010}.
+	      \acrfull{moa} es un \textit{framework} para realizar minería de datos
+	      sobre flujos continuos de datos, implementada en Java y de código libre.
+	      Incluye algoritmos de evaluación y de aprendizaje automático como
+	      clasificadores, regresores, o de \textit{clustering}, pudiendo ser
+	      aplicados a problemas de clasificación de etiqueta única o
+	      multi-etiquetas.  También incluye herramientas para generar datos
+	      sintéticos. Tanto \acrshort{moa} como scikit-multiflow facilitan la
+	      reiteración de experimentos con distintas configuraciones, así como la
+	      comparación de resultados y la extensión de
+	      funcionalidad~\cite{bifet_moa_2010}.
 
 	\item[scikit-learn]\footnote{\url{http://scikit-learn.org/stable/index.html}}
 	      Es una librería del lenguaje de programación Python que brinda
 	      herramientas para realizar evaluación, visualización y análisis de
-	      resultados \cite{pedregosa_scikit-learn_2018}.
+	      resultados~\cite{pedregosa_scikit-learn_2018}.
 
 	\item[Mulan]\footnote{\url{http://mulan.sourceforge.net/index.html}} Es una
 	      librería del lenguaje Java especializada en aprendizaje por
 	      multi-etiquetas. Mulan incluye una variedad de colecciones de datos
-	      multi-etiquetas que han sido la fuente de otros trabajos de la literatura
-	      \cite{tsoumakas_mulan_2011}.
+	      multi-etiquetas que han sido la fuente de otros trabajos de la
+	      literatura~\cite{tsoumakas_mulan_2011}.
 
 \end{description}
 
 La herramienta \acrshort{moa} es usada para generar los flujos sintéticos y
 provee del marco de trabajo en el cual se implementó el algoritmo de generación
-descrito en \ref{generacion_flujos_sinteticos}. Los algoritmos de clasificación
+descrito en~\ref{generacion_flujos_sinteticos}. Los algoritmos de clasificación
 fueron implementados en Python y están disponibles bajo la librería
 \textit{scikit-multiflow}. La solución de ensamble \acrshort{efmp} también fue
 implementada en esta librería. \textit{Scikit-learn}, por su parte, provee la
@@ -125,7 +127,7 @@ altas prestaciones que han proporcionado la capacidad de cómputo necesaria para
 llevar a cabo este proyecto. El equipamiento facilitado cuenta con dos nodos de
 12 núcleos cada uno, la CPU es un Intel Xeon X5675 de 3.07 GHz de velocidad de
 procesamiento, 12 MB de memoria caché y 6 núcleos. El espacio de almacenamiento
-disponible es de 1 TB y la memoria RAM es de 142 GB. \todo{Chequear estos datos}
+disponible es de 1 TB y la memoria RAM es de 142 GB\@. \todo{Chequear estos datos}
 
 El Sistema Operativo instalado es Ubuntu 18.04 LTS y cuenta con la versión 3.6.9
 de Python, el instalador de paquetes Pip en su versión 20.3.3 y Java 1.8.
@@ -140,24 +142,24 @@ Entre los algoritmos del tipo de transformación del problema se seleccionan los
 de \acrfull{br}, \acrfull{cc} y \acrfull{mlht}. Tanto \acrshort{br} como
 \acrshort{cc} usan \textit{naive} bayes como modelo de clasificación base y
 \acrshort{mlht} es ejecutado en su versión basada en \acrfull{lp}, siguiendo los
-procedimientos de \citeauthor{read_scalable_2012} \cite{read_scalable_2012}.
+procedimientos de \citeauthor{read_scalable_2012}~\cite{read_scalable_2012}.
 
 En lo que respecta a soluciones de ensamble, los modelos de \acrshort{efmp}
 contarán ambos con tres clasificadores base, siendo estos los mencionados en el
 párrafo anterior, es decir, \acrshort{cc}, \acrshort{br} y \acrshort{mlht}. La
 comparación se hará contra el algoritmo \acrfull{dwm}, tal como ha sido definido
-por sus autores \cite{kolter_dynamic_2007} pero adaptado a ambientes de
-multi-etiquetas (ver sección \ref{tecnica_algoritmo_ensamble}), y se suman al
+por sus autores~\cite{kolter_dynamic_2007} pero adaptado a ambientes de
+multi-etiquetas (ver sección~\ref{tecnica_algoritmo_ensamble}), y se suman al
 análisis los algoritmos de \acrfull{ebr} y \acrfull{ecc}, tal como fueron
-definidos por \citeauthor{oza_online_2005} \cite{oza_online_2005} y también han
-sido extendidos para soportar problemas de \acrshort{mll}
-\cite{read_classifier_2011}. Los tres algoritmos de ensamble extraídos de la
-literatura son configurados con diez clasificadores base de \textit{naive}
-bayes, para imitar los experimentos conducidos por otros autores de la
-literatura \cite{osojnik_multi-label_2017, read_scalable_2012,
+definidos por \citeauthor{oza_online_2005}~\cite{oza_online_2005} y también han
+sido extendidos para soportar problemas de
+\acrshort{mll}~\cite{read_classifier_2011}. Los tres algoritmos de ensamble
+extraídos de la literatura son configurados con diez clasificadores base de
+\textit{naive} bayes, para imitar los experimentos conducidos por otros autores
+de la literatura~\cite{osojnik_multi-label_2017, read_scalable_2012,
 	buyukcakir_novel_2018}.
 
-La tabla \ref{tab:algoritmos} es un resumen de los algoritmos seleccionados
+La tabla~\ref{tab:algoritmos} es un resumen de los algoritmos seleccionados
 junto con los clasificadores base configurados, la referencia bibliográfica y la
 clave que será usada en las tablas de resultados.
 
@@ -175,10 +177,11 @@ clave que será usada en las tablas de resultados.
 
 En la evaluación de algoritmos de clasificación se usan el conjunto de métricas
 que han sido utilizadas en otros trabajos de la literatura, tanto en escenarios
-de flujos \cite{sousa_multi-label_2018, zheng_survey_2020,
-	osojnik_multi-label_2017} como en \textit{batch} \cite{madjarov_extensive_2012,
-	zhang_multi-label_2010, gibaja_tutorial_2015} y fueron descriptas en la
-sección \ref{mll_evaluacion}. Estas son:
+de
+flujos~\cite{sousa_multi-label_2018,zheng_survey_2020,osojnik_multi-label_2017}
+como en
+\textit{batch}~\cite{madjarov_extensive_2012,zhang_multi-label_2010,gibaja_tutorial_2015}
+y fueron descriptas en la sección~\ref{mll_evaluacion}.  Estas son:
 
 \begin{description}
 
@@ -208,7 +211,7 @@ hiperparámetros propios y de sus clasificadores base.
 Los flujos sintéticos son analizados teniendo en cuenta los fenómenos propios de
 colecciones del mundo real. A ese fin se estudia el sesgo de etiquetas, la
 relación entre etiquetas, la distribución de etiquetas y el espacio de atributos
-(ver sección \ref{mll_fenomenos}).
+(ver sección~\ref{mll_fenomenos}).
 
 \section{Configuración Experimental}
 
@@ -224,12 +227,12 @@ representación densa. En cuanto a los modelos de ensambles, se adaptaron las
 implementaciones existentes de \acrshort{ebr}, \acrshort{ecc} y \acrshort{dwm}
 para soportar múltiples etiquetas y para ello se debió modificar la etapa de
 combinación de votos para hacer frente a la nueva dimensionalidad de los datos.
-Por lo demás, la configuración de los algoritmos es la definida en la sección
-\ref{experimentos_algoritmos}.
+Por lo demás, la configuración de los algoritmos es la definida en la
+sección~\ref{experimentos_algoritmos}.
 
 Para la etapa de evaluación se aplica la técnica de evaluación secuencial
 predictiva (\textit{prequential}) con ventanas deslizantes, tal como se
-recomienda para ambientes de flujos continuos \cite{gama_evaluating_2013}. Ante
+recomienda para ambientes de flujos continuos~\cite{gama_evaluating_2013}. Ante
 cada ejemplo o ventana de ejemplos arribada el modelo primero realiza la
 predicción y luego el entrenamiento. Finalmente, las métricas de evaluación son
 calculadas una vez procesados todos los ejemplos de la colección y a partir de
@@ -248,12 +251,12 @@ colecciones 20ng, Enron y Mediamill. Por cada uno de ellos se generan tres
 \begin{description}
 
 	\item[MOA]: Es un \textit{stream} generado usando el método de los autores
-	      de referencia \cite{read_generating_2009}. El número de instancias es el
+	      de referencia~\cite{read_generating_2009}. El número de instancias es el
 	      mismo de la colección original y el generador de atributos es
 	      \acrfull{rbf} (ver sección~\ref{stream_syn}).
 
 	\item[JC]: Es un \textit{stream} generado usando el método presentado en la
-	      sección ~\ref{generacion_flujos_sinteticos}. El número de instancias es
+	      sección~\ref{generacion_flujos_sinteticos}. El número de instancias es
 	      el mismo de la colección original y el generador de atributos es
 	      \acrfull{rbf}.
 
@@ -337,9 +340,10 @@ asocia más de tres etiquetas por instancia.
 		\input{tables/syn/20ng_stats.tex}
 	\end{adjustbox}
 	\caption[Características de los \textit{streams} sintéticos generados sobre
-		la colección 20ng.]{Características de los \textit{streams} sintéticos generados sobre
-		la colección 20ng.  N: número de instancias; L: número de etiquetas; LC:
-		cardinalidad de etiquetas; LD: densidad de etiquetas.}
+		la colección 20ng.]{Características de los \textit{streams} sintéticos
+		generados sobre la colección 20ng.  N:\@ número de instancias; L:\@
+		número de etiquetas; LC:\@ cardinalidad de etiquetas; LD:\@ densidad de
+		etiquetas.}
 	\label{tab:syn_20ng_stats}
 \end{table}
 
@@ -364,7 +368,7 @@ alcanza la zona baja del eje y.
 	\begin{adjustbox}{max width=\textwidth}
 		\input{tables/syn/20ng_top_labels_combinations.tex}
 	\end{adjustbox}
-	\caption{Sesgo de etiquetas - Principales combinaciones de los
+	\caption{Sesgo de etiquetas: Principales combinaciones de los
 		\textit{streams} generados sobre la colección 20ng.}
 	\label{tab:syn_20ng_top_labels_combinations}
 \end{table}
@@ -402,10 +406,10 @@ ejemplos tienen un conjunto de etiquetas de cardinalidad uno.
 	\includegraphics[width=\linewidth / 2]{figures/experiments/syn/20ng/JC_BIG_relationship_graph.png}
 	\includegraphics[width=\linewidth / 2]{figures/experiments/syn/20ng/MOA_relationship_graph.png}
 	\caption[Relación entre etiquetas para cada \textit{stream} generado sobre
-		la colección 20ng.]{Relación entre etiquetas para cada \textit{stream} generado sobre
-		la colección 20ng. Arriba a la izquierda: \textit{Stream} original. Arriba a la
-		derecha: \textit{Stream} JC. Abajo a la izquierda: \textit{Stream}
-		JC\_BIG. Abajo a la derecha: \textit{Stream} MOA.}
+		la colección 20ng.]{Relación entre etiquetas para cada \textit{stream}
+		generado sobre la colección 20ng. Arriba a la izquierda: \textit{Stream}
+		original. Arriba a la derecha:\@ \textit{Stream} JC.\@ Abajo a la izquierda:\@
+		\textit{Stream} JC\_BIG.\@ Abajo a la derecha:\@ \textit{Stream} MOA.}
 	\label{fig:syn_20ng_label_relationship}
 \end{figure}
 
@@ -439,9 +443,10 @@ generado.
 		\input{tables/syn/enron_stats.tex}
 	\end{adjustbox}
 	\caption[Características de los \textit{streams} sintéticos generados sobre
-		la colección Enron.]{Características de los \textit{streams} sintéticos generados sobre
-		la colección Enron.  N: número de instancias; L: número de etiquetas; LC:
-		cardinalidad de etiquetas; LD: densidad de etiquetas.}
+		la colección Enron.]{Características de los \textit{streams} sintéticos
+		generados sobre la colección Enron.  N:\@ número de instancias; L:\@
+		número de etiquetas; LC:\@ cardinalidad de etiquetas; LD:\@ densidad de
+		etiquetas.}
 	\label{tab:syn_enron_stats}
 \end{table}
 
@@ -457,7 +462,7 @@ generado.
 	\begin{adjustbox}{max width=\textwidth}
 		\input{tables/syn/enron_top_labels_combinations.tex}
 	\end{adjustbox}
-	\caption{Sesgo de etiquetas - Principales combinaciones de los
+	\caption{Sesgo de etiquetas: Principales combinaciones de los
 		\textit{streams} generados sobre la colección Enron.}
 	\label{tab:syn_enron_top_labels_combinations}
 \end{table}
@@ -503,8 +508,8 @@ ejemplos tienen una cardinalidad de etiquetas mayor que uno.
 	\caption[Relación entre etiquetas para cada \textit{stream} generado sobre
 		la colección Enron.]{Relación entre etiquetas para cada \textit{stream} generado sobre
 		la colección Enron. Arriba a la izquierda: \textit{Stream} original. Arriba a la
-		derecha: \textit{Stream} JC. Abajo a la izquierda: \textit{Stream}
-		JC\_BIG. Abajo a la derecha: \textit{Stream} MOA.}
+		derecha: \textit{Stream} JC.\@ Abajo a la izquierda: \textit{Stream}
+		JC\_BIG.\@ Abajo a la derecha: \textit{Stream} MOA.}
 	\label{fig:syn_enron_label_relationship}
 \end{figure}
 
@@ -537,9 +542,10 @@ generado.
 		\input{tables/syn/mediamill_stats.tex}
 	\end{adjustbox}
 	\caption[Características de los \textit{streams} sintéticos generados sobre
-		la colección Mediamill.]{Características de los \textit{streams} sintéticos generados sobre
-		la colección Mediamill.  N: número de instancias; L: número de etiquetas; LC:
-		cardinalidad de etiquetas; LD: densidad de etiquetas.}
+		la colección Mediamill.]{Características de los \textit{streams}
+		sintéticos generados sobre la colección Mediamill.  N:\@ número de
+		instancias; L:\@ número de etiquetas; LC:\@ cardinalidad de etiquetas; LD:\@
+		densidad de etiquetas.}
 	\label{tab:syn_mediamill_stats}
 \end{table}
 
@@ -555,7 +561,7 @@ generado.
 	\begin{adjustbox}{max width=\textwidth}
 		\input{tables/syn/mediamill_top_labels_combinations.tex}
 	\end{adjustbox}
-	\caption{Sesgo de etiquetas - Principales combinaciones de los
+	\caption{Sesgo de etiquetas: Principales combinaciones de los
 		\textit{streams} generados sobre la colección Mediamill.}
 	\label{tab:syn_mediamill_top_labels_combinations}
 \end{table}
@@ -584,7 +590,7 @@ similares a las realizadas a este efecto para Enron. No es posible determinar
 con certeza que alguno de los \textit{streams} refleja el fenómeno en mayor
 grado que otro, e incluso, si se analiza el gráfico de \textit{mean absolute
 	error}, se puede observar que hay 3 puntos donde la curva de JC se aproxima más
-al del original y 3 donde el más próximo es MOA. En cuanto al tipo de
+al del original y 3 donde el más próximo es MOA.\@ En cuanto al tipo de
 distribución, del cual se hace mención en el trabajo de referencia, todos los
 \textit{streams} sintéticos obedecen al tipo B, es decir, la mayoría de los
 ejemplos tienen una cardinalidad de etiquetas mayor que uno.
@@ -601,8 +607,8 @@ ejemplos tienen una cardinalidad de etiquetas mayor que uno.
 	\caption[Relación entre etiquetas para cada \textit{stream} generado sobre
 		la colección Mediamill.]{Relación entre etiquetas para cada \textit{stream} generado sobre
 		la colección Mediamill. Arriba a la izquierda: \textit{Stream} original.
-		Arriba a la derecha: \textit{Stream} JC. Abajo a la izquierda:
-		\textit{Stream} JC\_BIG. Abajo a la derecha: \textit{Stream} MOA.}
+		Arriba a la derecha: \textit{Stream} JC.\@ Abajo a la izquierda:
+		\textit{Stream} JC\_BIG.\@ Abajo a la derecha: \textit{Stream} MOA.}
 	\label{fig:syn_mediamill_label_relationship}
 \end{figure}
 
@@ -634,8 +640,8 @@ clasificación multi-etiqueta para los diferentes \textit{streams} utilizando la
 configuraciones sin ensambles, los ensambles de referencias y los métodos de
 ensamble propuestos. Los resultados se dividen en métricas de ajustes del modelo
 basadas en ejemplos (tabla~\ref{tab:example_based}), métricas basadas en
-etiquetas (tabla \ref{tab:label_based}), y por último las métricas de eficiencia
-(tabla \ref{tab:efficiency}) que cuantifican el tiempo de procesamiento y
+etiquetas (tabla~\ref{tab:label_based}), y por último las métricas de eficiencia
+(tabla~\ref{tab:efficiency}) que cuantifican el tiempo de procesamiento y
 espacio de almacenamiento de los modelos. Se marca en negrita la celda
 correspondiente al modelo que obtuvo el mejor valor de métrica para la
 correspondiente colección de datos. Para cerrar la sección se hace una
@@ -663,14 +669,14 @@ comparativa contra experimentos de la literatura de referencia.
 	\label{fig:comparativa_f1_ex}
 \end{figure}
 
-Los valores de F1 obtenidos para la evaluación basada en ejemplos (Tabla
-\ref{tab:example_based}) muestra que \acrshort{efmp} y \acrshort{efmp2} fueron
-mejores que los \textit{baselines} de ensambles en todos los casos.  Además,
-superó a los que no utilizan ensambles en el \textit{stream} de Enron.  En los
-casos de 20ng, \acrshort{efmp} fue superado en un 0.001\% por \acrshort{br} y en
-Mediamill \acrshort{mlht} superó a \acrshort{efmp} en un 0.015\%. Para el caso
-de \textit{exact-match} el modelo dominante es \acrshort{mlht}, lo cual es un
-resultado en consonancia con otros estudios de la
+Los valores de F1 obtenidos para la evaluación basada en ejemplos
+(Tabla~\ref{tab:example_based}) muestra que \acrshort{efmp} y \acrshort{efmp2}
+fueron mejores que los \textit{baselines} de ensambles en todos los casos.
+Además, superó a los que no utilizan ensambles en el \textit{stream} de Enron.
+En los casos de 20ng, \acrshort{efmp} fue superado en un 0.001\% por
+\acrshort{br} y en Mediamill \acrshort{mlht} superó a \acrshort{efmp} en un
+0.015\%. Para el caso de \textit{exact-match} el modelo dominante es
+\acrshort{mlht}, lo cual es un resultado en consonancia con otros estudios de la
 literatura~\cite{read_scalable_2012,osojnik_multi-label_2017,zheng_survey_2020},
 y los modelos propuestos se ubican en segundo lugar para dos de las tres
 colecciones. En cuanto al \textit{hamming score} los resultados son muy
