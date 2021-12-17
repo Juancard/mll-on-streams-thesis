@@ -1,7 +1,31 @@
 \chapter{Experimentos y Resultados}
-\todo{escribir intro de capitulo}
+
+En este capítulo se describen los experimentos llevados a cabo tanto para la
+generación de \textit{streams} sintéticos como para el entrenamiento y
+clasificación de modelos de \acrshort{mll}. Para comenzar, se presentan y
+caracterizan las colecciones de datos utilizadas en las pruebas, luego se
+detalla el ambiente en el cual se ejecutaron los experimentos, incluyendo
+información sobre el hardware y software empleado. Una vez hecho esto, se listan
+los algoritmos seleccionados para las pruebas, junto con la bibliografia
+emparentada y la configuración particular de cada uno de ellos, y las métricas
+de evaluación adoptadas y con las cuales se comparan los modelos. Ya en la
+sección~\ref{configuracion_experimental} se entra en detalle sobre la
+configuración de cada experimento, incluyendo hiperparámetros del entrenamiento,
+métodos de evaluación de las clasificaciones y los tipos de \textit{streams}
+generados. Finalmente, en la sección~\ref{experimentos_resultados} se exponen y
+analizan los resultados.
 
 \section{Colecciones}
+
+\begin{table}[htbp]
+	\centering
+	\input{tables/datasets.tex}
+	\caption[Colecciones multi-etiquetas y sus características.]{Colecciones
+		multi-etiquetas y sus características. N:\@ número de
+		instancias; A:\@ número de atributos; L:\@ número de etiquetas; LC:\@ cardinalidad
+		de etiquetas; LD:\@ densidad de etiquetas.}
+	\label{tab:datasets}
+\end{table}
 
 Se seleccionan colecciones de datos multi-etiquetas del mundo real que han sido
 aplicados previamente en la literatura para evaluar la capacidad predictiva de
@@ -43,17 +67,7 @@ continuación:
 
 \end{description}
 
-\begin{table}[htbp]
-	\centering
-	\input{tables/datasets.tex}
-	\caption[Colecciones multi-etiquetas y sus características.]{Colecciones
-		multi-etiquetas y sus características. N:\@ número de
-		instancias; A:\@ número de atributos; L:\@ número de etiquetas; LC:\@ cardinalidad
-		de etiquetas; LD:\@ densidad de etiquetas.}
-	\label{tab:datasets}
-\end{table}
-
-\begin{figure}
+\begin{figure}[htbp]
 	\includegraphics[width=.9\linewidth]{figures/mediamill.jpg}
 	\centering
 	\caption{Los 101 conceptos semánticos asociados a la colección
@@ -214,6 +228,7 @@ relación entre etiquetas, la distribución de etiquetas y el espacio de atribut
 (ver sección~\ref{mll_fenomenos}).
 
 \section{Configuración Experimental}
+\label{configuracion_experimental}
 
 En lo que respecta a modelos de aprendizaje automático, los experimentos fueron
 desarrollados en el lenguaje Python usando la librería
@@ -308,6 +323,7 @@ esto es:
 
 
 \section{Resultados}
+\label{experimentos_resultados}
 
 A continuación se exhiben los resultados obtenidos de los experimentos. En
 primer lugar, en la sección~\ref{experimentos_syn_streams} se estudian los
@@ -882,5 +898,3 @@ de~\cite{roseberry_multi-label_2018} y son superados
 por~\cite{sousa_multi-label_2018}. Finalmente, para el conjunto de datos
 Mediamill tanto~\cite{sousa_multi-label_2018}
 como~\cite{roseberry_multi-label_2018} superan nuestra propuesta.
-
-
