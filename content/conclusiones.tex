@@ -1,3 +1,99 @@
 \chapter{Conclusiones}
 
-ABCDEF
+En este trabajo se estudia la tarea de clasificación multi-etiquetas en
+ambientes de flujos continuos de datos. Por un lado, se aplican métodos de
+generación de instancias sintéticas para obtener \textit{streamings} de
+múltiples etiquetas que sean representativos de escenarios del mundo real. A los
+parámetros de configuración ya existentes, se le agrega la posibilidad de
+generar instancias nuevas para una colección dada, teniendo en cuenta la matriz
+de co-ocurrencia de etiquetas. A su vez, se realiza una comparativa de
+rendimientos entre algoritmos de \acrshort{mll} bajo un conjunto de métricas de
+evaluación seleccionadas y siguiendo las metodologías y directivas utilizadas
+por otros autores del campo de estudio, a fin de conocer la capacidad predictiva
+de los modelos sobre distintos escenarios de \textit{streamings}. Este análisis
+derivó en el diseño y desarrollo de una nueva solución de ensambles del tipo de
+votación por mayoría, llamada \acrshort{efmp}, que toma como clasificadores base
+a un conjunto fijo de algoritmos clásicos del área y clasifica una instancia de
+acuerdo a un rendimiento previo, penalizando a aquellos clasificadores que no
+han acertado la clase correcta de una etiqueta.
+
+Con respecto a la generación de flujos continuos sintéticos, se puede aseverar
+que los métodos disponibles cuentan con parámetros de configuración que permiten
+generar datos cercanos a los del mundo real, por lo menos con respecto a los
+fenómenos aquí analizados, que son los de el sesgo de etiquetas, la distribución
+de etiquetas, la relación entre etiquetas y el espacio de atributos.  Además, la
+inclusión de un parámetro más para indicar la matriz de co-ocurrencia de
+etiquetas ha dado resultados que vale la pena mencionar. En primer lugar, el uso
+de la matriz derivada de la colección 20ng ha contribuido a generar un
+\textit{stream} sintético con mayor cercanía al del método de MOA para todos los
+fenómenos estudiados. Incluso en el estudio del sesgo de etiquetas para Enron se
+observa una curva de sesgo más próxima a la de la colección original. De
+cualquier manera, para esta última colección y para Mediamill no es posible
+observar una mejoría significativa en cuanto a la distribución de etiquetas con
+respecto a MOA, y por lo tanto, no es posible determinar con certeza que un
+método sea mejor que el otro para simular estos datos. En cuanto al análisis de
+la relación entre etiquetas se observa que el uso de la matriz de co-ocurrencias
+ha contribuido a aproximar con mayor cercanía la combinación entre pares de
+etiquetas de los datos originales para las tres colecciones estudiadas. Además,
+si bien la frecuencia de co-ocurrencia es visiblemente menor a la de las
+colecciones originales, es de notar que la cercanía es mayor en comparación al
+método ya conocido de \textit{MOA}\@. Por último, es interesante analizar si la
+mejoría en la generación de instancias sintéticas para 20ng se extiende a otras
+colecciones de tipo A, es decir, colecciones donde la mayoría de las instancias
+tienen una única etiqueta. En lo que respecta a este estudio es posible observar
+que la similitud de los flujos continuos sintéticos ha sido mayor para las
+colecciones de tipo A (20ng) que para las de tipo B (Enron y Mediamill). No
+obstante, es necesario realizar más estudios para confirmarlo.  En definitiva,
+se puede concluir que los métodos existentes contribuyen a obtener datos que son
+lo suficientemente representativos de datos del mundo real como para conducir
+estudios y evaluaciones de algoritmos de \acrshort{mll} en ambientes de
+\textit{streamings}.
+
+En cuanto a la tarea de clasificación, se llevaron a cabo evaluaciones
+multi-etiquetas bajo una serie de métricas comúnmente utilizadas en tareas de
+\acrshort{mll} y sobre colecciones de datos bien conocidas en la literatura.
+Para ello, se seleccionaron algoritmos clásicos del área, soluciones de
+ensambles y dos versiones del algoritmo \acrshort{efmp}, que han permitido
+examinar las fortalezas y debilidades de cada modelo de clasificación. Los
+resultados muestran que el algoritmo propuesto logra heredar el rendimiento
+predictivo de métodos \textit{baselines} como \acrshort{mlht}, \acrshort{br} y
+\acrshort{cc} y, a partir de ello, obtener valores en las métricas de evaluación
+que son competitivos con respecto a los métodos existentes. En la comparativa
+con otras soluciones de ensambles los resultados son favorecedores para los
+algoritmos presentados. \acrshort{efmp} y su variante producen mejores valores
+para buena parte de las métricas basadas en ejemplos y etiquetas
+(\textit{exact-match}, \textit{accuracy}, precisión, \textit{recall} y
+\textit{f1}) e incluso mejoran la eficiencia de todos a excepción de
+\acrshort{ebr} para Mediamill. También en varios casos \acrshort{efmp} superó a
+los \textit{baselines}. Bajo la métrica de \textit{f1} basada en ejemplos, esta
+propuesta obtiene los valores más altos para 20ng y Enron y es el segundo mejor
+para Mediamill; bajo la métrica de \textit{f1} macro, \acrshort{efmp} es la
+mejor para 20ng y \acrshort{efmp2} para Mediamill; y bajo la métrica de
+\textit{f1} micro, \acrshort{efmp} supera a todas las demás propuesta para 20ng
+y Enron.
+
+También en este trabajo se conduce una comparativa entre los resultados aquí
+presentados y los de otros autores en sus publicaciones. En este sentido, los
+resultados son mixtos. En algunos escenarios, como por ejemplo Enron, nuestra
+propuesta logra superar e incluso duplicar el rendimiento de otros algoritmos,
+pero en otros escenarios, como Mediamill o 20ng, los resultados son menos
+favorecedores. De cualquier modo, las soluciones propuestas son competitivas en
+todos los casos.
+
+Una cuestión que vale la pena mencionar con respecto a soluciones de ensambles
+como las aquí propuestas tiene que ver con el rendimiento bajo métricas de
+eficiencia como el tiempo de ejecución y el tamaño del modelo. Se puede
+observar, a partir de los resultados presentados, que el uso de métodos de
+computabilidad más compleja tienden a lanzar mejores resultados, pero acarrean
+un mayor costo en cuanto a recursos. Esto debe ser considerado al momento de
+diseñar aplicaciones del mundo real donde la disponibilidad de recursos puede
+ser muy limitada y podría ser adecuado optar por un modelo más simple.
+
+En conclusión, la clasificación multi-etiquetas representa un gran desafío en sí
+mismo, y que se incrementa en un contexto de \textit{streamings} de datos. A
+esto se suma la baja disponibilidad de colecciones públicas que tengan las
+dimensiones necesarias para conducir experimentos acordes a escenarios del mundo
+real. Bajo estas restricciones, todas las mejoras tanto en la generación de
+instancias sintéticas como en el rendimiento de algoritmos de clasificación son
+un aporte muy valioso al campo, en vías de incrementar la capacidad de
+predicción de los modelos.
