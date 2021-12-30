@@ -1,4 +1,5 @@
 \chapter{Introducción}
+\label{chapter:introduccion}
 
 \section{Fundamentos}
 
@@ -447,4 +448,54 @@ y determinar en qué medida son aptos o no para este tipo de ambientes.
 
 \section{Organización del Trabajo}
 
-\todo[inline]{Describir las distintas secciones del trabajo}
+El presente escrito de tesis sigue la estructura clásica de proyecto de
+investigación aplicado. Para comenzar, se brinda el marco teórico en el que se
+sitúa el trabajo (capítulo~\ref{chapter:preliminares}), luego se describe la
+metodología a seguir (capítulo~\ref{chapter:metodologia}), se presentan los
+experimentos y sus resultados (capítulo~\ref{chapter:experimentos}), y
+finalmente, se trazan las conclusiones arribadas y las futuras líneas de
+investigación (capítulo~\ref{chapter:conclusiones}). A continuación, se describe
+con más detalle cada capítulo del escrito:
+
+\begin{description}
+
+	\item{Capítulo~\ref{chapter:preliminares}. \nameref{chapter:preliminares}}:
+	      En este capítulo se sitúa el trabajo dentro del campo de estudio general
+	      y se introducen los conceptos claves, tanto de la tarea de clasificación
+	      multi-etiquetas como también de los ambientes de flujos continuos, para
+	      comprender los subsecuentes capítulos. La sección de clasificación
+	      \acrshort{mll} cuenta con una definición formal de la tarea, presenta
+	      los tipos de algoritmos existentes, junto con algunos de sus principales
+	      exponentes y describe métricas de evaluación utilizadas para evaluar los
+	      resultados de la clasificación.  Posteriormente, se da una descripción
+	      detallada del concepto de flujo continuo y se extienden los conceptos
+	      presentados de \acrshort{mll} para contextos de este tipo.
+
+	\item{Capítulo~\ref{chapter:metodologia}. \nameref{chapter:metodologia}}: En
+	      este capítulo se describe la metodología aplicada para entrenar y
+	      clasificar modelos de \acrshort{mll} en ambientes de \textit{streaming}
+	      así como también la generación y análisis de datos sintéticos. A su vez,
+	      se exponen las técnicas propuestas que son propias y originarias de este
+	      trabajo, lo que incluye, por un lado, un método que provee una serie de
+	      parámetros para generar datos sintéticos a partir de una colección dada
+	      y, por otro, una nueva solución de ensambles de votación por mayoría.
+
+	\item{Capítulo~\ref{chapter:experimentos}. \nameref{chapter:experimentos}}:
+	      En este capítulo se emprende la definición de los experimentos,
+	      incluyendo las colecciones de datos y los algoritmos seleccionados para
+	      la evaluación, así como también el hardware y software utilizado. Luego
+	      se exponen los resultados, incluyendo tablas y gráficos que facilitan la
+	      observación y comparación entre escenarios. Para los experimentos
+	      concernientes a la generación sintética, se estudian los fenómenos de
+	      colecciones multi-etiquetas y su aparición en los nuevos datos. Para los
+	      experimentos de evaluación de algoritmos, se analizan los resultados de
+	      cada métrica de evaluación para las pruebas ejecutadas en nuestro
+	      ambiente y luego se comparan contra los resultados de otros autores de
+	      la literatura en sus respectivos escritos.
+
+	\item{Capítulo~\ref{chapter:conclusiones}. \nameref{chapter:conclusiones}}:
+	      En este capítulo se abordan las conclusiones obtenidas una vez
+	      desarrollados los objetivos y presentado los resultados, y se definen
+	      las líneas de investigación futuras.
+
+\end{description}
