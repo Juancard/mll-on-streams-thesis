@@ -14,7 +14,7 @@ de los modelos sobre distintos escenarios de \textit{streamings}. Este análisis
 derivó en el diseño y desarrollo de una nueva solución de ensambles del tipo de
 votación por mayoría, llamada \acrshort{efmp}, que toma como clasificadores base
 a un conjunto fijo de algoritmos clásicos del área y clasifica una instancia de
-acuerdo a un rendimiento previo, penalizando a aquellos clasificadores que no
+acuerdo a su rendimiento previo, penalizando a aquellos clasificadores que no
 han acertado la clase correcta de una etiqueta.
 
 Con respecto a la generación de flujos continuos sintéticos, se puede aseverar
@@ -43,11 +43,11 @@ colecciones de tipo A, es decir, colecciones donde la mayoría de las instancias
 tienen una única etiqueta. En lo que respecta a este estudio es posible observar
 que la similitud de los flujos continuos sintéticos ha sido mayor para las
 colecciones de tipo A (20ng) que para las de tipo B (Enron y Mediamill). No
-obstante, es necesario realizar más estudios para confirmarlo.  En definitiva,
-se puede concluir que los métodos existentes contribuyen a obtener datos que son
-lo suficientemente representativos de datos del mundo real como para conducir
-estudios y evaluaciones de algoritmos de \acrshort{mll} en ambientes de
-\textit{streamings}.
+obstante, es necesario realizar más estudios para confirmar este patrón.  En
+definitiva, se puede concluir que los métodos existentes contribuyen a obtener
+datos que son lo suficientemente representativos de datos del mundo real como
+para conducir estudios y evaluaciones de algoritmos de \acrshort{mll} en
+ambientes de \textit{streamings}.
 
 En cuanto a la tarea de clasificación, se llevaron a cabo evaluaciones
 multi-etiquetas bajo una serie de métricas comúnmente utilizadas en tareas de
@@ -76,9 +76,9 @@ También en este trabajo se conduce una comparativa entre los resultados aquí
 presentados y los de otros autores en sus publicaciones. En este sentido, los
 resultados son mixtos. En algunos escenarios, como por ejemplo Enron, nuestra
 propuesta logra superar e incluso duplicar el rendimiento de otros algoritmos,
-pero en otros escenarios, como Mediamill o 20ng, los resultados son menos
-favorecedores. De cualquier modo, las soluciones propuestas son competitivas en
-todos los casos.
+tales como iSOUP-RT o ML-SAM-kNN\@. En otros escenarios, como Mediamill o 20ng,
+los resultados son menos favorecedores. De cualquier modo, las soluciones
+propuestas son competitivas en todos los casos.
 
 Una cuestión que vale la pena mencionar con respecto a soluciones de ensambles
 como las aquí propuestas tiene que ver con el rendimiento bajo métricas de
@@ -97,3 +97,60 @@ real. Bajo estas restricciones, todas las mejoras tanto en la generación de
 instancias sintéticas como en el rendimiento de algoritmos de clasificación son
 un aporte muy valioso al campo, en vías de incrementar la capacidad de
 predicción de los modelos.
+
+\section{Trabajos Futuros}
+
+Habiendo alcanzado la etapa final del proyecto, se plantean una serie de
+interrogantes que podrían derivar en lineas de trabajo futuras:
+
+\begin{itemize}
+
+	\item Las evaluaciones de algoritmos \acrshort{mll} aquí realizadas pueden
+	      ser complementadas con estudios que saquen provecho de datos a gran
+	      escala, esto es, usando flujos continuos sintéticos y multi-etiquetados
+	      generados con los métodos aquí analizados. Esto permitiría llevar a cabo
+	      investigaciones en un contexto de \textit{streaming} más cercano a los
+	      del mundo real.
+
+	\item Una característica preponderante en los ambientes de
+	      \textit{streamings} es la existencia de cambios de concepto en los
+	      datos, lo que significa que los datos pueden variar de distribución a
+	      lo largo del tiempo y de manera impredecible. Es por ello que sería de
+	      interés generar escenarios de flujos continuos que produzcan cambios
+	      de concepto y realizar evaluaciones de los algoritmos. A su vez, se
+	      podrían añadir a las pruebas otros algoritmos ya diseñados a este fin
+	      para enriquecer el estudio.
+
+	\item Con respecto a las variantes de \acrshort{efmp} aquí presentadas, es
+	      de interés estudiar su rendimiento en ambientes que presenten cambios
+	      de concepto e implementar técnicas que mejoren su performance en dicho
+	      contexto. A este fin, una posible linea de investigación es añadir la
+	      posibilidad de que el algoritmo de ensambles reemplace de manera
+	      dinámica a aquellos clasificadores base menos eficaces durante la fase
+	      de entrenamiento, de manera tal que al producirse un cambio de
+	      concepto, el modelo pueda adaptarse en una ventana de tiempo deseable.
+	      Esta técnica es similar a la aplicada por los modelos de
+	      \acrshort{dwm}.
+
+	\item Se ha mencionado anteriormente que el uso de la matriz de
+	      co-ocurrencias en la generación de datos sintéticos puede ser más
+	      conveniente cuando se trata de aproximar colecciones de tipo A como
+	      20ng. Para confirmar esta suposición, un enfoque posible es conducir
+	      experimentos con más colecciones de este tipo y comparar los resultados
+	      contra otros flujos sintéticos generados con colecciones de tipo B.
+
+	\item El análisis de las evaluaciones realizadas por las variantes de
+	      \acrshort{efmp} arrojó resultados sub-óptimos para las métricas de
+	      eficiencia, tal como sucedió con otros modelos de ensambles utilizados
+	      en este trabajo. Por lo tanto, es de interés buscar caminos que
+	      conduzcan a mejorar la velocidad de ejecución en la fase de
+	      entrenamiento. En principio, sería viable adaptar la implementación de
+	      los algoritmos para que sean ejecutables bajo una arquitectura
+	      distribuida y paralela, donde cada clasificador base pueda realizar sus
+	      predicciones de manera independiente, es decir, sin esperar que finalice
+	      el clasificador anterior en forma secuencial. De esta forma, el tiempo
+	      de ejecución en la predicción de los clasificadores base sería igual al
+	      tiempo de aquel clasificador más lento, lo que podría derivar en una
+	      mejora significativa en la eficiencia.
+
+\end{itemize}
