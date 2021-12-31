@@ -21,8 +21,8 @@ han acertado la clase correcta de una etiqueta.
 Con respecto a la generación de flujos continuos sintéticos, se puede aseverar
 que los métodos disponibles cuentan con parámetros de configuración que permiten
 generar datos cercanos a los del mundo real, por lo menos con respecto a los
-fenómenos aquí analizados, que son los de sesgo de etiquetas, distribución
-de etiquetas, relación entre etiquetas y espacio de atributos.  Además, la
+fenómenos aquí analizados, que son los de sesgo de etiquetas, distribución de
+etiquetas, relación entre etiquetas y espacio de atributos.  Además, la
 inclusión de un parámetro más para indicar la matriz de co-ocurrencia de
 etiquetas ha dado resultados que vale la pena mencionar. En primer lugar, el uso
 de la matriz derivada de la colección 20ng ha contribuido a generar un
@@ -40,15 +40,16 @@ si bien la frecuencia de co-ocurrencia es visiblemente menor a la de las
 colecciones originales, es de notar que la cercanía es mayor en comparación al
 método ya conocido de \textit{MOA}\@. Por último, es interesante analizar si la
 mejoría en la generación de instancias sintéticas para 20ng se extiende a otras
-colecciones de tipo A, es decir, colecciones donde la mayoría de las instancias
-tienen una única etiqueta. En lo que respecta a este estudio es posible observar
-que la similitud de los flujos continuos sintéticos ha sido mayor para las
-colecciones de tipo A (20ng) que para las de tipo B (Enron y Mediamill). No
-obstante, es necesario realizar más estudios para confirmar este patrón.  En
-definitiva, se puede concluir que los métodos existentes contribuyen a obtener
-datos que son lo suficientemente representativos de datos del mundo real como
-para conducir estudios y evaluaciones de algoritmos de \acrshort{mll} en
-ambientes de \textit{streamings}.
+colecciones de tipo \comillas{A}, es decir, colecciones donde la mayoría de las
+instancias tienen una única etiqueta. En lo que respecta a este estudio es
+posible observar que la similitud de los flujos continuos sintéticos ha sido
+mayor para las colecciones de tipo \comillas{A} (20ng) que para las de tipo
+\comillas{B} (Enron y Mediamill). No obstante, es necesario realizar más
+estudios para confirmar este patrón.  En definitiva, se puede concluir que los
+métodos existentes contribuyen a obtener datos que son lo suficientemente
+representativos de datos del mundo real como para conducir estudios y
+evaluaciones de algoritmos de \acrshort{mll} en ambientes de
+\textit{streamings}.
 
 En cuanto a la tarea de clasificación, se llevaron a cabo evaluaciones
 multi-etiquetas bajo una serie de métricas comúnmente utilizadas en tareas de
@@ -135,10 +136,11 @@ interrogantes que podrían derivar en líneas de trabajo futuras:
 
 	\item Se ha mencionado anteriormente que el uso de la matriz de
 	      co-ocurrencias en la generación de datos sintéticos puede ser más
-	      conveniente cuando se trata de aproximar colecciones de tipo A como
-	      20ng. Para confirmar esta suposición, un enfoque posible es conducir
-	      experimentos con más colecciones de este tipo y comparar los resultados
-	      contra otros flujos sintéticos generados con colecciones de tipo B.
+	      conveniente cuando se trata de aproximar colecciones de tipo
+	      \comillas{A} como 20ng. Para confirmar esta suposición, un enfoque
+	      posible es conducir experimentos con más colecciones de este tipo y
+	      comparar los resultados contra otros flujos sintéticos generados con
+	      colecciones de tipo \comillas{B}.
 
 	\item El análisis de las evaluaciones realizadas por las variantes de
 	      \acrshort{efmp} arrojó resultados sub-óptimos para las métricas de
