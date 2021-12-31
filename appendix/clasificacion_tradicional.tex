@@ -308,7 +308,9 @@ de la entropía y se formula como:
 Finalmente, el atributo de mayor razón de ganancia es seleccionado como criterio
 de corte y se continúa el cálculo con los siguientes subnodos.
 
-\subsubsection{Ensambles} \todo{Figura de ensamble}
+\subsubsection{Ensambles}
+\label{ensambles_intro}
+\todo{Figura de ensamble}
 
 Los ensambles son un conjunto de clasificadores cuyas salidas son combinadas
 entre sí con el objetivo de realizar mejores predicciones que cualquiera de
@@ -397,20 +399,17 @@ tipo \comillas{\textit{stacked}}.
 
 Una de las tareas a tener en cuenta durante el entrenamiento de un ensamble es
 la de combinar las salidas de cada modelo en una salida final. La estrategia más
-común y simple es la de votación por mayoría, la cual normalmente es aplicada por los
-métodos de \textit{bagging}. No obstante, existen múltiples métodos de combinar
-los votos, e incluso no siempre un ensamble de tipo \textit{bagging} debe
-aplicar esta estrategia. Por ejemplo, algunos clasificadores pueden decidir
+común y simple es la de votación por mayoría, la cual normalmente es aplicada
+por los métodos de \textit{bagging}. No obstante, existen múltiples métodos de
+combinar los votos, e incluso no siempre un ensamble de tipo \textit{bagging}
+debe aplicar esta estrategia. Por ejemplo, algunos clasificadores pueden decidir
 producir una salida solo en el caso de que más de la mitad de ellos coincidan, o
 incluso ser más restrictivos y obligar a que la coincidencia sea total. El
 enfoque de \textit{boosting} por su parte, pondera al voto de acuerdo a los
 pesos que calcula, dando predominio a determinadas instancias.  También se suele
 dar un mayor peso a determinados clasificadores por sobre otros. Este tipo de
-métodos se los denomina \comillas{mayoría de voto ponderada} y pueden llevar a
-un rendimiento superior si es aplicada en el escenario adecuado.
-
-\todo[inline]{Aplicaciones de ensambles en la literatura}
-
+métodos se los denomina \comillas{votación por mayoría ponderada} y pueden
+llevar a un rendimiento superior si es aplicada en el escenario adecuado.
 
 \subsection{Evaluación}
 \label{evaluacion_intro}

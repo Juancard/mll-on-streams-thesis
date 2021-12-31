@@ -100,8 +100,9 @@ qué punto cada ejemplo posee más de una etiqueta. Algunas de ellas son:
 Como se había anticipado en la sección~\ref{intro_mll}, la tarea de aprendizaje
 sobre datos multi-etiquetados puede ser encarada siguiendo dos grandes enfoques,
 llamados \comillas{Transformación del Problema} y \comillas{Adaptación del
-	Algoritmo}. A continuación se describen ambos enfoques y algunos de sus
-algoritmos más representativos.
+	Algoritmo}, o a través de soluciones de ensamble que combinan este tipo de
+modelos. A continuación se describen ambos enfoques y algunos de sus algoritmos
+más representativos.
 
 \subsubsection{Transformación del Problema}
 
@@ -251,7 +252,32 @@ introduce es el uso de un perceptrón adaptativo en las hojas del árbol, lo cua
 le da la versatilidad de poder trabajar tanto con problemas de clasificación
 como de regresión.
 
-\todo[inline]{Explicación de enfoques de ensambles? (ebr, ecc, elp)}
+\subsubsection{Ensambles de Clasificadores}
+
+El enfoque de ensambles se presenta en el anexo~\ref{ensambles_intro}. En
+resumidas cuentas, se trata de una técnica que busca mejorar el rendimiento de
+clasificadores individuales, valiéndose de la existencia de sesgos o
+\textit{bias} en ellos. En lo que respecta a la tarea de \acrshort{mll}, es uno
+de los enfoques más utilizados~\cite{herrera_multilabel_2016} y vale la pena
+mencionar algunos de ellos.  \citeauthor{oza_online_2005} introdujo los modelos
+de \textit{Oza bagging}~\cite{oza_online_2005}, los cuales extienden la técnica
+de \textit{bagging} para ser utilizada en ambientes de \textit{streamings}. Esto
+lo consiguen a partir de asignar a cada clasificador base la instancia arribada,
+pero en una cantidad de veces determinada por una distribución de
+\textit{poisson}, con $\lambda = 1$. Cada miembro del ensamble, entonces,
+recibirá una cantidad de copias distinta y esto es lo que determina la
+diversidad entre los miembros. Ejemplos de este tipo son los de \acrfull{ebr} y
+\acrfull{ecc}~\cite{read_classifier_2011}.  \citeauthor{kolter_dynamic_2007},
+por su parte, presentaron el modelo \acrfull{dwm}~\cite{kolter_dynamic_2007}, el
+cual genera $n$ clasificadores base a partir de un mismo algoritmo, los pondera
+en base a su rendimiento previo y aplica mayoría de voto como técnica de
+selección de etiquetas. Otra de sus cualidades es la de eliminar a los
+clasificadores menos performantes de manera dinámica, lo cual hace que sea una
+solución robusta en ambientes cambiantes, como los de \textit{streamings}.  Por
+último, cabe destacar el modelo \acrshort{gooweml}~\cite{buyukcakir_novel_2018},
+que usa modelos espaciales para asignar un coeficiente de confianza a cada
+clasificador base del ensamble y así lograr una ponderación dinámica en cada
+clasificación.
 
 \subsection{Evaluación}
 \label{mll_evaluacion}
