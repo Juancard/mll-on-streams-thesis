@@ -4,8 +4,11 @@
 En este capítulo se presenta el marco teórico de este trabajo, dando un panorama
 general de cada una de las disciplinas abordadas e introduciendo los conceptos
 básicos y fundamentales para entender el proyecto. Se comienza con la definición
-de la taxonomía del campo de estudio, luego \todo{describir las siguientes
-	secciones}
+de la taxonomía del campo de estudio y luego se abordan los conceptos claves de
+la tarea de clasificación multi-etiquetas y su aplicación en ambientes de flujos
+continuos. Muchos de los algoritmos y métricas de evaluación son parte de la
+configuración experimental, y por tanto, serán mencionados nuevamente en
+capítulos posteriores.
 
 \section{Taxonomía del Campo de Estudio}
 
@@ -115,9 +118,9 @@ El algoritmo de Relevancia Binaria, conocido como \textit{\acrlong{br}} en la
 literatura, es un enfoque que consiste en descomponer la tarea de clasificación
 \acrshort{mll} en $\left\|q\right\|$ clasificadores binarios, independientes y
 de etiqueta única.  A partir de esta transformación se puede seleccionar
-cualquier algoritmo de clasificación como clasificador base del problema (ver
-los algoritmos presentados en ~\ref{clasificacion_algoritmos}).  Cada
-clasificador binario $g_{j}$ es entrenado con todas las instancias de la
+cualquier algoritmo de clasificación tradicional como clasificador base del
+problema (ver los algoritmos presentados en~\ref{clasificacion_algoritmos}).
+Cada clasificador binario $g_{j}$ es entrenado con todas las instancias de la
 colección, pero incluyendo solo la etiqueta $j$, la cual se activa o desactiva
 de acuerdo a si es relevante a la instancia. Luego la predicción de una
 instancia desconocida se realiza combinando las salidas de cada clasificador
@@ -131,9 +134,9 @@ Llegado el caso en que ninguno de los clasificadores retornen etiquetas activas,
 el conjunto $Y$ será vacío.
 
 Este enfoque se dice que es de primer orden (ver sección~\ref{estrategias_mll})
-y no tiene en cuenta la correlación o interdependencias entre etiquetas. Este es
-uno de los principales inconvenientes de este algoritmo porque, en este tipo de
-problemas de \acrshort{mll}, es usual hallar que determinadas etiquetas se
+y no tiene en cuenta las correlaciones o interdependencias entre etiquetas. Este
+es uno de los principales inconvenientes de este algoritmo porque, en este tipo
+de problemas de \acrshort{mll}, es usual hallar que determinadas etiquetas se
 activan en conjunto con mayor probabilidad. Pese a ello, \acrshort{br} es un
 enfoque muy utilizado \cite{zhang_review_2014} ya que es simple de implementar,
 intuitivo y computacionalmente poco costoso en comparación con algoritmos que sí
@@ -157,18 +160,17 @@ puede observar, lo que se produce es un \comillas{encadenamiento} de
 clasificadores, el cual no es accidental y tiene como fin conservar la
 dependencia entre etiquetas: en el entrenamiento se van acumulando las salidas
 de los clasificadores anteriores de tal manera que el siguiente clasificador
-absorbe la correlación entre las etiquetas de los anteriores clasificadores.
+absorbe la correlación entre las etiquetas de los anteriores.
 
 Cabe notar que en esta técnica cobra especial importancia el ordenamiento de los
 clasificadores, ya que este orden tiene un impacto directo sobre el resultado de
-la predicción. En otras palabras, si el ordenamiento de clasificadores se
-modifica, el modelo final otorgará resultados diferentes. Para salvar esta
-dificultad se han propuesto modelos como \acrfull{ecc}. El mismo genera un
-conjunto de modelos de \acrshort{cc} con distintos ordenamientos y entrenados
-con diversos subconjuntos de datos, generados con reemplazo o no. Durante la
-predicción, cada cadena produce un conjunto de etiquetas, que son los votos, y
-la salida final será computada por un algoritmo que combine cada salida
-individual.
+la predicción. En otras palabras, si el ordenamiento se modifica, el modelo
+final otorgará resultados diferentes. Para salvar esta dificultad se han
+propuesto modelos como \acrfull{ecc}. El mismo genera un conjunto de modelos de
+\acrshort{cc} con distintos ordenamientos y entrenados con diversos subconjuntos
+de datos, generados con reemplazo o no. Durante la predicción, cada cadena
+produce un conjunto de etiquetas, que son los votos, y la salida final será
+computada por un algoritmo que combine cada salida individual.
 
 \paragraph{\acrfull{lp}}
 
@@ -176,25 +178,23 @@ El conjunto de potencias de etiquetas o \textit{\acrlong{lp}}
 \cite{tsoumakas_random_2011} es una técnica que se encarga de transformar el
 problema de \acrshort{mll} en uno de clasificación multi-clase y así poder
 abordarlo con algoritmos de este tipo. La clasificación multi-clase es un
-enfoque usado para tratar con ejemplos en donde la etiqueta es única, pero cuenta
-con más de dos clases. Un ejemplo de este tipo de problemas es el de análisis de
-sentimiento de texto, en donde las clases pueden ser \comillas{positivo},
-\comillas{negativo} y \comillas{neutral}.
-
-En \acrshort{lp} cada etiqueta indica el subconjunto de etiquetas de la
-instancia. Esto es beneficioso en cuanto a que se logra preservar la dependencia
-entre etiquetas. Sin embargo, el modelo tiene algunas dificultades.  En primer
-lugar, el espacio de clases posibles es exponencial y su cantidad de clases
-puede llegar a ser de $2^{\left\|q\right\|}$ como máximo. A su vez, pueden
-llegar a arribar ejemplos con una combinación de etiquetas que el modelo no
-recibió durante el entrenamiento, por lo cual no logra generalizar lo suficiente
-y se lo considera un modelo incompleto. A fin de sobrepasar estas complicaciones
-se desarrolló la técnica de \comillas{Conjuntos Podados} o
-\comillas{\acrfull{ps}}. La misma consiste en preservar para la clasificación
-aquellos subconjuntos de etiquetas que son más frecuentes en la colección, y
-eliminar los demás. Con esto se logra disminuir considerablemente el espacio de
-clases y disminuye la complejidad computacional, tanto durante el entrenamiento
-como durante la predicción.
+enfoque usado para tratar con ejemplos en donde la etiqueta es única, pero
+cuenta con más de dos clases. Un ejemplo de este tipo de problemas es el de
+análisis de sentimiento de texto, en donde las clases pueden ser
+\comillas{positivo}, \comillas{negativo} y \comillas{neutral}. En \acrshort{lp}
+cada etiqueta indica el subconjunto de etiquetas de la instancia. Esto es
+beneficioso en cuanto a que se logra preservar la dependencia entre etiquetas.
+Sin embargo, el modelo tiene algunas dificultades.  En primer lugar, el espacio
+de clases posibles es exponencial y su cantidad de clases puede llegar a ser de
+$2^{\left\|q\right\|}$ como máximo. A su vez, pueden llegar a arribar ejemplos
+con una combinación de etiquetas que el modelo no recibió durante el
+entrenamiento, por lo cual no logra generalizar lo suficiente y se lo considera
+un modelo incompleto. A fin de sobrepasar estas complicaciones se desarrolló la
+técnica de \comillas{Conjuntos Podados} o \comillas{\acrfull{ps}}. La misma
+consiste en preservar para la clasificación aquellos subconjuntos de etiquetas
+que son más frecuentes en la colección, y eliminar los demás. Con esto se logra
+disminuir considerablemente el espacio de clases y disminuye la complejidad
+computacional, tanto durante el entrenamiento como durante la predicción.
 
 \subsubsection{Adaptación del Algoritmo}
 
@@ -225,9 +225,9 @@ datos previamente almacenados, el algoritmo de \acrshort{ht} espera a tener una
 cantidad suficiente de instancias para realizar el corte, con un cierto grado de
 confianza. Esto significa que ya no es necesario guardar todos los datos de la
 colección y que mantener una serie de estadísticas es suficiente para realizar
-la clasificación. Otra de las propiedades a destacar de este método es que en
-teoría se puede entrenar un árbol cuyo rendimiento se aproxime al generado en un
-ambiente de \textit{batch}, con la suficiente cantidad de datos
+la clasificación. Otra de las propiedades a destacar de este método es que, en
+la teoría, se puede entrenar un árbol cuyo rendimiento se aproxime al generado
+en un ambiente de \textit{batch}, con la suficiente cantidad de datos
 \cite{bifet_machine_2018}.
 
 A partir de esto, y buscando sacar provecho de las ventajas mencionadas,
