@@ -22,9 +22,8 @@ consulta.
 Estos problemas se suelen categorizar en aprendizaje supervisado o no
 supervisado, de acuerdo a si se conoce o no de antemano el concepto o etiqueta
 que define a los datos. Se desarrollará más sobre este punto en las próximas
-secciones \todo{expandir la definición de supervisada vs no supervisada}. De
-entre los problemas de aprendizaje supervisado se destaca aquí el de
-clasificación, el cual será descrito a continuación.
+secciones. De entre los problemas de aprendizaje supervisado se destaca aquí el
+de clasificación, el cual será descrito a continuación.
 
 \begin{figure}
 	\includegraphics[width=0.66\linewidth]{figures/digits_recognition_v2.png}
@@ -310,7 +309,6 @@ de corte y se continúa el cálculo con los siguientes subnodos.
 
 \subsubsection{Ensambles}
 \label{ensambles_intro}
-\todo{Figura de ensamble}
 
 Los ensambles son un conjunto de clasificadores cuyas salidas son combinadas
 entre sí con el objetivo de realizar mejores predicciones que cualquiera de
@@ -582,13 +580,14 @@ independencia en los datos que derivará en un mayor grado de generalización en
 el modelo.
 
 Por contrapartida, el enfoque de \textit{Holdout} tiene la limitación de que
-para lograr generalizar requiere de un número de instancias considerable.
-\todo{citar fuente} Esta idea proviene del hecho de que muy pocos datos en el
-conjunto de entrenamiento puede derivar en predicciones pobres, pero, por el
-contrario, muy pocos datos en el conjunto de pruebas tampoco es recomendable, ya
-que podría resultar en medidas de rendimiento poco fiables. A esto se suma una
-de las dificultades más comunes en el área de aprendizaje automático: la falta
-de disponibilidad de colecciones grandes de datos del mundo real.
+para lograr generalizar requiere de un número de instancias
+considerable~\cite{bifet_machine_2018}. Esta idea proviene del hecho de que muy
+pocos datos en el conjunto de entrenamiento puede derivar en predicciones
+pobres, pero, por el contrario, muy pocos datos en el conjunto de pruebas
+tampoco es recomendable, ya que podría resultar en medidas de rendimiento poco
+fiables. A esto se suma una de las dificultades más comunes en el área de
+aprendizaje automático: la falta de disponibilidad de colecciones grandes de
+datos del mundo real.
 
 Por estas razones, ha tomado peso el uso de técnicas de muestreos de datos para
 reutilizar instancias de entrenamiento y de prueba. Una de ellas es la de
