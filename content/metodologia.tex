@@ -2,75 +2,113 @@
 \label{chapter:metodologia}
 
 Conforme a los objetivos planteados en la sección~\ref{intro_objetivos} se
-presentan las colecciones y algoritmos que serán evaluados junto con el
-escenario de flujos continuos diseñado a este fin.
+presentan las colecciones y algoritmos que serán evaluados junto con los
+escenarios de flujos continuos diseñados a este fin.
 
-Se seleccionan tres colecciones de datos de multi-etiquetas que han sido puntos
-de referencia en otros trabajos de investigación. Cada uno de ellos es
-transformado en un flujo continuo de datos que cumple con las características
-presentadas en la sección~\ref{stream_caracteristicas}. A su vez, se generan
-instancias sintéticas que sean fieles a las cualidades subyacentes de los datos
-originales.  Para ello, se ha diseñado un algoritmo basado en la implementación
-de \citeauthor{read_multi-label_2008} \cite{read_multi-label_2008}, pero que hace
-uso de la matriz de probabilidades condicionales entre pares de etiqueta para
-respetar sus interdependencias.
+En primer lugar, se seleccionaron tres colecciones de datos de multi-etiquetas
+que han sido puntos de referencia en otros trabajos de investigación. Cada una
+de ellas fue transformada en un flujo continuo de datos que cumple con las
+características presentadas en la sección~\ref{stream_caracteristicas}. A su
+vez, se generaron instancias sintéticas que sean fieles a las cualidades
+subyacentes de los datos originales.  Para ello, se diseñó un algoritmo basado
+en la implementación
+de~\citeauthor{read_multi-label_2008}~\cite{read_multi-label_2008}, y que además
+hace uso de un vector de probabilidades a priori de cada etiqueta, junto con una
+matriz de probabilidades condicionales entre pares de etiqueta, para respetar
+sus interdependencias subyacentes y así obtener datos más próximos a los
+originales. Adicionalmente, se realizó un estudio de los \textit{streamings}
+sintéticos generados en búsqueda de conocer su grado de proximidad o cercanía
+con respecto a sus respectivas colecciones originales. El estudio incluye una
+comparativa entre el método de~\citeauthor{read_multi-label_2008} y la
+alternativa aquí presentada. En la sección~\ref{generacion_flujos_sinteticos} se
+entrará más en detalle al respecto.
 
-La etapa de entrenamiento se lleva a cabo con algoritmos de clasificación
-multi-etiquetas que han sido adaptados a ambientes de flujos continuos para
-hacer frente a las cualidades incrementales inherentes a este contexto. Se
-seleccionan algoritmos de la familia de \comillas{Transformación del problema} y
-\comillas{Adaptación del algoritmo}, junto con soluciones de ensamble, a fines
-explorativos y para extender el conocimiento sobre sus fortalezas y debilidades.
-Los experimentos se realizan con algoritmos implementados en el lenguaje de
-programación Python.  Aquellos que no soportan datos de múltiples etiquetas han
-sido acondicionados a ese fin de acuerdo al diseño especificado en la literatura
-y consultando las respectivas implementaciones en otros lenguajes de
-programación, de hallarse estas disponibles al público.
+En segundo término, se diseñó e implementó el ambiente de pruebas para realizar
+el entrenamiento y evaluación de los algoritmos de \acrshort{mll} en ambientes
+de \textit{streaming}. La etapa de entrenamiento se llevó a cabo con algoritmos
+de clasificación multi-etiquetas que han sido adaptados a ambientes de flujos
+continuos para hacer frente a las cualidades incrementales inherentes a este
+contexto. Se seleccionaron algoritmos de la familia de \comillas{Transformación
+	del problema} y \comillas{Adaptación del algoritmo}, junto con soluciones de
+ensamble, a fines explorativos y para extender el conocimiento sobre sus
+fortalezas y debilidades.  Los experimentos se realizan con algoritmos
+implementados en el lenguaje de programación
+Python~\footnote{\url{https://www.python.org/}}.  Aquellos que no soportan datos
+de múltiples etiquetas han sido acondicionados a ese fin de acuerdo al diseño
+especificado en la literatura y consultando las respectivas implementaciones en
+otros lenguajes de programación, de hallarse estas disponibles al público. Todos
+los algoritmos utilizados para las pruebas se encuentran disponibles al
+público~\footnote{\url{https://github.com/Juancard/scikit-multiflow/}}.
 
-De manera complementaria, se diseña una solución de ensambles llamada
+De manera complementaria, se diseñó una solución de ensambles llamada
 \acrfull{efmp}, basada en las implementaciones existentes. La misma usa como
 clasificadores base tres algoritmos de \acrshort{mll} diferentes, que se
-mantienen fijos durante todo el entrenamiento.  Además, el ensamble mantiene una
-ponderación de cada clasificador de acuerdo a su rendimiento, penalizando por
-cada etiqueta mal clasificada, y la combinación de los votos se lleva a cabo por
-votación por mayoría ponderada. La implementación se basa en la presentada
-por~\citeauthor{kolter_dynamic_2007}~\cite{kolter_dynamic_2007}, quienes también
-ponderan los clasificadores, pero usan un único tipo de clasificador base y no
-contemplan problemas de múltiples etiquetas. Los experimentos se realizan con
-dos versiones, una de ellas se entrena con todas las instancias del subconjunto
-de entrenamientos y la otra tomando muestreos siguiendo la distribución de
-\textit{poisson}, tal como se realiza para ensambles del tipo de \textit{Oza
-	bagging} \cite{oza_online_2005}.
+mantienen fijos, es decir, el número de clasificadores base no cambia durante el
+entrenamiento. La diversidad está dada por los algoritmos miembros del ensamble
+y también por sus rendimientos previos. Con respecto a esto, el ensamble
+mantiene un vector de pesos para cada clasificador base que guarda el valor de
+ponderación de un miembro con respecto a una etiqueta. En caso de que una
+instancia sea mal clasificada, se penaliza el clasificador y se reduce dicho
+valor de ponderación. La combinación de los votos se lleva a cabo por votación
+por mayoría ponderada, teniendo en cuenta la predicción realizada por cada
+miembro y su respectivo vector de pesos. La implementación se basa en la
+presentada por~\citeauthor{kolter_dynamic_2007}~\cite{kolter_dynamic_2007}
+descripta en la sección~\ref{ensambles_mll}. Los autores también ponderan los
+clasificadores, pero usan un único algoritmo para generar los $n$ clasificadores
+base, y no contemplan problemas de múltiples etiquetas. Los experimentos se
+realizan con dos versiones, una de ellas se entrena con todas las instancias del
+subconjunto de entrenamiento y la otra tomando muestreos siguiendo la
+distribución de \textit{poisson}, tal como se realiza para ensambles del tipo de
+\textit{Oza bagging}~\cite{oza_online_2005}. En la
+sección~\ref{tecnica_algoritmo_ensamble} se describirá en detalle esta solución
+de ensambles. La implementación del algoritmo y sus variaciones también se
+encuentra disponible al
+público~\footnote{\url{https://github.com/Juancard/multi-label-classification-on-data-streamings}}.
 
-Para la etapa de evaluación se sigue la estrategia
-\comillas{\textit{Prequential}}, descrita en la
-sección~\ref{stream_evaluacion}, y se aplican métricas basadas en etiquetas y
-ejemplos, se mide la eficiencia de los modelos en términos de velocidad y
-espacio de almacenamiento y se analizan los resultados obtenidos.
+Para la etapa de evaluación se siguió la estrategia
+\comillas{\textit{Prequential}}, descrita en la sección~\ref{stream_evaluacion}.
+Para cada algoritmo se genera un modelo para entrenar y predecir sobre las tres
+colecciones de datos seleccionadas. Cada modelo realiza primero la predicción
+sobre una instancia sin sus etiquetas, luego se entrena con las etiquetas reales
+y se actualizan las métricas con las etiquetas inferidas y reales. Se aplicaron
+métricas de \acrshort{mll} basadas en etiquetas, en ejemplos, y además se mide
+la eficiencia de los modelos en términos de velocidad y espacio de
+almacenamiento. Con los resultados obtenidos, se realizó un estudio comparativo
+del rendimiento por cada colección, y se analiza cuáles son los modelos que
+mejores resultados han obtenido para cada caso.
 
 El marco metodológico de este proyecto se ajusta a los procedimientos efectuados
 previamente por otros investigadores de la literatura
 \cite{osojnik_multi-label_2017, sousa_multi-label_2018, buyukcakir_novel_2018,
-	zheng_survey_2020, read_scalable_2012}. Con ello se busca expandir el
+	zheng_survey_2020, read_scalable_2012}. Con ello se ha buscado expandir el
 conocimiento empírico de los algoritmos al mismo tiempo que proporcionar nuevos
-estudios que sean contrastables con los ya existentes.  Se destaca el trabajo de
-\citeauthor{read_scalable_2012} \cite{read_scalable_2012}, quienes analizan
+estudios que sean contrastables con los ya existentes. Dichos estudios también
+incluyen el análisis de las evaluaciones realizadas por el ensamble
+\acrshort{efmp} y su comparativa de rendimiento con respecto a otros algoritmos
+conocidos del campo. En cuanto a la generación sintética de datos, este proyecto
+siguió la linea de investigación presentada
+por~\citeauthor{read_generating_2009}. A este respecto, se generaron
+\textit{streams} sintéticos bajo el método presentado por dichos autores y bajo
+el método aquí presentado. Con dichos \textit{streams} se realizó un análisis de
+las cualidades y fenómenos hallados, siguiendo las directivas presentadas en su
+escrito~\cite{read_generating_2009}. Se destaca también el trabajo
+de~\citeauthor{read_scalable_2012}~\cite{read_scalable_2012}, quienes analizan
 algoritmos multi-etiquetas con flujos reales y sintéticos, pero a diferencia de
 este trabajo, generan instancias sintéticas para colecciones nuevas y sin
 basarse en colecciones reales específicas. La implementación del generador que
 usaron en sus experimentos se encuentra disponible al público
 \cite{read_moa_2012} y ha sido el punto de partida para desarrollar la técnica
 aquí propuesta.  \citeauthor{buyukcakir_novel_2018}, por su parte, no generan
-flujos sintéticos, pero conducen experimentos similares en lo que respecta al
-análisis de algoritmos, poniendo el foco en modelos de ensambles.  La
+flujos sintéticos, pero conducen experimentos similares en lo que respecta a la
+evaluación de algoritmos, poniendo el foco en modelos de ensambles.  La
 implementación de sus experimentos también ha sido liberada al
-público~\footnote{\url{https://github.com/abuyukcakir/gooweml}}.
-
-\section{Técnicas Propuestas}
-
-En esta sección se describen dos técnicas implementadas para este trabajo: un
-generador de instancias sintéticas para flujos continuos de datos y el diseño de
-una solución de ensambles para realizar clasificaciones.
+público~\footnote{\url{https://github.com/abuyukcakir/gooweml}} y fue uno de los
+modelos a tener en cuenta en el análisis de rendimiento de la solución de
+ensambles \acrshort{efmp}. Otros puntos de referencia para estudiar el algoritmo
+aquí presentado fueron los modelos iSOUP-MT e iSOUP-RT
+de~\citeauthor{osojnik_multi-label_2017}~\cite{osojnik_multi-label_2017} y
+ML-SAM-kNN
+de~\citeauthor{roseberry_multi-label_2018}~\cite{roseberry_multi-label_2018}.  \section{Técnicas Propuestas} En esta sección se describen dos técnicas implementadas para este trabajo: un generador de instancias sintéticas para flujos continuos de datos y el diseño de una solución de ensambles para realizar clasificaciones.
 
 \subsection{Generación de Flujos Sintéticos}
 \label{generacion_flujos_sinteticos}
@@ -125,10 +163,10 @@ El resultado es un vector $[P(E_{1}), P(E_{2}),\dots, P(E_{q})]$.
 
 A partir de $P(E_{j})$ se puede calcular la matriz condicional $\theta$ sobre
 los pares de etiquetas, esto es, $\theta_{j,k} = P(Y_{j} = 1 \mid Y_{k} = 1)$,
-donde  $1 \leq j \leq L$ y $1 \leq k \leq L$ con $j \neq k$. \todo{L es menor o igual a j en la bibliografía, es
-	un error?} Con el vector de probabilidades a priori y extrayendo las
-co-ocurrencias de cada par de etiquetas en toda la colección, es posible obtener
-cada valor de la matriz $\theta$, aplicando la probabilidad condicional:
+donde  $1 \leq j \leq L$ y $1 \leq k \leq L$ con $j \neq k$. Con el vector de
+probabilidades a priori y extrayendo las co-ocurrencias de cada par de etiquetas
+en toda la colección, es posible obtener cada valor de la matriz $\theta$,
+aplicando la probabilidad condicional:
 
 \begin{equation}
 	P(Y_{j} = 1 \mid Y_{k} = 1) = \frac{P(Y_{k} = 1 \cap Y_{j} = 1)}{P(Y_{k})}
@@ -187,7 +225,7 @@ formales, hallar el término $P(y|x)$ tal que:
 	P(y|x) = P(x|y)P(y)
 \end{equation}
 
-Como el cálculo de la probabilidad conjunta es altamente compleja se define una
+Como el cálculo de la probabilidad conjunta es altamente complejo se define una
 función de mapeo $\zeta[a] \mapsto y_{a}$, donde $y_{a}$ es la combinación de
 etiquetas más probable para el atributo $a$.  La función $\theta$ se obtiene a
 través de muestreos sucesivos del generador de etiquetas, y guardando las $A$
@@ -209,6 +247,10 @@ a datos del mundo real, por lo tanto, la evaluación de los resultados se hará
 mediante un análisis de sus cualidades en relación con fenómenos hallados en
 datos reales (ver sección~\ref{mll_fenomenos}), y se contrastan los datos
 generados en este marco contra los producidos en el trabajo de referencia.
+
+La configuración y parametrización de los flujos continuos generados en el marco
+de este trabajo serán descriptos en detalle en el
+capitulo~\ref{chapter:experimentos}:\comillas{~\nameref{chapter:experimentos}}.
 
 % textidote: ignore begin
 \begin{center}
@@ -356,8 +398,7 @@ $Poisson(1)$ veces con dicha instancia. Esta técnica es conocida como
 tradicional de \textit{bagging} en \textit{batch}, cuando se entrena con
 ejemplos de distribución similar \cite{oza_online_2005}.
 
-\todo[inline]{explicar: como se adaptaron los algoritmos? el script usado para
-	entrenar y predecir? los archivos generados con los resultados? }
-
-\todo[inline]{Explicar más sobre el análisis y evaluación de los flujos
-	sintéticos??}
+En el próximo capítulo se retoma este algoritmo para profundizar sobre la
+configuración experimental y el ambiente de pruebas en el que fueron llevadas a
+cabo las fases de entrenamiento y evaluacion de este modelo, y de los demás
+algoritmos de referencia.
