@@ -19,14 +19,11 @@ capítulos posteriores.
 	\label{fig:campo_estudio}
 \end{figure}
 
-En pocas palabras, el presente trabajo de investigación se enmarca en las áreas
-de \textit{big data} y minería de datos, con aplicación en escenarios de
-\textit{streaming} o flujos continuos de datos y abordando clasificaciones
-multi-etiquetas.
-
-La figura~\ref{fig:campo_estudio} es un esquema que ilustra la taxonomía del
-campo de estudio y la interrelación entre las áreas de investigación
-involucradas.
+El presente trabajo de investigación se enmarca en las áreas de \textit{big
+	data} y minería de datos, con aplicación en escenarios de \textit{streaming} o
+flujos continuos de datos y abordando clasificaciones multi-etiquetas. La
+figura~\ref{fig:campo_estudio} es un esquema que ilustra la taxonomía del campo
+de estudio y la interrelación entre las áreas de investigación involucradas.
 
 \section{Clasificación Multi-etiquetas}
 
@@ -257,12 +254,14 @@ como de regresión.
 El enfoque de ensambles se presenta en el anexo~\ref{ensambles_intro}. En
 resumidas cuentas, se trata de una técnica que busca mejorar el rendimiento de
 clasificadores individuales, valiéndose de la existencia de sesgos o
-\textit{bias} en ellos. En lo que respecta a la tarea de \acrshort{mll}, es uno
-de los enfoques más utilizados~\cite{herrera_multilabel_2016} y vale la pena
-mencionar algunos de ellos.  \citeauthor{oza_online_2005} introdujo los modelos
-de \textit{Oza bagging}~\cite{oza_online_2005}, los cuales extienden la técnica
-de \textit{bagging} para ser utilizada en ambientes de \textit{streamings}. Esto
-lo consiguen a partir de asignar a cada clasificador base la instancia arribada,
+\textit{bias} en ellos, y explora esta diversidad en los modelos para amplificar
+los valores de las métricas de evaluación. En lo que respecta a la tarea de
+\acrshort{mll}, es uno de los enfoques más
+utilizados~\cite{herrera_multilabel_2016} y vale la pena mencionar algunos de
+ellos.  \citeauthor{oza_online_2005} introdujo los modelos de \textit{Oza
+	bagging}~\cite{oza_online_2005}, los cuales extienden la técnica de
+\textit{bagging} para ser utilizada en ambientes de \textit{streamings}. Esto lo
+consiguen a partir de asignar a cada clasificador base la instancia arribada,
 pero en una cantidad de veces determinada por una distribución de
 \textit{poisson}, con $\lambda = 1$. Cada miembro del ensamble, entonces,
 recibirá una cantidad de copias distinta y esto es lo que determina la
@@ -475,7 +474,7 @@ continuos de datos y su tratamiento, de forma tal de llevar a cabo tareas de
 clasificación de manera exitosa.  Como se describió en la
 sección~\ref{intro_streams}, un flujo continuo cuenta con características
 específicas que obligan a los algoritmos de aprendizaje a adaptarse a nuevos
-requerimientos.  A continuación se define formalmente el concepto de flujo, se
+requerimientos.  A continuación, se define formalmente el concepto de flujo, se
 extiende el análisis sobre la tarea de evaluación para dar cuenta de su
 aplicación en este escenario, se describe el concepto de dato sintético y se
 presentan algunos algoritmos y técnicas para generar datos sintéticos útiles
@@ -503,13 +502,17 @@ escenarios de \textit{batch}, esto es, hallar una función capaz de enlazar
 instancias nuevas con sus etiquetas correspondientes, con la salvedad de que se
 debe lograr bajo restricciones de tiempo y espacio de almacenamiento, además de
 otras vicisitudes presentadas por las características mismas de un flujo
-continuo de datos (ver sección~\ref{stream_caracteristicas}). Del mismo, deben
-ser capaces de lidiar con cambios en la distribución de los datos, deben estar
-listos para realizar predicciones en cualquier momento y otros requisitos ya
-mencionados en la sección~\ref{stream_requisitos}. Estas características
-implican que obtener soluciones exactas es poco probable y es necesario aplicar
-técnicas y metodologías especiales de evaluación sobre los modelos, para reducir
-el error posible.
+continuo de datos (ver sección~\ref{stream_caracteristicas}). Del mismo modo,
+deben ser capaces de afrontar los desafíos algorítmicos que presenta este
+escenario (ver sección~\ref{stream_requisitos}), siendo de principal relevancia
+la capacidad de extraer información en tiempo real de datos que son voluminosos,
+arriban a altas velocidades, y puede cambiar su distribución en el tiempo. Estas
+características implican que obtener soluciones exactas es poco probable y es
+necesario aplicar técnicas y metodologías especiales de evaluación sobre los
+modelos, para reducir el error posible. El campo de la minería de
+\textit{streamings} no solo abarca algoritmos de clasificación sino que también
+ha sido exitosamente aplicado para tareas de regresión, \textit{clustering} y
+minería de patrones frecuentes, entre otros~\cite{bifet_machine_2018}.
 
 \subsection{Evaluación}
 \label{stream_evaluacion}
@@ -520,9 +523,9 @@ datos en uno o más subconjuntos de entrenamiento y pruebas.  El ambiente de
 \textit{stream}, por su parte, presenta un desafío extra y es que no permite
 llevar a cabo esta división debido a que no se cuenta con los datos previamente
 almacenados. Además, se debe tener en consideración la naturaleza incremental y
-evolutiva de los datos: a medida que pasa el tiempo pueden surgir nuevas
+evolutiva de los datos: a medida que el tiempo transcurre pueden surgir nuevas
 etiquetas, ciertos atributos pueden dejar de tener peso en la predicción o
-incluso algunas reglas de decisión en el modelo pueden llegar a perder
+incluso puede suceder que algunas de las reglas de decisión en el modelo pierdan
 relevancia. Por lo tanto, se han presentado dos enfoques nuevos, similares a las
 estrategias definidas en~\ref{evaluacion_estrategias} pero acondicionados a los
 escenarios de flujos continuos de datos.
@@ -561,27 +564,53 @@ clasificaciones por \textit{batch} con la salvedad que el cómputo se hace de
 manera incremental. En otras palabras, a diferencia de los métodos clásicos de
 validación cruzada donde la evaluación se hace en una única pasada, una vez
 generado el modelo final, aquí se debe calcular la métrica en cada nueva
-instancia y los resultados se van acumulando.
+instancia y los resultados se van acumulando. En definitiva, las métricas son
+las mismas que fueron introducidas en el anexo~\ref{evaluacion_metricas} para
+datos de etiqueta única y en la sección~\ref{mll_evaluacion} para datos
+multi-etiquetados.
 
-En definitiva, las métricas son las mismas que fueron introducidas en el
-anexo~\ref{evaluacion_metricas} para datos de etiqueta única y en la
-sección~\ref{mll_evaluacion} para datos multi-etiquetados.
+En términos generales, los algoritmos de evaluación en ambientes de
+\textit{streaming} deben cumplir con el siguiente
+ciclo~\cite{bifet_machine_2018}:
+
+\begin{itemize}
+
+	\item Obtener una instancia no etiquetada $x$.
+
+	\item Realizar una predicción $y = h(x)$ para hallar las etiquetas de $x$
+	      dado el modelo $h$.
+
+	\item Obtener la o las etiquetas reales $Y$ de la instancia $x$.
+
+	\item Usar el par $(x,y)$ para entrenar el modelo $h$, y el par $(y,Y)$ para
+	      actualizar las métricas de evaluación que dan cuenta del rendimiento del
+	      clasificador.
+
+	\item Proceder con la siguiente instancia.
+
+\end{itemize}
 
 \subsection{Datos Sintéticos}
 \label{stream_syn}
+
+Los datos sintéticos son datos generados artificialmente, es decir, que en
+lugar de surgir a partir de procesos o eventos del mundo real, proceden de
+métodos algorítmicos diseñados a ese fin. Su objetivo es aproximar datos del
+mundo real y son una alternativa viable cuando los datos existentes no son
+suficientes para conducir experimentos adecuados.
 
 Generar datos sintéticos es una práctica frecuente en la literatura para simular
 ambientes de flujos continuos de datos, el principal motivo es la falta de
 colecciones de \textit{streams} del mundo real que sean lo suficientemente
 grandes y que al mismo tiempo cumplan con todos los requisitos necesarios para
-evaluar algoritmos en este escenario \cite{kirkby_improving_2007}. Pese a esta
+evaluar algoritmos en este escenario~\cite{kirkby_improving_2007}. Pese a esta
 restricción, se han hallado ventajas comparativas en la aplicación de flujos
 sintéticos en el análisis y evaluación de algoritmos, entre ellas se encuentran
-las siguientes:
+las siguientes~\cite{read_generating_2009}:
 
 \begin{itemize}
 
-	\item Tiene un costo de almacenamiento relativamente menor.
+	\item Tienen un costo de almacenamiento relativamente menor.
 
 	\item Cumplen con el requisito de ser teóricamente infinitos.
 
