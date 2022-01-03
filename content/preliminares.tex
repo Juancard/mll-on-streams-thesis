@@ -250,6 +250,7 @@ le da la versatilidad de poder trabajar tanto con problemas de clasificación
 como de regresión.
 
 \subsubsection{Ensambles de Clasificadores}
+\label{ensambles_mll}
 
 El enfoque de ensambles se presenta en el anexo~\ref{ensambles_intro}. En
 resumidas cuentas, se trata de una técnica que busca mejorar el rendimiento de
@@ -272,11 +273,12 @@ cual genera $n$ clasificadores base a partir de un mismo algoritmo, los pondera
 en base a su rendimiento previo y aplica mayoría de voto como técnica de
 selección de etiquetas. Otra de sus cualidades es la de eliminar a los
 clasificadores menos performantes de manera dinámica, lo cual hace que sea una
-solución robusta en ambientes cambiantes, como los de \textit{streamings}.  Por
-último, cabe destacar el modelo \acrshort{gooweml}~\cite{buyukcakir_novel_2018},
-que usa modelos espaciales para asignar un coeficiente de confianza a cada
-clasificador base del ensamble y así lograr una ponderación dinámica en cada
-clasificación.
+solución robusta en ambientes cambiantes, como los de \textit{streamings}. El
+algoritmo fue diseñado inicialmente para problemas de etiqueta única pero puede
+ser adaptado a tareas de \acrshort{mll}. Por último, cabe destacar el modelo
+\acrshort{gooweml}~\cite{buyukcakir_novel_2018}, que usa modelos espaciales para
+asignar un coeficiente de confianza a cada clasificador base del ensamble y así
+lograr una ponderación dinámica en cada clasificación.
 
 \subsection{Evaluación}
 \label{mll_evaluacion}
