@@ -16,7 +16,6 @@
 \usepackage[lofdepth,lotdepth]{subfig} % para colocar varias imagenes en una misma figura
 \usepackage{nameref} % para referenciar y que muestre el titulo de la seccion
 \usepackage{lipsum} % para generar texto aleatorio
-\usepackage{ulem} % para tachar texto
 \usepackage[ruled,vlined]{algorithm2e} % para los algoritmos.
 \renewcommand{\listalgorithmcfname}{Índice de algoritmos}
 \usepackage{booktabs} % para las tablas.
@@ -41,7 +40,22 @@
 	hidelinks,
 }
 
+% sobreescribe \doi del template de llncs
+\AtBeginDocument{%
+	\def\doi#1{\url{https://doi.org/#1}}}
+\makeatother
+
+% Para que no muestre "(visitado <date>)"
+\AtEveryBibitem{
+	\clearfield{urlyear}
+	\clearfield{urlmonth}
+	\clearfield{urldate}
+}
+
+
 % Bibliography
+% evita que texto se salga del margen en bibliografía
+\appto{\bibsetup}{\sloppy}
 \addbibresource{tesis.bib}
 
 % Glossary
