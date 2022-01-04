@@ -78,15 +78,15 @@ del rendimiento por cada colección, y se analiza cuáles son los modelos que
 mejores resultados han obtenido para cada caso.
 
 El marco metodológico de este proyecto se ajusta a los procedimientos efectuados
-previamente por otros investigadores de la literatura
-\cite{osojnik_multi-label_2017, sousa_multi-label_2018, buyukcakir_novel_2018,
-	zheng_survey_2020, read_scalable_2012}. Con ello se ha buscado expandir el
-conocimiento empírico de los algoritmos al mismo tiempo que proporcionar nuevos
-estudios que sean contrastables con los ya existentes. Dichos estudios también
-incluyen el análisis de las evaluaciones realizadas por el ensamble
-\acrshort{efmp} y su comparativa de rendimiento con respecto a otros algoritmos
-conocidos del campo. En cuanto a la generación sintética de datos, este proyecto
-siguió la línea de investigación presentada
+previamente por otros investigadores de la
+literatura~\cite{osojnik_multi-label_2017, sousa_multi-label_2018,
+	buyukcakir_novel_2018, zheng_survey_2020, read_scalable_2012}. Con ello se ha
+buscado expandir el conocimiento empírico de los algoritmos al mismo tiempo que
+proporcionar nuevos estudios que sean contrastables con los ya existentes.
+Dichos estudios también incluyen el análisis de las evaluaciones realizadas por
+el ensamble \acrshort{efmp} y su comparativa de rendimiento con respecto a otros
+algoritmos conocidos del campo. En cuanto a la generación sintética de datos,
+este proyecto siguió la línea de investigación presentada
 por~\citeauthor{read_generating_2009}. A este respecto, se generaron
 \textit{streams} sintéticos bajo el método presentado por dichos autores y bajo
 el método aquí presentado. Con dichos \textit{streams} se realizó un análisis de
@@ -96,19 +96,23 @@ de~\citeauthor{read_scalable_2012}~\cite{read_scalable_2012}, quienes analizan
 algoritmos multi-etiquetas con flujos reales y sintéticos, pero a diferencia de
 este trabajo, generan instancias sintéticas para colecciones nuevas y sin
 basarse en colecciones reales específicas. La implementación del generador que
-usaron en sus experimentos se encuentra disponible al público
-\cite{read_moa_2012} y ha sido el punto de partida para desarrollar la técnica
-aquí propuesta.  \citeauthor{buyukcakir_novel_2018}, por su parte, no generan
-flujos sintéticos, pero conducen experimentos similares en lo que respecta a la
-evaluación de algoritmos, poniendo el foco en modelos de ensambles.  La
-implementación de sus experimentos también ha sido liberada al
+usaron en sus experimentos se encuentra disponible al
+público~\cite{read_moa_2012} y ha sido el punto de partida para desarrollar la
+técnica aquí propuesta.  \citeauthor{buyukcakir_novel_2018}, por su parte, no
+generan flujos sintéticos, pero conducen experimentos similares en lo que
+respecta a la evaluación de algoritmos, poniendo el foco en modelos de
+ensambles.  La implementación de sus experimentos también ha sido liberada al
 público~\footnote{\url{https://github.com/abuyukcakir/gooweml}} y fue uno de los
 modelos a tener en cuenta en el análisis de rendimiento de la solución de
 ensambles \acrshort{efmp}. Otros puntos de referencia para estudiar el algoritmo
 aquí presentado fueron los modelos iSOUP-MT e iSOUP-RT
 de~\citeauthor{osojnik_multi-label_2017}~\cite{osojnik_multi-label_2017} y
 ML-SAM-kNN
-de~\citeauthor{roseberry_multi-label_2018}~\cite{roseberry_multi-label_2018}.  \section{Técnicas Propuestas} En esta sección se describen dos técnicas implementadas para este trabajo: un generador de instancias sintéticas para flujos continuos de datos y el diseño de una solución de ensambles para realizar clasificaciones.
+de~\citeauthor{roseberry_multi-label_2018}~\cite{roseberry_multi-label_2018}.
+\section{Técnicas Propuestas} En esta sección se describen dos técnicas
+implementadas para este trabajo: un generador de instancias sintéticas para
+flujos continuos de datos y el diseño de una solución de ensambles para realizar
+clasificaciones.
 
 \subsection{Generación de Flujos Sintéticos}
 \label{generacion_flujos_sinteticos}
@@ -116,7 +120,7 @@ de~\citeauthor{roseberry_multi-label_2018}~\cite{roseberry_multi-label_2018}.  \
 El generador presentado es un algoritmo que emplea técnicas probabilísticas para
 hallar dependencias entre etiquetas y reproducirlas en las nuevas instancias. La
 existencia de interdependencias entre etiquetas ha sido explorada reiteradas
-veces en la literatura \cite{tsoumakas_multi-label_2007, read_multi-label_2008}
+veces en la literatura~\cite{tsoumakas_multi-label_2007, read_multi-label_2008}
 y se ha demostrado que existen dependencias condicionales e incondicionales,
 esto es, etiquetas que dependen entre sí dado uno o más atributos de una
 instancia (dependencia condicional), y etiquetas cuya dependencia existe para
@@ -141,13 +145,13 @@ de la manera tradicional:
 
 La normalización toma en cuenta el valor de cardinalidad de etiquetas del
 conjunto de datos, esto bajo la recomendación de los autores del trabajo de
-referencia \cite{read_scalable_2012}.
+referencia~\cite{read_scalable_2012}.
 
 \begin{equation}
 	NormCardE = \frac{1}{CardE} \sum_{j=1}^{q} FrecRelE_{j}
 \end{equation}
 
-Donde $CardE$ se define tal como en \ref{eq:mll_card}, esto es:
+Donde $CardE$ se define tal como en~\ref{eq:mll_card}, esto es:
 
 \begin{equation}
 	CardE(D) = \frac{1}{m} \sum_{i=1}^{m} \left\|Y_{i}\right\|
@@ -294,7 +298,7 @@ concepto. Además, es un ensamble que permite definir clasificadores base
 modelados a partir de algoritmos de clasificación diferentes para explotar la
 variabilidad en los mismos. La técnica de ponderación se basa en la presentada
 por \citeauthor{kolter_dynamic_2007} para la estrategia \textit{\acrlong{dwm}}
-(\acrshort{dwm}) \cite{kolter_dynamic_2007} y fue ajustada para soportar datos
+(\acrshort{dwm})~\cite{kolter_dynamic_2007} y fue ajustada para soportar datos
 de múltiples etiquetas. Otra de las cualidades del ensamble \acrshort{dwm} es
 que agrega y elimina clasificadores base dinámicamente de acuerdo a su
 ponderación. Sin embargo, el costo computacional acarreado es notorio y los
@@ -396,7 +400,7 @@ arriba una instancia $i$, cada uno de los clasificadores base entrena el modelo
 $Poisson(1)$ veces con dicha instancia. Esta técnica es conocida como
 \textit{online bagging} y se ha probado que se aproxima a la estrategia
 tradicional de \textit{bagging} en \textit{batch}, cuando se entrena con
-ejemplos de distribución similar \cite{oza_online_2005}.
+ejemplos de distribución similar~\cite{oza_online_2005}.
 
 En el próximo capítulo se retoma este algoritmo para profundizar sobre la
 configuración experimental y el ambiente de pruebas en el que fueron llevadas a
