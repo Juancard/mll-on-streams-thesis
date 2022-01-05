@@ -35,10 +35,16 @@
 \usepackage[left=3cm,right=3cm,bottom=3cm,top=3cm]{geometry}
 
 \usepackage{hyperref}
-\hypersetup{
-	linktoc=all,
-	hidelinks,
+\makeatletter
+\AtBeginDocument{
+	\hypersetup{
+		linktoc=all,
+		hidelinks,
+		pdftitle={\@title},
+		pdfauthor={\@author},
+	}
 }
+\makeatother
 
 % sobreescribe \doi del template de llncs
 \AtBeginDocument{%
@@ -79,7 +85,7 @@
 \def\runtitle{Algoritmos de Clasificación Multi-etiquetas en Ambientes de
 	\textit{Streaming} de Datos}
 \def\director{Santiago Banchero}
-\def\fecha{2021}
+\def\fecha{2022}
 % textidote: ignore end
 
 % textidote: ignore begin
