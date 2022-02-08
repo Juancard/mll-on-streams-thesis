@@ -209,8 +209,6 @@ del cual se hace mención en el trabajo de referencia, los \textit{streams} JC y
 JC\_BIG, tanto como el original, obedecen al tipo \comillas{A}, esto es, la
 mayoría de los ejemplos tienen un conjunto de etiquetas de cardinalidad uno.
 
-\clearpage
-
 La figura~\ref{fig:syn_20ng_label_relationship} es una representación visual de
 la dependencia entre etiquetas. Ambos ejes del gráfico constan de las etiquetas
 de la colección y cuánto mayor es la magnitud de color en la celda (en un rango
@@ -265,10 +263,7 @@ es el único que aparece también en el top de la colección original.
 
 \subsubsection{Enron}
 
-Partiendo de la tabla~\ref{tab:syn_enron_stats} se observa que el
-\textit{stream} MOA se aproxima más al valor de cardinalidad de la colección
-original que nuestra propuesta.
-
+\bigskip
 \bigskip
 \begin{table}[htbp]
 	\centering
@@ -284,25 +279,19 @@ original que nuestra propuesta.
 \end{table}
 
 \bigskip
-\begin{figure}[htbp]
+\bigskip
+
+Partiendo de la tabla~\ref{tab:syn_enron_stats} se observa que el
+\textit{stream} MOA se aproxima más al valor de cardinalidad de la colección
+original que nuestra propuesta.
+
+\bigskip
+
+\begin{figure}
 	\includegraphics[width=\linewidth]{figures/experiments/syn/enron/label_skew.png}
 	\caption{Sesgo de etiquetas de los \textit{streams} generados sobre la colección
-		Enron.}
-	\label{fig:syn_enron_label_skew}
+		Enron.} \label{fig:syn_enron_label_skew}
 \end{figure}
-
-\bigskip
-
-\begin{table}[htbp]
-	\centering
-	\begin{adjustbox}{max width=\textwidth}
-		\input{tables/syn/enron_top_labels_combinations.tex}
-	\end{adjustbox}
-	\caption{Sesgo de etiquetas: Principales combinaciones de los
-		\textit{streams} generados sobre la colección Enron.}
-	\label{tab:syn_enron_top_labels_combinations}
-\end{table}
-\bigskip
 
 Sin embargo, JC Y JC\_BIG, describen una curva en el gráfico de la
 figura~\ref{fig:syn_enron_label_skew} que, en comparación con MOA, tiene una
@@ -317,7 +306,18 @@ complemento al estudio del sesgo. Es de apreciar que todas las combinaciones
 principales de MOA y JC son de la misma cardinalidad (4 y 2, respectivamente),
 mientras que el \textit{stream} original muestra conjuntos de tamaño 1, 2 y 3.
 
-\begin{figure}[htbp]
+\begin{table}
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+		\input{tables/syn/enron_top_labels_combinations.tex}
+	\end{adjustbox}
+	\caption{Sesgo de etiquetas: Principales combinaciones de los
+		\textit{streams} generados sobre la colección Enron.}
+	\label{tab:syn_enron_top_labels_combinations}
+\end{table}
+\bigskip
+
+\begin{figure}
 	\centering
 	\subfloat[Distribución de etiquetas para Enron][Distribución de etiquetas
 		para Enron]{
@@ -347,22 +347,22 @@ distribución, del cual se hace mención en el trabajo de referencia, todos los
 \textit{streams} sintéticos obedecen al tipo \comillas{B}, es decir, la mayoría
 de los ejemplos tienen una cardinalidad de etiquetas mayor que uno.
 
-\begin{figure}[htbp]
+\begin{figure}
 	\centering
 	\subfloat[Relación entre etiquetas para Enron - \textit{Stream} original.][\textit{Stream} original.]{
-		\includegraphics[width=0.45\textwidth]{figures/experiments/syn/enron/enron_relationship_graph.png}}
+		\includegraphics[width=0.45\textwidth,height=4.5cm]{figures/experiments/syn/enron/enron_relationship_graph.png}}
 	\qquad
 	\subfloat[Relación entre etiquetas para Enron - \textit{Stream}
 		JC.][\textit{Stream} JC.]{
-		\includegraphics[width=0.45\textwidth]{figures/experiments/syn/enron/JC_relationship_graph.png}}
+		\includegraphics[width=0.45\textwidth,height=4.5cm]{figures/experiments/syn/enron/JC_relationship_graph.png}}
 	\qquad
 	\subfloat[Relación entre etiquetas para Enron - \textit{Stream}
 		JC\_BIG.][\textit{Stream} JC\_BIG.]{
-		\includegraphics[width=0.45\textwidth]{figures/experiments/syn/enron/JC_BIG_relationship_graph.png}}
+		\includegraphics[width=0.45\textwidth,height=4.5cm]{figures/experiments/syn/enron/JC_BIG_relationship_graph.png}}
 	\qquad
 	\subfloat[Relación entre etiquetas para Enron - \textit{Stream}
 		MOA.][\textit{Stream} MOA.]{
-		\includegraphics[width=0.45\textwidth]{figures/experiments/syn/enron/MOA_relationship_graph.png}}
+		\includegraphics[width=0.45\textwidth,height=4.5cm]{figures/experiments/syn/enron/MOA_relationship_graph.png}}
 	\caption[Relación entre etiquetas para cada \textit{stream} generado sobre
 		la colección Enron.]{Relación entre etiquetas para cada \textit{stream}
 		generado sobre la colección Enron.}
@@ -378,21 +378,23 @@ etiquetas. Este comportamiento podría estar emparentado con la cardinalidad de
 etiquetas, que en estos \textit{streams} sintéticos es menor. No obstante, se
 requieren más estudios para arribar a una conclusión al respecto.
 
+\bigskip
+
 \begin{table}[htbp]
 	\centering
-	\begin{adjustbox}{max width=\textwidth}
+	\begin{adjustbox}{max width=\textwidth, height=2.75cm}
 		\input{tables/syn/enron_features_space.tex}
 	\end{adjustbox}
 	\caption{Espacio de atributos para \textit{streams} Enron.}
 	\label{tab:syn_enron_features_space}
 \end{table}
 
+\bigskip
+
 Por último, la figura~\ref{tab:syn_enron_features_space} lista los atributos más
 frecuentes de cada \textit{stream}. Esta vez, JC y JC\_BIG comparten los 10
 atributos del top y solo varía levemente el ordenamiento entre sí. MOA y la
 colección original comparten un atributo en el top: $10$.
-
-\clearpage
 
 \subsubsection{Mediamill}
 
