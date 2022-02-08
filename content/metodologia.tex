@@ -45,7 +45,7 @@ de múltiples etiquetas han sido acondicionados a ese fin de acuerdo al diseño
 especificado en la literatura y consultando las respectivas implementaciones en
 otros lenguajes de programación, de hallarse estas disponibles al público. Todos
 los algoritmos utilizados para las pruebas se encuentran disponibles al
-público~\footnote{\url{https://github.com/Juancard/scikit-multiflow/}}.
+público~\cite{montiel_scikit-multiflow_2018}.
 
 De manera complementaria, se diseñó una solución de ensambles llamada
 \acrfull{efmp}, basada en las implementaciones existentes. La misma usa como
@@ -451,16 +451,14 @@ continuación:
 
 \begin{description}
 
-	\item{20ng}\footnote{\url{https://www.uco.es/kdis/mllresources/}}: Es una
-	      colección que consta de casi 20 mil publicaciones provenientes de grupos de
-	      noticias y que abordan 20 tópicos diferentes~\cite{lang_newsweeder_1995}.
-	      La colección es de texto y fue preprocesada para formar 1006 atributos
-	      numéricos.
+	\item{20ng}: Es una colección que consta de casi 20 mil publicaciones
+	      provenientes de grupos de noticias y que abordan 20 tópicos
+	      diferentes~\cite{lang_newsweeder_1995}.  La colección es de texto y fue
+	      preprocesada para formar 1006 atributos numéricos.
 
-	\item{Enron}\footnote{\url{http://sourceforge.net/projects/mulan/files/datasets/enron.rar}}:
-	      Es una colección de correos electrónicos seleccionados de entre los 500
-	      mil generados por empleados de la compañía eléctrica \textit{Enron} y
-	      filtrados durante una investigación por
+	\item{Enron}: Es una colección de correos electrónicos seleccionados de
+	      entre los 500 mil generados por empleados de la compañía eléctrica
+	      \textit{Enron} y filtrados durante una investigación por
 	      corrupción~\cite{hutchison_enron_2004}. Su tamaño, que no supera los
 	      2000 elementos, no es lo suficientemente grande para ser considerado un
 	      flujo continuo voluminoso, pero sí cuenta con otras propiedades como la
@@ -471,9 +469,8 @@ continuación:
 	      correo contiene enlaces externos, adjuntos, reenvíos, etc.; según el
 	      tono emocional que reflejan y según el tópico principal que abordan.
 
-	\item{Mediamill}\footnote{\url{https://sourceforge.net/projects/mulan/files/datasets/mediamill.rar}}:
-	      Es una colección generada a partir de 80 horas de video provenientes de
-	      transmisiones de noticias durante noviembre de
+	\item{Mediamill}: Es una colección generada a partir de 80 horas de video
+	      provenientes de transmisiones de noticias durante noviembre de
 	      2004~\cite{snoek_challenge_2006}. Se seleccionaron más de 43 mil
 	      ejemplos y fue manualmente etiquetada con 101 conceptos, que pueden
 	      visualizarse en la figura~\ref{fig:mediamill}.
@@ -506,33 +503,29 @@ para la implementación y ejecución de los experimentos.
 
 \begin{description}
 
-	\item[scikit-multiflow]\footnote{\url{https://scikit-multiflow.github.io/}}
-	      Es una librería disponible para el lenguaje de programación Python que
-	      provee un \textit{framework} para implementar y comparar algoritmos de
-	      aprendizaje automático en ambientes de flujos continuos de datos.
-	      Incluye pero no se limita a problemas de clasificación
-	      multi-etiquetas~\cite{montiel_scikit-multiflow_2018}.
+	\item[scikit-multiflow] Es una librería disponible para el lenguaje de
+	      programación Python que provee un \textit{framework} para implementar y
+	      comparar algoritmos de aprendizaje automático en ambientes de flujos
+	      continuos de datos.  Incluye pero no se limita a problemas de
+	      clasificación multi-etiquetas~\cite{montiel_scikit-multiflow_2018}.
 
-	\item[\acrshort{moa}]\footnote{\url{https://moa.cms.waikato.ac.nz/}}
-	      \acrfull{moa} es un \textit{framework} para realizar minería de datos
-	      sobre flujos continuos de datos, implementada en Java y de código libre.
-	      Incluye algoritmos de evaluación y de aprendizaje automático como
-	      clasificadores, regresores, o de \textit{clustering}, pudiendo ser
-	      aplicados a problemas de clasificación de etiqueta única o
+	\item[\acrshort{moa}] \acrfull{moa} es un \textit{framework} para realizar
+	      minería de datos sobre flujos continuos de datos, implementada en Java y
+	      de código libre.  Incluye algoritmos de evaluación y de aprendizaje
+	      automático como clasificadores, regresores, o de \textit{clustering},
+	      pudiendo ser aplicados a problemas de clasificación de etiqueta única o
 	      multi-etiquetas.  También incluye herramientas para generar datos
 	      sintéticos. Tanto \acrshort{moa} como scikit-multiflow facilitan la
 	      reiteración de experimentos con distintas configuraciones, así como la
 	      comparación de resultados y la extensión de
 	      funcionalidad~\cite{bifet_moa_2010}.
 
-	\item[scikit-learn]\footnote{\url{http://scikit-learn.org/stable/index.html}}
-	      Es una librería del lenguaje de programación Python que brinda
-	      herramientas para realizar evaluación, visualización y análisis de
-	      resultados~\cite{pedregosa_scikit-learn_2018}.
+	\item[scikit-learn] Es una librería del lenguaje de programación Python que
+	      brinda herramientas para realizar evaluación, visualización y análisis
+	      de resultados~\cite{pedregosa_scikit-learn_2018}.
 
-	\item[Mulan]\footnote{\url{http://mulan.sourceforge.net/index.html}} Es una
-	      librería del lenguaje Java especializada en aprendizaje por
-	      multi-etiquetas. Mulan incluye una variedad de colecciones de datos
+	\item[Mulan] Es una librería del lenguaje Java especializada en aprendizaje
+	      por multi-etiquetas. Mulan incluye una variedad de colecciones de datos
 	      multi-etiquetas que han sido la fuente de otros trabajos de la
 	      literatura~\cite{tsoumakas_mulan_2011}.
 
