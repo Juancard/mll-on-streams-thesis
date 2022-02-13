@@ -70,9 +70,11 @@ mismo modo, un video documental sobre la vida de Borges puede anotarse como
 \comillas{Biografía}, \comillas{Literatura} o incluso \comillas{Buenos Aires} si
 se mostraran imágenes de la ciudad. Este tipo de problemas es llamado
 \acrfull{mll}\footnote{Siglas provenientes de su abreviación en inglés,
-	Multi-label learning} y representa un nuevo paradigma de aprendizaje automático,
-con sus propios retos por afrontar y que aún no ha sido suficientemente
-explorado en proyectos de investigación.
+	Multi-label learning} y es un paradigma de aprendizaje automático que presenta
+muchos desafíos. La existencia de múltiples etiquetas en los datos hace que la
+complejidad algorítmica sea comparativamente mayor y se traduce también en un
+costo computacional alto. Por esto, es un campo que aún no ha sido
+suficientemente explorado en proyectos de investigación.
 
 Una clasificación multi-etiqueta permite conocer el grado de correlación entre
 una instancia de la colección y una o más etiquetas. Esta cualidad significa un
@@ -123,8 +125,8 @@ como ‘metabolismo’, ‘transcripción’ o ‘síntesis proteica’
 musical una pieza sinfónica puede tener \textit{tags} como ‘Mozart’, ‘piano’ o
 ‘clásica’.
 
-Este nuevo paradigma es llamado '\acrlong{mll}'   y ataca problemas con las
-siguientes características \cite{gibaja_tutorial_2015}:
+Este paradigma es llamado '\acrlong{mll}'   y ataca problemas con las siguientes
+características \cite{gibaja_tutorial_2015}:
 
 \begin{itemize}
 
@@ -186,29 +188,35 @@ computacional alto.
 
 En el último tiempo, muchos son los algoritmos que han sido desarrollados para
 atacar el problema de la clasificación \acrshort{mll}. La comunidad de
-investigación ha aceptado la taxonomía definida por
-\citeauthor{tsoumakas_multi-label_2007}, para estudiar y clasificar los
-distintos algoritmos de la literatura \cite {gibaja_tutorial_2015}. La misma
+investigación ha aceptado la taxonomía definida
+por \citeauthor{tsoumakas_multi-label_2007}, para estudiar y clasificar los
+distintos algoritmos de la literatura~\cite {gibaja_tutorial_2015}. La misma
 propone dos grandes grupos:
 
 \begin{description}
 
 	\item[Métodos de transformación del problema] Este tipo de algoritmos
-	      transforman el problema de clasificación \acrshort{mll} en un problema de
-	      clasificación tradicional. Ejemplos típicos de este grupo son \acrfull{br}
-	      \cite{tsoumakas_multi-label_2007} y \acrfull{cc}
-	      \cite{read_classifier_2011}. Ambos convierten la tarea en una de
-	      clasificación binaria.
+	      transforman el problema de clasificación \acrshort{mll} en uno o más
+	      problemas de clasificación de etiqueta única tradicional.  Ejemplos
+	      típicos de este grupo son \acrfull{br}~\cite{tsoumakas_multi-label_2007}
+	      y \acrfull{cc}~\cite{read_classifier_2011}. Ambos convierten la tarea en
+	      una de clasificación binaria.
 
 	\item[Métodos de adaptación del algoritmo] Son algoritmos que toman métodos
 	      tradicionales de aprendizaje, como árboles de decisión o \textit{naive
-		      bayes}, y los adaptan a la tarea de clasificación \acrshort{mll}.
+		      bayes}, y los adaptan a la tarea de clasificación \acrshort{mll},
+	      procesando los datos multi-etiquetados directamente.
 
 \end{description}
 
 A modo ilustrativo, la figura~\ref{fig:algorithm_taxonomy} es un diagrama de la
-taxonomía de algoritmos confeccionado por \citeauthor{zhang_review_2014} \cite
-{zhang_review_2014}.
+taxonomía de algoritmos confeccionado por
+\citeauthor{zhang_review_2014}~\cite{zhang_review_2014}. Nótese que, a
+diferencia de problemas de multi-clase, en los que las clases son mutuamente
+excluyentes, en \acrshort{mll} cada etiqueta representa una categoría diferente
+y pueden estar relacionadas entre sí, para lo que resultaría beneficioso aplicar
+un algoritmo de \acrshort{mll} capaz de extraer esta inter-dependencia en los
+datos.
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{figures/algorithm_taxonomy.png}
@@ -244,12 +252,13 @@ características \cite {gama_knowledge_2010}:
 	      que pueden evolucionar. En otras palabras, la distribución de los datos es
 	      susceptible a cambios en el tiempo.
 
-	\item La data ya no es considerada independiente e idénticamente distribuida.
+	\item Los datos ya no son considerados independientes e idénticamente
+	      distribuidos.
 
-	\item La data está situada tanto en el espacio como en el tiempo. La lectura
-	      y procesamiento de los datos debe ser lo suficientemente veloz como para
-	      procesar el siguiente dato, de otro modo, el dato ya no podrá ser procesado
-	      en el futuro.
+	\item Los datos están situados tanto en el espacio como en el tiempo. La
+	      lectura y procesamiento de los mismos debe ser lo suficientemente veloz
+	      como para procesar el siguiente dato, de otro modo, el dato ya no podrá
+	      ser procesado en el futuro.
 
 \end{itemize}
 
@@ -427,17 +436,17 @@ clasificadores que actúen en ambientes de altas restricciones computacionales y
 sean capaces de manejar un inmenso número de instancias, lidiar con evoluciones
 en los datos y estar listos para resolver tareas de predicción en tiempo real.
 
-A diferencia de otros trabajos de investigación recientes, este proyecto lleva a
-cabo estudios experimentales sobre el tema de clasificaciones multi-etiquetas,
-para hallar las fortalezas y debilidades de distintos algoritmos de aprendizaje
-sobre distintos tipos de colecciones, con miras a aportar de un mayor
-conocimiento empírico sobre el tema a la comunidad científica especializada en
-tareas de clasificación de flujos de datos multi-etiquetados. El presente
-trabajo espera contribuir al estudio de métodos y técnicas asentadas, pero
-también examinar algoritmos exitosos del campo de aprendizaje por
-\textit{batch}, particularmente los de ensambles de estimadores, a fin de
-extender su funcionalidad a ambientes de flujos continuos, analizar su desempeño
-y determinar en qué medida son aptos o no para este tipo de ambientes.
+A diferencia de otros trabajos de investigación recientes, este trabajo final
+lleva a cabo estudios experimentales sobre el tema de clasificaciones
+multi-etiquetas, para hallar las fortalezas y debilidades de distintos
+algoritmos de aprendizaje sobre distintos tipos de colecciones, con miras a
+aportar de un mayor conocimiento empírico sobre el tema a la comunidad
+científica especializada en tareas de clasificación de flujos de datos
+multi-etiquetados. El presente trabajo espera contribuir al estudio de métodos y
+técnicas asentadas, pero también examinar algoritmos exitosos del campo de
+aprendizaje por \textit{batch}, particularmente los de ensambles de estimadores,
+a fin de extender su funcionalidad a ambientes de flujos continuos, analizar su
+desempeño y determinar en qué medida son aptos o no para este tipo de ambientes.
 
 
 \section{Organización del Trabajo}
