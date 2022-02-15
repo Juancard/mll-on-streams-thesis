@@ -283,24 +283,27 @@ lograr una ponderación dinámica en cada clasificación.
 \subsection{Evaluación}
 \label{mll_evaluacion}
 
-Como se describe en el anexo~\ref{evaluacion_metricas}, en escenarios de
-clasificación tradicionales el poder de generalización de un modelo es evaluado
-a partir de métricas tales como la exactitud o la exhaustividad las cuales
-trabajan con una única etiqueta. Una predicción multi-etiquetada, por el
-contrario, carga con la complejidad de que cada ejemplo puede ser asociado a más
-de una o dos etiquetas. Esto implica que ya no se puede trabajar con la
-presunción de que una clasificación solo puede ser correcta o incorrecta. De lo
-contrario, se incursionaría en una evaluación excesivamente rigurosa. Por este
-motivo, en el campo de \acrshort{mll} se han diseñado una serie de métricas
-nuevas y específicas para abordar este tipo de problemas, y se clasifican en dos
-grupos: existen las métricas \comillas{basadas en ejemplos}, que son computadas
-por cada instancia y luego promediadas; y las métricas \comillas{basadas en
-	etiquetas}, las cuales son calculadas para cada etiqueta por separado y
-devuelven el promedio micro o el promedio macro.
+En escenarios de clasificación tradicionales el poder de generalización de un
+modelo es evaluado a partir de métricas tales como la exactitud o la
+exhaustividad las cuales trabajan con una única etiqueta. Una predicción
+multi-etiquetada, por el contrario, carga con la complejidad de que cada ejemplo
+puede ser asociado a más de una o dos etiquetas. Esto implica que ya no se puede
+trabajar con la presunción de que una clasificación solo puede ser correcta o
+incorrecta. De lo contrario, se incursionaría en una evaluación excesivamente
+rigurosa. Por este motivo, en el campo de \acrshort{mll} se han diseñado una
+serie de métricas nuevas y específicas para abordar este tipo de problemas, y se
+clasifican en dos grupos: existen las métricas \comillas{basadas en ejemplos},
+que son computadas por cada instancia y luego promediadas; y las métricas
+\comillas{basadas en etiquetas}, las cuales son calculadas para cada etiqueta
+por separado y devuelven el promedio micro o el promedio macro.
 
 A continuación se describe en detalle ambas categorías, incluyendo métricas
 presentadas por cada enfoque, junto con su definición formal y una
-interpretación de la evaluación que proveen.
+interpretación de la evaluación que proveen. Para más información sobre la tarea
+de evaluación en escenarios tradicionales consultar el
+anexo~\ref{evaluacion_intro}, donde se describen algunas de las métricas y
+estrategias utilizadas en el área y que son relevantes al presente trabajo
+final.
 
 \subsubsection{Métricas basadas en Ejemplos}
 
