@@ -423,31 +423,43 @@ constante expansión hacia nuevos dominios de aplicación. Asimismo, su continua
 integración a problemas de diversa naturaleza ha contribuido a alimentar esta
 tendencia.
 
-La tarea de clasificación de \textit{streaming} de datos se enfoca en problemas
-donde objetos del mundo real son generados y procesados en tiempo real. Datos de
-este tipo, y que además poseen múltiples etiquetas, son frecuentes en escenarios
-del mundo real tal como sitios de publicación de imágenes, correos electrónicos
-o portales de noticias. Abordar este tipo de problemas implica que los
-algoritmos sean capaces de identificar cambios de concepto en los datos y
-adaptarse al nuevo contexto. De lograr esto, se podrá generar modelos más
-sólidos, ya que se cuenta con un mayor número de objetos, y que se encontrarán
-aptos para predecir en cualquier momento. Surge entonces el reto de crear
-clasificadores que actúen en ambientes de altas restricciones computacionales y
-sean capaces de manejar un inmenso número de instancias, lidiar con evoluciones
-en los datos y estar listos para resolver tareas de predicción en tiempo real.
+Adicionalmente, la tarea de clasificación de \textit{streaming} de datos se
+enfoca en problemas donde objetos del mundo real son generados y procesados en
+tiempo real. Datos de este tipo, y que además poseen múltiples etiquetas, son
+frecuentes en escenarios del mundo real tal como sitios de publicación de
+imágenes, correos electrónicos o portales de noticias. Abordar este tipo de
+problemas implica que los algoritmos sean capaces de identificar cambios de
+concepto en los datos y adaptarse al nuevo contexto. De lograr esto, se podrá
+generar modelos más sólidos, ya que se cuenta con un mayor número de objetos, y
+que se encontrarán aptos para predecir en cualquier momento. Surge entonces el
+reto de crear clasificadores que actúen en ambientes de altas restricciones
+computacionales y sean capaces de manejar un inmenso número de instancias,
+lidiar con evoluciones en los datos y estar listos para resolver tareas de
+predicción en tiempo real.
 
 A diferencia de otros trabajos de investigación recientes, este trabajo final
 lleva a cabo estudios experimentales sobre el tema de clasificaciones
 multi-etiquetas, para hallar las fortalezas y debilidades de distintos
-algoritmos de aprendizaje sobre distintos tipos de colecciones, con miras a
-aportar de un mayor conocimiento empírico sobre el tema a la comunidad
-científica especializada en tareas de clasificación de flujos de datos
-multi-etiquetados. El presente trabajo espera contribuir al estudio de métodos y
-técnicas asentadas, pero también examinar algoritmos exitosos del campo de
-aprendizaje por \textit{batch}, particularmente los de ensambles de estimadores,
-a fin de extender su funcionalidad a ambientes de flujos continuos, analizar su
-desempeño y determinar en qué medida son aptos o no para este tipo de ambientes.
+algoritmos de aprendizaje sobre distintos tipos de colecciones. A ello le
+sumamos el diseño y desarrollo del algoritmo \acrshort{efmp} que utiliza
+estrategias de ensambles para combinar estimadores bien conocidos del campo.
+Todo ello con miras a aportar de un mayor conocimiento empírico sobre el tema a
+la comunidad científica especializada en tareas de clasificación de flujos de
+datos multi-etiquetados.
 
+El otro aporte aquí presentado consiste en un generador de flujos sintéticos que
+dada una colección multi-etiquetada retorna instancias nuevas y con un grado de
+similitud con las instancias de la colección original. De esta manera, se podrá
+obtener flujos continuos potencialmente infinitos, generados a partir de una
+colección del mundo real y que la comunidad podrá utilizar para simular
+escenarios de \textit{streaming} durante el entrenamiento de los algoritmos
+\acrshort{mll}.
+
+En definitiva, el presente trabajo espera contribuir al estudio de métodos y
+técnicas asentadas, ofrecer una alternativa de ensamble de clasificadores
+competitiva, a la vez que fortalecer futuros trabajos de investigación en el
+campo con un generador de instancias sintéticas para entrenar algoritmos en
+escenarios más cercanos a los del mundo real.
 
 \section{Organización del Trabajo}
 
