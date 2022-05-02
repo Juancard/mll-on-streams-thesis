@@ -18,7 +18,7 @@ desarrollados en el lenguaje Python usando la librería
 \textit{scikit-multiflow}. Los algoritmos de transformación del problema se
 aplican tal como han sido implementados en la librería con la salvedad del
 \acrshort{mlht}, al que debió introducirle una modificación para manipular la
-predicción, se usaba un arreglo disperso para representar las etiquetas
+predicción: se usaba un arreglo disperso para representar las etiquetas
 activadas, lo cual producía un desbordamiento de memoria en el entrenamiento de
 colecciones grandes como la de Mediamill. Se lo suplantó por una estructura de
 representación densa. En cuanto a los modelos de ensambles, se adaptaron las
@@ -109,7 +109,7 @@ esto es:
 \label{experimentos_resultados}
 
 A continuación se exhiben los resultados obtenidos de los experimentos. En
-primer lugar, en la sección~\ref{experimentos_syn_streams} se estudian los
+primer lugar, en la sección~\ref{experimentos_syn_streams}, se estudian los
 flujos continuos sintéticos generados y luego, ya en la
 sección~\ref{experimentos_clasificaciones}, se analizan los resultados de las
 evaluaciones.
@@ -257,9 +257,9 @@ Finalmente, la figura~\ref{tab:syn_20ng_features_space} lista los atributos más
 frecuentes de cada \textit{stream} y da una idea del espacio de atributos
 generado. En este caso, JC y JC\_BIG producen \textit{features} muy similares y
 casi en el mismo orden ($model$ y $bit$ alternando la posición 6 entre
-\textit{streams}). Los únicos atributos que aparecen en el top y no son
+\textit{streams}). Los únicos atributos que aparecen en el \textit{top} y no son
 compartidos entre estos dos flujos son $muslim$ y $good$, este último, a su vez,
-es el único que aparece también en el top de la colección original.
+es el único que aparece también en el \textit{top} de la colección original.
 
 \subsubsection{Enron}
 
@@ -393,8 +393,8 @@ requieren más estudios para arribar a una conclusión al respecto.
 
 Por último, la figura~\ref{tab:syn_enron_features_space} lista los atributos más
 frecuentes de cada \textit{stream}. Esta vez, JC y JC\_BIG comparten los 10
-atributos del top y solo varía levemente el ordenamiento entre sí. MOA y la
-colección original comparten un atributo en el top: $10$.
+atributos del \textit{top} y solo varía levemente el ordenamiento entre sí. MOA
+y la colección original comparten un atributo en el \textit{top}: \comillas{10}.
 
 \subsubsection{Mediamill}
 
@@ -691,7 +691,7 @@ método \textit{prequential} para evaluar rendimientos.
 
 \citeauthor{osojnik_multi-label_2017} presentaron experimentos sobre las
 colecciones de 20ng y Enron bajo métricas basadas en ejemplos (\textit{hamming
-	score}, \textit{f1} y \textit{exact-match}), métricas basadas en etiquetas
+	score}, \textit{f1} y \textit{exact-match}) y métricas basadas en etiquetas
 (precisión, \textit{recall} y \textit{f1}, todas ellas con promedio micro y
 macro). Comenzando por las métricas basadas en ejemplos, el modelo
 \textit{iSOUP-MT} es el que mejor \textit{hamming score} obtiene en sus
@@ -740,7 +740,7 @@ ML-SAM-kNN y lo pusieron a prueba con las tres colecciones y las métricas de
 obtuvimos que \acrshort{efmp} es superado en un 26\% para 20ng, en un 86\% para
 Enron y en un 92\% para Mediamill. No obstante, bajo la métrica de \textit{f1},
 nuestros modelos superan en un 65\% y 229\% a sus modelos para 20ng y Enron
-respectivamente y es superado en un 26\% para Mediamill. Los autores no
+respectivamente y son superados en un 26\% para Mediamill. Los autores no
 realizaron pruebas sobre métricas basadas en etiquetas.
 
 Finalmente, \citeauthor{buyukcakir_novel_2018} presentaron el modelo de
